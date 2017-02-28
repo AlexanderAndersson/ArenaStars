@@ -1,6 +1,17 @@
-﻿
+﻿@using ArenaStars.Models;
 @{
     ViewBag.Title = "ArenaStars";
 }
 
+<h3>All Games (inc tournaments)</h3>
+@foreach (User user in ViewBag.Winner)
+{
+    <h4>@user.Username</h4>
+}
 
+
+<h3>Tournaments</h3>
+@foreach (User user in ViewBag.TWinner)
+{
+    <h4>@user.Username</h4>
+}

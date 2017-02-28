@@ -9,7 +9,7 @@ namespace ArenaStars.Models
     {
         public long Id { get; set; }
 
-        public TypeEnum Type { get; set; }
+        public GameTypeEnum Type { get; set; }
 
         public IList<User> Participants { get; set; }
 
@@ -19,6 +19,6 @@ namespace ArenaStars.Models
 
         public IList<GameStats> GameStats { get; set; }
 
-        public enum TypeEnum { Ranked, Unranked, Tournament, Challange }
+        public enum GameTypeEnum { Ranked, Unranked, Tournament, Challange }
     }
 }

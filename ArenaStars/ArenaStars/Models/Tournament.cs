@@ -10,11 +10,11 @@ namespace ArenaStars.Models
         public long Id { get; set; }
         public string Name { get; set; }
 
-        public DateTime Created{ get; set; }
+        public DateTime? Created{ get; set; }
 
-        public DateTime CheckInDate { get; set; }
+        public DateTime? CheckInDate { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         public bool IsLive { get; set; }
 
@@ -32,10 +32,12 @@ namespace ArenaStars.Models
 
         public User.RankEnum MinRank { get; set; }
 
-        public TypeEnum Type { get; set; }
+        public TournamentTypeEnum Type { get; set; }
 
         public IList<User> InvitedPlayers { get; set; }
 
-        public enum TypeEnum { Veteran, AllStars, Open, Invite, Unproven }
+        public virtual User Winner { get; set; }
+
+        public enum TournamentTypeEnum { Veteran, AllStars, Open, Invite, Unproven }
     }
 }

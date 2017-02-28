@@ -23,9 +23,9 @@ namespace ArenaStars.Models
 
         public string Country { get; set; }
 
-        public DateTime SignUpDate { get; set; }
+        public DateTime? SignUpDate { get; set; }
 
-        public DateTime LastLoggedIn { get; set; }
+        public DateTime? LastLoggedIn { get; set; }
 
         public bool IsAdmin { get; set; }
 
@@ -35,13 +35,15 @@ namespace ArenaStars.Models
 
         public int Elo { get; set; }
 
-        public virtual IList<Tournament> TournamentsWon { get; set; }
+        public virtual IList<Tournament> Tournaments { get; set; }
 
         public virtual IList<Game> Games { get; set; }
 
         public bool IsTerminated { get; set; }
 
         public string ProfilePic { get; set; }
+
+        public IList<Report> ReportList { get; set; }
 
         public enum RankEnum {Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
     }

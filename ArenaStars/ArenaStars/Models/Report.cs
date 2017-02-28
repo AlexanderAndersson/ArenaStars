@@ -13,7 +13,11 @@ namespace ArenaStars.Models
 
         public string Message { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual User ReportedUser { get; set; }
+
+        public virtual User Reportee { get; set; }
+
+        public DateTime? SubmittedDate { get; set; }
 
         public enum ReasonEnum { Cheating, Toxic, Griefing, Harassment, Other }
     }
