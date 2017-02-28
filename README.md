@@ -1,6 +1,6 @@
 # ArenaStars README
 
-Tournament types
+## **Tournament types**
 - Veteran = Spelare som har vunnit x antal turneringar tidigare
 - AllStars = Top högsta rankade spelarna 
 - Open = Öppen för "allmänheten"
