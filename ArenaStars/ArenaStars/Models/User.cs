@@ -29,7 +29,7 @@ namespace ArenaStars.Models
 
         public bool IsAdmin { get; set; }
 
-        public RankEnum Ranks { get; set; }
+        public RankEnum Rank { get; set; }
 
         public int Level { get; set; }
 
@@ -45,6 +45,6 @@ namespace ArenaStars.Models
 
         public IList<Report> ReportList { get; set; }
 
-        public enum RankEnum {Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
+        public enum RankEnum { Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
     }
 }
