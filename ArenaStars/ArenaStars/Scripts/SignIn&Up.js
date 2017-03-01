@@ -17,7 +17,7 @@
         let pass2 = $("#registerInputPassword2").val();
 
         SubmitRegister(uname, email, pass, pass2);
-    })
+    });
 
 });
 

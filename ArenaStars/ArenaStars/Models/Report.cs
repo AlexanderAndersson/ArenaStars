@@ -19,6 +19,6 @@ namespace ArenaStars.Models
 
         public DateTime? SubmittedDate { get; set; }
 
-        public enum ReasonEnum { Cheating, Toxic, Griefing, Harassment, Other }
+        public enum ReasonEnum { Cheating, Toxic, Griefing, Harassment, Offensive_Content, Other }
     }
 }

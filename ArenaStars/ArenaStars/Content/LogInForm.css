@@ -21,7 +21,7 @@
   color: white;
 }
 
-.loginmodal-container input[type=submit] {
+.loginmodal-container input[type=button] {
   width: 100%;
   display: block;
   margin-bottom: 10px;
