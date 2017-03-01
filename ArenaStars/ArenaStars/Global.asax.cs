@@ -14,5 +14,14 @@ namespace ArenaStars
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void Session_Start()
+        {
+            Session["isLoggedIn"] = false;
+            Session["username"] = "";
+            Session["credits"] = 0;
+
+
+        }
     }
 }
