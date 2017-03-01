@@ -16,3 +16,12 @@ textarea {
     max-width: 280px;
 }
 
+.logInBtn {
+    margin-right: 10px !important;
+    color: white !important;
+}
+
+li > .logInBtn {
+     background: #f50 !important;
+     border-color: #f50 !important
+}
