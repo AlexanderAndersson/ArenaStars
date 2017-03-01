@@ -2,8 +2,46 @@
 @{
     ViewBag.Title = "ArenaStars";
 }
+<link href="~/Content/LogInForm.css" rel="stylesheet" />
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form>
+                <input type="text" name="user" required placeholder="Username">
+                <input type="password" name="pass" required placeholder="Password">
+                <input type="submit" name="login" class="login loginmodal-submit" value="LOG IN">
+            </form>
+            <div class="login-help">
+                <a href="#" class="registerBtn" @*data-toggle="modal" data-target="#register-modal"*@>Register</a> - <a href="#">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Register an Account</h1><br>
+            <form>
+                <input type="text" name="user" required placeholder="Username">
+                <input type="email" name="email" required placeholder="Email">
+                <input type="password" name="pass" required placeholder="Password">
+                <input type="password" name="pass2" required placeholder="Confirm Password">
+                <input type="submit" name="login" class="login register-submit" value="SIGN UP">
+            </form>
+            <div class="login-help">
+                <a href="#" class="logInBtn">Already have an account</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h3>All Games (inc tournaments)</h3>
+
+
+
+
+
+@*<h3>All Games (inc tournaments)</h3>
 @foreach (User user in ViewBag.Winner)
 {
     <h4>@user.Username</h4>
@@ -25,4 +63,4 @@
     <p>Reason: @report.Reason</p>
     <p>Message: @report.Message</p>
     <p>Submitted: @report.SubmittedDate.Value.ToLongDateString()</p>
-}
+}*@
