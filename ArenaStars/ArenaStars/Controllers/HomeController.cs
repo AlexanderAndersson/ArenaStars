@@ -22,6 +22,11 @@ namespace ArenaStars.Controllers
             var tWinners = from t in context.Tournaments
                            select t.Winner;
 
+            var nickesReports = from r in context.Reports
+                                where r.ReportedUser.Username == "MuppetNicke"
+                                select r;
+
+            ViewBag.Reports = nickesReports;
             ViewBag.TWinner = tWinners;
             ViewBag.Winner = rankedWinner;
 
@@ -103,18 +108,18 @@ namespace ArenaStars.Controllers
                 GameStats = TwoGameStatsList
             };
 
-            //Game TournamentGame1 = new Game()
-            //{
-            //    Participants = TwoUsersList,
-            //    Winner = TwoUsersList.ElementAt(2),
-            //    Map = "aim_map",
-            //    Type = Game.GameTypeEnum.Tournament,
-            //    GameStats = TournamentGameStatsList,
-            //};
+            Game TournamentGame1 = new Game()
+            {
+                Participants = TwoUsersList,
+                Winner = TwoUsersList.ElementAt(0),
+                Map = "aim_map",
+                Type = Game.GameTypeEnum.Tournament,
+                GameStats = TournamentGameStatsList,
+            };
 
-            //TournamentGameList.Add(TournamentGame1);
+            TournamentGameList.Add(TournamentGame1);
 
-            //context.Games.Add(TournamentGame1);
+            context.Games.Add(TournamentGame1);
             context.Games.Add(RankedGame1);
             context.SaveChanges();
 
@@ -138,61 +143,85 @@ namespace ArenaStars.Controllers
                 Game = RankedGame1
             };
 
-            //GameStats GameStatsTournamentPlayer1 = new GameStats()
-            //{
-            //    Kills = 3,
-            //    Deaths = 0,
-            //    HsRatio = 1,
-            //    SteamId = "123456789",
-            //    Game = TournamentGame1
-            //};
+            GameStats GameStatsTournamentPlayer1 = new GameStats()
+            {
+                Kills = 3,
+                Deaths = 0,
+                HsRatio = 1,
+                SteamId = "123456789",
+                Game = TournamentGame1
+            };
 
-            //GameStats GameStatsTournamentPlayer2 = new GameStats()
-            //{
-            //    Kills = 0,
-            //    Deaths = 3,
-            //    HsRatio = 0,
-            //    SteamId = "123456710",
-            //    Game = TournamentGame1
-            //};
+            GameStats GameStatsTournamentPlayer2 = new GameStats()
+            {
+                Kills = 0,
+                Deaths = 3,
+                HsRatio = 0,
+                SteamId = "123456710",
+                Game = TournamentGame1
+            };
 
             TwoGameStatsList.Add(GameStatsRankedPlayer1);
             TwoGameStatsList.Add(GameStatsRankedPlayer2);
 
-            //TournamentGameStatsList.Add(GameStatsTournamentPlayer1);
-            //TournamentGameStatsList.Add(GameStatsTournamentPlayer2);
+            TournamentGameStatsList.Add(GameStatsTournamentPlayer1);
+            TournamentGameStatsList.Add(GameStatsTournamentPlayer2);
 
-            //RankedGame1.GameStats = TwoGameStatsList;
+            RankedGame1.GameStats = TwoGameStatsList;
+            TournamentGame1.GameStats = TournamentGameStatsList;
 
-            
             context.GameStats.Add(GameStatsRankedPlayer1);
             context.GameStats.Add(GameStatsRankedPlayer2);
-            //context.GameStats.Add(GameStatsTournamentPlayer1);
-            //context.GameStats.Add(GameStatsTournamentPlayer2);
+            context.GameStats.Add(GameStatsTournamentPlayer1);
+            context.GameStats.Add(GameStatsTournamentPlayer2);
             context.SaveChanges();
 
             /***************TOURNAMENTS*****************/
 
-            //Tournament AllStarsTournament = new Tournament()
-            //{
-            //    Name = "AllStars Only",
-            //    Participants = UserList,
-            //    Winner = UserList.ElementAt(2),
-            //    Type = Tournament.TournamentTypeEnum.AllStars,
-            //    Created = DateTime.Now,
-            //    StartDate = DateTime.Now.AddDays(10),
-            //    CheckInDate = DateTime.Now.AddDays(10).AddHours(10),
-            //    HasEnded = false,
-            //    IsLive = false,
-            //    MinRank = Models.User.RankEnum.Bronze,
-            //    MaxRank = Models.User.RankEnum.Legend,
-            //    PlayerLimit = 10,
-            //    TrophyPic = "https://img.clipartfest.com/6bdf56bd13a3e1fe1a04b54876a1c4e9_trophy-clipart-trophy-clipart-images_1920-1920.jpeg",
-            //    Games = TournamentGameList
-            //};
+            Tournament AllStarsTournament = new Tournament()
+            {
+                Name = "AllStars Only",
+                Participants = UserList,
+                Winner = UserList.ElementAt(1),
+                Type = Tournament.TournamentTypeEnum.AllStars,
+                Created = DateTime.Now,
+                StartDate = DateTime.Now.AddDays(10),
+                CheckInDate = DateTime.Now.AddDays(10).AddHours(10),
+                HasEnded = false,
+                IsLive = false,
+                MinRank = Models.User.RankEnum.Bronze,
+                MaxRank = Models.User.RankEnum.Legend,
+                PlayerLimit = 10,
+                TrophyPic = "https://img.clipartfest.com/6bdf56bd13a3e1fe1a04b54876a1c4e9_trophy-clipart-trophy-clipart-images_1920-1920.jpeg",
+                Games = TournamentGameList
+            };
 
-            //context.Tournaments.Add(AllStarsTournament);
-            //context.SaveChanges();
+            context.Tournaments.Add(AllStarsTournament);
+            context.SaveChanges();
+
+            /********************REPORTS*********************/
+
+            Report report1 = new Report()
+            {
+                ReportedUser = u1,
+                Reportee = u2,
+                Reason = Report.ReasonEnum.Cheating,
+                Message = "This guy is cheatng for sure",
+                SubmittedDate = DateTime.Now
+            };
+
+            Report report2 = new Report()
+            {
+                ReportedUser = u2,
+                Reportee = u1,
+                Reason = Report.ReasonEnum.Other,
+                Message = "This guy reported me for nothing",
+                SubmittedDate = DateTime.Now
+            };
+
+            context.Reports.Add(report1);
+            context.Reports.Add(report2);
+            context.SaveChanges();
 
             return RedirectToAction("/Index", "Home");
         }

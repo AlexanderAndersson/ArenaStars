@@ -15,3 +15,14 @@
 {
     <h4>@user.Username</h4>
 }
+
+
+<h3>Reports</h3>
+@foreach (Report report in ViewBag.Reports)
+{
+    <p>Reported player: @report.ReportedUser.Username</p>
+    <p>Reported by: @report.Reportee.Username</p>
+    <p>Reason: @report.Reason</p>
+    <p>Message: @report.Message</p>
+    <p>Submitted: @report.SubmittedDate.Value.ToLongDateString()</p>
+}
