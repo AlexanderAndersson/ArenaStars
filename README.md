@@ -33,4 +33,5 @@
 - Toxic
 - Griefing
 - Harassment
+- Offensive Content
 - Other

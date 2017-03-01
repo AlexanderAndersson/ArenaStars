@@ -23,7 +23,6 @@ namespace ArenaStars.Controllers
                            select t.Winner;
 
             var nickesReports = from r in context.Reports
-                                where r.ReportedUser.Username == "MuppetNicke"
                                 select r;
 
             ViewBag.Reports = nickesReports;
@@ -44,7 +43,7 @@ namespace ArenaStars.Controllers
                 Lastname = "Pettersson",
                 Country = "Sweden",
                 Email = "Nicke.Pettersson@gmail.com",
-                Password = "123",
+                Password = "hejsan",
                 SignUpDate = DateTime.Now.AddDays(-20),
                 LastLoggedIn = DateTime.Now,
                 IsAdmin = false,
@@ -64,10 +63,10 @@ namespace ArenaStars.Controllers
 
                 Username = "AlleBalle",
                 Firstname = "Alexander",
-                Lastname = "Andersson   ",
+                Lastname = "Andersson",
                 Country = "Sweden",
                 Email = "Alexander.Andersson@gmail.com",
-                Password = "123",
+                Password = "hejsan",
                 SignUpDate = DateTime.Now.AddDays(-10),
                 LastLoggedIn = DateTime.Now,
                 IsAdmin = true,

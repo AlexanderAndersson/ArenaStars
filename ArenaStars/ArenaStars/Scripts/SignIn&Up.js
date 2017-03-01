@@ -10,6 +10,8 @@
         $("#login-modal").modal("hide")
     });
 
-
+    $("#myButton").on("click", function () {
+        alert("You have clicked the Register button!");
+    });
 
 });

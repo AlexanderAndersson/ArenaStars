@@ -25,3 +25,8 @@ li > .logInBtn {
      background: #f50 !important;
      border-color: #f50 !important
 }
+
+.trophyPic {
+    height: 25px;
+    width: 25px;
+}

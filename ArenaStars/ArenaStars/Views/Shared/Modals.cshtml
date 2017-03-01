@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Modals";
+}
+
+<link href="~/Content/LogInForm.css" rel="stylesheet" />
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form>
+                <input type="text" name="user" required placeholder="Username">
+                <input type="password" name="pass" required placeholder="Password">
+                <input type="button" name="login" class="login loginmodal-submit" value="LOG IN">
+            </form>
+            <div class="login-help">
+                <a href="#" class="registerBtn">Register</a> - <a href="#">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Register an Account</h1><br>
+            <form action="~/User/Register" method="post">
+                <input type="text" name="inputUsername" required placeholder="Username">
+                <input type="email" name="inputEmail" required placeholder="Email">
+                <input type="password" name="inputPassword" required placeholder="Password">
+                <input type="password" name="inputPassword2" required placeholder="Confirm Password">
+                <span style="color:red;">@ViewBag.passwordNotMatch</span>
+                <input type="button" name="login" class="login register-submit" value="SIGN UP">
+            </form>
+            <div class="login-help">
+                <a href="#" class="logInBtn">Already have an account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
