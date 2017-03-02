@@ -20,6 +20,7 @@ namespace ArenaStars
             Session["isLoggedIn"] = false;
             Session["username"] = "";
             Session["isAdmin"] = false;
+            Session["profilePictureUrl"] = "";
         }
     }
 }

@@ -14,34 +14,52 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            @Html.ActionLink("ArenaStars", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">@Html.ActionLink("Tournaments", "Index", "Tournament", new { area = "" }, new { @class = "" })</li>
-                    <li class="nav-item">@Html.ActionLink("Leaderboard", "Index", "Leaderboard", new { area = "" }, new { @class = "" })</li>
-                    <li class="nav-item">@Html.ActionLink("Banlist", "Index", "Ban", new { area = "" }, new { @class = "" })</li>
-                    @if ((bool)Session["isAdmin"])
-                    {
-                        <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
-                    }
-                </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form class="navbar-form col-sm-3 col-md-4 col-lg-6" role="search">
-                        <input type="text" class="form-control mr-sm-2" placeholder="Search" name="searchInput">
-                    </form>
-                </li>
-                @if (!(bool)Session["isLoggedIn"])
-                {
-                    <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
-                    <li><button class="btn btn-primary navbar-btn registerBtn" type="button">SIGN UP</button></li>
-                }
-                else
-                {
-                    <li class="navbar-text">Logged in as: <b>@Session["username"]</b></li>
-                    <li><button onclick="location.href='@Url.Action("Logout", "User")'" class="btn btn-default navbar-btn logOutBtn" type="button">LOG OUT</button></li>
-                }
-            </ul>
-        </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a>@Html.ActionLink("ArenaStars", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">@Html.ActionLink("Tournaments", "Index", "Tournament")</li>
+                        <li class="nav-item">@Html.ActionLink("Leaderboard", "Index", "Leaderboard")</li>
+                        <li class="nav-item">@Html.ActionLink("Banlist", "Index", "Ban")</li>
+                        @if ((bool)Session["isAdmin"] == true)
+                        {
+                            <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
+                        }
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="navbar-form" role="search">
+                                <input type="text" class="form-control" placeholder="Search" name="searchInput">
+                            </form>
+                        </li>
+                        @if (!(bool)Session["isLoggedIn"])
+                        {
+                            <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
+                            <li><button class="btn btn-primary navbar-btn registerBtn" type="button">SIGN UP</button></li>
+                        }
+                        else
+                        {
+                            //gör så att bara profil bilden syns vid x storlek
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+                                    <img src="https://s3.amazonaws.com/whisperinvest-images/default.png" class="img-circle special-img">@Session["username"]<span class="caret"></span>
+                                </a>
+                                <ul id="profilDropDown" class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="@Url.Action("Logout", "User")">Log out</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
