@@ -1,6 +1,6 @@
 # ArenaStars README
 
-## **Funtioner att göra**
+## **Funktioner att göra**
 ###### **Admin tools** ######
 - Edit/Remove user info
 - Suspend

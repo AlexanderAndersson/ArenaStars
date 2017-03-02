@@ -5,7 +5,7 @@
   padding: 30px;
   max-width: 350px;
   width: 100% !important;
-  background-color: #2c2929;
+  background-color: #3f3e3e;
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -63,8 +63,8 @@
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  /*background-color: #44b138;*/ 
-  background-color: #f50;
+  background-color: #44b138; 
+  /*background-color: #f50;*/
   padding: 17px 0px;
   font-family: roboto;
   font-size: 14px;
@@ -74,7 +74,7 @@
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #44b138;
+  background-color: #286090;
   padding: 17px 0px;
   font-family: roboto;
   font-size: 14px;

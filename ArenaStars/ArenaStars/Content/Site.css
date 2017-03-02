@@ -23,6 +23,18 @@ textarea {
     background: #141616 !important;
 }
 
+.navbar-inverse .navbar-nav>li>a {
+    color: #ff7000 !important;
+}
+
+/*.navbar-inverse .navbar-nav>li>a:focus .navbar-nav>li>a:hover {
+    background-color: white;
+}*/
+
+#profilDropDown>li>a:focus, #profilDropDown>li>a:hover {
+    background-color: #4a4a4f;
+}
+
 .logInBtn, .logOutBtn {
     margin-right: 10px !important;
     color: white !important;
@@ -42,4 +54,39 @@ li > .logInBtn, .logOutBtn {
     width: 25px;
 }
 
+#profilDropDown {
+    background-color: #131313;
+}
+
+#profilDropDown  a {
+    color: #fff;
+}
+
+#navPicLi {
+    height: 50px;
+    width: 50px;
+}
+
+.special-img 
+{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+}
+.profile-image  {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#navPic {
+    height: 25px;
+    width: 25px;
+}
+
+#navName {
+    padding-left: 0px;
+}
 
