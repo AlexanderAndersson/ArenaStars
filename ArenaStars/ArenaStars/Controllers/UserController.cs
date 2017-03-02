@@ -14,6 +14,7 @@ namespace ArenaStars.Controllers
         [HttpPost]
         public ActionResult Register(string username, string email, string password, string password2)
         {
+            Regex.Replace(username, @"\s+", "");  //Removes all white spaces.
             List<string> ErrorMsgList = checkRegisterInputFaults(username, email, password, password2);
 
             if (ErrorMsgList.Count == 0)
@@ -54,7 +55,8 @@ namespace ArenaStars.Controllers
             if (ErrorMsgList.Count == 0)
             {
                 Session["isLoggedIn"] = true;
-                Session["username"] = username;
+                //Session["username"] = "";  //Gör tilldelningen i CheckLoginInputFaults, var tyvärr tvungen att göra det ifall username ska vara "statiskt"
+
             }
 
             return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
@@ -66,6 +68,55 @@ namespace ArenaStars.Controllers
             Session["username"] = "";
 
             return RedirectToAction("/Index", "Home");
+        }
+
+        public ActionResult Profile(string username)
+        {
+            object displayUser;
+
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var findUser = from u in context.Users
+                               where username.ToLower() == u.Username
+                               select u;
+
+                if (findUser.Count() == 0)
+                    return RedirectToAction("/UserNotFound", "User");
+
+                User user = findUser.FirstOrDefault();
+
+                displayUser = new
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Email = user.Email,
+                    SteamId = user.SteamId,
+                    Firstname = user.Firstname,
+                    Lastname = user.Lastname,
+                    Country = user.Country,
+                    SignUpDate = user.SignUpDate,
+                    LastLoggedIn = user.LastLoggedIn,
+                    IsAdmin = user.IsAdmin,
+                    Rank = user.Rank,
+                    Level = user.Level,
+                    Elo = user.Elo,
+                    Tournaments = user.Tournaments,
+                    Games = user.Games,
+                    IsTerminated = user.IsTerminated,
+                    BanReason = user.BanReason,
+                    BanDuration = user.BanDuration,
+                    ProfilePic = user.ProfilePic,
+                    ReportList = user.ReportList
+                };
+
+            }
+                
+            return View(displayUser);
+        }
+
+        public ActionResult UserNotFound()
+        {
+            return View();
         }
 
         private List<string> checkRegisterInputFaults(string username, string email, string password, string password2)
@@ -151,7 +202,7 @@ namespace ArenaStars.Controllers
             //Checks if password is empty, null or whitespace
             if (string.IsNullOrWhiteSpace(password))
             {
-                errorMsgList.Add(password);
+                errorMsgList.Add("Password field is empty!");
             }
             
             if (errorMsgList.Count == 0)
@@ -159,7 +210,7 @@ namespace ArenaStars.Controllers
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
                     var findUser = from u in context.Users
-                                   where username.ToLower() == u.Username
+                                   where username.ToLower() == u.Username.ToLower() && password == u.Password
                                    select u;
 
                     if (findUser.Count() == 0)
@@ -170,6 +221,8 @@ namespace ArenaStars.Controllers
                     {
                         User u = findUser.FirstOrDefault();
                         u.LastLoggedIn = DateTime.Now;
+                        Session["username"] = u.Username;
+                        Session["isAdmin"] = u.IsAdmin;
                     }
                 }
             }

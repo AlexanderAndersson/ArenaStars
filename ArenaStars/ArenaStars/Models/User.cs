@@ -50,7 +50,13 @@ namespace ArenaStars.Models
 
         public bool IsTerminated { get; set; }
 
+        public string BanReason { get; set; }
+
+        public DateTime? BanDuration { get; set; }
+
         public string ProfilePic { get; set; }
+
+        public string BackgroundPic { get; set; }
 
         public IList<Report> ReportList { get; set; }
 
