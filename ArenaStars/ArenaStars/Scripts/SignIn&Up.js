@@ -26,6 +26,25 @@
         SubmitLogin(uname, pass);
     });
 
+    $(document).on('keypress', function (e) {
+        let tag = e.target.tagName.toLowerCase();
+        if (e.which === 13 && tag == 'input' && tag != 'textarea')
+            if ($('#register-modal').is(':visible')) {
+                let uname = $("#registerInputUsername").val();
+                let email = $("#registerInputEmail").val();
+                let pass = $("#registerInputPassword").val();
+                let pass2 = $("#registerInputPassword2").val();
+
+                SubmitRegister(uname, email, pass, pass2);
+            }
+            else if ($('#login-modal').is(':visible')) {
+                let uname = $("#loginInputUsername").val();
+                let pass = $("#loginInputPassword").val();
+
+                SubmitLogin(uname, pass);
+            }
+    });
+
 });
 
 

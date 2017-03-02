@@ -68,6 +68,13 @@ namespace ArenaStars.Controllers
             return RedirectToAction("/Index", "Home");
         }
 
+        public ActionResult Profile(string username)
+        {
+
+
+            return View();
+        }
+
         private List<string> checkRegisterInputFaults(string username, string email, string password, string password2)
         {
             List<string> errorMsgList = new List<string>();
@@ -151,7 +158,7 @@ namespace ArenaStars.Controllers
             //Checks if password is empty, null or whitespace
             if (string.IsNullOrWhiteSpace(password))
             {
-                errorMsgList.Add(password);
+                errorMsgList.Add("Password field is empty!");
             }
             
             if (errorMsgList.Count == 0)
@@ -159,7 +166,7 @@ namespace ArenaStars.Controllers
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
                     var findUser = from u in context.Users
-                                   where username.ToLower() == u.Username
+                                   where username.ToLower() == u.Username.ToLower() && password == u.Password
                                    select u;
 
                     if (findUser.Count() == 0)
