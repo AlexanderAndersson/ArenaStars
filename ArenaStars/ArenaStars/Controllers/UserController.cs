@@ -10,7 +10,8 @@ namespace ArenaStars.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+        
+        [HttpPost]
         public ActionResult Register(string username, string email, string password, string password2)
         {
             List<string> ErrorMsgList = checkRegisterInputFaults(username, email, password, password2);
@@ -45,6 +46,7 @@ namespace ArenaStars.Controllers
             return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
         }
 
+        [HttpPost]
         public ActionResult Login(string username, string password)
         {
             List<string> ErrorMsgList = checkLoginInputFaults(username, password);
