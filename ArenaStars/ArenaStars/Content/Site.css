@@ -1,12 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #1e2222 !important; /*#141616*/
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    color: #fff;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -16,9 +18,17 @@ textarea {
     max-width: 280px;
 }
 
+.container-fluid {
+    background: #141616 !important;
+}
+
 .logInBtn {
     margin-right: 10px !important;
     color: white !important;
+}
+
+.registerBtn {
+     margin-right: 10px !important;
 }
 
 li > .logInBtn {
@@ -30,3 +40,5 @@ li > .logInBtn {
     height: 25px;
     width: 25px;
 }
+
+
