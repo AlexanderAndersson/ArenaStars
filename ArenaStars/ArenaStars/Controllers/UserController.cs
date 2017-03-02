@@ -14,9 +14,6 @@ namespace ArenaStars.Controllers
         public ActionResult Register(string username, string email, string password, string password2)
         {
             List<string> ErrorMsgList = checkRegisterInputFaults(username, email, password, password2);
-                
-
-            //Kolla ifall man måste kolla efter white spaces endast.
 
             if (ErrorMsgList.Count == 0)
             {
@@ -44,61 +41,21 @@ namespace ArenaStars.Controllers
                 }
             }
 
-            if (ErrorMsgList.Count == 0)
-                return RedirectToAction("/Index", "Home");
-            else
-            {
-                return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
-            }
 
+            return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string username, string password)
         {
-            bool foundFaults = false;
-            List<string> ErrorMsgList = new List<string>();
+            List<string> ErrorMsgList = checkLoginInputFaults(username, password);
 
-
-            string username = Request["inputUsername"];
-            string password = Request["inputPassword"];
-
-            using (ArenaStarsContext context = new ArenaStarsContext())
+            if (ErrorMsgList.Count == 0)
             {
-                var findUser = from u in context.Users
-                                where username.ToLower() == u.Username.ToLower()
-                                select u; //Gets user with inputted username
-
-
-                if (findUser.Count() <= 0) //Checks if user exists with inputted username
-                {
-                    foundFaults = true;
-                    ErrorMsgList.Add("There is no user with that name");
-                }
-                else
-                {
-                    User user = findUser.FirstOrDefault();
-                    if (password == user.Password)
-                    {
-                        //Login succeed
-                        Session["isLoggedIn"] = true;
-                        Session["username"] = username;
-
-                        user.LastLoggedIn = DateTime.Now;
-                    }
-                    else
-                    {
-                        //Login failed
-                        foundFaults = true;
-                        ErrorMsgList.Add("Wring username or password!");
-                    }
-                }
+                Session["isLoggedIn"] = true;
+                Session["username"] = username;
             }
 
-
-            if (!foundFaults)
-                return RedirectToAction("/Index", "Home");
-            else
-                return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
+            return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
         }
 
         public ActionResult Logout()
@@ -128,11 +85,11 @@ namespace ArenaStars.Controllers
             }
 
             //Checks lengths
-            if (username.Length >= 3 && username.Length <= 30)
+            if (username.Length < 3 || username.Length > 30)
             {
                 errorMsgList.Add("Username must be between 3 and 30 characters.");
             }
-            if (username.Length >= 6 && username.Length <= 30)
+            if (username.Length < 6 || username.Length > 30)
             {
                 errorMsgList.Add("Password must be between 6 and 30 characters.");
             }
@@ -145,7 +102,7 @@ namespace ArenaStars.Controllers
 
             //Regex check
             string pattern = @"^(?("")("".+?(?<!\\)""@)|(([0-9A-Za-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9A-Za-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9A-Za-z][-\w]*[0-9A-Za-z]*\.)+[A-Za-z0-9][\-a-z0-9]{0,22}[A-Za-z0-9]))$";
-            if (Regex.IsMatch(email, pattern))
+            if (!Regex.IsMatch(email, pattern))
             {
                 errorMsgList.Add("Given email address is not valid!");
             }
@@ -175,6 +132,48 @@ namespace ArenaStars.Controllers
             }
 
                 return errorMsgList;
+        }
+
+        private List<string> checkLoginInputFaults(string username, string password)
+        {
+            List<string> errorMsgList = new List<string>();
+
+            //Kollar ifall det finns en användare med angivna username och password.
+            //Uppdatera last logged in date.
+
+            //Checks if inputs are empty, null or whitespace
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                errorMsgList.Add("Username field is empty!");
+            }
+            //Checks if password is empty, null or whitespace
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                errorMsgList.Add(password);
+            }
+            
+            if (errorMsgList.Count == 0)
+            {
+                using (ArenaStarsContext context = new ArenaStarsContext())
+                {
+                    var findUser = from u in context.Users
+                                   where username.ToLower() == u.Username
+                                   select u;
+
+                    if (findUser.Count() == 0)
+                    {
+                        errorMsgList.Add("There is no user with given username and password combination");
+                    }
+                    else
+                    {
+                        User u = findUser.FirstOrDefault();
+                        u.LastLoggedIn = DateTime.Now;
+                    }
+                }
+            }
+
+
+            return errorMsgList;
         }
     }
 }
