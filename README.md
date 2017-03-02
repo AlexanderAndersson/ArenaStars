@@ -1,5 +1,24 @@
 # ArenaStars README
 
+## **Funtioner att göra**
+###### **Admin tools** ######
+- Edit/Remove user info
+- Suspend
+- Add tournament
+
+###### **Signup/In** ######
+- ~~LogIn~~
+- ~~Register~~
+- ~~Log Out~~
+
+###### **Other** ######
+- Matchmaking
+- User edit
+- Profil pic
+- Rivals
+- Search
+- Hash pawssord
+
 ## **Tournament types**
 - **Veteran:** Spelare som har vunnit x antal turneringar tidigare
 - **AllStars:** Top högsta rankade spelarna 
@@ -35,3 +54,4 @@
 - Harassment
 - Offensive Content
 - Other
+

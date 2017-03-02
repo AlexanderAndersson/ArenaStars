@@ -15,12 +15,21 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             @Html.ActionLink("ArenaStars", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <div class="nav navbar-nav">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Tournaments", "Index", "Tournament", new { area = "" }, new { @class = "" })</li>
+                    <li class="nav-item">@Html.ActionLink("Leaderboard", "Index", "Leaderboard", new { area = "" }, new { @class = "" })</li>
+                    <li class="nav-item">@Html.ActionLink("Banlist", "Index", "Ban", new { area = "" }, new { @class = "" })</li>
+                    @*@if ((bool)Session["isAdmin"])
+                    {
+                        <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
+                    }*@
+                </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
                     <form class="navbar-form col-sm-3 col-md-4 col-lg-6" role="search">
                         <input type="text" class="form-control mr-sm-2" placeholder="Search" name="searchInput">
                     </form>
-                </div>
-            <ul class="nav navbar-nav navbar-right">
+                </li>
                 @if (!(bool)Session["isLoggedIn"])
                 {
                     <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
@@ -29,6 +38,7 @@
                 else
                 {
                     <li class="navbar-text">Logged in as: <b>@Session["username"]</b></li>
+                    <li><button onclick="location.href='@Url.Action("Logout", "User")'" class="btn btn-default navbar-btn logOutBtn" type="button">LOG OUT</button></li>
                 }
             </ul>
         </div>

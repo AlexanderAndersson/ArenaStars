@@ -23,7 +23,7 @@ textarea {
     background: #141616 !important;
 }
 
-.logInBtn {
+.logInBtn, .logOutBtn {
     margin-right: 10px !important;
     color: white !important;
 }
@@ -32,7 +32,7 @@ textarea {
      margin-right: 10px !important;
 }
 
-li > .logInBtn {
+li > .logInBtn, .logOutBtn {
      background: #f50 !important;
      border-color: #f50 !important
 }
