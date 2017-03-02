@@ -71,53 +71,125 @@ namespace ArenaStars.Controllers
             return RedirectToAction("/Index", "Home");
         }
 
-        public ActionResult Profile(string username)
+        public new ActionResult Profile(string username)
         {
-            object displayUser;
+            User user = new Models.User();
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 var findUser = from u in context.Users
-                               where username.ToLower() == u.Username
+                               where username.ToLower() == u.Username.ToLower()
                                select u;
 
                 if (findUser.Count() == 0)
-                    return RedirectToAction("/UserNotFound", "User");
-
-                User user = findUser.FirstOrDefault();
-
-                displayUser = new
                 {
-                    Id = user.Id,
-                    Username = user.Username,
-                    Email = user.Email,
-                    SteamId = user.SteamId,
-                    Firstname = user.Firstname,
-                    Lastname = user.Lastname,
-                    Country = user.Country,
-                    SignUpDate = user.SignUpDate,
-                    LastLoggedIn = user.LastLoggedIn,
-                    IsAdmin = user.IsAdmin,
-                    Rank = user.Rank,
-                    Level = user.Level,
-                    Elo = user.Elo,
-                    Tournaments = user.Tournaments,
-                    Games = user.Games,
-                    IsTerminated = user.IsTerminated,
-                    BanReason = user.BanReason,
-                    BanDuration = user.BanDuration,
-                    ProfilePic = user.ProfilePic,
-                    ReportList = user.ReportList
-                };
+                    context.Dispose();
+                    return RedirectToAction("/UserNotFound", "User");
+                }
+
+                user = findUser.FirstOrDefault();
 
             }
-                
-            return View(displayUser);
+
+            user.Password = "************";
+
+            return View(user);
         }
 
         public ActionResult UserNotFound()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult GetTournaments(int shown, string username)
+        {
+            List<object> tournaments = new List<object>();
+            int numberToDisplay = 5; //Maybe(probably) make it parameter
+
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var findUser = from u in context.Users
+                               where username.ToLower() == u.Username.ToLower()
+                               select u;
+
+                User user = findUser.FirstOrDefault();
+                int i = 0;
+                foreach (var tournament in user.Tournaments)
+                {
+                    if (i >= shown)
+                    {
+                        if (i < shown + numberToDisplay)
+                        {
+                            var newTournament = new
+                            {
+                                CheckInDate = tournament.CheckInDate,
+                                CreatedDate = tournament.CreatedDate,
+                                StartDate = tournament.StartDate,
+                                HasEnded = tournament.HasEnded,
+                                Id = tournament.Id,
+                                IsLive = tournament.IsLive,
+                                MaxRank = tournament.MaxRank,
+                                MinRank = tournament.MinRank,
+                                Name = tournament.Name,
+                                PlayerLimit = tournament.PlayerLimit,
+                                TrophyPic = tournament.TrophyPic,
+                                Type = tournament.Type,
+                                Winner = tournament.Winner.Username
+                            };
+                            tournaments.Add(newTournament);
+                        }
+                        else { break; }
+                    }
+                    else { break; }
+                    i++;
+                }
+
+            }
+
+            return Json(new { tournamentList = tournaments }, JsonRequestBehavior.DenyGet);
+        }
+
+        [HttpPost]
+        public ActionResult GetGames(int shown, string username)
+        {
+            List<object> games = new List<object>();
+            int numberToDisplay = 20; //Maybe(probably) make it parameter
+
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var findUser = from u in context.Users
+                               where username.ToLower() == u.Username.ToLower()
+                               select u;
+
+                User user = findUser.FirstOrDefault();
+                int i = 0;
+                foreach (var game in user.Games)
+                {
+                    if (i >= shown)
+                    {
+                        if (i < shown + numberToDisplay)
+                        {
+                            var newGame = new
+                            {
+                                Id = game.Id,
+                                Map = game.Map,
+                                ParticipantOne = game.Participants.FirstOrDefault().Username,
+                                ParticipantTwo = game.Participants.LastOrDefault().Username,
+                                Type = game.Type.ToString(),
+                                Winner = game.Winner.Username
+                            };
+                            games.Add(newGame);
+                        }
+                        else { break; }
+                    }
+                    else { break; }
+                    i++;
+                }
+
+            }
+
+            return Json(new { gameList = games }, JsonRequestBehavior.DenyGet);
         }
 
         private List<string> checkRegisterInputFaults(string username, string email, string password, string password2)
@@ -224,6 +296,7 @@ namespace ArenaStars.Controllers
                         u.LastLoggedIn = DateTime.Now;
                         Session["username"] = u.Username;
                         Session["isAdmin"] = u.IsAdmin;
+                        Session["profilePictureUrl"] = u.ProfilePic;
                     }
                 }
             }

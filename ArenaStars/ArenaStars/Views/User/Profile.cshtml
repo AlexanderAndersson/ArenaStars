@@ -1,9 +1,28 @@
-﻿@model object
+﻿@using ArenaStars.Models
+@model ArenaStars.Models.User
 
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = Model.Username + " - Profile";
 }
 
-<h2>Profile</h2>
+<div id="userInfo" class="profileTease">
+    <p>Username: @Model.Username</p>
+    <p>Password: @Model.Password</p>
+    <p>Email: @Model.Email</p>
+</div>
 
-@Model.Username
+<h3>Tournament History</h3>
+<div id="tournamentHistory">
+
+</div>
+<button id="showMoreTournamentsButton">SHOW MORE</button>
+
+<h3>Games History</h3>
+<div id="gameHistory">
+
+</div>
+<button id="showMoreGamesButton">SHOW MORE</button>
+
+
+<script src="~/Scripts/GetTournamentsJS.js"></script>
+<script src="~/Scripts/GetGamesJS.js"></script>

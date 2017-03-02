@@ -183,7 +183,7 @@ namespace ArenaStars.Controllers
                 Participants = UserList,
                 Winner = UserList.ElementAt(1),
                 Type = Tournament.TournamentTypeEnum.AllStars,
-                Created = DateTime.Now,
+                CreatedDate = DateTime.Now,
                 StartDate = DateTime.Now.AddDays(10),
                 CheckInDate = DateTime.Now.AddDays(10).AddHours(10),
                 HasEnded = false,
@@ -217,6 +217,9 @@ namespace ArenaStars.Controllers
                 Message = "This guy reported me for nothing",
                 SubmittedDate = DateTime.Now
             };
+
+            u1.Tournaments.Add(AllStarsTournament);
+            u2.Tournaments.Add(AllStarsTournament);
 
             context.Reports.Add(report1);
             context.Reports.Add(report2);
