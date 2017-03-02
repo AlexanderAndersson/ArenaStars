@@ -19,10 +19,10 @@
                     <li class="nav-item">@Html.ActionLink("Tournaments", "Index", "Tournament", new { area = "" }, new { @class = "" })</li>
                     <li class="nav-item">@Html.ActionLink("Leaderboard", "Index", "Leaderboard", new { area = "" }, new { @class = "" })</li>
                     <li class="nav-item">@Html.ActionLink("Banlist", "Index", "Ban", new { area = "" }, new { @class = "" })</li>
-                    @*@if ((bool)Session["isAdmin"])
+                    @if ((bool)Session["isAdmin"])
                     {
                         <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
-                    }*@
+                    }
                 </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

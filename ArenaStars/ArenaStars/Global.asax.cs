@@ -19,9 +19,7 @@ namespace ArenaStars
         {
             Session["isLoggedIn"] = false;
             Session["username"] = "";
-            Session["credits"] = 0;
-
-
+            Session["isAdmin"] = false;
         }
     }
 }

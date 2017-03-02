@@ -66,6 +66,7 @@ namespace ArenaStars.Controllers
         {
             Session["isLoggedIn"] = false;
             Session["username"] = "";
+            Session["isAdmin"] = false;
 
             return RedirectToAction("/Index", "Home");
         }
