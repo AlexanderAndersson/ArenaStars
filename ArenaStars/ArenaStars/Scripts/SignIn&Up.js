@@ -52,7 +52,14 @@ function SubmitRegister(uname, email, pass, pass2) {
                 errorOutput.append('<span class="errorMessage">' + errorList[i] + '</span><br />')
             }
 
-            location.reload(); //Refreshes page.
+            if (errorList.length == 0) {
+                location.reload(); //Refreshes page.
+            }
+            else {
+                errorOutput.append("<br /><br />");
+            }
+
+                
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -81,7 +88,10 @@ function SubmitLogin(uname, pass) {
                 errorOutput.append('<span class="errorMessage">' + errorList[i] + '</span><br />')
             }
 
-            location.reload(); //Refreshes page.
+            if (errorList.length == 0) {
+                location.reload(); //Refreshes page.
+            }
+                
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
