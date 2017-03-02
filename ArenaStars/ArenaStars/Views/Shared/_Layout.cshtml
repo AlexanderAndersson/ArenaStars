@@ -21,17 +21,23 @@
                     </form>
                 </div>
             <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-text">Logged in as: <b>@Session["username"]</b></li>
-                <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
-                <li><button class="btn btn-primary navbar-btn registerBtn" type="button">SIGN UP</button></li>
+                @if (!(bool)Session["isLoggedIn"])
+                {
+                    <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
+                    <li><button class="btn btn-primary navbar-btn registerBtn" type="button">SIGN UP</button></li>
+                }
+                else
+                {
+                    <li class="navbar-text">Logged in as: <b>@Session["username"]</b></li>
+                }
             </ul>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        @*<hr />*@
         <footer>
-            <p>&copy; @DateTime.Now.Year - ArenaStars</p>
+            @*<p>&copy; @DateTime.Now.Year - ArenaStars</p>*@
         </footer>
     </div>
 </body>
