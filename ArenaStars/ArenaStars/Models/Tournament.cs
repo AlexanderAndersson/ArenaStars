@@ -22,11 +22,11 @@ namespace ArenaStars.Models
 
         public int PlayerLimit { get; set; }
 
-        public IList<User> Participants { get; set; }
+        public virtual IList<User> Participants { get; set; }
 
         public string TrophyPic { get; set; }
 
-        public IList<Game> Games { get; set; }
+        public virtual IList<Game> Games { get; set; }
 
         public User.RankEnum MaxRank { get; set; }
 
@@ -34,7 +34,7 @@ namespace ArenaStars.Models
 
         public TournamentTypeEnum Type { get; set; }
 
-        public IList<User> InvitedPlayers { get; set; }
+        public virtual IList<User> InvitedPlayers { get; set; }
 
         public virtual User Winner { get; set; }
 

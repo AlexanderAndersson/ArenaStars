@@ -11,13 +11,13 @@ namespace ArenaStars.Models
 
         public GameTypeEnum Type { get; set; }
 
-        public IList<User> Participants { get; set; }
+        public virtual IList<User> Participants { get; set; }
 
         public virtual User Winner { get; set; }
 
         public string Map { get; set; }
 
-        public IList<GameStats> GameStats { get; set; }
+        public virtual IList<GameStats> GameStats { get; set; }
 
         public enum GameTypeEnum { Ranked, Unranked, Tournament, Challange }
     }
