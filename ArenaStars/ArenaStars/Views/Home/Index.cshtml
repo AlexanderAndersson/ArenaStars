@@ -10,16 +10,16 @@
 <h4>Här har du lite stats</h4><br/>
 
 <h3><u>All Winners (including tournaments)</u></h3>
-@foreach (User user in ViewBag.Winner)
+@foreach (Game game in ViewBag.Games)
 {
-    <h4>@user.Username</h4>
+    <h4>@game.Winner.Username</h4>
 }
 
-<h3><u>Tournament Winners</u></h3>
+@*<h3><u>Tournament Winners</u></h3>
 @foreach (User user in ViewBag.TWinner)
 {
     <h4>@user.Username<img class="trophyPic" src="@user.Tournaments[0].TrophyPic "/></h4>
-}
+}*@
 
 <h3><u>Reports</u></h3>
 @foreach (Report report in ViewBag.Reports)

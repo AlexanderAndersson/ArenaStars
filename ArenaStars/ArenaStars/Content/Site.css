@@ -24,7 +24,7 @@ textarea {
 }
 
 @media (max-width: 774px) and (min-width: 768px) {
-    .special-img { display: none; }
+    .profile-img { display: none; }
 }
 
 #logo {
@@ -101,5 +101,9 @@ li > .logInBtn, .logOutBtn {
 
 #navName {
     padding-left: 0px;
+}
+
+.nav-item:hover {
+    background-color: #4a4a4f;
 }
 

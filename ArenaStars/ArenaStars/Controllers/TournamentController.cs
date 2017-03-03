@@ -12,11 +12,20 @@ namespace ArenaStars.Controllers
         ArenaStarsContext context = new ArenaStarsContext();
         public ActionResult Index()
         {
-            var activeTournaments = from t in context.Tournaments
-                                    where t.HasEnded == false
+            var tournaments = from t in context.Tournaments
                                     select t;
 
-            ViewBag.activeTournaments = activeTournaments;
+            var tournamentsParticipants = from t in context.Tournaments
+                                          select t.Participants;
+
+            var games = from g in context.Games
+                        select g;
+
+            var gamesP = from g in context.Games
+                        select g.Participants;
+
+            ViewBag.activeTournaments = tournaments;
+            ViewBag.tParticipants = tournamentsParticipants;
 
             return View();
         }
