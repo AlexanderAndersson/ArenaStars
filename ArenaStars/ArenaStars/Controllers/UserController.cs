@@ -164,7 +164,7 @@ namespace ArenaStars.Controllers
 
                 User user = findUser.FirstOrDefault();
                 int i = 0;
-                foreach (var game in user.Games)
+                foreach (Game game in user.Games)
                 {
                     if (i >= shown)
                     {

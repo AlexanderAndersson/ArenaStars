@@ -94,13 +94,16 @@ namespace ArenaStars.Controllers
 
             context.Users.Add(u1);
             context.Users.Add(u2);
-            context.SaveChanges();
+            //context.SaveChanges();
 
             /****************GAMES*****************/
 
             Game RankedGame1 = new Game()
             {
-                Participants = TwoUsersList,
+                Participants = new List<User>()
+                {
+                    u1,u2
+                },
                 Winner = TwoUsersList.ElementAt(1),
                 Map = "aim_map",
                 Type = Game.GameTypeEnum.Ranked,
@@ -109,7 +112,10 @@ namespace ArenaStars.Controllers
 
             Game TournamentGame1 = new Game()
             {
-                Participants = TwoUsersList,
+                Participants = new List<User>()
+                {
+                    u1, u2
+                },
                 Winner = TwoUsersList.ElementAt(0),
                 Map = "aim_map",
                 Type = Game.GameTypeEnum.Tournament,

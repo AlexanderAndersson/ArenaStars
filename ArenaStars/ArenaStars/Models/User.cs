@@ -50,7 +50,7 @@ namespace ArenaStars.Models
 
         public string BackgroundPic { get; set; }
 
-        public IList<Report> ReportList { get; set; }
+        public virtual IList<Report> ReportList { get; set; }
 
         public enum RankEnum { Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
 
