@@ -194,7 +194,7 @@ namespace ArenaStars.Controllers
                 CheckInDate = DateTime.Now.AddDays(10).AddHours(10),
                 HasEnded = false,
                 IsLive = false,
-                MinRank = Models.User.RankEnum.Bronze,
+                MinRank = Models.User.RankEnum.Legend,
                 MaxRank = Models.User.RankEnum.Legend,
                 PlayerLimit = 10,
                 TrophyPic = "https://img.clipartfest.com/6bdf56bd13a3e1fe1a04b54876a1c4e9_trophy-clipart-trophy-clipart-images_1920-1920.jpeg",

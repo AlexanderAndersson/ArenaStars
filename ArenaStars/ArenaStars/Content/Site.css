@@ -13,10 +13,31 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
+select
 textarea {
     max-width: 280px;
     color: black !important;
+}
+
+@media (max-width: 1003px) and (min-width: 768px) {
+    #searchBarNav { display: none; }
+}
+
+@media (max-width: 774px) and (min-width: 768px) {
+    .special-img { display: none; }
+}
+
+#logo {
+    height: 50px;
+    width: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#searchBarNav input {
+    background: #1e2222 !important;
+    color: white !important;
+    border-color: #1e2222 !important;
 }
 
 .container-fluid {
@@ -24,12 +45,8 @@ textarea {
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color: #ff7000 !important;
+    color: #ff822e !important;
 }
-
-/*.navbar-inverse .navbar-nav>li>a:focus .navbar-nav>li>a:hover {
-    background-color: white;
-}*/
 
 #profilDropDown>li>a:focus, #profilDropDown>li>a:hover {
     background-color: #4a4a4f;
@@ -67,7 +84,7 @@ li > .logInBtn, .logOutBtn {
     width: 50px;
 }
 
-.special-img 
+.profile-img 
 {
     width: 30px;
     height: 30px;
@@ -75,10 +92,6 @@ li > .logInBtn, .logOutBtn {
     top: -5px;
     float: left;
     left: -5px;
-}
-.profile-image  {
-	padding-top: 0px;
-	padding-bottom: 0px;
 }
 
 #navPic {
