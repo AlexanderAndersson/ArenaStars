@@ -1,0 +1,49 @@
+﻿body {
+}
+
+.big-background {
+    background: 1px solid white;
+    /*background-image: url("~/Images/Profile/ProfileBackground_Default.jpg");*/
+    /*background-color: #1E2222;*/
+    background-color:green;
+    background-size:contain;
+    height:300px;
+    margin-top:10px;
+}
+
+.profilePicture > img {
+    width:200px;
+    height:200px;
+    margin-top:-190px;
+}
+
+.fakeNavBar {
+    background-color:#141616;
+    height:40px;
+    font-size:15px;
+}
+
+.fakeNavBarItem {
+    color: orange;
+    cursor:pointer;
+    width:100px;
+}
+
+.fakeNavBar > span {
+    color:red;
+    margin-right:20px !important;
+    margin-top:10px !important;
+    align-content:center;
+    border:1px solid green;
+}
+
+.generalStatsBox {
+    border: 1px solid #4b4e4e;
+    height: 200px;
+}
+
+.container > h5 {
+    font-weight:bolder;
+    font-size: 15px;
+    margin-top:20px;
+}
