@@ -9,17 +9,37 @@
 <h2>Välkommen till ArenaStars!</h2>
 <h4>Här har du lite stats</h4><br/>
 
-<h3><u>All Winners (including tournaments)</u></h3>
-@foreach (Game game in ViewBag.Games)
+<h3><u>All Users</u></h3>
+@foreach (User user in ViewBag.Users)
+{
+    <h5>@user.Username</h5>
+}
+
+<br />
+
+<h3><u>Ranked Games Winners</u></h3>
+@foreach (Game game in ViewBag.RGames)
 {
     <h4>@game.Winner.Username</h4>
 }
 
-@*<h3><u>Tournament Winners</u></h3>
-@foreach (User user in ViewBag.TWinner)
+<br />
+
+<h3><u>Tournament Games Winners</u></h3>
+@foreach (Game game in ViewBag.TGames)
 {
-    <h4>@user.Username<img class="trophyPic" src="@user.Tournaments[0].TrophyPic "/></h4>
-}*@
+    <h4>@game.Winner.Username</h4>
+}
+
+<br />
+
+@*<h3><u>Tournament Winners</u></h3>
+@foreach (Tournament tournament in ViewBag.Tournaments)
+{
+    <h4>@tournament.Winner.Username</h4>
+}
+
+<br />*@
 
 <h3><u>Reports</u></h3>
 @foreach (Report report in ViewBag.Reports)

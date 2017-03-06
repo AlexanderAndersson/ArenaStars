@@ -8,9 +8,11 @@ namespace ArenaStars.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
         public ActionResult Index()
         {
+            //Active state css ViewBags
+            ViewBag.AdminSelected = "activeNav";
+
             return View();
         }
     }

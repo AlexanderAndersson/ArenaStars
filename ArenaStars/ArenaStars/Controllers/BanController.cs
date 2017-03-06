@@ -8,9 +8,11 @@ namespace ArenaStars.Controllers
 {
     public class BanController : Controller
     {
-        // GET: Ban
         public ActionResult Index()
         {
+            //Active state css ViewBags
+            ViewBag.BanlistSelected = "activeNav";
+
             return View();
         }
     }

@@ -1,7 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background: #1e2222 !important; /*#141616*/
+    background: #1e2222 !important;
+    overflow-y:scroll;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -9,6 +10,7 @@
     padding-left: 15px;
     padding-right: 15px;
     color: #f1f1f1;
+    font-family: "Arial Unicode MS";
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -19,12 +21,24 @@ textarea {
     color: black !important;
 }
 
-@media (max-width: 1003px) and (min-width: 768px) {
+/*************RESPONSIVE media stuff***************/
+
+@media (min-width: 768px) and (max-width: 1033px) {
     #searchBarNav { display: none; }
 }
 
-@media (max-width: 774px) and (min-width: 768px) {
+/*@media (min-width: 768px) and (max-width: 791px) {
+    #logo { margin-right: 0px !important; }
+}*/
+
+@media (min-width: 768px) and (max-width: 806px) {
     .profile-img { display: none; }
+}
+
+/*******************NAVBAR*********************/
+
+.activeNav {
+    background-color: #2a2d2d;
 }
 
 #logo {
@@ -32,12 +46,14 @@ textarea {
     width: 200px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-right: 15px;
 }
 
 #searchBarNav input {
     background: #1e2222 !important;
     color: white !important;
     border-color: #1e2222 !important;
+    font-family: "Arial Unicode MS";
 }
 
 .container-fluid {
@@ -46,13 +62,15 @@ textarea {
 
 .navbar-inverse .navbar-nav>li>a {
     color: #ff822e !important;
+    font-weight: bold;
+    font-family: "Arial Unicode MS"
 }
 
 #profilDropDown>li>a:focus, #profilDropDown>li>a:hover {
-    background-color: #4a4a4f;
+    background-color: #2a2d2d;
 }
 
-.logInBtn, .logOutBtn {
+.logInBtn {
     margin-right: 10px !important;
     color: white !important;
 }
@@ -63,25 +81,15 @@ textarea {
 
 li > .logInBtn, .logOutBtn {
      background: #f50 !important;
-     border-color: #f50 !important
-}
-
-.trophyPic {
-    height: 25px;
-    width: 25px;
+     border-color: #f50 !important;
 }
 
 #profilDropDown {
     background-color: #131313;
 }
 
-#profilDropDown  a {
+#profilDropDown a {
     color: #fff;
-}
-
-#navPicLi {
-    height: 50px;
-    width: 50px;
 }
 
 .profile-img 
@@ -94,16 +102,23 @@ li > .logInBtn, .logOutBtn {
     left: -5px;
 }
 
-#navPic {
-    height: 25px;
-    width: 25px;
-}
-
-#navName {
-    padding-left: 0px;
-}
-
 .nav-item:hover {
-    background-color: #4a4a4f;
+    background-color: #323535;
 }
 
+/******************SCROLLBAR********************/
+
+::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #141616;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #323535;
+    outline: 1px solid slategrey;
+    -webkit-border-radius: 10px;
+}

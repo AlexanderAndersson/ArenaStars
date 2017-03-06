@@ -6,13 +6,13 @@
     background-color: #323737;
     border: 1px solid #4b4e4e;
     height: 65px;
-    width: 652px;
+    width: 792px;
 }
 
 #tournamentList div {
     padding: 10px;
     float: left;
-    width: 130px;
+    width: 180px;
 }
 
 #tournamentList div span {
@@ -27,6 +27,7 @@
 
 #participants {
     text-align: center;
+    width: 70px !important;
 }
 
 #participants > span {

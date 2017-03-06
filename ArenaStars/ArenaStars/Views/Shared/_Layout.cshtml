@@ -25,13 +25,13 @@
             </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li class="nav-item">@Html.ActionLink("Tournaments", "Index", "Tournament")</li>
-                        <li class="nav-item">@Html.ActionLink("Leaderboard", "Index", "Leaderboard")</li>
-                        <li class="nav-item">@Html.ActionLink("Banlist", "Index", "Ban")</li>
+                        <li class="nav-item @ViewBag.HomeSelected">@Html.ActionLink("HOME", "Index", "Home")</li>
+                        <li class="nav-item @ViewBag.TournamentSelected">@Html.ActionLink("TOURNAMENTS", "Index", "Tournament")</li>
+                        <li class="nav-item @ViewBag.LeaderboardSelected">@Html.ActionLink("LEADERBOARD", "Index", "Leaderboard")</li>
+                        <li class="nav-item @ViewBag.BanlistSelected">@Html.ActionLink("BANLIST", "Index", "Ban")</li>
                         @if ((bool)Session["isAdmin"] == true)
                         {
-                            <li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
+                            <li class="nav-item @ViewBag.AdminSelected">@Html.ActionLink("ADMIN", "Index", "Admin", new { area = "" }, new { @class = "" })</li>
                         }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

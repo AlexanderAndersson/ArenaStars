@@ -15,17 +15,11 @@ namespace ArenaStars.Controllers
             var tournaments = from t in context.Tournaments
                                     select t;
 
-            var tournamentsParticipants = from t in context.Tournaments
-                                          select t.Participants;
-
-            var games = from g in context.Games
-                        select g;
-
-            var gamesP = from g in context.Games
-                        select g.Participants;
-
             ViewBag.activeTournaments = tournaments;
-            ViewBag.tParticipants = tournamentsParticipants;
+
+            //Active state css ViewBag
+            ViewBag.TournamentSelected = "activeNav";
+
 
             return View();
         }

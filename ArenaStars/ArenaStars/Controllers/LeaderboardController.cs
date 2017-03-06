@@ -8,9 +8,11 @@ namespace ArenaStars.Controllers
 {
     public class LeaderboardController : Controller
     {
-        // GET: Leaderboard
         public ActionResult Index()
         {
+            //Active state css ViewBags
+            ViewBag.LeaderboardSelected = "activeNav";
+
             return View();
         }
     }

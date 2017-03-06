@@ -2,8 +2,10 @@
 @using ArenaStars.Models;
 @{
     ViewBag.Title = "Tournaments";
+    <link href="~/Content/Tournament.css" rel="stylesheet" />
 }
-<link href="~/Content/TournamentSheet.css" rel="stylesheet" />
+
+@Html.Partial("Modals")
 
 <h2>Tournaments</h2>
 @foreach (Tournament t in ViewBag.activeTournaments)
@@ -27,7 +29,7 @@
         </div>
         <div id="participants">
             <span class="glyphicon glyphicon-user"></span><br />
-            <span>@*@ViewBag.tParticipants*@ 0 / @t.PlayerLimit</span>          
+            <span>@t.Participants.Count / @t.PlayerLimit</span>          
         </div>         
     </div>
 }

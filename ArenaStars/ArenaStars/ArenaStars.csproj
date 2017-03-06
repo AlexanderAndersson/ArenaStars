@@ -111,7 +111,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\LogInForm.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\TournamentSheet.css" />
+    <Content Include="Content\Tournament.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
