@@ -78,7 +78,8 @@ namespace ArenaStars.Controllers
                     Level = 1,
                     IsTerminated = false,
                     SteamId = "123456789",
-                    ProfilePic = "https://pbs.twimg.com/profile_images/378800000330180958/13036c1c63bcdbdb64a2d773ff60c51a.jpeg"
+                    ProfilePic = "https://pbs.twimg.com/profile_images/378800000330180958/13036c1c63bcdbdb64a2d773ff60c51a.jpeg",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -101,7 +102,8 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "123456710",
-                    ProfilePic = "http://3.bp.blogspot.com/-CDMtRL7UoQM/U5oEt6uWX8I/AAAAAAAAJAM/Gl54j-00dNk/s1600/music-smiley.png"
+                    ProfilePic = "http://3.bp.blogspot.com/-CDMtRL7UoQM/U5oEt6uWX8I/AAAAAAAAJAM/Gl54j-00dNk/s1600/music-smiley.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -124,7 +126,8 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "123456610",
-                    ProfilePic = "http://nairobiwire.com/wp-content/uploads/2016/11/linus.jpg"
+                    ProfilePic = "http://nairobiwire.com/wp-content/uploads/2016/11/linus.jpg",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -147,7 +150,8 @@ namespace ArenaStars.Controllers
                     Level = 4,
                     IsTerminated = false,
                     SteamId = "123456510",
-                    ProfilePic = "http://www.southampton.ac.uk/assets/imported/transforms/site/staff-profile/Photo/C06EDCD541D84353B441425FD2B9EFE9/Stefan%20Bleeck.JPG_SIA_JPG_fit_to_width_INLINE.jpg"
+                    ProfilePic = "http://www.southampton.ac.uk/assets/imported/transforms/site/staff-profile/Photo/C06EDCD541D84353B441425FD2B9EFE9/Stefan%20Bleeck.JPG_SIA_JPG_fit_to_width_INLINE.jpg",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };

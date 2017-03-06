@@ -31,6 +31,7 @@ namespace ArenaStars.Controllers
                         IsTerminated = false,
                         LastLoggedIn = DateTime.Now,
                         ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg",
+                        BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg",
                         Rank = Models.User.RankEnum.Unranked
                     };
 
