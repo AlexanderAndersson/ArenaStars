@@ -5,24 +5,56 @@
     ViewBag.Title = Model.Username + " - Profile";
 }
 
-<div id="userInfo" class="profileTease">
-    <p>Username: @Model.Username</p>
-    <p>Password: @Model.Password</p>
-    <p>Email: @Model.Email</p>
+<link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+<div class="container">
+
+    <!-- Big background image -->
+    <div class="row">
+        <div class="big-background col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-image: url(/Images/Profile/ProfileBackground_Default.jpg)"></div>
+    </div>
+    <!-- "Fake" mini navbar and profile picture -->
+    <div class="row">
+        <div class="fakeNavBar col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="profilePictureContainer" class="profilePicture col-lg-3 col-md-3 col-sm-5 col-xs-8">
+                <img src="@Model.ProfilePic" alt="profile pic" class="img-responsive" />
+            </div>
+            <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-1">OVERVIEW</span>
+            <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-1">STATS</span>
+        </div>
+    </div>
+
+    <h5>GAMES PLAYING</h5>
+    <div class="row">
+        <div class="generalStatsBox col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            69 Matches
+        </div>
+    </div>
+    
+
+    <div id="userInfo" class="profileTease">
+        <p>Username: @Model.Username</p>
+        <p>Password: @Model.Password</p>
+        <p>Email: @Model.Email</p>
+    </div>
+
+    <h3>Tournament History</h3>
+    <div id="tournamentHistory">
+
+    </div>
+    <button id="showMoreTournamentsButton">SHOW MORE</button>
+
+    <h3>Games History</h3>
+    <div id="gameHistory">
+
+    </div>
+    <button id="showMoreGamesButton">SHOW MORE</button>
+
 </div>
 
-<h3>Tournament History</h3>
-<div id="tournamentHistory">
 
-</div>
-<button id="showMoreTournamentsButton">SHOW MORE</button>
-
-<h3>Games History</h3>
-<div id="gameHistory">
-
-</div>
-<button id="showMoreGamesButton">SHOW MORE</button>
 
 
 <script src="~/Scripts/GetTournamentsJS.js"></script>
 <script src="~/Scripts/GetGamesJS.js"></script>
+<script src="~/Scripts/ProfileJS.js"></script>

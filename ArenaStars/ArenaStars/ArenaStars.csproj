@@ -110,6 +110,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\LogInForm.css" />
+    <Content Include="Content\Profile.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Tournament.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -123,6 +124,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\ArenaStars Logo.png" />
+    <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
     <Content Include="Images\Profile\ProfilePicture_Default.jpg" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -134,6 +136,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\GetTournamentsJS.js" />
+    <Content Include="Scripts\ProfileJS.js" />
     <Content Include="Scripts\SignIn&amp;Up.js" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -142,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\ViewUser.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
