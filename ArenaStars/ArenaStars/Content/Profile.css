@@ -2,10 +2,9 @@
 }
 
 .big-background {
-    background: 1px solid white;
+    border: 0px solid white;
     /*background-image: url("~/Images/Profile/ProfileBackground_Default.jpg");*/
-    /*background-color: #1E2222;*/
-    background-color:green;
+    background-color: #141616;
     background-size:contain;
     height:300px;
     margin-top:10px;
@@ -21,12 +20,25 @@
     background-color:#141616;
     height:40px;
     font-size:15px;
+    position:relative;
 }
 
 .fakeNavBarItem {
     color: orange;
     cursor:pointer;
-    width:100px;
+    display:inline;
+    padding-left:0px;
+    padding-right:0px;
+}
+
+@media (max-width: 767px) {
+    .fakeNavBar {
+    height:80px !important;
+    }
+
+    .fakeNavBarItem {
+
+    }
 }
 
 .fakeNavBar > span {
@@ -46,4 +58,60 @@
     font-weight:bolder;
     font-size: 15px;
     margin-top:20px;
+}
+
+.statsBoxItem {
+    border:1px solid red;
+    position:relative;
+    height:50px;
+}
+
+.statsBoxItem > img {
+    width:32px;
+    height:32px;
+    display:inline-block;
+    margin:auto;
+    top:15%;
+    position:absolute;
+}
+
+.statsBoxItemText {
+    display:inline-block;
+    position:absolute;
+    top:7%;
+    right:20%;
+}
+
+/*@media (max-width: 768px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+    
+}*/
+
+@media (max-width: 991px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .statsBoxItemText {
+        left:55px;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+}
+
+.statsBoxItem .statsBoxCenter {
+    display:inline-block;
+    position:absolute;
+    top:25%;
+    right:45%;
 }

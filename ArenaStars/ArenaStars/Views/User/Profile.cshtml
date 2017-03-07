@@ -1,8 +1,11 @@
 ﻿@using ArenaStars.Models
-@model ArenaStars.Models.User
+@model ArenaStars.Classes.ViewUser
 
 @{
     ViewBag.Title = Model.Username + " - Profile";
+    string rankPic = "/Images/Rank/" + Model.Rank + ".png";
+    string levelPic = "/Images/Level/Level" + Model.Level + ".png";
+    string countryPic = "/Images/Country/" + Model.Country + ".png";
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
@@ -11,30 +14,67 @@
 
     <!-- Big background image -->
     <div class="row">
-        <div class="big-background col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-image: url(/Images/Profile/ProfileBackground_Default.jpg)"></div>
+        <div class="big-background col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-image: url(/Images/Profile/@Model.BackgroundPic)"></div>
     </div>
     <!-- "Fake" mini navbar and profile picture -->
     <div class="row">
         <div class="fakeNavBar col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div id="profilePictureContainer" class="profilePicture col-lg-3 col-md-3 col-sm-5 col-xs-8">
-                <img src="@Model.ProfilePic" alt="profile pic" class="img-responsive" />
+                <img src="~/Images/Profile/@Model.ProfilePic" alt="profile pic" class="img-responsive" />
             </div>
-            <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-1">OVERVIEW</span>
-            <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-1">STATS</span>
+            @*<span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-2">OVERVIEW</span>*@
+            <span class="fakeNavBarItem col-lg-1 col-md-2 col-sm-2 col-xs-2">OVERVIEW</span>
+            <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-2">STATS</span>
         </div>
     </div>
 
     <h5>GAMES PLAYING</h5>
     <div class="row">
         <div class="generalStatsBox col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            69 Matches
+            <div class="row">
+                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <span class="statsBoxItemText statsBoxCenter">
+                        <b>Rankings</b>
+                    </span>
+                </span>
+
+                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <span class="statsBoxItemText statsBoxCenter">
+                        <img src="@countryPic" class="img-responsive" style="display:inline" />: #@Model.placeInCountry
+                        <b>@Model.Country</b>
+                    </span>
+                </span>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <img src="@levelPic" class="img-responsive" />
+                    <span class="statsBoxItemText">
+                        <b>@Model.GamesCount</b> <br />
+                        Matches
+                    </span>
+                </span>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <img src="@rankPic" class="img-responsive" />
+                    <span class="statsBoxItemText">
+                        <b>@Model.Rank</b> <br />
+                        League
+                    </span>
+                </span>
+            </div>
         </div>
     </div>
     
 
     <div id="userInfo" class="profileTease">
         <p>Username: @Model.Username</p>
-        <p>Password: @Model.Password</p>
         <p>Email: @Model.Email</p>
     </div>
 

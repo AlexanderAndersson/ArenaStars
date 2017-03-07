@@ -123,10 +123,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Images\ArenaStars Logo.png" />
+    <Content Include="Images\Level\Level0.png" />
+    <Content Include="Images\Level\Level1.png" />
+    <Content Include="Images\Level\Level10.png" />
+    <Content Include="Images\Level\Level2.png" />
+    <Content Include="Images\Level\Level3.png" />
+    <Content Include="Images\Level\Level4.png" />
+    <Content Include="Images\Level\Level5.png" />
+    <Content Include="Images\Level\Level6.png" />
+    <Content Include="Images\Level\Level7.png" />
+    <Content Include="Images\Level\Level8.png" />
+    <Content Include="Images\Level\Level9.png" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
     <Content Include="Images\Profile\ProfilePicture_Default.jpg" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Rank\Bronze.png" />
+    <Content Include="Images\Rank\Diamond.png" />
+    <Content Include="Images\Rank\Gold.png" />
+    <Content Include="Images\Rank\Master.png" />
+    <Content Include="Images\Rank\Silver.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GetGamesJS.js" />
@@ -184,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Country\" />
     <Folder Include="Images\Trophy\" />
   </ItemGroup>
   <PropertyGroup>

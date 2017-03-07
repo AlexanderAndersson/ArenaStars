@@ -1,4 +1,5 @@
 ﻿using ArenaStars.Models;
+using ArenaStars.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,8 @@ namespace ArenaStars.Controllers
                         IsAdmin = false,
                         IsTerminated = false,
                         LastLoggedIn = DateTime.Now,
-                        ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg",
-                        BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg",
+                        ProfilePic = "~ProfilePicture_Default.jpg",
+                        BackgroundPic = "ProfileBackground_Default.jpg",
                         Rank = Models.User.RankEnum.Unranked
                     };
 
@@ -76,6 +77,11 @@ namespace ArenaStars.Controllers
         {
             User user = new Models.User();
 
+            int gamesCount = 0;
+            string lastFiveGamesScore = "";
+            int placeInCountry = 0;
+            int placeInWorld = 0; 
+
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 var findUser = from u in context.Users
@@ -90,11 +96,62 @@ namespace ArenaStars.Controllers
 
                 user = findUser.FirstOrDefault();
 
+                gamesCount = user.Games.Count;
+                List<Game> lastFiveGames = user.Games.Take(5).ToList();
+
+                foreach (Game game in lastFiveGames)
+                {
+                    if (game.Winner.Username == user.Username)
+                        lastFiveGamesScore += "W";
+                    else
+                        lastFiveGamesScore += "L";
+                }
+
+                List<string> getAllUsers = (from u in context.Users
+                                  where u.Country == user.Country
+                                  select u.Username).ToList();
+
+                for (int i = 0; i < getAllUsers.Count(); i++)
+                {
+                    if (getAllUsers.ElementAt(i) == user.Username)
+                    {
+                        placeInCountry = i + 1;
+                        break;
+                    }
+                }
+
             }
 
-            user.Password = "************";
+            // TODO: Ge placeInCountry & placeInWorld riktiga värden.
 
-            return View(user);
+            ViewUser viewUser = new ViewUser()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                SteamId = user.SteamId,
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                Country = user.Country,
+                SignUpDate = user.SignUpDate,
+                LastLoggedIn = user.LastLoggedIn,
+                IsAdmin = user.IsAdmin,
+                Rank = user.Rank,
+                Level = user.Level,
+                Elo = user.Elo,
+                IsTerminated = user.IsTerminated,
+                BanReason = user.BanReason,
+                BanDuration = user.BanDuration,
+                ProfilePic = user.ProfilePic,
+                BackgroundPic = user.BackgroundPic,
+                
+                GamesCount = gamesCount,
+                LastFiveGamesScore = lastFiveGamesScore,
+                placeInCountry = placeInCountry,
+                placeInWorld = placeInWorld
+            };
+
+            return View(viewUser);
         }
 
         public ActionResult UserNotFound()
