@@ -160,6 +160,7 @@ namespace ArenaStars.Controllers
                     Winner = GameOneUsersList.ElementAt(1),
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-5)
                 };
 
                 Game RankedGame2 = new Game()
@@ -176,6 +177,7 @@ namespace ArenaStars.Controllers
                     Winner = GameOneUsersList.ElementAt(0),
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now
                 };
 
                 context.Games.Add(TournamentGame1);

@@ -6,9 +6,12 @@
     string rankPic = "/Images/Rank/" + Model.Rank + ".png";
     string levelPic = "/Images/Level/Level" + Model.Level + ".png";
     string countryPic = "/Images/Country/" + Model.Country + ".png";
+    string regionPic = "/Images/Country/" + "Earth" + ".png";
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/TournamentSheet.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/GameSheet.css" />
 
 <div class="container">
 
@@ -32,42 +35,63 @@
     <div class="row">
         <div class="generalStatsBox col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="row">
-                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <span class="statsBoxItemText statsBoxCenter">
                         <b>Rankings</b>
                     </span>
-                </span>
+                </div>
 
-                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <span class="statsBoxItemText statsBoxCenter">
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <span class="statsBoxCenter statsBoxWithImg col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <img src="@countryPic" class="img-responsive" style="display:inline" />: #@Model.placeInCountry
                         <b>@Model.Country</b>
                     </span>
-                </span>
+                </div>
+
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <span class="statsBoxCenter statsBoxWithImg col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <img src="@regionPic" class="img-responsive" style="display:inline" />: #@Model.placeInWorld
+                        <b>World</b>
+                    </span>
+                </div>
             </div>
 
-            <br />
+            <hr />
 
             <div class="row">
-                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <img src="@levelPic" class="img-responsive" />
-                    <span class="statsBoxItemText">
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img src="@levelPic" class="img-responsive" style="display:inline" />
+                    <span class="statsBoxItemText statsBoxMatchesText">
                         <b>@Model.GamesCount</b> <br />
                         Matches
                     </span>
-                </span>
+                </div>
+
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <span class="statsBoxMainItem">
+                        <b>@Model.winPercentage</b> <br />
+                        Win Rate %
+                    </span>
+                </div>
+
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <span class="statsBoxMainItem">
+                        <b id="lastFiveGamesScore">@Model.LastFiveGamesScore</b> <br />
+                        Recent Results
+                    </span>
+                </div>
             </div>
 
-            <br />
+            <hr />
 
             <div class="row">
-                <span class="statsBoxItem col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <img src="@rankPic" class="img-responsive" />
                     <span class="statsBoxItemText">
                         <b>@Model.Rank</b> <br />
                         League
                     </span>
-                </span>
+                </div>
             </div>
         </div>
     </div>
@@ -79,15 +103,17 @@
     </div>
 
     <h3>Tournament History</h3>
-    <div id="tournamentHistory">
+    <div id="tournamentList">
 
     </div>
+    <br />
     <button id="showMoreTournamentsButton">SHOW MORE</button>
 
-    <h3>Games History</h3>
-    <div id="gameHistory">
+    <h3>Date - Type - Result - Score - Map</h3>
+    <div id="gameList" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
     </div>
+    <br />
     <button id="showMoreGamesButton">SHOW MORE</button>
 
 </div>

@@ -80,7 +80,8 @@ namespace ArenaStars.Controllers
             int gamesCount = 0;
             string lastFiveGamesScore = "";
             int placeInCountry = 0;
-            int placeInWorld = 0; 
+            int placeInWorld = 0;
+            double winPercentage = 0;
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
@@ -107,18 +108,46 @@ namespace ArenaStars.Controllers
                         lastFiveGamesScore += "L";
                 }
 
-                List<string> getAllUsers = (from u in context.Users
+                while (lastFiveGamesScore.Length < 5)
+                {
+                    lastFiveGamesScore += "-";
+                }
+
+                List<string> getAllUsersCountry = (from u in context.Users
                                   where u.Country == user.Country
                                   select u.Username).ToList();
 
-                for (int i = 0; i < getAllUsers.Count(); i++)
+                var getAllUsersWorld = from u in context.Users
+                                       select u.Username;
+
+                for (int i = 0; i < getAllUsersCountry.Count(); i++)
                 {
-                    if (getAllUsers.ElementAt(i) == user.Username)
+                    if (getAllUsersCountry.ElementAt(i) == user.Username)
                     {
                         placeInCountry = i + 1;
                         break;
                     }
                 }
+
+                int f = 0;
+                foreach (string u in getAllUsersWorld)
+                {
+                    if (u == user.Username)
+                    {
+                        placeInWorld = f + 1;
+                        break;
+                    }
+                    f++;
+                }
+
+                double tempWins = 0.0;
+                foreach (Game game in user.Games)
+                {
+                    if (game.Winner.Username == user.Username)
+                        tempWins++;
+                }
+
+                winPercentage = (tempWins / user.Games.Count) * 100;
 
             }
 
@@ -148,7 +177,8 @@ namespace ArenaStars.Controllers
                 GamesCount = gamesCount,
                 LastFiveGamesScore = lastFiveGamesScore,
                 placeInCountry = placeInCountry,
-                placeInWorld = placeInWorld
+                placeInWorld = placeInWorld,
+                winPercentage = winPercentage
             };
 
             return View(viewUser);
@@ -181,19 +211,19 @@ namespace ArenaStars.Controllers
                         {
                             var newTournament = new
                             {
-                                CheckInDate = tournament.CheckInDate,
-                                CreatedDate = tournament.CreatedDate,
-                                StartDate = tournament.StartDate,
+                                CheckInDate = tournament.CheckInDate.ToString(),
+                                CreatedDate = tournament.CreatedDate.ToString(),
+                                StartDate = tournament.StartDate.ToString(),
                                 HasEnded = tournament.HasEnded,
                                 Id = tournament.Id,
                                 IsLive = tournament.IsLive,
-                                MaxRank = tournament.MaxRank,
-                                MinRank = tournament.MinRank,
+                                MaxRank = tournament.MaxRank.ToString(),
+                                MinRank = tournament.MinRank.ToString(),
                                 Name = tournament.Name,
                                 PlayerLimit = tournament.PlayerLimit,
                                 TrophyPic = tournament.TrophyPic,
-                                Type = tournament.Type,
-                                Winner = tournament.Winner.Username
+                                Type = tournament.Type.ToString(),
+                                ParticipantsCount = tournament.Participants.Count
                             };
                             tournaments.Add(newTournament);
                         }
@@ -235,7 +265,10 @@ namespace ArenaStars.Controllers
                                 ParticipantOne = game.Participants.FirstOrDefault().Username,
                                 ParticipantTwo = game.Participants.LastOrDefault().Username,
                                 Type = game.Type.ToString(),
-                                Winner = game.Winner.Username
+                                Winner = game.Winner.Username,
+                                PlayedDate = game.PlayedDate.ToString(),
+                                Kills = game.GameStats.FirstOrDefault().Kills,
+                                Deaths = game.GameStats.FirstOrDefault().Deaths
                             };
                             games.Add(newGame);
                         }

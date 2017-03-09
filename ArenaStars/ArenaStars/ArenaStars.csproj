@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\GameSheet.css" />
     <Content Include="Content\LogInForm.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\Site.css" />
@@ -123,6 +124,59 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\Country\Albania.png" />
+    <Content Include="Images\Country\Andorra.png" />
+    <Content Include="Images\Country\Armenia.png" />
+    <Content Include="Images\Country\Austria.png" />
+    <Content Include="Images\Country\Azerbaijan.png" />
+    <Content Include="Images\Country\Belarus.png" />
+    <Content Include="Images\Country\Belgium.png" />
+    <Content Include="Images\Country\Bosnia.png" />
+    <Content Include="Images\Country\Bulgaria.png" />
+    <Content Include="Images\Country\Croatia.png" />
+    <Content Include="Images\Country\Cyprus.png" />
+    <Content Include="Images\Country\Czech_Republic.png" />
+    <Content Include="Images\Country\Denmark.png" />
+    <Content Include="Images\Country\Earth.png" />
+    <Content Include="Images\Country\Estonia.png" />
+    <Content Include="Images\Country\Europe.png" />
+    <Content Include="Images\Country\Finland.png" />
+    <Content Include="Images\Country\France.png" />
+    <Content Include="Images\Country\Georgia.png" />
+    <Content Include="Images\Country\Germany.png" />
+    <Content Include="Images\Country\Great_Britain.png" />
+    <Content Include="Images\Country\Greece.png" />
+    <Content Include="Images\Country\Hungary.png" />
+    <Content Include="Images\Country\Iceland.png" />
+    <Content Include="Images\Country\Ireland.png" />
+    <Content Include="Images\Country\Italy.png" />
+    <Content Include="Images\Country\Kazakhstan.png" />
+    <Content Include="Images\Country\Latvia.png" />
+    <Content Include="Images\Country\Liechtenstein.png" />
+    <Content Include="Images\Country\Lithuania.png" />
+    <Content Include="Images\Country\Luxembourg.png" />
+    <Content Include="Images\Country\Macedonia.png" />
+    <Content Include="Images\Country\Malta.png" />
+    <Content Include="Images\Country\Moldova.png" />
+    <Content Include="Images\Country\Monaco.png" />
+    <Content Include="Images\Country\Montenegro.png" />
+    <Content Include="Images\Country\Netherlands.png" />
+    <Content Include="Images\Country\North_America.png" />
+    <Content Include="Images\Country\Norway.png" />
+    <Content Include="Images\Country\Poland.png" />
+    <Content Include="Images\Country\Portugal.png" />
+    <Content Include="Images\Country\Romania.png" />
+    <Content Include="Images\Country\Russia.png" />
+    <Content Include="Images\Country\San_Marino.png" />
+    <Content Include="Images\Country\Serbia.png" />
+    <Content Include="Images\Country\Slovakia.png" />
+    <Content Include="Images\Country\South_America.png" />
+    <Content Include="Images\Country\Spain.png" />
+    <Content Include="Images\Country\Sweden.png" />
+    <Content Include="Images\Country\Switzerland.png" />
+    <Content Include="Images\Country\Turkey.png" />
+    <Content Include="Images\Country\Ukraine.png" />
+    <Content Include="Images\Country\Vatican_City.png" />
     <Content Include="Images\Level\Level0.png" />
     <Content Include="Images\Level\Level1.png" />
     <Content Include="Images\Level\Level10.png" />
@@ -134,6 +188,7 @@
     <Content Include="Images\Level\Level7.png" />
     <Content Include="Images\Level\Level8.png" />
     <Content Include="Images\Level\Level9.png" />
+    <Content Include="Images\Map\aim_map.png" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
     <Content Include="Images\Profile\ProfilePicture_Default.jpg" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -160,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\ViewGame.cs" />
+    <Compile Include="Classes\ViewGamestat.cs" />
+    <Compile Include="Classes\ViewTournament.cs" />
     <Compile Include="Classes\ViewUser.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BanController.cs" />
@@ -199,7 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Country\" />
     <Folder Include="Images\Trophy\" />
   </ItemGroup>
   <PropertyGroup>

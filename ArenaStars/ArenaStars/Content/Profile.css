@@ -1,6 +1,12 @@
 ﻿body {
 }
 
+hr {
+    margin-top:10px;
+    margin-bottom:10px;
+    border-color:#4b4e4e;
+}
+
 .big-background {
     border: 0px solid white;
     /*background-image: url("~/Images/Profile/ProfileBackground_Default.jpg");*/
@@ -31,16 +37,6 @@
     padding-right:0px;
 }
 
-@media (max-width: 767px) {
-    .fakeNavBar {
-    height:80px !important;
-    }
-
-    .fakeNavBarItem {
-
-    }
-}
-
 .fakeNavBar > span {
     color:red;
     margin-right:20px !important;
@@ -51,7 +47,7 @@
 
 .generalStatsBox {
     border: 1px solid #4b4e4e;
-    height: 200px;
+    height: 250px;
 }
 
 .container > h5 {
@@ -64,6 +60,7 @@
     border:1px solid red;
     position:relative;
     height:50px;
+    display:inline;
 }
 
 .statsBoxItem > img {
@@ -73,13 +70,23 @@
     margin:auto;
     top:15%;
     position:absolute;
+    padding-right:0px;
+    margin-right:0px;
 }
 
 .statsBoxItemText {
     display:inline-block;
     position:absolute;
     top:7%;
-    right:20%;
+    /*right:20%;*/
+    left:65px;
+}
+
+.statsBoxMainItem {
+    display:inline-block;
+    position:absolute;
+    top:7%;
+    right:30%;
 }
 
 /*@media (max-width: 768px) {
@@ -89,6 +96,28 @@
     
 }*/
 
+@media (max-width: 1199px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+
+    .statsBoxMatchesText {
+        left:65px;
+    }
+
+    .statsBoxMainItem {
+        left:15px;
+    }
+
+    .statsBoxItem .statsBoxWithImg {
+        padding:0px;
+    }
+}
+
 @media (max-width: 991px) {
     .statsBoxItemText {
         right:70%;
@@ -97,14 +126,34 @@
     .statsBoxItem .statsBoxCenter {
         left:15px;
     }
+
+    .statsBoxMatchesText {
+        left:65px;
+    }
+
+    .statsBoxMainItem {
+        left:15px;
+    }
 }
 
 @media (max-width: 767px) {
+    .fakeNavBar {
+        height:80px !important;
+    }
+
     .statsBoxItemText {
         left:55px;
     }
 
     .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+
+    .generalStatsBox {
+        height:500px;
+    }
+
+    .statsBoxMainItem {
         left:15px;
     }
 }
@@ -114,4 +163,10 @@
     position:absolute;
     top:25%;
     right:45%;
+}
+
+.statsBoxItem .statsBoxWithImg {
+    position:relative;
+    left:0px !important;
+    right:30% !important;
 }

@@ -1,0 +1,69 @@
+﻿body {
+}
+
+/*.gameList div {
+    background-color:#424a4a;
+    display:inline-block;
+    border:1px solid red;
+
+    padding: 10px;
+    float: left;
+    width: 130px;
+}*/
+
+/*#gameList {
+    background-color: #424a4a;
+    border: 1px solid #4b4e4e;
+    height: 65px;
+    width: 652px;
+}*/
+
+#gameList hr {
+    margin-top:0px; 
+    margin-bottom:0px;
+}
+
+#gameList .singleGame {
+    height:50px;
+}
+
+#gameList .singleGame div {
+    display:inline;
+    padding-left:10px;
+    padding-right:10px;
+    margin:auto !important;
+    text-align:center;
+    top:15%;
+}
+
+#gameList .singleGame div span {
+    align-content:center;
+    margin:auto !important;
+}
+
+#gameList .singleGame div img {
+    display:inline-block;
+}
+
+#gameList .singleGame:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #3d4444;
+}
+
+/*#gameList div {
+    padding: 10px;
+    float: left;
+    width: 130px;
+    display:inline;
+}
+
+#gameList div span {
+    float: left;
+}*/
+
+/*#gameList:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #3d4444;
+}*/

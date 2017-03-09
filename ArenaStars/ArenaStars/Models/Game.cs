@@ -15,6 +15,8 @@ namespace ArenaStars.Models
 
         public virtual User Winner { get; set; }
 
+        public DateTime? PlayedDate { get; set; }
+
         public string Map { get; set; }
 
         public virtual IList<GameStats> GameStats { get; set; }
