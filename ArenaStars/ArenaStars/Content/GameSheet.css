@@ -51,6 +51,14 @@
     background-color: #3d4444;
 }
 
+.participants {
+    text-align: center;
+}
+
+.participants > span {
+    float: none !important;
+}
+
 /*#gameList div {
     padding: 10px;
     float: left;

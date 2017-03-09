@@ -116,6 +116,19 @@ hr {
     .statsBoxItem .statsBoxWithImg {
         padding:0px;
     }
+    
+    .dateMargin {
+        margin-left:20px !important;
+    }
+
+    .resultMargin {
+        margin-left:-40px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-10px !important;
+    }
+
 }
 
 @media (max-width: 991px) {
@@ -133,6 +146,26 @@ hr {
 
     .statsBoxMainItem {
         left:15px;
+    }
+
+    .dateMargin {
+        margin-left:10px !important;
+    }
+
+    .typeMargin {
+        margin-left:50px !important;
+    }
+
+    .resultMargin {
+        margin-left:-10px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-10px !important;
+    }
+
+    .mapMargin {
+        margin-left:30px !important;
     }
 }
 
@@ -156,6 +189,36 @@ hr {
     .statsBoxMainItem {
         left:15px;
     }
+
+    .dateMargin {
+        margin-left:15px !important;
+    }
+
+    .typeMargin {
+        margin-left:-10px !important;
+    }
+
+    .resultMargin {
+        margin-left:-20px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-15px !important;
+    }
+
+    .mapMargin {
+        margin-left:10px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .gameHeader {
+        display:none;
+    }
+
+    #gameList .singleGame div {
+        display:block;
+    }
 }
 
 .statsBoxItem .statsBoxCenter {
@@ -169,4 +232,33 @@ hr {
     position:relative;
     left:0px !important;
     right:30% !important;
+}
+
+.gameHeader {
+    
+}
+
+.gameHeader div {
+    margin-right:15px !important;
+    display:inline;
+}
+
+.dateMargin {
+    margin-left:50px;
+}
+
+.typeMargin {
+    margin-left:40px;
+}
+
+.resultMargin {
+    margin-left:-10px;
+}
+
+.scoreMargin {
+    margin-left:-10px;
+}
+
+.mapMargin {
+
 }
