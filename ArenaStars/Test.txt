@@ -1,0 +1,76 @@
+rcon from "90.144.156.174:64974": command "1on1"
+server_cvar: "mp_freezetime" "10"
+"Console<0><Console><Console>" say ""> ESL CS:GO 1on1 Ladder Config loaded - 14.01.2016 <""
+server_cvar: "mp_freezetime" "0"
+rcon from "90.144.156.174:64974": command "mp_freezetime 0"
+rcon from "151.80.20.79:36804": command "stats"
+World triggered "Match_Start" on "aim_map"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<310><STEAM_1:1:12547851><CT>" [549 633 7] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 944 7] with "hkp2000" (damage "130") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [549 633 7] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 944 71] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "1") (T "0")
+Team "CT" scored "1" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<310><STEAM_1:1:12547851><CT>" [136 474 7] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [399 784 0] with "hkp2000" (damage "129") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [136 474 7] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [399 784 64] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
+Team "CT" scored "2" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+rcon from "151.80.20.79:39338": command "stats"
+rcon from "90.144.156.174:64974": command "1on1"
+server_cvar: "mp_freezetime" "10"
+"Console<0><Console><Console>" say ""> ESL CS:GO 1on1 Ladder Config loaded - 14.01.2016 <""
+server_cvar: "mp_freezetime" "0"
+rcon from "90.144.156.174:64974": command "mp_freezetime 0"
+World triggered "Match_Start" on "aim_map"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<310><STEAM_1:1:12547851><CT>" [126 -190 1] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 800 4] with "hkp2000" (damage "12") (damage_armor "0") (health "88") (armor "0") (hitgroup "chest")
+"LINUS<310><STEAM_1:1:12547851><CT>" [210 0 2] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 800 4] with "hkp2000" (damage "68") (damage_armor "0") (health "20") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [142 123 0] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 800 4] with "hkp2000" (damage "120") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [142 123 0] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 800 68] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "1") (T "0")
+Team "CT" scored "1" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<310><STEAM_1:1:12547851><CT>" [332 438 9] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 960 4] with "hkp2000" (damage "31") (damage_armor "0") (health "69") (armor "0") (hitgroup "chest")
+"LINUS<310><STEAM_1:1:12547851><CT>" [328 460 11] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 960 4] with "hkp2000" (damage "19") (damage_armor "0") (health "50") (armor "0") (hitgroup "chest")
+"LINUS<310><STEAM_1:1:12547851><CT>" [438 507 5] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 960 4] with "hkp2000" (damage "31") (damage_armor "0") (health "19") (armor "0") (hitgroup "chest")
+"LINUS<310><STEAM_1:1:12547851><CT>" [436 536 8] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 960 4] with "hkp2000" (damage "127") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [436 536 8] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 960 68] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
+Team "CT" scored "2" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+rcon from "90.144.156.174:64974": command "1on1"
+server_cvar: "mp_freezetime" "10"
+"Console<0><Console><Console>" say ""> ESL CS:GO 1on1 Ladder Config loaded - 14.01.2016 <""
+server_cvar: "mp_freezetime" "0"
+rcon from "90.144.156.174:64974": command "mp_freezetime 0"
+"LINUS<310><STEAM_1:1:12547851><CT>" [204 -110 48] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 960 8] with "hkp2000" (damage "113") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [204 -110 48] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [607 960 72] with "usp_silencer" (headshot)
+World triggered "Match_Start" on "aim_map"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+rcon from "151.80.20.79:40620": command "stats"
+"LINUS<310><STEAM_1:1:12547851><CT>" [420 851 0] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 880 3] with "hkp2000" (damage "133") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [420 851 0] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 880 67] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "1") (T "0")
+Team "CT" scored "1" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<310><STEAM_1:1:12547851><CT>" [460 814 0] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 800 5] with "hkp2000" (damage "134") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [460 814 0] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [691 800 69] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
+Team "CT" scored "2" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
