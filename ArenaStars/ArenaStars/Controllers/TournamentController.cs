@@ -13,9 +13,9 @@ namespace ArenaStars.Controllers
         public ActionResult Index()
         {
             var tournaments = from t in context.Tournaments
-                                    select t;
+                              select t;
 
-            ViewBag.activeTournaments = tournaments;
+            ViewBag.Tournaments = tournaments;
 
             //Active state css ViewBag
             ViewBag.TournamentSelected = "activeNav";
