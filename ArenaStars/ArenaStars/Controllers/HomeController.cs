@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ArenaStars.Models;
+using ArenaStars.Classes;
 
 namespace ArenaStars.Controllers
 {
@@ -74,7 +75,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "1",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.png",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -98,8 +99,8 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "2",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -122,8 +123,8 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "3",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -146,8 +147,8 @@ namespace ArenaStars.Controllers
                     Level = 4,
                     IsTerminated = false,
                     SteamId = "4",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -170,8 +171,8 @@ namespace ArenaStars.Controllers
                     Level = 7,
                     IsTerminated = false,
                     SteamId = "5",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -194,8 +195,8 @@ namespace ArenaStars.Controllers
                     Level = 2,
                     IsTerminated = false,
                     SteamId = "6",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -218,8 +219,8 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "7",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -242,8 +243,8 @@ namespace ArenaStars.Controllers
                     Level = 1,
                     IsTerminated = false,
                     SteamId = "8",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -266,8 +267,8 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "9",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -290,8 +291,8 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "10",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -314,8 +315,8 @@ namespace ArenaStars.Controllers
                     Level = 0,
                     IsTerminated = false,
                     SteamId = "Admin",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -364,6 +365,7 @@ namespace ArenaStars.Controllers
                     Winner = u2,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddMinutes(-30)
                 };
 
                 Game RankedGame3 = new Game()
@@ -372,6 +374,7 @@ namespace ArenaStars.Controllers
                     Winner = u4,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game RankedGame4 = new Game()
@@ -380,6 +383,7 @@ namespace ArenaStars.Controllers
                     Winner = u4,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-1)
                 };
 
                 Game RankedGame5 = new Game()
@@ -388,6 +392,7 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game RankedGame6 = new Game()
@@ -396,6 +401,7 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game RankedGame7 = new Game()
@@ -404,6 +410,7 @@ namespace ArenaStars.Controllers
                     Winner = u7,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game RankedGame8 = new Game()
@@ -412,6 +419,7 @@ namespace ArenaStars.Controllers
                     Winner = u9,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game RankedGame9 = new Game()
@@ -420,6 +428,7 @@ namespace ArenaStars.Controllers
                     Winner = u10,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game1 = new Game()
@@ -428,6 +437,7 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game2 = new Game()
@@ -436,6 +446,7 @@ namespace ArenaStars.Controllers
                     Winner = u3,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game3 = new Game()
@@ -444,6 +455,7 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game4 = new Game()
@@ -461,6 +473,7 @@ namespace ArenaStars.Controllers
                     Winner = u10,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game6 = new Game()
@@ -469,6 +482,7 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game7 = new Game()
@@ -477,6 +491,7 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 Game Tournament1Game8 = new Game()
@@ -485,6 +500,7 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now.AddHours(-2)
                 };
 
                 #endregion
@@ -1072,6 +1088,58 @@ namespace ArenaStars.Controllers
                 context.SaveChanges();
             }
             return RedirectToAction("/Index", "Home");
+        }
+
+        public ActionResult UserSearch(string searchString)
+        {
+            List<ViewUser> userList = new List<ViewUser>();
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var getUserByUsername = (from u in context.Users
+                                         where u.Username.Contains(searchString)
+                                         orderby u.Username, u.Elo descending
+                                         select u).Take(5);
+
+                foreach (var user in getUserByUsername)
+                {
+                    ViewUser vUser = new ViewUser()
+                    {
+                        Username = user.Username,
+                        ProfilePic = user.ProfilePic,
+                        Country = user.Country,
+                        RankString = user.Rank.ToString()
+                    };
+                    userList.Add(vUser);
+                }
+            }
+
+            return Json(new { userList = userList }, JsonRequestBehavior.DenyGet);
+        }
+
+        public ActionResult UserShowAll(string searchString)
+        {
+            List<ViewUser> userList = new List<ViewUser>();
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var getUserByUsername = (from u in context.Users
+                                         where u.Username.Contains(searchString)
+                                         orderby u.Username, u.Elo descending
+                                         select u).Take(5);
+
+                foreach (var user in getUserByUsername)
+                {
+                    ViewUser vUser = new ViewUser()
+                    {
+                        Username = user.Username,
+                        ProfilePic = user.ProfilePic,
+                        Country = user.Country,
+                        RankString = user.Rank.ToString()
+                    };
+                    userList.Add(vUser);
+                }
+            }
+
+            return View(userList);
         }
     }
 }

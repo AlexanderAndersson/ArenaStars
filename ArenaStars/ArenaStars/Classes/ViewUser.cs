@@ -60,5 +60,7 @@ namespace ArenaStars.Classes
 
         public double winPercentage { get; set; }
 
+        public string RankString { get; set; }
+
     }
 }

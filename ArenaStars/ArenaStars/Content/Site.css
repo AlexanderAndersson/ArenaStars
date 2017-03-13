@@ -9,7 +9,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    font-family: "Arial Unicode MS";
+    font-family: "Arial Unicode MS" !important;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -148,3 +148,12 @@ li > .logInBtn, .logOutBtn {
   margin: 0 auto !important;
   width: 100% !important;
 }*/
+
+#searchResultBox {
+    width:200px;
+    height:300px;
+    background-color:green;
+    border:1px solid red;
+    position:absolute;
+    margin-left:15px;
+}

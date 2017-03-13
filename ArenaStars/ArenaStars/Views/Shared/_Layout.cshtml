@@ -10,6 +10,7 @@
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/SignIn&Up.js"></script>
+    <script src="~/Scripts/SearchJS.js"></script>
 </head>
 <body>
     @Html.Partial("Modals")
@@ -44,8 +45,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <form id="searchBarNav" class="navbar-form" role="search">
-                            <input type="text" class="form-control" placeholder="Search" name="searchInput">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search" name="searchInput">
                         </form>
+                        <div id="searchResultBox">
+                            Search result
+                        </div>
                     </li>
                     @if (!(bool)Session["isLoggedIn"])
                     {
