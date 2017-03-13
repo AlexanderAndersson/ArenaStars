@@ -52,9 +52,18 @@ namespace ArenaStars.Models
 
         public virtual IList<Report> ReportList { get; set; }
 
-        public enum RankEnum { Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
-
-
-
+        public enum RankEnum
+        {
+            Unranked = 1,
+            Bronze = 2,
+            Silver = 3,
+            Gold = 4,
+            Platinum = 5,
+            Diamond = 6,
+            Challanger = 7,
+            Master = 8,
+            Grandmaster = 9,
+            Legend = 10
+        }
     }
 }

@@ -2,14 +2,13 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background: #1e2222 !important;
-    overflow-y:scroll;
+    overflow-y: scroll !important;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    color: #f1f1f1;
     font-family: "Arial Unicode MS";
 }
 
@@ -17,11 +16,11 @@
 input,
 select
 textarea {
-    max-width: 280px;
-    color: black !important;
+    /*max-width: 280px;*/
+    /*color: black !important;*/
 }
 
-/*************RESPONSIVE media stuff***************/
+/*************RESPONSIVE media for NAVBAR***************/
 
 @media (min-width: 768px) and (max-width: 1033px) {
     #searchBarNav { display: none; }
@@ -36,6 +35,10 @@ textarea {
 }
 
 /*******************NAVBAR*********************/
+
+.loginmodal-container input {
+    max-width: 280px;
+}
 
 .activeNav {
     background-color: #2a2d2d;
@@ -75,7 +78,7 @@ textarea {
     color: white !important;
 }
 
-.registerBtn {
+#regBtnNav {
      margin-right: 10px !important;
 }
 
@@ -122,3 +125,26 @@ li > .logInBtn, .logOutBtn {
     outline: 1px solid slategrey;
     -webkit-border-radius: 10px;
 }
+
+
+/***************OTHER*******************/
+
+.white {
+    color: white !important;
+}
+
+.homePageContent div {
+    /*padding: 10px;*/
+    float: left;
+    width: 180px;
+}
+
+.homeReports {
+    width: 400px !important;
+}
+
+/************100% width på alla sidor***************/
+/*.container {
+  margin: 0 auto !important;
+  width: 100% !important;
+}*/

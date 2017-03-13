@@ -10,7 +10,7 @@ namespace ArenaStars.Controllers
 {
     public class UserController : Controller
     {
-        
+
         [HttpPost]
         public ActionResult Register(string username, string email, string password, string password2)
         {
@@ -93,6 +93,8 @@ namespace ArenaStars.Controllers
             }
 
             user.Password = "************";
+            ViewBag.ProfileSelected = "activeNav";
+            ViewBag.ProfileNavSelected = "activeNav";
 
             return View(user);
         }
@@ -238,8 +240,8 @@ namespace ArenaStars.Controllers
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 var checkUserExists = from u in context.Users
-                                        where username.ToLower() == u.Username.ToLower()
-                                        select u;
+                                      where username.ToLower() == u.Username.ToLower()
+                                      select u;
 
                 var checkEmailExists = from u in context.Users
                                        where email.ToLower() == u.Email.ToLower()
@@ -258,7 +260,7 @@ namespace ArenaStars.Controllers
                 }
             }
 
-                return errorMsgList;
+            return errorMsgList;
         }
 
         private List<string> checkLoginInputFaults(string username, string password)
@@ -278,7 +280,7 @@ namespace ArenaStars.Controllers
             {
                 errorMsgList.Add("Password field is empty!");
             }
-            
+
             if (errorMsgList.Count == 0)
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())

@@ -8,11 +8,11 @@ using ArenaStars.Models;
 namespace ArenaStars.Controllers
 {
     public class HomeController : Controller
-    {      
+    {
         public ActionResult Index()
         {
             ArenaStarsContext context = new ArenaStarsContext();
-                 
+
             context.Database.Initialize(true);
 
             var rankedGames = from g in context.Games
@@ -23,8 +23,9 @@ namespace ArenaStars.Controllers
                                   where t.Type == Game.GameTypeEnum.Tournament
                                   select t;
 
-            var tournamentList = from t in context.Tournaments
-                                 select t;
+            var tournamentWinners = from t in context.Tournaments
+                                    where t.Winner != null
+                                    select t.Winner;
 
             var reports = from r in context.Reports
                           select r;
@@ -32,15 +33,14 @@ namespace ArenaStars.Controllers
             var userlist = from u in context.Users
                            select u;
 
-            ViewBag.Tournaments = tournamentList;
+            ViewBag.TWinners = tournamentWinners;
             ViewBag.Users = userlist;
             ViewBag.Reports = reports;
             ViewBag.TGames = tournamentGames;
             ViewBag.RGames = rankedGames;
 
-            //Active state css ViewBags
+            //Active state css ViewBag
             ViewBag.HomeSelected = "activeNav";
-
 
             return View();
         }
@@ -49,12 +49,8 @@ namespace ArenaStars.Controllers
         {
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
-                Random rnd = new Random();
-
-                //List<User> GameOneUsersList = new List<User>();
-                //List<User> GameTwoUsersList = new List<User>();
-                List<User> UserList = new List<User>();
-                List<Game> TournamentGameList = new List<Game>();
+                List<User> Tournament1UserList = new List<User>(); //Userlist for tournament 1
+                List<Game> Tournament1GameList = new List<Game>(); //Gamelist for tournament 1
 
                 /***************USER***************/
 
@@ -77,9 +73,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Bronze,
                     Level = 1,
                     IsTerminated = false,
-                    SteamId = "123456789",
-                    ProfilePic = "https://pbs.twimg.com/profile_images/378800000330180958/13036c1c63bcdbdb64a2d773ff60c51a.jpeg",
-                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
+                    SteamId = "1",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -101,8 +97,8 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
-                    SteamId = "123456710",
-                    ProfilePic = "http://3.bp.blogspot.com/-CDMtRL7UoQM/U5oEt6uWX8I/AAAAAAAAJAM/Gl54j-00dNk/s1600/music-smiley.png",
+                    SteamId = "2",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
                     BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -125,8 +121,8 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Gold,
                     Level = 5,
                     IsTerminated = false,
-                    SteamId = "123456610",
-                    ProfilePic = "http://nairobiwire.com/wp-content/uploads/2016/11/linus.jpg",
+                    SteamId = "3",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
                     BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -149,8 +145,8 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Silver,
                     Level = 4,
                     IsTerminated = false,
-                    SteamId = "123456510",
-                    ProfilePic = "http://www.southampton.ac.uk/assets/imported/transforms/site/staff-profile/Photo/C06EDCD541D84353B441425FD2B9EFE9/Stefan%20Bleeck.JPG_SIA_JPG_fit_to_width_INLINE.jpg",
+                    SteamId = "4",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
                     BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -173,8 +169,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Master,
                     Level = 7,
                     IsTerminated = false,
-                    SteamId = "123456410",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "5",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -196,8 +193,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Challanger,
                     Level = 2,
                     IsTerminated = false,
-                    SteamId = "123456310",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "6",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -219,8 +217,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Grandmaster,
                     Level = 5,
                     IsTerminated = false,
-                    SteamId = "123456210",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "7",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -242,8 +241,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Bronze,
                     Level = 1,
                     IsTerminated = false,
-                    SteamId = "123456110",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "8",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -265,8 +265,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
-                    SteamId = "123456010",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "9",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -288,8 +289,9 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
-                    SteamId = "123455910",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "10",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -311,14 +313,16 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Unranked,
                     Level = 0,
                     IsTerminated = false,
-                    SteamId = "",
-                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg"
+                    SteamId = "Admin",
+                    ProfilePic = "~/Images/Profile/ProfilePicture_Default.png",
+                    BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
 
                 #endregion
 
+                //Adding Users to database
                 context.Users.Add(u1);
                 context.Users.Add(u2);
                 context.Users.Add(u3);
@@ -331,23 +335,15 @@ namespace ArenaStars.Controllers
                 context.Users.Add(u10);
                 context.Users.Add(admin);
 
-                //GameOneUsersList.Add(u1);
-                //GameOneUsersList.Add(u2);
-
-                //GameTwoUsersList.Add(u3);
-                //GameTwoUsersList.Add(u4);
-
-                UserList.Add(u1);
-                UserList.Add(u2);
-                UserList.Add(u3);
-                UserList.Add(u4);
-                UserList.Add(u5);
-                UserList.Add(u6);
-                UserList.Add(u7);
-                UserList.Add(u8);
-                //UserList.Add(u9);
-                //UserList.Add(u10);
-
+                //Adding Users in Userlist for tournament 1
+                Tournament1UserList.Add(u1);
+                Tournament1UserList.Add(u2);
+                Tournament1UserList.Add(u3);
+                Tournament1UserList.Add(u4);
+                Tournament1UserList.Add(u5);
+                Tournament1UserList.Add(u6);
+                Tournament1UserList.Add(u7);
+                Tournament1UserList.Add(u8);
 
                 /****************GAMES*****************/
 
@@ -425,7 +421,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Ranked,
                 };
 
-                Game TournamentGame1 = new Game()
+                Game Tournament1Game1 = new Game()
                 {
                     Participants = new List<User>() { u1, u2 },
                     Winner = u1,
@@ -433,7 +429,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame2 = new Game()
+                Game Tournament1Game2 = new Game()
                 {
                     Participants = new List<User>() { u3, u4 },
                     Winner = u3,
@@ -441,7 +437,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame3 = new Game()
+                Game Tournament1Game3 = new Game()
                 {
                     Participants = new List<User>() { u5, u6 },
                     Winner = u6,
@@ -449,7 +445,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame4 = new Game()
+                Game Tournament1Game4 = new Game()
                 {
                     Participants = new List<User>() { u7, u8 },
                     Winner = u7,
@@ -457,7 +453,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame5 = new Game()
+                Game Tournament1Game5 = new Game()
                 {
                     Participants = new List<User>() { u9, u10 },
                     Winner = u10,
@@ -465,7 +461,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame6 = new Game()
+                Game Tournament1Game6 = new Game()
                 {
                     Participants = new List<User>() { u1, u3 },
                     Winner = u1,
@@ -473,7 +469,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame7 = new Game()
+                Game Tournament1Game7 = new Game()
                 {
                     Participants = new List<User>() { u6, u7 },
                     Winner = u6,
@@ -481,7 +477,7 @@ namespace ArenaStars.Controllers
                     Type = Game.GameTypeEnum.Tournament,
                 };
 
-                Game TournamentGame8 = new Game()
+                Game Tournament1Game8 = new Game()
                 {
                     Participants = new List<User>() { u1, u6 },
                     Winner = u1,
@@ -491,6 +487,7 @@ namespace ArenaStars.Controllers
 
                 #endregion
 
+                //Adding Ranked Games to database
                 context.Games.Add(RankedGame1);
                 context.Games.Add(RankedGame2);
                 context.Games.Add(RankedGame3);
@@ -501,23 +498,25 @@ namespace ArenaStars.Controllers
                 context.Games.Add(RankedGame8);
                 context.Games.Add(RankedGame9);
 
-                context.Games.Add(TournamentGame1);
-                context.Games.Add(TournamentGame2);
-                context.Games.Add(TournamentGame3);
-                context.Games.Add(TournamentGame4);
-                context.Games.Add(TournamentGame5);
-                context.Games.Add(TournamentGame6);
-                context.Games.Add(TournamentGame7);
-                context.Games.Add(TournamentGame8);
+                //Adding Tournament 1 Games to database
+                context.Games.Add(Tournament1Game1);
+                context.Games.Add(Tournament1Game2);
+                context.Games.Add(Tournament1Game3);
+                context.Games.Add(Tournament1Game4);
+                context.Games.Add(Tournament1Game5);
+                context.Games.Add(Tournament1Game6);
+                context.Games.Add(Tournament1Game7);
+                context.Games.Add(Tournament1Game8);
 
-                TournamentGameList.Add(TournamentGame1);
-                TournamentGameList.Add(TournamentGame2);
-                TournamentGameList.Add(TournamentGame3);
-                TournamentGameList.Add(TournamentGame4);
-                TournamentGameList.Add(TournamentGame5);
-                TournamentGameList.Add(TournamentGame6);
-                TournamentGameList.Add(TournamentGame7);
-                TournamentGameList.Add(TournamentGame8);
+                //Adding Tournament 1 Games to list
+                Tournament1GameList.Add(Tournament1Game1);
+                Tournament1GameList.Add(Tournament1Game2);
+                Tournament1GameList.Add(Tournament1Game3);
+                Tournament1GameList.Add(Tournament1Game4);
+                Tournament1GameList.Add(Tournament1Game5);
+                Tournament1GameList.Add(Tournament1Game6);
+                Tournament1GameList.Add(Tournament1Game7);
+                Tournament1GameList.Add(Tournament1Game8);
 
                 /*************GAME STATS***************/
 
@@ -530,7 +529,7 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 0.75,
-                    SteamId = "123456789",
+                    SteamId = "1",
                     Game = RankedGame1
 
                     #endregion
@@ -543,7 +542,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.45,
-                    SteamId = "123456710",
+                    SteamId = "2",
                     Game = RankedGame1
 
                     #endregion
@@ -556,7 +555,7 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 0.5,
-                    SteamId = "123456610",
+                    SteamId = "2",
                     Game = RankedGame2
 
                     #endregion
@@ -569,7 +568,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.45,
-                    SteamId = "123456510",
+                    SteamId = "3",
                     Game = RankedGame2
 
                     #endregion
@@ -582,7 +581,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.50,
-                    SteamId = "123456610",
+                    SteamId = "3",
                     Game = RankedGame3
 
                     #endregion
@@ -595,7 +594,7 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 1.00,
-                    SteamId = "123456510",
+                    SteamId = "4",
                     Game = RankedGame3
 
                     #endregion
@@ -608,7 +607,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.45,
-                    SteamId = "123456510",
+                    SteamId = "4",
                     Game = RankedGame4
 
                     #endregion
@@ -621,7 +620,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.45,
-                    SteamId = "123456410",
+                    SteamId = "5",
                     Game = RankedGame4
 
                     #endregion
@@ -634,7 +633,7 @@ namespace ArenaStars.Controllers
                     Kills = 0,
                     Deaths = 3,
                     HsRatio = 0.00,
-                    SteamId = "123456410",
+                    SteamId = "5",
                     Game = RankedGame5
 
                     #endregion
@@ -647,7 +646,7 @@ namespace ArenaStars.Controllers
                     Kills = 3,
                     Deaths = 0,
                     HsRatio = 1.00,
-                    SteamId = "123456310",
+                    SteamId = "6",
                     Game = RankedGame5
 
                     #endregion
@@ -660,7 +659,7 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 0.50,
-                    SteamId = "123456310",
+                    SteamId = "6",
                     Game = RankedGame6
 
                     #endregion
@@ -673,7 +672,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.00,
-                    SteamId = "123456210",
+                    SteamId = "7",
                     Game = RankedGame6
 
                     #endregion
@@ -686,7 +685,7 @@ namespace ArenaStars.Controllers
                     Kills = 3,
                     Deaths = 0,
                     HsRatio = 0.33,
-                    SteamId = "123456210",
+                    SteamId = "7",
                     Game = RankedGame7
 
                     #endregion
@@ -699,7 +698,7 @@ namespace ArenaStars.Controllers
                     Kills = 0,
                     Deaths = 3,
                     HsRatio = 0.00,
-                    SteamId = "123456110",
+                    SteamId = "8",
                     Game = RankedGame7
 
                     #endregion
@@ -712,7 +711,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 1.00,
-                    SteamId = "123456110",
+                    SteamId = "8",
                     Game = RankedGame8
 
                     #endregion
@@ -725,7 +724,7 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 0.50,
-                    SteamId = "123456010",
+                    SteamId = "9",
                     Game = RankedGame8
 
                     #endregion
@@ -738,7 +737,7 @@ namespace ArenaStars.Controllers
                     Kills = 1,
                     Deaths = 2,
                     HsRatio = 0.00,
-                    SteamId = "123456010",
+                    SteamId = "9",
                     Game = RankedGame9
 
                     #endregion
@@ -751,40 +750,223 @@ namespace ArenaStars.Controllers
                     Kills = 2,
                     Deaths = 1,
                     HsRatio = 0.50,
-                    SteamId = "123455910",
+                    SteamId = "10",
                     Game = RankedGame9
 
                     #endregion
                 };
 
-                GameStats GameStatsTournament1Player1 = new GameStats()
+                GameStats GS_T1_G1_P1 = new GameStats()
                 {
                     #region Info
 
                     Kills = 3,
                     Deaths = 0,
                     HsRatio = 1,
-                    SteamId = "123456789",
-                    Game = TournamentGame1
+                    SteamId = "1",
+                    Game = Tournament1Game1
 
                     #endregion
                 };
 
-                GameStats GameStatsTournament1Player2 = new GameStats()
+                GameStats GS_T1_G1_P2 = new GameStats()
                 {
                     #region Info
 
                     Kills = 0,
                     Deaths = 3,
                     HsRatio = 0,
-                    SteamId = "123456710",
-                    Game = TournamentGame1
+                    SteamId = "2",
+                    Game = Tournament1Game1
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G2_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 3,
+                    Deaths = 0,
+                    HsRatio = 1,
+                    SteamId = "3",
+                    Game = Tournament1Game2
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G2_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 0,
+                    Deaths = 3,
+                    HsRatio = 0,
+                    SteamId = "4",
+                    Game = Tournament1Game2
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G3_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 1,
+                    Deaths = 2,
+                    HsRatio = 1,
+                    SteamId = "5",
+                    Game = Tournament1Game3
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G3_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 2,
+                    Deaths = 1,
+                    HsRatio = 0,
+                    SteamId = "6",
+                    Game = Tournament1Game3
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G4_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 2,
+                    Deaths = 1,
+                    HsRatio = 1,
+                    SteamId = "7",
+                    Game = Tournament1Game4
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G4_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 1,
+                    Deaths = 2,
+                    HsRatio = 1,
+                    SteamId = "8",
+                    Game = Tournament1Game4
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G5_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 0,
+                    Deaths = 3,
+                    HsRatio = 0.00,
+                    SteamId = "9",
+                    Game = Tournament1Game5
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G5_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 3,
+                    Deaths = 0,
+                    HsRatio = 0.50,
+                    SteamId = "10",
+                    Game = Tournament1Game5
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G6_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 2,
+                    Deaths = 1,
+                    HsRatio = 1.00,
+                    SteamId = "1",
+                    Game = Tournament1Game6
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G6_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 1,
+                    Deaths = 2,
+                    HsRatio = 1.00,
+                    SteamId = "3",
+                    Game = Tournament1Game6
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G7_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 2,
+                    Deaths = 1,
+                    HsRatio = 1.00,
+                    SteamId = "6",
+                    Game = Tournament1Game7
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G7_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 1,
+                    Deaths = 2,
+                    HsRatio = 1.00,
+                    SteamId = "7",
+                    Game = Tournament1Game7
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G8_P1 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 0,
+                    Deaths = 3,
+                    HsRatio = 0.00,
+                    SteamId = "6",
+                    Game = Tournament1Game8
+
+                    #endregion
+                };
+
+                GameStats GS_T1_G8_P2 = new GameStats()
+                {
+                    #region Info
+
+                    Kills = 3,
+                    Deaths = 0,
+                    HsRatio = 1.00,
+                    SteamId = "1",
+                    Game = Tournament1Game8
 
                     #endregion
                 };
 
                 #endregion
 
+                //Adding Ranked GameStats to database
                 context.GameStats.Add(GameStatsRanked1Player1);
                 context.GameStats.Add(GameStatsRanked1Player2);
                 context.GameStats.Add(GameStatsRanked2Player1);
@@ -804,30 +986,47 @@ namespace ArenaStars.Controllers
                 context.GameStats.Add(GameStatsRanked9Player1);
                 context.GameStats.Add(GameStatsRanked9Player2);
 
-                context.GameStats.Add(GameStatsTournament1Player1);
-                context.GameStats.Add(GameStatsTournament1Player2);
+                //Adding Tournament 1 GameStats to database
+                context.GameStats.Add(GS_T1_G1_P1);
+                context.GameStats.Add(GS_T1_G1_P2);
+                context.GameStats.Add(GS_T1_G2_P1);
+                context.GameStats.Add(GS_T1_G2_P2);
+                context.GameStats.Add(GS_T1_G3_P1);
+                context.GameStats.Add(GS_T1_G3_P2);
+                context.GameStats.Add(GS_T1_G4_P1);
+                context.GameStats.Add(GS_T1_G4_P2);
+                context.GameStats.Add(GS_T1_G5_P1);
+                context.GameStats.Add(GS_T1_G5_P2);
+                context.GameStats.Add(GS_T1_G6_P1);
+                context.GameStats.Add(GS_T1_G6_P2);
+                context.GameStats.Add(GS_T1_G7_P1);
+                context.GameStats.Add(GS_T1_G7_P2);
+                context.GameStats.Add(GS_T1_G8_P1);
+                context.GameStats.Add(GS_T1_G8_P2);
 
                 /***************TOURNAMENTS*****************/
 
-                Tournament AllStarsTournament = new Tournament()
+
+                Tournament Tournament1 = new Tournament()
                 {
                     Name = "AllStars Only",
-                    Participants = UserList,
+                    Participants = Tournament1UserList,
                     Type = Tournament.TournamentTypeEnum.AllStars,
-                    CreatedDate = DateTime.Now,
-                    StartDate = DateTime.Now.AddDays(10).Add(new TimeSpan(11, 00, 00)),
-                    CheckInDate = DateTime.Now.AddDays(10).Add(new TimeSpan(10, 30, 00)),
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
                     HasEnded = false,
                     IsLive = false,
                     MinRank = Models.User.RankEnum.Bronze,
                     MaxRank = Models.User.RankEnum.Legend,
                     PlayerLimit = 8,
-                    Winner = TournamentGameList.LastOrDefault().Winner,
-                    TrophyPic = "https://img.clipartfest.com/6bdf56bd13a3e1fe1a04b54876a1c4e9_trophy-clipart-trophy-clipart-images_1920-1920.jpeg",
-                    Games = TournamentGameList
+                    Winner = Tournament1GameList.LastOrDefault().Winner,
+                    TrophyPic = "~/Images/Trophy/Trophy1",
+                    Games = Tournament1GameList
                 };
 
-                context.Tournaments.Add(AllStarsTournament);
+                //Adding tournaments to database
+                context.Tournaments.Add(Tournament1);
 
                 /********************REPORTS*********************/
 
@@ -862,9 +1061,12 @@ namespace ArenaStars.Controllers
 
                 #endregion
 
+                //Adding reports to database
                 context.Reports.Add(report1);
                 context.Reports.Add(report2);
                 context.Reports.Add(report3);
+
+                //Saving changes to database
                 context.SaveChanges();
             }
             return RedirectToAction("/Index", "Home");
