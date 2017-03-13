@@ -69,9 +69,9 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-20),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 100,
-                    Rank = Models.User.RankEnum.Bronze,
-                    Level = 1,
+                    Elo = 1953,
+                    Rank = Models.User.RankEnum.Master,
+                    Level = 9,
                     IsTerminated = false,
                     SteamId = "1",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.png",
@@ -355,6 +355,7 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(-5)
                 };
 
                 Game RankedGame2 = new Game()
@@ -451,6 +452,7 @@ namespace ArenaStars.Controllers
                     Winner = u7,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
+                    PlayedDate = DateTime.Now
                 };
 
                 Game Tournament1Game5 = new Game()

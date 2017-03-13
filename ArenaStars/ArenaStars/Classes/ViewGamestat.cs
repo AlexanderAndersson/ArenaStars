@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ArenaStars.Models
+namespace ArenaStars.Classes
 {
-    public class GameStats
+    public class ViewGamestat
     {
         public long Id { get; set; }
 
@@ -17,8 +17,6 @@ namespace ArenaStars.Models
 
         public string SteamId { get; set; }
 
-        public int Score { get; set; }
-
-        public virtual Game Game { get; set; }
+        public ViewGame Game { get; set; }
     }
 }

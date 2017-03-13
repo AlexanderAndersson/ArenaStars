@@ -1,11 +1,16 @@
 ﻿body {
 }
 
+hr {
+    margin-top:10px;
+    margin-bottom:10px;
+    border-color:#4b4e4e;
+}
+
 .big-background {
-    background: 1px solid white;
+    border: 0px solid white;
     /*background-image: url("~/Images/Profile/ProfileBackground_Default.jpg");*/
-    /*background-color: #1E2222;*/
-    background-color:green;
+    background-color: #141616;
     background-size:contain;
     height:300px;
     margin-top:10px;
@@ -21,12 +26,15 @@
     background-color:#141616;
     height:40px;
     font-size:15px;
+    position:relative;
 }
 
 .fakeNavBarItem {
     color: orange;
     cursor:pointer;
-    width:100px;
+    display:inline;
+    padding-left:0px;
+    padding-right:0px;
 }
 
 .fakeNavBar > span {
@@ -39,11 +47,218 @@
 
 .generalStatsBox {
     border: 1px solid #4b4e4e;
-    height: 200px;
+    height: 250px;
 }
 
 .container > h5 {
     font-weight:bolder;
     font-size: 15px;
     margin-top:20px;
+}
+
+.statsBoxItem {
+    border:1px solid red;
+    position:relative;
+    height:50px;
+    display:inline;
+}
+
+.statsBoxItem > img {
+    width:32px;
+    height:32px;
+    display:inline-block;
+    margin:auto;
+    top:15%;
+    position:absolute;
+    padding-right:0px;
+    margin-right:0px;
+}
+
+.statsBoxItemText {
+    display:inline-block;
+    position:absolute;
+    top:7%;
+    /*right:20%;*/
+    left:65px;
+}
+
+.statsBoxMainItem {
+    display:inline-block;
+    position:absolute;
+    top:7%;
+    right:30%;
+}
+
+/*@media (max-width: 768px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+    
+}*/
+
+@media (max-width: 1199px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+
+    .statsBoxMatchesText {
+        left:65px;
+    }
+
+    .statsBoxMainItem {
+        left:15px;
+    }
+
+    .statsBoxItem .statsBoxWithImg {
+        padding:0px;
+    }
+    
+    .dateMargin {
+        margin-left:20px !important;
+    }
+
+    .resultMargin {
+        margin-left:-40px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-10px !important;
+    }
+
+}
+
+@media (max-width: 991px) {
+    .statsBoxItemText {
+        right:70%;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+
+    .statsBoxMatchesText {
+        left:65px;
+    }
+
+    .statsBoxMainItem {
+        left:15px;
+    }
+
+    .dateMargin {
+        margin-left:10px !important;
+    }
+
+    .typeMargin {
+        margin-left:50px !important;
+    }
+
+    .resultMargin {
+        margin-left:-10px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-10px !important;
+    }
+
+    .mapMargin {
+        margin-left:30px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .fakeNavBar {
+        height:80px !important;
+    }
+
+    .statsBoxItemText {
+        left:55px;
+    }
+
+    .statsBoxItem .statsBoxCenter {
+        left:15px;
+    }
+
+    .generalStatsBox {
+        height:500px;
+    }
+
+    .statsBoxMainItem {
+        left:15px;
+    }
+
+    .dateMargin {
+        margin-left:15px !important;
+    }
+
+    .typeMargin {
+        margin-left:-10px !important;
+    }
+
+    .resultMargin {
+        margin-left:-20px !important;
+    }
+
+    .scoreMargin {
+        margin-left:-15px !important;
+    }
+
+    .mapMargin {
+        margin-left:10px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .gameHeader {
+        display:none;
+    }
+
+    #gameList .singleGame div {
+        display:block;
+    }
+}
+
+.statsBoxItem .statsBoxCenter {
+    display:inline-block;
+    position:absolute;
+    top:25%;
+    right:45%;
+}
+
+.statsBoxItem .statsBoxWithImg {
+    position:relative;
+    left:0px !important;
+    right:30% !important;
+}
+
+.gameHeader {
+    
+}
+
+.gameHeader div {
+    margin-right:15px !important;
+    display:inline;
+}
+
+.dateMargin {
+    margin-left:50px;
+}
+
+.typeMargin {
+    margin-left:40px;
+}
+
+.resultMargin {
+    margin-left:-10px;
+}
+
+.scoreMargin {
+    margin-left:-10px;
+}
+
+.mapMargin {
+
 }
