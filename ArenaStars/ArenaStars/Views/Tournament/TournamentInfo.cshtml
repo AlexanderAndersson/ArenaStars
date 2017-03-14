@@ -1,0 +1,101 @@
+﻿@model ArenaStars.Models.Tournament
+@using ArenaStars.Models;
+@{
+    ViewBag.Title = "TournamentInfo";
+    <link href="~/Content/Tournament.css" rel = "stylesheet" />
+    int count = 1;
+}
+
+<div id="tInfo" class="white">
+    @foreach (Tournament t in ViewBag.Tournament)
+    {
+        <br />
+        <div class="tournamentInfo">
+            <div>
+                <h4 class="bold">DETAILS</h4>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Name</span>
+                <span>@t.Name</span>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Check In</span>
+                <span>@t.CheckInDate.Value.Day @t.CheckInDate.Value.ToString("MMM") - @t.CheckInDate.Value.ToShortTimeString()</span> 
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Type</span>
+                <span>@t.Type</span>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Min Rank</span>
+                <span>@t.MinRank</span>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Max Rank</span>
+                <span>@t.MaxRank</span>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Created</span>
+                <span>@t.CreatedDate.Value.Day @t.CreatedDate.Value.ToString("MMM") - @t.CreatedDate.Value.ToShortTimeString()</span>
+            </div>
+            <hr />
+        </div>
+        <div id="joinDiv">
+            <div class="center">
+                @if (t.IsLive)
+                {
+                    <h4>Tournament is <span style="color: green">LIVE</span></h4>
+                    <h4>TROPHY</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                }
+                else if (t.HasEnded)
+                {
+                    <h4>Tournament has <span style="color: red">ENDED</span></h4>
+                    <h4><span style="color: green">WINNER</span></h4>
+                    <h4 style="font-style: italic">@t.Winner.Username</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                }
+                else
+                {
+                    <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
+                    <h4>TROPHY</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                    <button class="btn btn-success">JOIN</button>
+                }
+            </div>
+        </div>
+    }
+    <div class="playerList">
+        <div>
+            <h4 class="bold">PLAYERS</h4>
+        </div>
+        <hr />
+        @if (ViewBag.Participants.Count == 0)
+        {
+            <div>
+                <span class="bold">No players have joined this tournament</span>
+            </div>
+            <hr />
+        }
+        else
+        {
+            foreach (User u in ViewBag.Participants)
+            {
+                string rankPic = "/Images/Rank/" + u.Rank + ".png";
+                <div>
+                    <span class="bold">Player @count </span>
+                    <span>@u.Username <img src="@rankPic" /></span>
+                </div>
+                <hr />
+                count++;
+            }
+        }
+    </div>
+</div>
+

@@ -20,6 +20,31 @@ namespace ArenaStars.Controllers
             //Active state css ViewBag
             ViewBag.TournamentSelected = "activeNav";
 
+            return View();
+        }
+
+        public ActionResult TournamentInfo(long id)
+        {
+            var tournament = from t in context.Tournaments
+                             where t.Id == id
+                             select t;
+
+            var parInTournamnet = from t in context.Tournaments
+                                  where t.Id == id
+                                  select t.Participants;
+
+            ViewBag.Participants = parInTournamnet.FirstOrDefault().ToList();
+            ViewBag.Tournament = tournament;
+
+            //Active state css ViewBag
+            ViewBag.TournamentSelected = "activeNav";
+
+            return View();
+        }
+
+        public ActionResult JoinTournament()
+        {
+            
 
             return View();
         }

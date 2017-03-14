@@ -1017,13 +1017,13 @@ namespace ArenaStars.Controllers
                     CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
                     StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
                     CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
-                    HasEnded = false,
+                    HasEnded = true,
                     IsLive = false,
                     MinRank = Models.User.RankEnum.Bronze,
                     MaxRank = Models.User.RankEnum.Legend,
                     PlayerLimit = 8,
                     Winner = Tournament1GameList.LastOrDefault().Winner,
-                    TrophyPic = "~/Images/Trophy/Trophy1",
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
                     Games = Tournament1GameList
                 };
 
