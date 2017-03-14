@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ionic.BZip2">
+      <HintPath>..\..\..\CS_QueryMaster_Test\packages\Ionic.BZip2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -64,6 +67,11 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="QueryMaster">
+      <HintPath>..\..\..\CS_QueryMaster_Test\packages\QueryMaster.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -138,6 +146,15 @@
     <Content Include="Scripts\GetTournamentsJS.js" />
     <Content Include="Scripts\ProfileJS.js" />
     <Content Include="Scripts\SignIn&amp;Up.js" />
+    <None Include="Service References\GameLogsServiceReference\ArenaStars.Models.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GameLogsServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\GameLogsServiceReference\configuration.svcinfo" />
+    <None Include="Service References\GameLogsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -150,6 +167,7 @@
     <Compile Include="Controllers\BanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderboardController.cs" />
+    <Compile Include="Controllers\ServerController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -162,6 +180,11 @@
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\GameLogsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -175,6 +198,14 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\UserNotFound.cshtml" />
+    <Content Include="Views\Server\ServerStart.cshtml" />
+    <None Include="Service References\GameLogsServiceReference\service.wsdl" />
+    <None Include="Service References\GameLogsServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GameLogsServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,6 +216,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Trophy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GameLogsServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
