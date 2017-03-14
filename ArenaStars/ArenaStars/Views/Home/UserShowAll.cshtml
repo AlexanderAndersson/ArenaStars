@@ -1,0 +1,14 @@
+﻿@model List<ArenaStars.Classes.ViewUser>
+@{
+    ViewBag.Title = "UserShowAll";
+}
+
+<link href="~/Content/ShowUsersSearch.css" rel="stylesheet" />
+
+<h2>UserShowAll</h2>
+
+
+@foreach (var user in Model)
+{
+    <p>Username: @user.Username</p>
+}

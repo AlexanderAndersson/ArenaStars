@@ -116,6 +116,7 @@
     <Content Include="Content\GameSheet.css" />
     <Content Include="Content\LogInForm.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\ShowUsersSearch.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Tournament.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -324,7 +325,9 @@
     <Compile Include="Models\ArenaStarsContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameStats.cs" />
+    <Compile Include="Models\MatchmakingSearch.cs" />
     <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\Server.cs" />
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -344,6 +347,7 @@
     <Content Include="Views\Admin\Tournaments.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\Reports.cshtml" />
+    <Content Include="Views\Home\UserShowAll.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

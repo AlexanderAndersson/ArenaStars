@@ -1084,6 +1084,19 @@ namespace ArenaStars.Controllers
                 context.Reports.Add(report2);
                 context.Reports.Add(report3);
 
+                /*******************SERVERS**********************/
+
+                #region Servers
+
+                Server serverOne = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #1",
+                    isInUse = false
+                };
+
+                #endregion
+
                 //Saving changes to database
                 context.SaveChanges();
             }
@@ -1140,6 +1153,143 @@ namespace ArenaStars.Controllers
             }
 
             return View(userList);
+        }
+
+        public ActionResult StopMatchMakeSearch()
+        {
+
+        }
+
+        public ActionResult StartMatchMakeSearch()
+        {
+
+        }
+
+        public ActionResult MatchMakeSearch(int timeSearched)
+        {
+            //Checks för att kunna söka.
+            /*
+             -Vara inloggad.
+             -Inte vara bannad.
+             -Kan inte redan söka.
+             -Finnas server som inte är upptagen.
+             */
+
+            object myObject;
+            List<string> errorMessages = new List<string>();
+            User you;
+            User opponent;
+            MatchmakingSearch fakeYou;
+            MatchmakingSearch fakeOpp;
+            Server chosenServer = new Models.Server();
+
+            if ((bool)Session["isLoggedIn"] == true)
+            {
+                using (ArenaStarsContext context = new ArenaStarsContext())
+                {
+                    //Gets available servers.
+                    var getAvailableServers = from s in context.Servers
+                                              where s.isInUse == false
+                                              select s;
+
+                    //Gets your User.
+                    you = (User)from u in context.Users
+                                where u.Username.ToLower() == Session["username"].ToString().ToLower()
+                                select u;
+
+                    if (you.IsTerminated)
+                    {
+                        errorMessages.Add("You are currently suspended and cannot queue for matchmaking at this time.");
+                    }
+
+                    //Checks if user is already in queue.
+                    var checkIfAlreadyInQueue = from u in context.MatchmakingSearches
+                                                where u.Username.ToLower() == you.Username.ToLower()
+                                                select u;
+
+                    if (getAvailableServers.Count() < 1)
+                    {
+                        errorMessages.Add("No servers available at the moment. Please try again later.");
+                    }
+                    else
+                    {
+                        chosenServer = getAvailableServers.FirstOrDefault();
+                    }
+
+                    if (checkIfAlreadyInQueue.Count() > 0)
+                    {
+                        errorMessages.Add("You are already in queue!");
+                    }
+
+                    
+
+                }
+
+                if (errorMessages.Count == 0)
+                {
+                    using (ArenaStarsContext context = new ArenaStarsContext())
+                    {
+                        int eloMinCap = you.Elo - timeSearched;
+                        int eloMaxCap = you.Elo + timeSearched;
+
+                        //Gets opponent based off of elo min & max cap, not same username (you) and not found game.
+                        var possibleOpponents = from u in context.MatchmakingSearches
+                                                where u.Elo > eloMinCap && u.Elo < eloMaxCap && u.Username.ToLower() != you.Username.ToLower() && u.foundGame == false
+                                                orderby u.Elo descending
+                                                select u;
+
+                        if (possibleOpponents.Count() > 0)
+                        {
+                            fakeOpp = possibleOpponents.FirstOrDefault();
+                            fakeOpp.foundGame = true;
+
+                            fakeYou = (MatchmakingSearch)from u in context.MatchmakingSearches
+                                      where u.Username.ToLower() == you.Username.ToLower()
+                                      select u;
+
+                            fakeYou.foundGame = true;
+
+                            chosenServer.isInUse = true;
+                        }
+                        else
+                        {
+                            errorMessages.Add("continue search");
+                        }
+
+                        context.SaveChanges();
+                    }
+                }
+                
+            }
+            else
+            {
+                errorMessages.Add("You must be logged in to queue for a match!");
+            }
+
+            if (errorMessages.Count < 1)
+            {
+                myObject = new
+                {
+                    success = true,
+                    gameId
+                };
+            }
+            else
+            {
+                myObject = new
+                {
+
+                };
+            }
+
+            return Json(new { data = myObject }, JsonRequestBehavior.DenyGet);
+        }
+
+        public List<string> BookServer()
+        {
+            List<string> errorList = new List<string>();
+
+
         }
     }
 }
