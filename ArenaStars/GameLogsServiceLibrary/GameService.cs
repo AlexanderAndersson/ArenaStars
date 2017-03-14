@@ -45,6 +45,22 @@ namespace GameLogsServiceLibrary
 
         }
 
+        public void WhitelistPlayers(User _playerA, User _playerB)
+        {
+            //Add players to the whitelist
+            string playerAID = "\"" + _playerA.SteamId + "\"";
+            string playerBID = "\"" + _playerA.SteamId + "\"";
+
+            Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+            if (server.GetControl("lol"))
+            {
+                server.Rcon.SendCommand("sm_whitelist_add " + playerAID);
+                server.Rcon.SendCommand("sm_whitelist_add " + playerBID);
+            }
+
+        }
+
+
         public void StartGame()
         {
             Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
@@ -151,6 +167,19 @@ namespace GameLogsServiceLibrary
 
                     db.SaveChanges();
 
+                    //Match has finished so we remove players from the whitelist and restart map.
+                    string playerAID = "\"" + _playerA.SteamId + "\"";
+                    string playerBID = "\"" + _playerA.SteamId + "\"";
+
+
+                    if (server.GetControl("lol"))
+                    {
+                        server.Rcon.SendCommand("sm_whitelist_remove " + playerAID);
+                        server.Rcon.SendCommand("sm_whitelist_remove " + playerBID);
+                        server.Rcon.SendCommand("sm_kick @all");
+                        server.Rcon.SendCommand("changelevel aim_map");
+                        server.Rcon.SendCommand("warmup");
+                    }
                 }
 
             }

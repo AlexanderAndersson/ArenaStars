@@ -20,6 +20,8 @@ namespace GameLogsServiceLibrary
         void DeleteLog();
         [OperationContract]
         void SaveStatsAndGame(User playerA, User playerB,Game gameType);
+        [OperationContract]
+        void WhitelistPlayers(User _playerA, User _playerB);
 
     }
 

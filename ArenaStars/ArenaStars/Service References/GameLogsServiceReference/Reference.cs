@@ -1176,6 +1176,12 @@ namespace ArenaStars.GameLogsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/SaveStatsAndGame", ReplyAction="http://tempuri.org/IGameService/SaveStatsAndGameResponse")]
         System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsServiceReference.User playerA, ArenaStars.GameLogsServiceReference.User playerB, ArenaStars.GameLogsServiceReference.Game gameType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WhitelistPlayers", ReplyAction="http://tempuri.org/IGameService/WhitelistPlayersResponse")]
+        void WhitelistPlayers(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WhitelistPlayers", ReplyAction="http://tempuri.org/IGameService/WhitelistPlayersResponse")]
+        System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1235,6 +1241,14 @@ namespace ArenaStars.GameLogsServiceReference {
         
         public System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsServiceReference.User playerA, ArenaStars.GameLogsServiceReference.User playerB, ArenaStars.GameLogsServiceReference.Game gameType) {
             return base.Channel.SaveStatsAndGameAsync(playerA, playerB, gameType);
+        }
+        
+        public void WhitelistPlayers(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB) {
+            base.Channel.WhitelistPlayers(_playerA, _playerB);
+        }
+        
+        public System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB) {
+            return base.Channel.WhitelistPlayersAsync(_playerA, _playerB);
         }
     }
 }

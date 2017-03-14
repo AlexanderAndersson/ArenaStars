@@ -15,28 +15,25 @@ namespace ArenaStars.Controllers
     {
        ArenaStarsContext db = new Models.ArenaStarsContext();
 
-        
-
         // GET: Server
         public void ServerStart()
         {
-            string LINUS = "LINUS";
+            //Simulates 2 players matched from matchmaking function
+            string LINUS = "LVL 8 MAGE";
             string Nicke = "Nicke";
 
             var playerA = from x in db.Users
                           where x.Username == LINUS
                           select x;
-          
+
             var playerB = from x in db.Users
                           where x.Username == Nicke
                           select x;
 
             Models.User PA = playerA.FirstOrDefault();
             Models.User PB = playerB.FirstOrDefault();
-            // Models.Game game = new Models.Game();
-            // game.Type = 0;
 
-           
+
             GameLogsServiceReference.User logUserA = new GameLogsServiceReference.User();
             GameLogsServiceReference.User logUserB = new GameLogsServiceReference.User();
             GameLogsServiceReference.Game logGame = new GameLogsServiceReference.Game();
@@ -48,23 +45,14 @@ namespace ArenaStars.Controllers
             logUserB.Username = PB.Username;
             logUserB.SteamId = PB.SteamId;
 
-         
-          
 
             GameServiceClient client = new GameServiceClient();
+            client.WhitelistPlayers(logUserA, logUserB);
             client.DeleteLogAsync();
             client.StartGameAsync();
             client.ReadServerLogs();
             client.SaveStatsAndGame(logUserA, logUserB, logGame);
             client.Close();
-            
-            
-
-
-            //Console.SetOut(Console.Out);
-
-
-           // return View();
         }
     }
 }
