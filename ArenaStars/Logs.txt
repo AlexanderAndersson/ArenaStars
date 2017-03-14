@@ -1,0 +1,31 @@
+rcon from "90.144.156.174:57011": command "1on1"
+server_cvar: "mp_freezetime" "10"
+"Console<0><Console><Console>" say ""> ESL CS:GO 1on1 Ladder Config loaded - 14.01.2016 <""
+server_cvar: "mp_freezetime" "0"
+rcon from "90.144.156.174:64974": command "mp_freezetime 0"
+World triggered "Match_Start" on "aim_map"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"John<341><STEAM_1:1:187152907><>" connected, address ""
+"John<341><STEAM_1:1:187152907><>" STEAM USERID validated
+"LINUS<310><STEAM_1:1:12547851><CT>" [185 562 6] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [399 784 0] with "hkp2000" (damage "33") (damage_armor "0") (health "67") (armor "0") (hitgroup "chest")
+"LINUS<310><STEAM_1:1:12547851><CT>" [330 719 48] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [399 784 0] with "hkp2000" (damage "137") (damage_armor "0") (health "0") (armor "0") (hitgroup "head")
+"LINUS<310><STEAM_1:1:12547851><CT>" [330 719 48] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [399 784 64] with "usp_silencer" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "1") (T "0")
+Team "CT" scored "1" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"John<341><STEAM_1:1:187152907><>" entered the game
+"John<341><STEAM_1:1:187152907><Unassigned>" triggered "clantag" (value "")
+"LINUS<310><STEAM_1:1:12547851><CT>" [301 799 0] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 864 7] with "m4a1" (damage "41") (damage_armor "0") (health "59") (armor "0") (hitgroup "stomach")
+"LINUS<310><STEAM_1:1:12547851><CT>" [302 805 1] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 864 7] with "m4a1" (damage "41") (damage_armor "0") (health "18") (armor "0") (hitgroup "stomach")
+"LINUS<310><STEAM_1:1:12547851><CT>" [303 810 1] attacked "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 864 7] with "m4a1" (damage "41") (damage_armor "0") (health "0") (armor "0") (hitgroup "stomach")
+"LINUS<310><STEAM_1:1:12547851><CT>" [303 810 1] killed "Nicke<329><STEAM_1:1:14385447><TERRORIST>" [315 864 71] with "m4a1"
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
+Team "CT" scored "2" with "1" players
+Team "TERRORIST" scored "0" with "1" players
+World triggered "Round_End"
+"John<341><STEAM_1:1:187152907>" switched from team <Unassigned> to <TERRORIST>
+"John<341><STEAM_1:1:187152907><TERRORIST>" triggered "clantag" (value "")
