@@ -245,7 +245,7 @@ namespace ArenaStars.Controllers
         public ActionResult GetGames(int shown, string username)
         {
             List<object> games = new List<object>();
-            int numberToDisplay = 20; //Maybe(probably) make it parameter
+            int numberToDisplay = 10; //Maybe(probably) make it parameter
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {

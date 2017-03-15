@@ -43,6 +43,9 @@ function GetGames() {
             for (let i = 0; i < gameList.length; i++) {
                 let htmlString = "";
 
+                console.log("Month: " + gameList[i].PlayedDate);
+                console.log("month number: " + GetMonth(gameList[i].PlayedDate));
+
                 htmlString += '<hr />'
                     + '<div class="singleGame row">'
                     + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'

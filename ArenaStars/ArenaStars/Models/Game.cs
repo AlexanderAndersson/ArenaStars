@@ -21,6 +21,10 @@ namespace ArenaStars.Models
 
         public virtual IList<GameStats> GameStats { get; set; }
 
+        public TournamentGameTypeEnum TournamentGameType { get; set; }
+
         public enum GameTypeEnum { Ranked, Unranked, Tournament, Challange }
+
+        public enum TournamentGameTypeEnum { Not_In_Tournament, Round_of_128, Round_of_64, Round_of_32, Round_of_16, Quarter_Final, Semi_Final, Final }
     }
 }

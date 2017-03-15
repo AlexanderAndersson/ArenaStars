@@ -60,7 +60,7 @@ function GetTournaments() {
                         + '<span class="bold">MIN RANK</span><br />'
                         + '<span>' + tournamentList[i].MinRank + '</span>'
                     + '</div>'
-                    + '<div class="participants">'
+                    + '<div id="participants">'
                         + '<span class="glyphicon glyphicon-user"></span><br />'
                         + '<span>' + tournamentList[i].ParticipantsCount + ' / ' + tournamentList[i].PlayerLimit + '</span>'
                     + '</div>'
