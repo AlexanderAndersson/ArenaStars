@@ -37,6 +37,12 @@
   <wsdl:message name="IGameService_WhitelistPlayers_OutputMessage">
     <wsdl:part name="parameters" element="tns:WhitelistPlayersResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameService_WaitForPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:WaitForPlayers" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_WaitForPlayers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WaitForPlayersResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGameService">
     <wsdl:operation name="ReadServerLogs">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/ReadServerLogs" message="tns:IGameService_ReadServerLogs_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="WhitelistPlayers">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/WhitelistPlayers" message="tns:IGameService_WhitelistPlayers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/WhitelistPlayersResponse" message="tns:IGameService_WhitelistPlayers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WaitForPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/WaitForPlayers" message="tns:IGameService_WaitForPlayers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/WaitForPlayersResponse" message="tns:IGameService_WaitForPlayers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGameService" type="tns:IGameService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="WhitelistPlayers">
       <soap:operation soapAction="http://tempuri.org/IGameService/WhitelistPlayers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WaitForPlayers">
+      <soap:operation soapAction="http://tempuri.org/IGameService/WaitForPlayers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

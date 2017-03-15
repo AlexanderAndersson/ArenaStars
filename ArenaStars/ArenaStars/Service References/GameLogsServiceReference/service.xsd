@@ -58,4 +58,14 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="WaitForPlayers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WaitForPlayersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

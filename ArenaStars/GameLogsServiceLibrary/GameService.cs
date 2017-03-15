@@ -9,13 +9,17 @@ using System.IO;
 using QueryMaster;
 using QueryMaster.GameServer;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace GameLogsServiceLibrary
 {
     
     public class GameService : IGameService
     {
-        string filePath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Error";
+        string saveStatsAndGamePath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorSaveStatsAndGame";
+        string readServerLogsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorReadServerLogs";
+        string whitelistPlayersPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorwhitelistPlayers";
+        string waitForPLayersPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\waitForPLayersLogs";
         string logsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt";
         
         public void ReadServerLogs()
@@ -47,16 +51,31 @@ namespace GameLogsServiceLibrary
 
         public void WhitelistPlayers(User _playerA, User _playerB)
         {
-            //Add players to the whitelist
-            string playerAID = "\"" + _playerA.SteamId + "\"";
-            string playerBID = "\"" + _playerA.SteamId + "\"";
-
-            Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
-            if (server.GetControl("lol"))
+            try
             {
-                server.Rcon.SendCommand("sm_whitelist_add " + playerAID);
-                server.Rcon.SendCommand("sm_whitelist_add " + playerBID);
+                //Add players to the whitelist
+                string playerAID = "\"" + _playerA.SteamId + "\"";
+                string playerBID = "\"" + _playerB.SteamId + "\"";
+
+                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                
+                if (server.GetControl("lol"))
+                {
+                    server.Rcon.SendCommand("sm_whitelist_add " + playerAID);
+                    server.Rcon.SendCommand("sm_whitelist_add " + playerBID);
+                }
             }
+            catch (Exception ex)
+            {
+
+                using (StreamWriter writer = new StreamWriter(whitelistPlayersPath, true))
+                {
+                    writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+            }
+          
 
         }
 
@@ -185,7 +204,7 @@ namespace GameLogsServiceLibrary
             }
             catch (Exception ex)
             {
-                using (StreamWriter writer = new StreamWriter(filePath, true))
+                using (StreamWriter writer = new StreamWriter(saveStatsAndGamePath, true))
                 {
                     writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
                        "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
@@ -239,6 +258,37 @@ namespace GameLogsServiceLibrary
                 }
                 Thread.Sleep(1000);
             }
+        }
+
+        public void WaitForPlayers()
+        {
+            try
+            {
+                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                server.ReceiveTimeout = 200;
+                bool stop = false;
+                while (!stop)
+                {
+                    ServerInfo info = server.GetInfo();
+                    if (info.Players == 2)
+                    {
+                        stop = true;
+                    }
+                    Thread.Sleep(10000);
+                }
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter writer = new StreamWriter(waitForPLayersPath, true))
+                {
+                    writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+
+            }
+            
+
         }
 
 

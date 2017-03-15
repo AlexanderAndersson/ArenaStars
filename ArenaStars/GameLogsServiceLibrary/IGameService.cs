@@ -22,6 +22,8 @@ namespace GameLogsServiceLibrary
         void SaveStatsAndGame(User playerA, User playerB,Game gameType);
         [OperationContract]
         void WhitelistPlayers(User _playerA, User _playerB);
+        [OperationContract]
+        void WaitForPlayers();
 
     }
 

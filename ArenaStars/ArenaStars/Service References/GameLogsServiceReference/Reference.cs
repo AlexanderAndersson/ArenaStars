@@ -1182,6 +1182,12 @@ namespace ArenaStars.GameLogsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WhitelistPlayers", ReplyAction="http://tempuri.org/IGameService/WhitelistPlayersResponse")]
         System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WaitForPlayers", ReplyAction="http://tempuri.org/IGameService/WaitForPlayersResponse")]
+        void WaitForPlayers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WaitForPlayers", ReplyAction="http://tempuri.org/IGameService/WaitForPlayersResponse")]
+        System.Threading.Tasks.Task WaitForPlayersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1249,6 +1255,14 @@ namespace ArenaStars.GameLogsServiceReference {
         
         public System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsServiceReference.User _playerA, ArenaStars.GameLogsServiceReference.User _playerB) {
             return base.Channel.WhitelistPlayersAsync(_playerA, _playerB);
+        }
+        
+        public void WaitForPlayers() {
+            base.Channel.WaitForPlayers();
+        }
+        
+        public System.Threading.Tasks.Task WaitForPlayersAsync() {
+            return base.Channel.WaitForPlayersAsync();
         }
     }
 }

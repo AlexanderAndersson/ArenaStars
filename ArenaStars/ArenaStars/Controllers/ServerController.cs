@@ -13,14 +13,15 @@ namespace ArenaStars.Controllers
 {
     public class ServerController : Controller
     {
-       ArenaStarsContext db = new Models.ArenaStarsContext();
+        string ServerControllerPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ServerControllerError.txt";
+        ArenaStarsContext db = new Models.ArenaStarsContext();
 
         // GET: Server
         public void ServerStart()
         {
             //Simulates 2 players matched from matchmaking function
-            string LINUS = "LVL 8 MAGE";
-            string Nicke = "Nicke";
+            string LINUS = "LINUS";
+            string Nicke = "LVL 8 MAGE";
 
             var playerA = from x in db.Users
                           where x.Username == LINUS
@@ -45,14 +46,39 @@ namespace ArenaStars.Controllers
             logUserB.Username = PB.Username;
             logUserB.SteamId = PB.SteamId;
 
+            try
+            {
+                GameServiceClient client = new GameServiceClient();
+                client.WhitelistPlayers(logUserA, logUserB);
+                client.WaitForPlayers();
+                client.DeleteLog();
+                client.StartGame();
+                client.ReadServerLogs();
+                client.SaveStatsAndGame(logUserA, logUserB, logGame);
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter writer = new StreamWriter(ServerControllerPath, true))
+                {
+                    writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+                string playerAID = "\"" + logUserA.SteamId + "\"";
+                string playerBID = "\"" + logUserB.SteamId + "\"";
+                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
 
-            GameServiceClient client = new GameServiceClient();
-            client.WhitelistPlayers(logUserA, logUserB);
-            client.DeleteLogAsync();
-            client.StartGameAsync();
-            client.ReadServerLogs();
-            client.SaveStatsAndGame(logUserA, logUserB, logGame);
-            client.Close();
+                if (server.GetControl("lol"))
+                {
+                    server.Rcon.SendCommand("sm_whitelist_remove " + playerAID);
+                    server.Rcon.SendCommand("sm_whitelist_remove " + playerBID);
+                    server.Rcon.SendCommand("sm_kick @all");
+                    server.Rcon.SendCommand("changelevel aim_map");
+                    server.Rcon.SendCommand("warmup");
+                }
+            }
+          
         }
     }
 }
