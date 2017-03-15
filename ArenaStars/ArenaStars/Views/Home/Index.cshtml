@@ -6,15 +6,23 @@
 
 <div class="white homePageContent">
     <h2>Välkommen till ArenaStars!</h2>
+    <div id="goodPopupBox" class="text-success">
+        
+    </div>
     <center>
-        @if ((bool)Session["isLoggedIn"] == true)
-        {
-            <div id="matchmakingButton" class="btn btn-warning">Search for game</div>
-        }
-        else
-        {
-            <div class="btn btn-danger">Login to play</div>
-        }
+        <div id="matchmakingButtonContainer">
+            @if ((bool)Session["isLoggedIn"] == true)
+            {
+                <div id="matchmakingButton" class="btn btn-warning" style="display:none;">Search for game</div>
+                <div id="stopMatchmakingButton" class="btn btn-danger" style="display:none;">Cancel Search</div>
+            }
+            else
+            {
+                <div class="btn btn-danger">Login to play</div>
+            }
+        </div>
+        <br />
+        <div id="matchmakingErrorBox" style="color:red;"></div>
     </center>
     <br /><br /><br />
     <h4>Här har du lite stats</h4><br />

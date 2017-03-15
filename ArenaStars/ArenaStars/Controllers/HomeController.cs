@@ -356,7 +356,8 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-5)
+                    PlayedDate = DateTime.Now.AddHours(-5),
+                    HasEnded = true
                 };
 
                 Game RankedGame2 = new Game()
@@ -365,7 +366,8 @@ namespace ArenaStars.Controllers
                     Winner = u2,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddMinutes(-30)
+                    PlayedDate = DateTime.Now.AddMinutes(-30),
+                    HasEnded = true
                 };
 
                 Game RankedGame3 = new Game()
@@ -374,7 +376,8 @@ namespace ArenaStars.Controllers
                     Winner = u4,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game RankedGame4 = new Game()
@@ -383,7 +386,8 @@ namespace ArenaStars.Controllers
                     Winner = u4,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-1)
+                    PlayedDate = DateTime.Now.AddHours(-1),
+                    HasEnded = true
                 };
 
                 Game RankedGame5 = new Game()
@@ -392,7 +396,8 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game RankedGame6 = new Game()
@@ -401,7 +406,8 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game RankedGame7 = new Game()
@@ -410,7 +416,8 @@ namespace ArenaStars.Controllers
                     Winner = u7,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game RankedGame8 = new Game()
@@ -419,7 +426,8 @@ namespace ArenaStars.Controllers
                     Winner = u9,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game RankedGame9 = new Game()
@@ -428,7 +436,8 @@ namespace ArenaStars.Controllers
                     Winner = u10,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Ranked,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game1 = new Game()
@@ -437,7 +446,8 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game2 = new Game()
@@ -446,7 +456,8 @@ namespace ArenaStars.Controllers
                     Winner = u3,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game3 = new Game()
@@ -455,7 +466,8 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game4 = new Game()
@@ -464,7 +476,8 @@ namespace ArenaStars.Controllers
                     Winner = u7,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now
+                    PlayedDate = DateTime.Now,
+                    HasEnded = true
                 };
 
                 Game Tournament1Game5 = new Game()
@@ -473,7 +486,8 @@ namespace ArenaStars.Controllers
                     Winner = u10,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game6 = new Game()
@@ -482,7 +496,8 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game7 = new Game()
@@ -491,7 +506,8 @@ namespace ArenaStars.Controllers
                     Winner = u6,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 Game Tournament1Game8 = new Game()
@@ -500,7 +516,8 @@ namespace ArenaStars.Controllers
                     Winner = u1,
                     Map = "aim_map",
                     Type = Game.GameTypeEnum.Tournament,
-                    PlayedDate = DateTime.Now.AddHours(-2)
+                    PlayedDate = DateTime.Now.AddHours(-2),
+                    HasEnded = true
                 };
 
                 #endregion
@@ -1162,8 +1179,9 @@ namespace ArenaStars.Controllers
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
+                    string uname = Session["username"].ToString();
                     var getQueueItem = from mm in context.MatchmakingSearches
-                                       where mm.Username.ToLower() == Session["username"].ToString().ToLower()
+                                       where mm.Username.ToLower() == uname.ToLower()
                                        select mm;
 
                     if (getQueueItem.Count() > 0)
@@ -1194,10 +1212,13 @@ namespace ArenaStars.Controllers
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
+                    string uname = Session["username"].ToString();
                     //Gets your User.
-                    you = (User)from u in context.Users
-                                where u.Username.ToLower() == Session["username"].ToString().ToLower()
-                                select u;
+                    var getYou = from u in context.Users
+                                 where u.Username.ToLower() == uname.ToLower()
+                                 select u;
+
+                    you = getYou.FirstOrDefault();
 
                     //Checks if user is already in queue.
                     var checkIfAlreadyInQueue = from u in context.MatchmakingSearches
@@ -1219,9 +1240,10 @@ namespace ArenaStars.Controllers
                     {
                         foreach (var participant in game.Participants)
                         {
-                            if (participant.Username.ToLower() == you.Username.ToLower())
+                            if (participant.Username.ToLower() == you.Username.ToLower() && game.HasEnded == false)
                             {
                                 errorMessages.Add("You cannot queue if you are already in a game!");
+                                break;
                             }
                         }
                     }
@@ -1266,15 +1288,21 @@ namespace ArenaStars.Controllers
             User opponent = new Models.User();
             MatchmakingSearch fakeYou;
             MatchmakingSearch fakeOpp;
-            Server chosenServer = new Models.Server();
+            Server chosenServer = new Models.Server()
+            {
+                Name = "NoServerFound",
+                IPaddress = "0",
+            };
+            string uname = "";
 
             if ((bool)Session["isLoggedIn"] == true)
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
+                    uname = Session["username"].ToString();
                     //Gets your User.
                     you = (User)from u in context.Users
-                                where u.Username.ToLower() == Session["username"].ToString().ToLower()
+                                where u.Username.ToLower() == uname.ToLower()
                                 select u;
 
                     var checkIfQueueStarted = from mm in context.MatchmakingSearches
@@ -1297,9 +1325,10 @@ namespace ArenaStars.Controllers
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())
                 {
+                    uname = Session["username"].ToString();
                     //Gets your User.
                     you = (User)from u in context.Users
-                                where u.Username.ToLower() == Session["username"].ToString().ToLower()
+                                where u.Username.ToLower() == uname.ToLower()
                                 select u;
 
                     int eloMinCap = you.Elo - timeSearched;
@@ -1390,7 +1419,8 @@ namespace ArenaStars.Controllers
 
             myObject = new
             {
-                errors = errorMessages
+                errors = errorMessages,
+                serverInfo = chosenServer
             };
 
             return Json(new { data = myObject }, JsonRequestBehavior.DenyGet);
