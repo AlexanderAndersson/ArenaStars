@@ -2,22 +2,23 @@
 
 ## **Funktioner att göra**
 ###### **Admin tools** ######
-- Edit/Remove user info
-- Suspend
-- Add tournament
+- [] Edit/Remove user info
+- [] Suspend user
+- [x] Create tournament
 
 ###### **Signup/In** ######
-- ~~LogIn~~
-- ~~Register~~
-- ~~Log Out~~
+- [x] LogIn
+- [x] Register
+- [x] Log Out
 
 ###### **Other** ######
-- Matchmaking
-- User edit
-- Profil pic
-- Rivals
-- Search
-- Hash pawssord
+- [] Matchmaking
+- [] User edit
+- [] Profil pic
+- [] Rivals
+- [] Search
+- [] Hash pawssord
+- [] Join tournament
 
 ## **Tournament types**
 - **Veteran:** Spelare som har vunnit x antal turneringar tidigare
