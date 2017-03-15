@@ -17,6 +17,8 @@ namespace ArenaStars.Models
 
         public DateTime? PlayedDate { get; set; }
 
+        public bool HasEnded { get; set; }
+
         public string Map { get; set; }
 
         public virtual IList<GameStats> GameStats { get; set; }
