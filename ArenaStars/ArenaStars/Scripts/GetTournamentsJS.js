@@ -37,7 +37,7 @@ function GetTournaments() {
         success: function (data) {
             let tournamentList = data.tournamentList;
 
-            let outputTournaments = $("#tournamentList");
+            let outputTournaments = $(".tournamentList");
 
 
             for (let i = 0; i < tournamentList.length; i++)

@@ -109,7 +109,7 @@ namespace ArenaStars.Controllers
                 {
                     #region info
 
-                    Username = "linustechtips",
+                    Username = "LinusTechTips",
                     Firstname = "Linus",
                     Lastname = "Eriksson",
                     Country = "Sweden",
@@ -1155,15 +1155,15 @@ namespace ArenaStars.Controllers
             return View(userList);
         }
 
-        public ActionResult StopMatchMakeSearch()
-        {
+        //public ActionResult StopMatchMakeSearch()
+        //{
 
-        }
+        //}
 
-        public ActionResult StartMatchMakeSearch()
-        {
+        //public ActionResult StartMatchMakeSearch()
+        //{
 
-        }
+        //}
 
         public ActionResult MatchMakeSearch(int timeSearched)
         {
@@ -1271,7 +1271,7 @@ namespace ArenaStars.Controllers
                 myObject = new
                 {
                     success = true,
-                    gameId
+                    //gameId
                 };
             }
             else
@@ -1285,11 +1285,11 @@ namespace ArenaStars.Controllers
             return Json(new { data = myObject }, JsonRequestBehavior.DenyGet);
         }
 
-        public List<string> BookServer()
-        {
-            List<string> errorList = new List<string>();
+        //public List<string> BookServer()
+        //{
+        //    List<string> errorList = new List<string>();
 
 
-        }
+        //}
     }
 }

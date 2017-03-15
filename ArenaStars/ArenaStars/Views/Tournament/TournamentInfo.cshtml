@@ -9,6 +9,8 @@
 <div id="tInfo" class="white">
     @foreach (Tournament t in ViewBag.Tournament)
     {
+        string minRank = "/Images/Rank/" + t.MinRank + ".png";
+        string maxRank = "/Images/Rank/" + t.MaxRank + ".png";
         <br />
         <div class="tournamentInfo">
             <div>
@@ -32,17 +34,22 @@
             <hr />
             <div>
                 <span class="bold">Min Rank</span>
-                <span>@t.MinRank</span>
+                <span>@t.MinRank <img src="@minRank"/></span>
             </div>
             <hr />
             <div>
                 <span class="bold">Max Rank</span>
-                <span>@t.MaxRank</span>
+                <span>@t.MaxRank <img src="@maxRank" /></span>
             </div>
             <hr />
             <div>
                 <span class="bold">Created</span>
                 <span>@t.CreatedDate.Value.Day @t.CreatedDate.Value.ToString("MMM") - @t.CreatedDate.Value.ToShortTimeString()</span>
+            </div>
+            <hr />
+            <div>
+                <span class="bold">Limit</span>
+                <span>@t.PlayerLimit Players</span>
             </div>
             <hr />
         </div>
@@ -61,23 +68,38 @@
                     <h4 style="font-style: italic">@t.Winner.Username</h4>
                     <img class="center" src="@t.TrophyPic" />
                 }
+                else if ((bool)Session["isLoggedIn"] && ViewBag.IsParticipating == true)
+                {
+                    <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
+                    <h4>TROPHY</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                    <button id="@t.Id" type="button" class="btn btn-danger leaveBtn">LEAVE</button>
+                    <button id="@t.Id" style="display:none" type="button" class="btn btn-success joinBtn">JOIN</button>
+                }
+                else if ((bool)Session["isLoggedIn"])
+                {
+                    <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
+                    <h4>TROPHY</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                    <button id="@t.Id" type="button" class="btn btn-success joinBtn">JOIN</button>
+                    <button id="@t.Id" style="display:none"  type="button" class="btn btn-danger leaveBtn">LEAVE</button>
+                }
                 else
                 {
                     <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
                     <h4>TROPHY</h4>
                     <img class="center" src="@t.TrophyPic" />
-                    <button class="btn btn-success">JOIN</button>
                 }
             </div>
         </div>
     }
     <div class="playerList">
-        <div>
-            <h4 class="bold">PLAYERS</h4>
-        </div>
-        <hr />
         @if (ViewBag.Participants.Count == 0)
         {
+            <div>
+                <h4 class="bold">PLAYERS <span class="playerLimit">(0 / @ViewBag.PlayerLimit)</span></h4>
+            </div>
+            <hr />
             <div>
                 <span class="bold">No players have joined this tournament</span>
             </div>
@@ -85,6 +107,11 @@
         }
         else
         {
+            <div>
+                <h4 class="bold">PLAYERS @*<span class="playerLimit">(@ViewBag.Participants.Count / @ViewBag.PlayerLimit)</span>*@</h4>
+                
+            </div>
+            <hr />
             foreach (User u in ViewBag.Participants)
             {
                 string rankPic = "/Images/Rank/" + u.Rank + ".png";
@@ -96,6 +123,8 @@
                 count++;
             }
         }
+        <div id="newParticipant"></div>
     </div>
 </div>
 
+<script src="~/Scripts/TournamnetInfo.js"></script>

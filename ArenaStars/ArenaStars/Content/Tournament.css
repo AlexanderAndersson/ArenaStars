@@ -91,6 +91,15 @@ hr {
     float: left;
 }
 
+.tournamentInfo img {
+    width: 25px;
+}
+
 .bold + span {
     float: right;
+}
+
+.playerLimit {
+    font-size: small;
+    font-weight: normal;
 }
