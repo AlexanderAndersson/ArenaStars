@@ -21,6 +21,8 @@ namespace ArenaStars.Models
 
         public string Map { get; set; }
 
+        public virtual Server Server { get; set; }
+
         public virtual IList<GameStats> GameStats { get; set; }
 
         public TournamentGameTypeEnum TournamentGameType { get; set; }
