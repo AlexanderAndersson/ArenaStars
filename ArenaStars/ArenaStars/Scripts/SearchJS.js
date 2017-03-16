@@ -1,6 +1,4 @@
-﻿$(document).ready(function () {
-
-    
+﻿$(document).ready(function () {   
     $("#searchInput").on("keyup", function () {
         let searchString = $("#searchInput").val();
         if (searchString.length > 1) {
@@ -11,28 +9,17 @@
                 $("#showAllUserResults").on("click", function () {
                     ClickShowAllResults();
                 });
-
                 $(".searchUserItem").on("click", function () {
                     let clickedUsername = $(this).find('.searchUserUsernameSpan').html();
                     ClickUser(clickedUsername);
                 });
-            }, 75);
-            
-
-
+            }, 75);           
         }
         else {
             $("#searchResultBox").hide();
-        }
-        
+        }        
     });
-
-
-
-
-
 });
-
 
 
 function ClickShowAllResults() {
@@ -65,7 +52,6 @@ function SearchForUser(searchString) {
                 + '<hr />'
                 );
             
-
             if (userList.length > 0) {
                 for (let i = 0; i < userList.length; i++) {
                     outputBox.append(
@@ -81,10 +67,8 @@ function SearchForUser(searchString) {
                 }
             }
             else {
-                outputBox.append('No user with that username.');
-            }
-
-            
+                outputBox.append('<p id="noUser">No user with that username</p>');
+            }        
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -92,5 +76,4 @@ function SearchForUser(searchString) {
             console.log("errorThrown: " + errorThrown);
         }
     });
-
 };

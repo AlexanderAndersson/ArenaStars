@@ -76,17 +76,38 @@ namespace ArenaStars.Controllers
             Tournament updateTournament = tournament.ToList().FirstOrDefault();
             User currentUser = loggedInUser.ToList().FirstOrDefault();
 
-            updateTournament.Participants.Add(currentUser);
-            context.SaveChanges();
 
-            var participantInfo = new
+            if (currentUser.Rank < updateTournament.MinRank || currentUser.Rank > updateTournament.MaxRank)
             {
-                Username = currentUser.Username,
-                Rank = currentUser.Rank.ToString(),
-                Count = updateTournament.Participants.Count
-            };
+                var participantInfo = new
+                {
+                    Username = currentUser.Username,
+                    Rank = currentUser.Rank.ToString(),
+                    Count = updateTournament.Participants.Count,
+                    IntRank = currentUser.Rank,
+                    MinRank = updateTournament.MinRank,
+                    MaxRank = updateTournament.MaxRank
+                };
 
-            return Json(new { info = participantInfo }, JsonRequestBehavior.DenyGet);
+                return Json(new { info = participantInfo }, JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                updateTournament.Participants.Add(currentUser);
+                context.SaveChanges();
+
+                var participantInfo = new
+                {
+                    Username = currentUser.Username,
+                    Rank = currentUser.Rank.ToString(),
+                    Count = updateTournament.Participants.Count,
+                    IntRank = currentUser.Rank,
+                    MinRank = updateTournament.MinRank,
+                    MaxRank = updateTournament.MaxRank
+                };
+
+                return Json(new { info = participantInfo }, JsonRequestBehavior.DenyGet);
+            }
         }
 
         public ActionResult LeaveTournament(long pId)
@@ -107,8 +128,8 @@ namespace ArenaStars.Controllers
             updateTournament.Participants.Remove(currentUser);
             context.SaveChanges();
 
-
-            return RedirectToAction("Index/Tournament");
+            //return RedirectToAction("/TournamentInfo", "Tournament", new { id = pId });
+            return Json(JsonRequestBehavior.DenyGet);
         }
     }
 }

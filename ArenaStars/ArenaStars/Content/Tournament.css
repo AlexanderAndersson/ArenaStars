@@ -75,6 +75,12 @@ hr {
 
 #joinDiv button {
     width: 300px;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+#errorBtn {
+    color: #dd0c0c;
 }
 
 #joinDiv img {
@@ -102,4 +108,8 @@ hr {
 .playerLimit {
     font-size: small;
     font-weight: normal;
+}
+
+.btnFull {
+    cursor: not-allowed;
 }

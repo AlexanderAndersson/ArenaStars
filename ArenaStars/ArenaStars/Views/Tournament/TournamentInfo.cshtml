@@ -76,6 +76,13 @@
                     <button id="@t.Id" type="button" class="btn btn-danger leaveBtn">LEAVE</button>
                     <button id="@t.Id" style="display:none" type="button" class="btn btn-success joinBtn">JOIN</button>
                 }
+                else if ((bool)Session["isLoggedIn"] && t.PlayerLimit == t.Participants.Count)
+                {
+                    <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
+                    <h4>TROPHY</h4>
+                    <img class="center" src="@t.TrophyPic" />
+                    <button id="@t.Id" type="button" class="btn btn-primary btnFull">FULL</button>
+                }
                 else if ((bool)Session["isLoggedIn"])
                 {
                     <h4>Tournament starts @t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</h4>
@@ -83,6 +90,7 @@
                     <img class="center" src="@t.TrophyPic" />
                     <button id="@t.Id" type="button" class="btn btn-success joinBtn">JOIN</button>
                     <button id="@t.Id" style="display:none"  type="button" class="btn btn-danger leaveBtn">LEAVE</button>
+                    <button id="errorBtn" style="display:none" type="button" class="btn btn-warning"></button>
                 }
                 else
                 {
@@ -97,10 +105,10 @@
         @if (ViewBag.Participants.Count == 0)
         {
             <div>
-                <h4 class="bold">PLAYERS <span class="playerLimit">(0 / @ViewBag.PlayerLimit)</span></h4>
+                <h4 class="bold">PLAYERS</h4>
             </div>
-            <hr />
-            <div>
+            <div id="firstJoinedUser">
+                <hr />
                 <span class="bold">No players have joined this tournament</span>
             </div>
             <hr />
@@ -108,8 +116,7 @@
         else
         {
             <div>
-                <h4 class="bold">PLAYERS @*<span class="playerLimit">(@ViewBag.Participants.Count / @ViewBag.PlayerLimit)</span>*@</h4>
-                
+                <h4 class="bold">PLAYERS</h4>                
             </div>
             <hr />
             foreach (User u in ViewBag.Participants)

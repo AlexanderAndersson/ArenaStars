@@ -150,11 +150,14 @@ li > .logInBtn, .logOutBtn {
   width: 100% !important;
 }*/
 
+/**********************SEARCHBOX**********************/
+
 #searchResultBox {
     width:250px;
     height:300px;
     background-color:#141616;
-    border:1px solid red;
+    border:1px solid #323737;
+    border-radius: 3px;
     position:absolute;
     margin-left:15px;
     display:none;
@@ -240,4 +243,8 @@ li > .logInBtn, .logOutBtn {
     margin-left:5px;
     font-weight:bold;
     color:white;
+}
+
+#noUser {
+    margin-left: 30px;
 }

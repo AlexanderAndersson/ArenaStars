@@ -10,9 +10,13 @@ $(document).ready(function () {
         GetTournaments();
     });
 
-
+    setTimeout(function () {
+        $(".tournamentList").on("click", function () {
+            var id = $(this).attr("id");
+            window.location.href = '/Tournament/TournamentInfo?id=' + id;
+        });
+    }, 200);
 });
-
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -37,14 +41,14 @@ function GetTournaments() {
         success: function (data) {
             let tournamentList = data.tournamentList;
 
-            let outputTournaments = $(".tournamentList");
+            let outputTournaments = $(".newTournaments");
 
 
             for (let i = 0; i < tournamentList.length; i++)
             {
-
                 outputTournaments.append(
-                      '<div>'
+                    '<div id="' + tournamentList[i].Id + '"class="tournamentList">'
+                    + '<div>'
                         + '<span class="bold">STARTS</span><br />'
                         + '<span>' + GetDay(tournamentList[i].StartDate) + ' ' + monthsShort[GetMonth(tournamentList[i].StartDate) - 1].toLowerCase() + ' - ' + GetHourAndMinute(tournamentList[i].StartDate) + '</span>'
                     + '</div>'
