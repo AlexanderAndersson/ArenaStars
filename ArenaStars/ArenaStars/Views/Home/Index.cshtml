@@ -37,14 +37,21 @@
         <h4><u>Ranked Game Winners</u></h4>
         @foreach (Game game in ViewBag.RGames)
         {
-            <h5>@game.Winner.Username</h5>
+            if (game.Winner != null)
+            {
+                <h5>@game.Winner.Username</h5>
+            }
+
         }
     </div>
     <div class="inline-block">
         <h4><u>Tournament Game Winners</u></h4>
         @foreach (Game game in ViewBag.TGames)
         {
-            <h5>@game.Winner.Username</h5>
+            if (game.Winner != null)
+            {
+                <h5>@game.Winner.Username</h5>
+            }
         }
     </div>
     <div class="inline-block">

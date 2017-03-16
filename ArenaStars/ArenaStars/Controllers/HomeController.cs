@@ -17,11 +17,11 @@ namespace ArenaStars.Controllers
             context.Database.Initialize(true);
 
             var rankedGames = from g in context.Games
-                              where g.Type == Game.GameTypeEnum.Ranked
+                              where g.Type == Game.GameTypeEnum.Ranked && g.HasEnded == true
                               select g;
 
             var tournamentGames = from t in context.Games
-                                  where t.Type == Game.GameTypeEnum.Tournament
+                                  where t.Type == Game.GameTypeEnum.Tournament && t.HasEnded == true
                                   select t;
 
             var tournamentWinners = from t in context.Tournaments
@@ -1114,6 +1114,9 @@ namespace ArenaStars.Controllers
 
                 #endregion
 
+                //Adding servers to database
+                context.Servers.Add(serverOne);
+
                 //Saving changes to database
                 context.SaveChanges();
             }
@@ -1272,6 +1275,7 @@ namespace ArenaStars.Controllers
             return Json(new { errors = errorMessages }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public ActionResult MatchMakeSearch(int timeSearched)
         {
             //Checks för att kunna söka.
@@ -1294,6 +1298,7 @@ namespace ArenaStars.Controllers
                 IPaddress = "0",
             };
             string uname = "";
+            long gameId = 0;
 
             if ((bool)Session["isLoggedIn"] == true)
             {
@@ -1301,9 +1306,11 @@ namespace ArenaStars.Controllers
                 {
                     uname = Session["username"].ToString();
                     //Gets your User.
-                    you = (User)from u in context.Users
+                    var getYouUser = from u in context.Users
                                 where u.Username.ToLower() == uname.ToLower()
                                 select u;
+
+                    you = getYouUser.FirstOrDefault();
 
                     var checkIfQueueStarted = from mm in context.MatchmakingSearches
                                               where mm.Username.ToLower() == you.Username.ToLower()
@@ -1327,12 +1334,14 @@ namespace ArenaStars.Controllers
                 {
                     uname = Session["username"].ToString();
                     //Gets your User.
-                    you = (User)from u in context.Users
+                    var getYouUser = from u in context.Users
                                 where u.Username.ToLower() == uname.ToLower()
                                 select u;
 
-                    int eloMinCap = you.Elo - timeSearched;
-                    int eloMaxCap = you.Elo + timeSearched;
+                    you = getYouUser.FirstOrDefault();
+
+                    int eloMinCap = you.Elo - timeSearched - 70;
+                    int eloMaxCap = you.Elo + timeSearched + 70;
 
                     //Gets opponent based off of elo min & max cap, not same username (you) and not found game.
                     var possibleOpponents = from u in context.MatchmakingSearches
@@ -1362,14 +1371,17 @@ namespace ArenaStars.Controllers
                             fakeOpp = possibleOpponents.FirstOrDefault();
                             fakeOpp.foundGame = true;
 
-                            opponent = (User)from u in context.Users
+                            var getOpponentUser = from u in context.Users
                                              where u.Username.ToLower() == fakeOpp.Username.ToLower()
                                              select u;
 
-                            fakeYou = (MatchmakingSearch)
-                                        from u in context.MatchmakingSearches
-                                        where u.Username.ToLower() == you.Username.ToLower()
-                                        select u;
+                            opponent = getOpponentUser.FirstOrDefault();
+
+                            var getFakeYou = from u in context.MatchmakingSearches
+                                      where u.Username.ToLower() == you.Username.ToLower()
+                                      select u;
+
+                            fakeYou = getFakeYou.FirstOrDefault();
 
                             fakeYou.foundGame = true;
 
@@ -1378,16 +1390,21 @@ namespace ArenaStars.Controllers
                             Game newGame = new Game()
                             {
                                 Participants = new List<User>()
-                            {
-                                you,
-                                opponent
-                            },
+                                {
+                                    you,
+                                    opponent
+                                },
                                 PlayedDate = DateTime.Now,
                                 Type = Game.GameTypeEnum.Ranked,
                                 Map = "aim_map",
                                 TournamentGameType = Game.TournamentGameTypeEnum.Not_In_Tournament,
-                                HasEnded = false
+                                HasEnded = false,
+                                Server = chosenServer
                             };
+                            you.Games.Add(newGame);
+                            opponent.Games.Add(newGame);
+                            context.MatchmakingSearches.Remove(fakeOpp);
+                            context.MatchmakingSearches.Remove(fakeYou);
                         }
                         
                     }
@@ -1400,32 +1417,71 @@ namespace ArenaStars.Controllers
                 }
             }
 
+            if (errorMessages.Count == 0)
+            {
+                var getGameId = from g in you.Games
+                                where g.HasEnded == false
+                                select g.Id;
 
-            //if (errorMessages.Count < 1)
-            //{
-            //    myObject = new
-            //    {
-            //        success = true
-
-            //    };
-            //}
-            //else
-            //{
-            //    myObject = new
-            //    {
-            //        errors = errorMessages
-            //    };
-            //}
+                gameId = getGameId.FirstOrDefault();
+            }
 
             myObject = new
             {
                 errors = errorMessages,
-                serverInfo = chosenServer
+                gameId = gameId
             };
 
-            return Json(new { data = myObject }, JsonRequestBehavior.DenyGet);
+            return Json(new { searchData = myObject }, JsonRequestBehavior.DenyGet);
         }
 
+        public ActionResult CheckIfFoundGame()
+        {
+            bool foundGame = false;
+            long gameId = 0;
+            string uname = "";
+
+            if ((bool)Session["isLoggedIn"])
+            {
+                uname = Session["username"].ToString();
+                using (ArenaStarsContext context = new ArenaStarsContext())
+                {
+                    var getYouUser = from u in context.Users
+                                     where u.Username.ToLower() == uname.ToLower()
+                                     select u;
+
+                    User you = getYouUser.FirstOrDefault();
+
+                    var getActiveGames = from g in you.Games
+                                         where g.HasEnded == false
+                                         select g;
+
+                    if (getActiveGames.Count() > 0)
+                    {
+                        Game activeGame = getActiveGames.FirstOrDefault();
+
+                        gameId = activeGame.Id;
+                        foundGame = true;
+                    }
+
+                }
+            }
+            
+
+            object response = new
+            {
+                gameId = gameId,
+                foundGame = foundGame
+            };
+            return Json(new { response = response }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GameRoom(long gameId)
+        {
+
+
+            return View();
+        }
 
     }
 }
