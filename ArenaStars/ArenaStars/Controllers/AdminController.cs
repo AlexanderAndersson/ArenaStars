@@ -38,7 +38,7 @@ namespace ArenaStars.Controllers
                 MinRank = pMinRank,
                 MaxRank = pMaxRank,
                 CreatedDate = DateTime.Now,
-                TrophyPic = "~/Images/Trophy/Trophy1.png"
+                TrophyPic = "/Images/Trophy/Trophy1.png"
             };
 
             context.Tournaments.Add(newTournament);
@@ -46,6 +46,7 @@ namespace ArenaStars.Controllers
 
             var tournament = new
             {
+                Id = newTournament.Id,
                 Name = newTournament.Name,
                 StartDate = newTournament.StartDate,
                 PlayerLimit = newTournament.PlayerLimit,

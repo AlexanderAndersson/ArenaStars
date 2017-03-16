@@ -30,7 +30,8 @@
         <h4><u>All Users</u></h4>
         @foreach (User user in ViewBag.Users)
         {
-            <h5>@user.Username</h5>
+            string rankPic = "/Images/Rank/" + user.Rank + ".png";
+            <h5>@user.Username <img style="width: 25px" src="@rankPic"/></h5>
         }
     </div>
     <div class="inline-block">

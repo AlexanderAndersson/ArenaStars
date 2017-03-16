@@ -1,25 +1,25 @@
 ﻿body {
 }
 
-#tournamentList {
+.tournamentList {
     background-color: #323737;
     border: 1px solid #4b4e4e;
     height: 65px;
     width: 792px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-#tournamentList div {
+.tournamentList div {
     padding: 10px;
     float: left;
     width: 180px;
 }
 
-#tournamentList div span {
+.tournamentList div span {
     float: left;
 }
 
-#tournamentList:hover {
+.tournamentList:hover {
     text-decoration: none !important;
     cursor: pointer;
     background-color: #3d4444;

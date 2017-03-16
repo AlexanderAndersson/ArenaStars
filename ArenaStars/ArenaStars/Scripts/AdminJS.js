@@ -4,17 +4,19 @@
             dow: 1 // Monday is the first day of the week
         }
     });
-
     $(function () {
         $('#datetimepicker1').datetimepicker({
             format: 'MM/DD/YYYY HH:mm'
         });
     });
-
     $(function () {
         $('#datetimepicker2').datetimepicker({
             format: 'MM/DD/YYYY HH:mm',
         });
+    });
+    $(".tournamentList").on("click", function () {
+        var id = $(this).attr("id");
+        window.location.href = '/Tournament/TournamentInfo?id=' + id;
     });
 });
 
@@ -35,6 +37,12 @@ $("#addTournamentBtn").on("click", function () {
     $('#tForm').find('select').val('');
 
     AddTournament(name, playerlimit, startdate, checkin, type, minrank, maxrank);
+    setTimeout(function () {
+        $(".tournamentList").on("click", function () {
+            var id = $(this).attr("id");
+            window.location.href = '/Tournament/TournamentInfo?id=' + id;
+        });
+    }, 200);
 });
 
 function AddTournament(name, playerlimit, startdate, checkin, type, minrank, maxrank) {
@@ -61,7 +69,7 @@ function AddTournament(name, playerlimit, startdate, checkin, type, minrank, max
             var time = startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             var html =
-                '<div id="tournamentList">'
+                '<div id="' +  newT.Id + '"class="tournamentList">'
                     + '<div>'
                         + '<span class="bold">STARTS</span>' + '<br />'
                         + '<span>' + date + ' ' + month + ' - ' + time + '</span>'
