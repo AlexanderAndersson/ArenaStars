@@ -1478,9 +1478,112 @@ namespace ArenaStars.Controllers
 
         public ActionResult GameRoom(long gameId)
         {
+            Game game;
+            ViewGame viewGame;
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var getGame = from g in context.Games
+                              where g.Id == gameId
+                              select g;
 
+                game = getGame.FirstOrDefault();
+                if (game.HasEnded == true)
+                {
+                    viewGame = new ViewGame()
+                    {
+                        Id = game.Id,
+                        Server = game.Server,
+                        Map = game.Map,
+                        HasEnded = game.HasEnded,
+                        Type = game.Type,
+                        TournamentGameType = game.TournamentGameType,
+                        PlayedDate = game.PlayedDate,
+                        Participants = new List<ViewUser>()
+                        {
+                            new ViewUser()
+                            {
+                                Username = game.Participants.FirstOrDefault().Username,
+                                ProfilePic = game.Participants.FirstOrDefault().ProfilePic,
+                                Rank = game.Participants.FirstOrDefault().Rank,
+                                Country = game.Participants.FirstOrDefault().Country,
+                                Elo = game.Participants.FirstOrDefault().Elo,
+                                SteamId = game.Participants.FirstOrDefault().SteamId
+                            },
+                            new ViewUser()
+                            {
+                                Username = game.Participants.LastOrDefault().Username,
+                                ProfilePic = game.Participants.LastOrDefault().ProfilePic,
+                                Rank = game.Participants.LastOrDefault().Rank,
+                                Country = game.Participants.LastOrDefault().Country,
+                                Elo = game.Participants.LastOrDefault().Elo,
+                                SteamId = game.Participants.LastOrDefault().SteamId
+                            }
+                        },
+                        Winner = new ViewUser
+                        {
+                            Username = game.Winner.Username,
+                            ProfilePic = game.Winner.ProfilePic,
+                            Rank = game.Winner.Rank,
+                            Country = game.Winner.Country,
+                            Elo = game.Winner.Elo,
+                            SteamId = game.Winner.SteamId
+                        },
+                        GameStats = new List<ViewGamestat>()
+                        {
+                            new ViewGamestat()
+                            {
+                                SteamId = game.Participants.FirstOrDefault().SteamId,
+                                Kills = game.GameStats.FirstOrDefault().Kills,
+                                Deaths = game.GameStats.FirstOrDefault().Deaths,
+                                HsRatio = game.GameStats.FirstOrDefault().HsRatio
+                            },
+                            new ViewGamestat()
+                            {
+                                SteamId = game.Participants.LastOrDefault().SteamId,
+                                Kills = game.GameStats.LastOrDefault().Kills,
+                                Deaths = game.GameStats.LastOrDefault().Deaths,
+                                HsRatio = game.GameStats.LastOrDefault().HsRatio
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    viewGame = new ViewGame()
+                    {
+                        Id = game.Id,
+                        Server = game.Server,
+                        Map = game.Map,
+                        HasEnded = game.HasEnded,
+                        Type = game.Type,
+                        TournamentGameType = game.TournamentGameType,
+                        Participants = new List<ViewUser>()
+                        {
+                            new ViewUser()
+                            {
+                                Username = game.Participants.FirstOrDefault().Username,
+                                ProfilePic = game.Participants.FirstOrDefault().ProfilePic,
+                                Rank = game.Participants.FirstOrDefault().Rank,
+                                Country = game.Participants.FirstOrDefault().Country,
+                                Elo = game.Participants.FirstOrDefault().Elo,
+                                SteamId = game.Participants.FirstOrDefault().SteamId
+                            },
+                            new ViewUser()
+                            {
+                                Username = game.Participants.LastOrDefault().Username,
+                                ProfilePic = game.Participants.LastOrDefault().ProfilePic,
+                                Rank = game.Participants.LastOrDefault().Rank,
+                                Country = game.Participants.LastOrDefault().Country,
+                                Elo = game.Participants.LastOrDefault().Elo,
+                                SteamId = game.Participants.LastOrDefault().SteamId
+                            }
+                        }
+                    };
+                }
+                
+            }
 
-            return View();
+                return View();
         }
 		
 		
