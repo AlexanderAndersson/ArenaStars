@@ -129,6 +129,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\ArenaStars Logo.png" />
     <Content Include="Images\Country\Albania.png" />
     <Content Include="Images\Country\Andorra.png" />
     <Content Include="Images\Country\Armenia.png" />
@@ -274,6 +275,11 @@
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Rank\Challanger.png" />
+    <Content Include="Images\Rank\GrandMaster.png" />
+    <Content Include="Images\Rank\Legend.png" />
+    <Content Include="Images\Rank\Platinum.png" />
+    <Content Include="Images\Rank\Unranked.png" />
     <Content Include="Images\Trophy\Trophy1.png" />
     <Content Include="Images\Trophy\Trophy2.png" />
     <Content Include="Images\Trophy\Trophy3.png" />
@@ -351,7 +357,6 @@
     <Content Include="Views\Admin\Reports.cshtml" />
     <Content Include="Views\Tournament\TournamentInfo.cshtml" />
     <Content Include="Views\Home\UserShowAll.cshtml" />
-    <Content Include="Views\Home\GameRoom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
