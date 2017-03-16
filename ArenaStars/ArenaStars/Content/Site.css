@@ -2,26 +2,25 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background: #1e2222 !important;
-    overflow-y:scroll;
+    overflow-y: scroll !important;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    color: #f1f1f1;
-    font-family: "Arial Unicode MS";
+    font-family: "Arial Unicode MS" !important;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select
 textarea {
-    max-width: 280px;
-    color: black !important;
+    /*max-width: 280px;*/
+    /*color: black !important;*/
 }
 
-/*************RESPONSIVE media stuff***************/
+/*************RESPONSIVE media for NAVBAR***************/
 
 @media (min-width: 768px) and (max-width: 1033px) {
     #searchBarNav { display: none; }
@@ -36,6 +35,10 @@ textarea {
 }
 
 /*******************NAVBAR*********************/
+
+.loginmodal-container input {
+    max-width: 280px;
+}
 
 .activeNav {
     background-color: #2a2d2d;
@@ -54,6 +57,7 @@ textarea {
     color: white !important;
     border-color: #1e2222 !important;
     font-family: "Arial Unicode MS";
+    width:250px;
 }
 
 .container-fluid {
@@ -75,7 +79,7 @@ textarea {
     color: white !important;
 }
 
-.registerBtn {
+#regBtnNav {
      margin-right: 10px !important;
 }
 
@@ -121,4 +125,119 @@ li > .logInBtn, .logOutBtn {
     background-color: #323535;
     outline: 1px solid slategrey;
     -webkit-border-radius: 10px;
+}
+
+
+/***************OTHER*******************/
+
+.white {
+    color: white !important;
+}
+
+.homePageContent div {
+    /*padding: 10px;*/
+    float: left;
+    width: 180px;
+}
+
+.homeReports {
+    width: 400px !important;
+}
+
+/************100% width på alla sidor***************/
+/*.container {
+  margin: 0 auto !important;
+  width: 100% !important;
+}*/
+
+#searchResultBox {
+    width:250px;
+    height:300px;
+    background-color:#141616;
+    border:1px solid red;
+    position:absolute;
+    margin-left:15px;
+    display:none;
+    color:white;
+}
+
+.searchAllResultsSpan {
+    margin:auto;
+    background-color:#323737;
+    width:230px;
+    height:30px;
+    display:block;
+    margin: 10px;
+    padding-left:25%;
+    padding-top:5px;
+}
+
+.searchAllResultsSpan:hover {
+    background-color:#3d4444;
+    cursor:pointer;
+}
+
+.searchAllResultsSpan a {
+    text-decoration:none !important;
+    color:white !important;
+}
+
+#searchResultBox hr {
+    border-color:#4b4e4e;
+    margin: 10px 10px 15px 10px;
+}
+
+.searchUserItem {
+    width:100%;
+    margin-bottom:5px;
+    background-color:#323737;
+}
+
+.searchUserItem:hover {
+    background-color:#3d4444;
+    cursor:pointer;
+}
+
+.searchUserItem:active {
+    border:1px solid orange;
+}
+
+#searchResultBox div {
+    display:inline-block;
+    float:left;
+    width:100%;
+}
+
+#searchResultBox div img {
+    /*width:30px !important;
+    height:20px !important;*/
+    display:inline !important;
+}
+
+.searchUserProfilePic {
+    width:30px !important;
+    height:30px !important;
+}
+
+.searchUserCountryPic {
+    width:30px !important;
+    height:15px !important;
+    margin-left:5px;
+}
+
+.searchUserRankPic {
+    width:20px !important;
+    height:20px !important;
+}
+
+.searchUserRankSpan {
+    float:right !important;
+    margin-right:10px !important;
+    margin-top:5px;
+}
+
+.searchUserUsernameSpan {
+    margin-left:5px;
+    font-weight:bold;
+    color:white;
 }

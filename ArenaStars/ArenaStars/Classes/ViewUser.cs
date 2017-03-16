@@ -34,6 +34,10 @@ namespace ArenaStars.Classes
 
         public int Elo { get; set; }
 
+        public List<ViewTournament> Tournaments { get; set; }
+
+        public List<ViewGame> Games { get; set; }
+
         public bool IsTerminated { get; set; }
 
         public string BanReason { get; set; }
@@ -53,6 +57,10 @@ namespace ArenaStars.Classes
         public int placeInCountry { get; set; }
 
         public int placeInWorld { get; set; }
+
+        public double winPercentage { get; set; }
+
+        public string RankString { get; set; }
 
     }
 }

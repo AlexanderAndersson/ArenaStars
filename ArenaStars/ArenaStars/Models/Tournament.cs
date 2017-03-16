@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArenaStars.Models
 {
     public class Tournament
     {
         public long Id { get; set; }
+
         public string Name { get; set; }
 
-        public DateTime? CreatedDate{ get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public DateTime? CheckInDate { get; set; }
 
@@ -38,6 +40,6 @@ namespace ArenaStars.Models
 
         public virtual User Winner { get; set; }
 
-        public enum TournamentTypeEnum { Veteran, AllStars, Open, Invite, Unproven }
+        public enum TournamentTypeEnum { Veteran = 1, AllStars = 2, Open = 3, Invite = 4, Unproven = 5 }
     }
 }

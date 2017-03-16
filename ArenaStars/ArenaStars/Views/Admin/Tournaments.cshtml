@@ -1,0 +1,81 @@
+﻿@using ArenaStars.Models;
+@model ArenaStars.Models.Tournament
+@{
+    ViewBag.Title = "Create Tournament";
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+    <script type="text/javascript" src="/scripts/moment.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
+}
+
+<br />
+<div class="white">
+    <h2>Create Tournament</h2>
+</div>
+<div id="tForm" class="container">
+    <form>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <h4>Name</h4>
+            <input class="form-control input-lg" type="text" id="name" />
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <h4>Player limit</h4>
+            <input class="form-control input-lg" type="number" min="2" id="playerLimit" />
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <h4>Type</h4>
+            @Html.EnumDropDownListFor(x => x.Type, new { @class = "form-control input-lg", @id = "type" })
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h4>Start Date</h4>
+            <input type='text' class="form-control input-lg" id='datetimepicker1' name="pStartDate" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h4>Check In</h4>
+            <input type='text' class="form-control input-lg" id='datetimepicker2' name="pCheckIn" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h4>Minimum Rank</h4>
+            @Html.EnumDropDownListFor(x => x.MinRank, new { @class = "form-control input-lg", @id = "minRank" })
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h4>Maximum Rank</h4>
+            @Html.EnumDropDownListFor(x => x.MaxRank, new { @class = "form-control input-lg", @id = "maxRank" })
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" id="addTournamentBtn" class="btn btn-success btn-lg">Create</button>
+        </div>
+    </form>
+</div>
+<div class="white">
+    <h2>Tournaments</h2>
+    <div id="newTournaments"></div>
+    @foreach (Tournament t in ViewBag.Tournaments)
+    {
+        <div id="tournamentList">
+            <div>
+                <span class="bold">STARTS</span> <br />
+                <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
+            </div>
+            <div>
+                <span class="bold">NAME</span><br />
+                <span>@t.Name</span>
+            </div>
+            <div>
+                <span class="bold">TYPE</span><br />
+                <span>@t.Type</span>
+            </div>
+            <div>
+                <span class="bold">RANKS</span><br />
+                <span>@t.MinRank - @t.MaxRank</span>
+            </div>
+            <div id="participants">
+                <span class="glyphicon glyphicon-user"></span><br />
+                <span>@t.Participants.Count / @t.PlayerLimit</span>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script src="~/Scripts/AdminJS.js"></script>

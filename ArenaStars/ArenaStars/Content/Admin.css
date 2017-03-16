@@ -1,0 +1,55 @@
+﻿body {
+}
+
+#tournamentList {
+    background-color: #323737;
+    border: 1px solid #4b4e4e;
+    height: 65px;
+    width: 792px;
+    margin-bottom: 15px;
+}
+
+#tournamentList div {
+    padding: 10px;
+    float: left;
+    width: 180px;
+}
+
+#tournamentList div span {
+    float: left;
+}
+
+#tournamentList:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #3d4444;
+}
+
+#participants {
+    text-align: center;
+    width: 70px !important;
+}
+
+#participants > span {
+    float: none !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#tForm h4 {
+    color: white;
+}
+
+#tForm div {
+    padding: 10px;
+    float: left;
+    /*width: 300px;*/
+}
+
+#tForm select,
+#tForm input {
+    font-size: large;
+    /*height: 35px;*/
+}

@@ -1,4 +1,5 @@
 ﻿using ArenaStars.Models;
+using ArenaStars.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ArenaStars.Controllers
 {
     public class UserController : Controller
     {
-        
+
         [HttpPost]
         public ActionResult Register(string username, string email, string password, string password2)
         {
@@ -30,8 +31,8 @@ namespace ArenaStars.Controllers
                         IsAdmin = false,
                         IsTerminated = false,
                         LastLoggedIn = DateTime.Now,
-                        ProfilePic = "~/Images/Profile/ProfilePicture_Default.jpg",
-                        BackgroundPic = "~/Images/Profile/ProfileBackground_Default.jpg",
+                        ProfilePic = "~ProfilePicture_Default.jpg",
+                        BackgroundPic = "ProfileBackground_Default.jpg",
                         Rank = Models.User.RankEnum.Unranked
                     };
 
@@ -76,6 +77,12 @@ namespace ArenaStars.Controllers
         {
             User user = new Models.User();
 
+            int gamesCount = 0;
+            string lastFiveGamesScore = "";
+            int placeInCountry = 0;
+            int placeInWorld = 0;
+            double winPercentage = 0;
+
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 var findUser = from u in context.Users
@@ -90,11 +97,94 @@ namespace ArenaStars.Controllers
 
                 user = findUser.FirstOrDefault();
 
+                gamesCount = user.Games.Count;
+                List<Game> lastFiveGames = user.Games.Take(5).ToList();
+
+                foreach (Game game in lastFiveGames)
+                {
+                    if (game.Winner.Username == user.Username)
+                        lastFiveGamesScore += "W";
+                    else
+                        lastFiveGamesScore += "L";
+                }
+
+                while (lastFiveGamesScore.Length < 5)
+                {
+                    lastFiveGamesScore += "-";
+                }
+
+                List<string> getAllUsersCountry = (from u in context.Users
+                                  where u.Country == user.Country
+                                  select u.Username).ToList();
+
+                var getAllUsersWorld = from u in context.Users
+                                       select u.Username;
+
+                for (int i = 0; i < getAllUsersCountry.Count(); i++)
+                {
+                    if (getAllUsersCountry.ElementAt(i) == user.Username)
+                    {
+                        placeInCountry = i + 1;
+                        break;
+                    }
+                }
+
+                int f = 0;
+                foreach (string u in getAllUsersWorld)
+                {
+                    if (u == user.Username)
+                    {
+                        placeInWorld = f + 1;
+                        break;
+                    }
+                    f++;
+                }
+
+                double tempWins = 0.0;
+                foreach (Game game in user.Games)
+                {
+                    if (game.Winner.Username == user.Username)
+                        tempWins++;
+                }
+
+                winPercentage = (tempWins / user.Games.Count) * 100;
+
             }
+			
+            ViewBag.ProfileSelected = "activeNav";
+            ViewBag.ProfileNavSelected = "activeNav";
 
-            user.Password = "************";
+            // TODO: Ge placeInCountry & placeInWorld riktiga värden.
 
-            return View(user);
+            ViewUser viewUser = new ViewUser()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                SteamId = user.SteamId,
+                Firstname = user.Firstname,
+                Lastname = user.Lastname,
+                Country = user.Country,
+                SignUpDate = user.SignUpDate,
+                LastLoggedIn = user.LastLoggedIn,
+                IsAdmin = user.IsAdmin,
+                Rank = user.Rank,
+                Level = user.Level,
+                Elo = user.Elo,
+                IsTerminated = user.IsTerminated,
+                BanReason = user.BanReason,
+                BanDuration = user.BanDuration,
+                ProfilePic = user.ProfilePic,
+                BackgroundPic = user.BackgroundPic,
+                
+                GamesCount = gamesCount,
+                LastFiveGamesScore = lastFiveGamesScore,
+                placeInCountry = placeInCountry,
+                placeInWorld = placeInWorld,
+                winPercentage = winPercentage
+            };
+
+            return View(viewUser);
         }
 
         public ActionResult UserNotFound()
@@ -124,19 +214,19 @@ namespace ArenaStars.Controllers
                         {
                             var newTournament = new
                             {
-                                CheckInDate = tournament.CheckInDate,
-                                CreatedDate = tournament.CreatedDate,
-                                StartDate = tournament.StartDate,
+                                CheckInDate = tournament.CheckInDate.ToString(),
+                                CreatedDate = tournament.CreatedDate.ToString(),
+                                StartDate = tournament.StartDate.ToString(),
                                 HasEnded = tournament.HasEnded,
                                 Id = tournament.Id,
                                 IsLive = tournament.IsLive,
-                                MaxRank = tournament.MaxRank,
-                                MinRank = tournament.MinRank,
+                                MaxRank = tournament.MaxRank.ToString(),
+                                MinRank = tournament.MinRank.ToString(),
                                 Name = tournament.Name,
                                 PlayerLimit = tournament.PlayerLimit,
                                 TrophyPic = tournament.TrophyPic,
-                                Type = tournament.Type,
-                                Winner = tournament.Winner.Username
+                                Type = tournament.Type.ToString(),
+                                ParticipantsCount = tournament.Participants.Count
                             };
                             tournaments.Add(newTournament);
                         }
@@ -155,7 +245,7 @@ namespace ArenaStars.Controllers
         public ActionResult GetGames(int shown, string username)
         {
             List<object> games = new List<object>();
-            int numberToDisplay = 20; //Maybe(probably) make it parameter
+            int numberToDisplay = 10; //Maybe(probably) make it parameter
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
@@ -178,7 +268,10 @@ namespace ArenaStars.Controllers
                                 ParticipantOne = game.Participants.FirstOrDefault().Username,
                                 ParticipantTwo = game.Participants.LastOrDefault().Username,
                                 Type = game.Type.ToString(),
-                                Winner = game.Winner.Username
+                                Winner = game.Winner.Username,
+                                PlayedDate = game.PlayedDate.ToString(),
+                                Kills = game.GameStats.FirstOrDefault().Kills,
+                                Deaths = game.GameStats.FirstOrDefault().Deaths
                             };
                             games.Add(newGame);
                         }
@@ -238,8 +331,8 @@ namespace ArenaStars.Controllers
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 var checkUserExists = from u in context.Users
-                                        where username.ToLower() == u.Username.ToLower()
-                                        select u;
+                                      where username.ToLower() == u.Username.ToLower()
+                                      select u;
 
                 var checkEmailExists = from u in context.Users
                                        where email.ToLower() == u.Email.ToLower()
@@ -258,7 +351,7 @@ namespace ArenaStars.Controllers
                 }
             }
 
-                return errorMsgList;
+            return errorMsgList;
         }
 
         private List<string> checkLoginInputFaults(string username, string password)
@@ -278,7 +371,7 @@ namespace ArenaStars.Controllers
             {
                 errorMsgList.Add("Password field is empty!");
             }
-            
+
             if (errorMsgList.Count == 0)
             {
                 using (ArenaStarsContext context = new ArenaStarsContext())

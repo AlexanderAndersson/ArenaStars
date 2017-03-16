@@ -4,53 +4,68 @@
     ViewBag.Title = "ArenaStars";
 }
 
-@Html.Partial("Modals")
-
-<h2>Välkommen till ArenaStars!</h2>
-<h4>Här har du lite stats</h4><br/>
-
-<h3><u>All Users</u></h3>
-@foreach (User user in ViewBag.Users)
-{
-    <h5>@user.Username</h5>
-}
-
-<br />
-
-<h3><u>Ranked Games Winners</u></h3>
-@foreach (Game game in ViewBag.RGames)
-{
-    <h4>@game.Winner.Username</h4>
-}
-
-<br />
-
-<h3><u>Tournament Games Winners</u></h3>
-@foreach (Game game in ViewBag.TGames)
-{
-    <h4>@game.Winner.Username</h4>
-}
-
-<br />
-
-@*<h3><u>Tournament Winners</u></h3>
-@foreach (Tournament tournament in ViewBag.Tournaments)
-{
-    <h4>@tournament.Winner.Username</h4>
-}
-
-<br />*@
-
-<h3><u>Reports</u></h3>
-@foreach (Report report in ViewBag.Reports)
-{
-    <h4>Report @reportNum</h4>
-    <p>Reported player: <b>@report.ReportedUser.Username</b></p>
-    <p>Reported by: <b>@report.Reportee.Username</b></p>
-    <p>Reason: <b>@report.Reason</b></p>
-    <p>Message: <b>@report.Message</b></p>
-    <p>Submitted: <b>@report.SubmittedDate.Value.ToLongDateString()</b></p>
-    <br />
-    reportNum++;
-}
-
+<div class="white homePageContent">
+    <h2>Välkommen till ArenaStars!</h2>
+    <div id="goodPopupBox" class="text-success">
+        
+    </div>
+    <center>
+        <div id="matchmakingButtonContainer">
+            @if ((bool)Session["isLoggedIn"] == true)
+            {
+                <div id="matchmakingButton" class="btn btn-warning" style="display:none;">Search for game</div>
+                <div id="stopMatchmakingButton" class="btn btn-danger" style="display:none;">Cancel Search</div>
+            }
+            else
+            {
+                <div class="btn btn-danger">Login to play</div>
+            }
+        </div>
+        <br />
+        <div id="matchmakingErrorBox" style="color:red;"></div>
+    </center>
+    <br /><br /><br />
+    <h4>Här har du lite stats</h4><br />
+    <div class="inline-block">
+        <h4><u>All Users</u></h4>
+        @foreach (User user in ViewBag.Users)
+        {
+            <h5>@user.Username</h5>
+        }
+    </div>
+    <div class="inline-block">
+        <h4><u>Ranked Game Winners</u></h4>
+        @foreach (Game game in ViewBag.RGames)
+        {
+            <h5>@game.Winner.Username</h5>
+        }
+    </div>
+    <div class="inline-block">
+        <h4><u>Tournament Game Winners</u></h4>
+        @foreach (Game game in ViewBag.TGames)
+        {
+            <h5>@game.Winner.Username</h5>
+        }
+    </div>
+    <div class="inline-block">
+        <h4><u>Tournament Winners</u></h4>
+        @foreach (User user in ViewBag.TWinners)
+        {
+            <h5>@user.Username</h5>
+        }
+    </div>
+    <div class="inline-block homeReports">
+        <h4><u>Reports</u></h4>
+        @foreach (Report report in ViewBag.Reports)
+        {
+            <h5>Report @reportNum</h5>
+            <p>Reported player: <b>@report.ReportedUser.Username</b></p>
+            <p>Reported by: <b>@report.Reportee.Username</b></p>
+            <p>Reason: <b>@report.Reason</b></p>
+            <p>Message: <b>@report.Message</b></p>
+            <p>Submitted: <b>@report.SubmittedDate.Value.ToLongDateString()</b></p>
+            <br />
+            reportNum++;
+        }
+    </div>
+</div>

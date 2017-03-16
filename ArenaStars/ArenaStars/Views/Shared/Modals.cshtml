@@ -1,9 +1,8 @@
 ﻿@{
     ViewBag.Title = "Modals";
 }
-
 <link href="~/Content/LogInForm.css" rel="stylesheet" />
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="login-modal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Login to Your Account</h1><br>
@@ -14,14 +13,14 @@
             </form>
             <div id="errorOutputLogin" class="text-danger">
 
-            </div> 
+            </div>
             <div class="login-help">
                 <a href="#" class="registerBtn">Register</a> - <a href="#">Forgot Password</a>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="register-modal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Register an Account</h1><br>
@@ -33,7 +32,7 @@
                 <button id="registerSubmitButton" class="login register-submit">SIGN UP</button>
             </div>
             <div id="errorOutputRegister" class="text-danger">
-            </div> 
+            </div>
             <div class="login-help">
                 <a href="#" class="logInBtn">Already have an account?</a>
             </div>
