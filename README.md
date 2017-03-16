@@ -16,9 +16,11 @@
 - [ ] User edit
 - [ ] Profil pic
 - [ ] Rivals
-- [ ] Search
+- [x] Search
 - [ ] Hash pawssord
-- [ ] Join tournament
+- [x] Get tournament info
+- [x] Join tournament
+- [x] Leave tournament
 
 ## **Tournament types**
 - **Veteran:** Spelare som har vunnit x antal turneringar tidigare
