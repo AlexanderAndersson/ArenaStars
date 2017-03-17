@@ -2,7 +2,7 @@
 @model ArenaStars.Models.Tournament
 @{
     ViewBag.Title = "Create Tournament";
-    <link href="~/Content/Admin.css" rel="stylesheet" />
+    <link href="~/Content/Custom_CSS/Admin.css" rel="stylesheet" />
     <script type="text/javascript" src="/scripts/moment.min.js"></script>
     <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.js"></script>
     <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" />
@@ -49,33 +49,35 @@
 </div>
 <div class="white">
     <h2>Tournaments</h2>
-    <div id="newTournaments"></div>
-    @foreach (Tournament t in ViewBag.Tournaments)
-    {
-        <div id="tournamentList">
-            <div>
-                <span class="bold">STARTS</span> <br />
-                <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
+    <div id="newTournaments">
+        @foreach (Tournament t in ViewBag.Tournaments)
+        {
+            <div id="@t.Id" class="tournamentList">
+                <div>
+                    <span class="bold">STARTS</span> <br />
+                    <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
+                </div>
+                <div>
+                    <span class="bold">NAME</span><br />
+                    <span>@t.Name</span>
+                </div>
+                <div>
+                    <span class="bold">TYPE</span><br />
+                    <span>@t.Type</span>
+                </div>
+                <div>
+                    <span class="bold">RANKS</span><br />
+                    <span>@t.MinRank - @t.MaxRank</span>
+                </div>
+                <div id="participants">
+                    <span class="glyphicon glyphicon-user"></span><br />
+                    <span>@t.Participants.Count / @t.PlayerLimit</span>
+                </div>
             </div>
-            <div>
-                <span class="bold">NAME</span><br />
-                <span>@t.Name</span>
-            </div>
-            <div>
-                <span class="bold">TYPE</span><br />
-                <span>@t.Type</span>
-            </div>
-            <div>
-                <span class="bold">RANKS</span><br />
-                <span>@t.MinRank - @t.MaxRank</span>
-            </div>
-            <div id="participants">
-                <span class="glyphicon glyphicon-user"></span><br />
-                <span>@t.Participants.Count / @t.PlayerLimit</span>
-            </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 
 
 <script src="~/Scripts/AdminJS.js"></script>
+<script src="~/Scripts/TournamnetInfo.js"></script>

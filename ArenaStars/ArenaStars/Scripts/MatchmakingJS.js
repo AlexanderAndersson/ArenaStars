@@ -1,6 +1,9 @@
 ﻿var timeSearched = 0;
+var gameId = 0;
+var matchmakingInterval = null;
 
 $(document).ready(function () {
+    
 
     if (sessionStorage.timeSearched) {
         timeSearched = sessionStorage.timeSearched;
@@ -14,6 +17,11 @@ $(document).ready(function () {
             console.log("isSearchingForGame IS true");
             $("#matchmakingButton").hide();
             $("#stopMatchmakingButton").show();
+
+            matchmakingInterval = setInterval(function () {
+                CheckIfFoundGame();
+                MatchmakingSearcher();
+            }, 5000);
         }
         else {
             $("#matchmakingButton").show();
@@ -27,10 +35,6 @@ $(document).ready(function () {
 
 
     $("#matchmakingButton").on("click", function () {
-        console.log("You have started the timer interval...");
-        setInterval(function () {
-            console.log("Interval is still going...");
-        }, 1000);
         StartMatchmakingSearch();
     });
 
@@ -42,20 +46,74 @@ $(document).ready(function () {
 
 
 
-function MatchmakingStarted() {
+function CheckIfFoundGame() {
 
+    $.ajax({
+        type: 'post',
+        url: '/Home/CheckIfFoundGame/',
+        dataType: 'json',
+        data: {},
+        success: function (data) {
+            let response = data.response;
+
+            console.log("CIFG foundGame: " + response.foundGame);
+            console.log("CIFG gameId: " + response.gameId);
+            if (response.foundGame == true) {
+                console.log("Match found!");
+                sessionStorage.isSearchingForGame = false;
+                sessionStorage.timeSearched = 0;
+                clearInterval(matchmakingInterval);
+                window.location.href = "/Home/GameRoom?gameId=" + response.gameId;
+            }
+
+
+        },
+        error: function (jqXHR, statusText, errorThrown) {
+            console.log('Ett fel inträffade: ' + statusText);
+            console.log("jqXHR: " + jqXHR);
+            console.log("errorThrown: " + errorThrown);
+        }
+    });
 };
 
 
-function StartSearch() {
+function MatchmakingSearcher() {
 
-    //To use some sort of interval. Starts if sessionStorage.isSearchingForGame is true or matchmakingButton is pressed, can be cancelled in CancelSearch().
+    $.ajax({
+        type: 'post',
+        url: '/Home/MatchMakeSearch/',
+        dataType: 'json',
+        data: {
+            timeSearched: timeSearched
+        },
+        success: function (data) {
+            let searchData = data.searchData;
+            let errors = searchData.errors;
 
-    //var refresher = setInterval(function () {
+            if (errors.length == 0) {
+                console.log("Match found!");
+                sessionStorage.isSearchingForGame = false;
+                sessionStorage.timeSearched = 0;
+                clearInterval(matchmakingInterval);
+                window.location.href = "/Home/GameRoom?gameId=" + searchData.gameId;
+            }
+            else {
+                for (let i = 0; i < errors.length; i++)
+                {
+                    console.log(errors[i]);
+                }
+                timeSearched += 5;
+            }
 
-    //    UpdateShit(refresher);
 
-    //}, 300);
+        },
+        error: function (jqXHR, statusText, errorThrown) {
+            console.log('Ett fel inträffade: ' + statusText);
+            console.log("jqXHR: " + jqXHR);
+            console.log("errorThrown: " + errorThrown);
+        }
+    });
+
 };
 
 
@@ -80,6 +138,11 @@ function StartMatchmakingSearch() {
 
                 $("#matchmakingButton").hide();
                 $("#stopMatchmakingButton").show();
+
+                matchmakingInterval = setInterval(function () {
+                    CheckIfFoundGame();
+                    MatchmakingSearcher();
+                }, 5000);
             }
             else
             {
@@ -119,6 +182,8 @@ function CancelMatchSearch() {
             if (errorList.length == 0) {
                 $("#stopMatchmakingButton").hide();
                 $("#matchmakingButton").show();
+
+                clearInterval(matchmakingInterval);
 
                 sessionStorage.isSearchingForGame = false;
                 sessionStorage.timeSearched = 0;

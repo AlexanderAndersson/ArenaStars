@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Custom_CSS/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
@@ -55,7 +55,7 @@
                     @if (!(bool)Session["isLoggedIn"])
                     {
                         <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
-                            <li><button class="btn btn-primary navbar-btn registerBtn" id="regBtnNav" type="button">SIGN UP</button></li>
+                        <li><button class="btn btn-primary navbar-btn registerBtn" id="regBtnNav" type="button">SIGN UP</button></li>
                     }
                     else
                     {

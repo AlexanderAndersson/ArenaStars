@@ -1,0 +1,115 @@
+﻿body {
+
+}
+
+.tournamentList {
+    background-color: #323737;
+    border: 1px solid #4b4e4e;
+    height: 65px;
+    width: 792px;
+    margin-bottom: 10px;
+}
+
+.tournamentList div {
+    padding: 10px;
+    float: left;
+    width: 180px;
+}
+
+.tournamentList div span {
+    float: left;
+}
+
+.tournamentList:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #3d4444;
+}
+
+#participants {
+    text-align: center;
+    width: 70px !important;
+}
+
+#participants > span {
+    float: none !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/*****************TOURNAMENT INFO*****************/
+
+#tInfo {
+    margin-top: 30px;
+}
+
+hr {
+   border-color: #4b4e4e
+}
+
+.center {
+    display: table;
+    margin: auto;
+}
+
+.playerList {
+    width: 300px;
+    float: left;
+}
+
+.playerList img {
+    width: 25px;
+}
+
+#joinDiv {
+    width: 400px;
+    float: left;
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border: 1px solid #4b4e4e;
+    padding: 20px;
+}
+
+#joinDiv button {
+    width: 300px;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+#errorBtn {
+    color: #dd0c0c;
+}
+
+#joinDiv img {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+#joinDiv h4 {
+    text-align: center;
+}
+
+.tournamentInfo {
+    width: 300px;
+    float: left;
+}
+
+.tournamentInfo img {
+    width: 25px;
+}
+
+.bold + span {
+    float: right;
+}
+
+.playerLimit {
+    font-size: small;
+    font-weight: normal;
+}
+
+.btnFull {
+    cursor: not-allowed;
+}

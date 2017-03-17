@@ -2,14 +2,14 @@
 @using ArenaStars.Models;
 @{
     ViewBag.Title = "Tournaments";
-    <link href="~/Content/Tournament.css" rel="stylesheet" />
+    <link href="~/Content/Custom_CSS/Tournament.css" rel="stylesheet" />
 }
 
 <div class="white">
     <h2>Tournaments</h2>
     @foreach (Tournament t in ViewBag.Tournaments)
     {
-        <div id="tournamentList">
+        <div id="@t.Id" class="tournamentList" >
             <div>
                 <span class="bold">STARTS</span> <br />
                 <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
@@ -33,3 +33,6 @@
         </div>
     }
 </div>
+
+
+<script src="~/Scripts/TournamnetInfo.js"></script>
