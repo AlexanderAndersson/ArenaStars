@@ -6,14 +6,14 @@ using System.Web;
 using System.Web.Mvc;
 using QueryMaster;
 using QueryMaster.GameServer;
-using ArenaStars.GameLogsServiceReference;
+using ArenaStars.GameLogServiceReference;
 using ArenaStars.Models;
 
 namespace ArenaStars.Controllers
 {
     public class ServerController : Controller
     {
-        string ServerControllerPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ServerControllerError.txt";
+        string ServerControllerPath = @"put your path here or make it automatic";
         ArenaStarsContext db = new Models.ArenaStarsContext();
 
         // GET: Server
@@ -35,9 +35,9 @@ namespace ArenaStars.Controllers
             Models.User PB = playerB.FirstOrDefault();
 
 
-            GameLogsServiceReference.User logUserA = new GameLogsServiceReference.User();
-            GameLogsServiceReference.User logUserB = new GameLogsServiceReference.User();
-            GameLogsServiceReference.Game logGame = new GameLogsServiceReference.Game();
+            GameLogServiceReference.User logUserB = new GameLogServiceReference.User();
+            GameLogServiceReference.Game logGame = new GameLogServiceReference.Game();
+            GameLogServiceReference.User logUserA = new GameLogServiceReference.User();
             logGame.Type = 0;
 
             logUserA.Username = PA.Username;
@@ -67,7 +67,7 @@ namespace ArenaStars.Controllers
                 }
                 string playerAID = "\"" + logUserA.SteamId + "\"";
                 string playerBID = "\"" + logUserB.SteamId + "\"";
-                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
 
                 if (server.GetControl("lol"))
                 {
@@ -78,7 +78,7 @@ namespace ArenaStars.Controllers
                     server.Rcon.SendCommand("warmup");
                 }
             }
-          
+
         }
     }
 }

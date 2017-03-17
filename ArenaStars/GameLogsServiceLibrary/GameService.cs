@@ -16,11 +16,11 @@ namespace GameLogsServiceLibrary
     
     public class GameService : IGameService
     {
-        string saveStatsAndGamePath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorSaveStatsAndGame";
-        string readServerLogsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorReadServerLogs";
-        string whitelistPlayersPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\ErrorwhitelistPlayers";
-        string waitForPLayersPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\waitForPLayersLogs";
-        string logsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt";
+        string saveStatsAndGamePath = @"put your path here or make it automatic";
+        string readServerLogsPath = @"put your path here or make it automatic";
+        string whitelistPlayersPath = @"put your path here or make it automatic";
+        string waitForPLayersPath = @"put your path here or make it automatics";
+        string logsPath = @"put your path here or make it automatic";
         
         public void ReadServerLogs()
         {
@@ -29,7 +29,7 @@ namespace GameLogsServiceLibrary
             using (StreamWriter writer = new StreamWriter(logsPath, true)) { 
 
                 //Connect to gameserver
-                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+               QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
             //Get logs from server. To get these,
             //Type in server console: logaddress_add YOURIP:9871
             //Port 9871 is default for logs
@@ -57,7 +57,7 @@ namespace GameLogsServiceLibrary
                 string playerAID = "\"" + _playerA.SteamId + "\"";
                 string playerBID = "\"" + _playerB.SteamId + "\"";
 
-                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
                 
                 if (server.GetControl("lol"))
                 {
@@ -82,7 +82,7 @@ namespace GameLogsServiceLibrary
 
         public void StartGame()
         {
-            Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+            QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
            if(server.GetControl("lol"))  
             server.Rcon.SendCommand("1on1");
             
@@ -91,9 +91,9 @@ namespace GameLogsServiceLibrary
         public void DeleteLog()
         {
             //Temporary fix for file not overwriting. Cant have multiple games going if using this.
-            if (File.Exists(@"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt"))
+            if (File.Exists(@"put your path here or make it automatic"))
             {
-                File.Delete(@"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt");
+                File.Delete(@"put your path here or make it automatic");
             }
         }
 
@@ -114,7 +114,7 @@ namespace GameLogsServiceLibrary
                     User playerA = findUserA.FirstOrDefault();
                     User playerB = findUserB.FirstOrDefault();
 
-                    Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                    QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
                     ServerInfo info = server.GetInfo();
 
                
@@ -132,7 +132,7 @@ namespace GameLogsServiceLibrary
 
                 //Spagetthi for getting kills,deaths etc..
                 //Reads every line in Logs.txt and calculates
-                foreach (var line in File.ReadAllLines(@"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt"))
+                foreach (var line in File.ReadAllLines(@"put your path here or make it automatic"))
                 {
                     if (line.StartsWith(playerAName) && line.Contains("killed"))
                     {
@@ -264,7 +264,7 @@ namespace GameLogsServiceLibrary
         {
             try
             {
-                Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
                 server.ReceiveTimeout = 200;
                 bool stop = false;
                 while (!stop)

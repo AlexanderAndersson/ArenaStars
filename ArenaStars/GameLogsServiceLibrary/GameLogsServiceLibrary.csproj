@@ -44,11 +44,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.BZip2">
-      <HintPath>..\..\..\CS_QueryMaster_Test\packages\Ionic.BZip2.dll</HintPath>
+      <HintPath>..\packages\Ionic.BZip2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="QueryMaster">
-      <HintPath>..\..\..\CS_QueryMaster_Test\packages\QueryMaster.dll</HintPath>
+      <HintPath>..\packages\QueryMaster.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
