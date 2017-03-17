@@ -112,6 +112,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom_CSS\Admin.css" />
+    <Content Include="Content\Custom_CSS\GameRoom.css" />
     <Content Include="Content\Custom_CSS\GameSheet.css" />
     <Content Include="Content\Custom_CSS\LogInForm.css" />
     <Content Include="Content\Custom_CSS\Profile.css" />

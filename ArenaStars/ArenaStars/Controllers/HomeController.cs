@@ -346,6 +346,24 @@ namespace ArenaStars.Controllers
                 Tournament1UserList.Add(u7);
                 Tournament1UserList.Add(u8);
 
+
+                /*******************SERVERS**********************/
+
+                #region Servers
+
+                Server serverOne = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #1",
+                    isInUse = false
+                };
+
+                #endregion
+
+                //Adding servers to database
+                context.Servers.Add(serverOne);
+
+
                 /****************GAMES*****************/
 
                 #region Games
@@ -520,6 +538,19 @@ namespace ArenaStars.Controllers
                     HasEnded = true
                 };
 
+                Game NotFinishedRankedGame1 = new Game()
+                {
+                    Participants = new List<User>() { u1, u2 },
+                    Winner = u1,
+                    Map = "aim_map",
+                    Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(2),
+                    HasEnded = false,
+                    TournamentGameType = Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
+                };
+                serverOne.isInUse = true;
+
                 #endregion
 
                 //Adding Ranked Games to database
@@ -532,6 +563,7 @@ namespace ArenaStars.Controllers
                 context.Games.Add(RankedGame7);
                 context.Games.Add(RankedGame8);
                 context.Games.Add(RankedGame9);
+                context.Games.Add(NotFinishedRankedGame1);
 
                 //Adding Tournament 1 Games to database
                 context.Games.Add(Tournament1Game1);
@@ -1101,21 +1133,6 @@ namespace ArenaStars.Controllers
                 context.Reports.Add(report2);
                 context.Reports.Add(report3);
 
-                /*******************SERVERS**********************/
-
-                #region Servers
-
-                Server serverOne = new Models.Server()
-                {
-                    IPaddress = "217.78.24.8:28892",
-                    Name = "ArenaStars Server #1",
-                    isInUse = false
-                };
-
-                #endregion
-
-                //Adding servers to database
-                context.Servers.Add(serverOne);
 
                 //Saving changes to database
                 context.SaveChanges();
@@ -1579,11 +1596,12 @@ namespace ArenaStars.Controllers
                             }
                         }
                     };
+                    
                 }
                 
             }
 
-                return View();
+                return View(viewGame);
         }
 		
 		
