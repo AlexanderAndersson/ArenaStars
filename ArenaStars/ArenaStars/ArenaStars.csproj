@@ -318,6 +318,7 @@
     <Compile Include="Controllers\BanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderboardController.cs" />
+    <Compile Include="Controllers\ServerController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
