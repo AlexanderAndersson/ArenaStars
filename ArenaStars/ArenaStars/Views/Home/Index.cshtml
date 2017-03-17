@@ -1,16 +1,15 @@
 ﻿@using ArenaStars.Models;
 @{
-    int reportNum = 1;
+    //int reportNum = 1;
     ViewBag.Title = "ArenaStars";
+    <link href="~/Content/Custom_CSS/HomePage.css" rel = "stylesheet" />
 }
 
 <div class="white homePageContent">
-    <h2>Välkommen till ArenaStars!</h2>
-    <div id="goodPopupBox" class="text-success">
-        
-    </div>
-    <center>
-        <div id="matchmakingButtonContainer">
+    @*<h2>Välkommen till ArenaStars!</h2>*@
+    <div id="goodPopupBox" class="text-success"></div>
+    <div id="matchmakingButtonContainer">
+        <div>
             @if ((bool)Session["isLoggedIn"] == true)
             {
                 <div id="matchmakingButton" class="btn btn-warning" style="display:none;">Search for game</div>
@@ -21,10 +20,139 @@
                 <div class="btn btn-danger">Login to play</div>
             }
         </div>
-        <br />
-        <div id="matchmakingErrorBox" style="color:red;"></div>
-    </center>
-    <br /><br /><br />
+    </div>
+    <div id="matchmakingErrorBox" style="color:red;"></div>
+    <div id="ranks">
+        <div>
+            <span><img src="~/Images/Rank/Unranked.png" /></span>
+            <span>Unranked</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Bronze.png" /></span>
+            <span>Bronze</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Silver.png" /></span>
+            <span>Silver</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Gold.png" /></span>
+            <span>Gold</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Platinum.png" /></span>
+            <span>Platinum</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Diamond.png" /></span>
+            <span>Diamond</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Challenger.png" /></span>
+            <span>Challanger</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Master.png" /></span>
+            <span>Master</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/GrandMaster.png" /></span>
+            <span>GrandMaster</span>
+        </div>
+        <div>
+            <span><img src="~/Images/Rank/Legend.png" /></span>
+            <span>Legend</span>
+        </div>
+    </div>
+    <div id="wrapper1">
+        <div id="newTournaments">
+            @foreach (Tournament t in ViewBag.Tournaments)
+            {
+                <div id="@t.Id" class="tournamentList">
+                    @if (t.IsLive)
+                {
+                        <div class="starts">
+                            <span class="bold" id="tLive">LIVE</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="starts">
+                            <span class="bold">STARTS</span> <br />
+                            <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
+                        </div>
+                    }
+                    <div>
+                        <span class="bold">NAME</span><br />
+                        <span>@t.Name</span>
+                    </div>
+                    <div id="type">
+                        <span class="bold">TYPE</span><br />
+                        <span>@t.Type</span>
+                    </div>
+                    <div>
+                        <span class="bold">RANKS</span><br />
+                        <span>@t.MinRank - @t.MaxRank</span>
+                    </div>
+                    <div id="participants">
+                        <span class="glyphicon glyphicon-user"></span><br />
+                        <span>@t.Participants.Count / @t.PlayerLimit</span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="leaderboard">
+            <h4>LEADERBOARD</h4>
+            <hr />
+        </div>
+        <div id="wrapper2">
+            <h4>TOP PLAYERS</h4>
+            <hr />
+            <div id="twat">
+                @foreach (User user in ViewBag.Top3HighestElo)
+                {
+                    <a>
+                        <div id="@user.Id" style="background-image: url(@user.ProfilePic)" class="topPlayers"></div>
+                        <div id="topPlayersInfo">
+                            <h4>@user.Username</h4>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<br /><br /><br />
     <h4>Här har du lite stats</h4><br />
     <div class="inline-block">
         <h4><u>All Users</u></h4>
@@ -75,5 +203,7 @@
             <br />
             reportNum++;
         }
-    </div>
+    </div>*@
 </div>
+
+<script src="~/Scripts/HomeJS.js"></script>

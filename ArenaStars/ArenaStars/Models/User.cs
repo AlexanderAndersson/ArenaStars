@@ -60,7 +60,7 @@ namespace ArenaStars.Models
             Gold = 4,
             Platinum = 5,
             Diamond = 6,
-            Challanger = 7,
+            Challenger = 7,
             Master = 8,
             Grandmaster = 9,
             Legend = 10

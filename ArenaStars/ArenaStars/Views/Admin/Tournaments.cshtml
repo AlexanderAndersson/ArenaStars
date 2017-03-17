@@ -53,10 +53,25 @@
         @foreach (Tournament t in ViewBag.Tournaments)
         {
             <div id="@t.Id" class="tournamentList">
-                <div>
-                    <span class="bold">STARTS</span> <br />
-                    <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
-                </div>
+                @if (t.IsLive)
+                {
+                    <div>
+                        <span class="bold" id="tLive">LIVE</span>
+                    </div>
+                }
+                else if (t.HasEnded)
+                {
+                    <div>
+                        <span class="bold" id="tHasEnded">ENDED</span>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <span class="bold">STARTS</span> <br />
+                        <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
+                    </div>
+                }
                 <div>
                     <span class="bold">NAME</span><br />
                     <span>@t.Name</span>

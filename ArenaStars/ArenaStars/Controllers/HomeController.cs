@@ -16,17 +16,15 @@ namespace ArenaStars.Controllers
 
             context.Database.Initialize(true);
 
-            var rankedGames = from g in context.Games
-                              where g.Type == Game.GameTypeEnum.Ranked && g.HasEnded == true
-                              select g;
+            var tournaments = from t in context.Tournaments
+                              where t.HasEnded == false
+                              orderby t.StartDate
+                              select t;
 
-            var tournamentGames = from t in context.Games
-                                  where t.Type == Game.GameTypeEnum.Tournament && t.HasEnded == true
-                                  select t;
-
-            var tournamentWinners = from t in context.Tournaments
-                                    where t.Winner != null
-                                    select t.Winner;
+            var playersWithHighestElo = from p in context.Users
+                                        orderby p.Elo descending
+                                        select p;
+                                      
 
             var reports = from r in context.Reports
                           select r;
@@ -34,11 +32,8 @@ namespace ArenaStars.Controllers
             var userlist = from u in context.Users
                            select u;
 
-            ViewBag.TWinners = tournamentWinners;
-            ViewBag.Users = userlist;
-            ViewBag.Reports = reports;
-            ViewBag.TGames = tournamentGames;
-            ViewBag.RGames = rankedGames;
+            ViewBag.Top3HighestElo = playersWithHighestElo.Take(3);
+            ViewBag.Tournaments = tournaments.Take(5);
 
             //Active state css ViewBag
             ViewBag.HomeSelected = "activeNav";
@@ -191,7 +186,7 @@ namespace ArenaStars.Controllers
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
                     Elo = 200,
-                    Rank = Models.User.RankEnum.Challanger,
+                    Rank = Models.User.RankEnum.Challenger,
                     Level = 2,
                     IsTerminated = false,
                     SteamId = "6",

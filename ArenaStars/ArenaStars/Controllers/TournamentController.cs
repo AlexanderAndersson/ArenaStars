@@ -13,6 +13,8 @@ namespace ArenaStars.Controllers
         public ActionResult Index()
         {
             var tournaments = from t in context.Tournaments
+                              where t.HasEnded == false
+                              orderby t.StartDate
                               select t;
 
             ViewBag.Tournaments = tournaments;

@@ -105,20 +105,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Admin.css" />
+    <Content Include="Content\Custom_CSS\Admin.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom_CSS\HomePage.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\GameSheet.css" />
-    <Content Include="Content\LogInForm.css" />
-    <Content Include="Content\Profile.css" />
-    <Content Include="Content\ShowUsersSearch.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\Tournament.css" />
+    <Content Include="Content\Custom_CSS\GameSheet.css" />
+    <Content Include="Content\Custom_CSS\LogInForm.css" />
+    <Content Include="Content\Custom_CSS\Profile.css" />
+    <Content Include="Content\Custom_CSS\ShowUsersSearch.css" />
+    <Content Include="Content\Custom_CSS\Site.css" />
+    <Content Include="Content\Custom_CSS\Tournament.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -275,7 +276,7 @@
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\Rank\Challanger.png" />
+    <Content Include="Images\Rank\Challenger.png" />
     <Content Include="Images\Rank\GrandMaster.png" />
     <Content Include="Images\Rank\Legend.png" />
     <Content Include="Images\Rank\Platinum.png" />
@@ -295,6 +296,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GetGamesJS.js" />
+    <Content Include="Scripts\HomeJS.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
