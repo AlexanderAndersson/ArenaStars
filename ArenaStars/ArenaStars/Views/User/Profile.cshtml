@@ -43,14 +43,14 @@
 
                 <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <span class="statsBoxCenter statsBoxWithImg col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <img src="@countryPic" class="img-responsive" style="display:inline" />: #@Model.placeInCountry
+                        <img src="@countryPic" class="img-responsive" style="display:inline" /> #@Model.placeInCountry
                         <b>@Model.Country</b>
                     </span>
                 </div>
 
                 <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <span class="statsBoxCenter statsBoxWithImg col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <img src="@regionPic" class="img-responsive" style="display:inline" />: #@Model.placeInWorld
+                        <img src="@regionPic" class="img-responsive" style="display:inline" /> #@Model.placeInWorld
                         <b>World</b>
                     </span>
                 </div>
@@ -69,8 +69,8 @@
 
                 <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <span class="statsBoxMainItem">
-                        <b>@Model.winPercentage</b> <br />
-                        Win Rate %
+                        <b>@Model.winPercentage.ToString("0")%</b> <br />
+                        Win Rate
                     </span>
                 </div>
 

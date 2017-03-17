@@ -196,6 +196,7 @@
     <Content Include="Images\Level\Level8.png" />
     <Content Include="Images\Level\Level9.png" />
     <Content Include="Images\Map\aim_map.png" />
+    <Content Include="Images\Map\aim_map_mall.png" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
     <Content Include="Images\Profile\ProfilePicture_Default.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />

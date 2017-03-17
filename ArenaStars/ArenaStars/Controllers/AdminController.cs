@@ -14,6 +14,7 @@ namespace ArenaStars.Controllers
         public ActionResult Tournaments()
         {
             var tournaments = from t in context.Tournaments
+                              where t.HasEnded == false
                               orderby t.StartDate
                               select t;
 
@@ -57,7 +58,6 @@ namespace ArenaStars.Controllers
             };
 
             return Json(new { newT = tournament }, JsonRequestBehavior.DenyGet);
-
         }
 
         public ActionResult Users()
