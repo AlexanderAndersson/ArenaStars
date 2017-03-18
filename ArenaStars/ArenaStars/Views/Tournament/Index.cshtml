@@ -7,46 +7,40 @@
 
 <div class="white">
     <h2>Tournaments</h2>
-    @foreach (Tournament t in ViewBag.Tournaments)
-    {
-        <div id="@t.Id" class="tournamentList" >
-            @if (t.IsLive)
+   @foreach (Tournament t in ViewBag.Tournaments)
             {
-                <div>
-                    <span class="bold" id="tLive">LIVE</span>
-                </div>
-            }
-            else if (t.HasEnded)
-            {
-                <div>
-                    <span class="bold" id="tHasEnded">ENDED</span>
-                </div>
-            }
-            else
-            {
-                <div>
-                    <span class="bold">STARTS</span> <br />
-                    <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
-                </div>
-            }
-            <div>
-                <span class="bold">NAME</span><br />
-                <span>@t.Name</span>
+    <div id="@t.Id" class="tournamentList">
+        @if (t.IsLive)
+                {
+            <div class="starts">
+                <span class="bold" id="tLive">LIVE</span>
             </div>
-            <div>
-                <span class="bold">TYPE</span><br />
-                <span>@t.Type</span>
+        }
+        else
+        {
+            <div class="starts">
+                <span class="bold">STARTS</span> <br />
+                <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
             </div>
-            <div>
-                <span class="bold">RANKS</span><br />
-                <span>@t.MinRank - @t.MaxRank</span>
-            </div>
-            <div id="participants">
-                <span class="glyphicon glyphicon-user"></span><br />
-                <span>@t.Participants.Count / @t.PlayerLimit</span>
-            </div>
+        }
+        <div id="name">
+            <span class="bold">NAME</span><br />
+            <span>@t.Name</span>
         </div>
-    }
+        <div id="type">
+            <span class="bold">TYPE</span><br />
+            <span>@t.Type</span>
+        </div>
+        <div id="tRanks">
+            <span class="bold">RANKS</span><br />
+            <span>@t.MinRank - @t.MaxRank</span>
+        </div>
+        <div id="participants">
+            <span class="glyphicon glyphicon-user"></span><br />
+            <span>@t.Participants.Count / @t.PlayerLimit</span>
+        </div>
+    </div>
+   }
 </div>
 
 

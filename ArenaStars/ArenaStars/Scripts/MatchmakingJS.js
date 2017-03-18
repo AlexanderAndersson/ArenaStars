@@ -3,7 +3,6 @@ var gameId = 0;
 var matchmakingInterval = null;
 
 $(document).ready(function () {
-    
 
     if (sessionStorage.timeSearched) {
         timeSearched = sessionStorage.timeSearched;
@@ -33,7 +32,6 @@ $(document).ready(function () {
 
     console.log("MatchmakingJS.js LOADED!");
 
-
     $("#matchmakingButton").on("click", function () {
         StartMatchmakingSearch();
     });
@@ -41,9 +39,7 @@ $(document).ready(function () {
     $("#stopMatchmakingButton").on("click", function () {
         CancelMatchSearch();
     });
-
 });
-
 
 
 function CheckIfFoundGame() {
@@ -65,8 +61,6 @@ function CheckIfFoundGame() {
                 clearInterval(matchmakingInterval);
                 window.location.href = "/Home/GameRoom?gameId=" + response.gameId;
             }
-
-
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -104,8 +98,6 @@ function MatchmakingSearcher() {
                 }
                 timeSearched += 5;
             }
-
-
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -113,7 +105,6 @@ function MatchmakingSearcher() {
             console.log("errorThrown: " + errorThrown);
         }
     });
-
 };
 
 
@@ -127,11 +118,23 @@ function StartMatchmakingSearch() {
         success: function (data) {
             let errorList = data.errors;
 
-            let outputErrorBox = $("#matchmakingErrorBox");
+            let outputErrorBox = $("#alreadyInQueuePopUp");
+            let outputStartBow = $("#enterQueuePopUp");
             outputErrorBox.html("");
+            outputStartBow.html("");
 
             if (errorList.length == 0)
             {
+                $("#exitQueuePopUp").css("display", "none");
+
+                outputStartBow.append(
+                'Searching for game'
+                ).fadeIn();
+
+                setTimeout(function () {
+                    outputStartBow.fadeOut();
+                }, 3000);
+
                 console.log("You are now searching for a game...");
                 sessionStorage.isSearchingForGame = true;
                 sessionStorage.timeSearched = 0;
@@ -150,11 +153,13 @@ function StartMatchmakingSearch() {
                 {
                     outputErrorBox.append(
                         errorList[i] + '<br />'
-                        );
+                    ).fadeIn();
+
+                    setTimeout(function () {
+                        outputErrorBox.fadeOut();
+                    }, 3000);
                 }
             }
-
-
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -162,7 +167,6 @@ function StartMatchmakingSearch() {
             console.log("errorThrown: " + errorThrown);
         }
     });
-
 };
 
 function CancelMatchSearch() {
@@ -177,7 +181,7 @@ function CancelMatchSearch() {
 
             let outputErrorBox = $("#matchmakingErrorBox");
             outputErrorBox.html("");
-            let goodPopup = $("#goodPopupBox");
+            let goodPopup = $("#exitQueuePopUp");
             
             if (errorList.length == 0) {
                 $("#stopMatchmakingButton").hide();
@@ -188,29 +192,28 @@ function CancelMatchSearch() {
                 sessionStorage.isSearchingForGame = false;
                 sessionStorage.timeSearched = 0;
 
+                $("#enterQueuePopUp").css("display", "none");
                 goodPopup.html("");
                 goodPopup.append(
                     'You have exited the queue!'
-                    );
-                goodPopup.show();
+                    ).fadeIn();
 
                 setTimeout(function () {
                     goodPopup.fadeOut();
                 }, 3000);
-
-
             }
             else {
                 for (let i = 0; i < errorList.length; i++)
                 {
                     outputErrorBox.append(
                         errorList[i] + '<br />'
-                    );
+                    ).fadeIn();
+
+                    setTimeout(function () {
+                        outputErrorBox.fadeOut();
+                    }, 3000);
                 }
-            }
-
-            
-
+            }         
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);
@@ -218,7 +221,6 @@ function CancelMatchSearch() {
             console.log("errorThrown: " + errorThrown);
         }
     });
-
 };
 
 function MatchSearch(timeSearched) {

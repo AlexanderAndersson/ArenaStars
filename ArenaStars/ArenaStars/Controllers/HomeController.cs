@@ -14,6 +14,7 @@ namespace ArenaStars.Controllers
         {
             //ArenaStarsContext context = new ArenaStarsContext();
             List<ViewTournament> tournaments = new List<ViewTournament>();
+            List<ViewUser> users = new List<ViewUser>();
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
@@ -21,14 +22,16 @@ namespace ArenaStars.Controllers
 
                 var getTournaments = from t in context.Tournaments
                                   where t.HasEnded == false
-                                  orderby t.StartDate descending
+                                  orderby t.IsLive descending
                                   select t;
 
                 var playersWithHighestElo = from p in context.Users
                                             orderby p.Elo descending
                                             select p;
 
-                
+                var top10players = from p in context.Users
+                                   orderby p.Elo descending
+                                   select p;
 
                 if ((bool)Session["isLoggedIn"] == true)
                 {
@@ -67,11 +70,20 @@ namespace ArenaStars.Controllers
                         });
                 }
 
-                ViewBag.Top3HighestElo = playersWithHighestElo.Take(3).ToList();
+                foreach (User user in top10players.Take(7))
+                {
+                    users.Add(new ViewUser()
+                    {
+                        Username = user.Username,
+                        Rank = user.Rank,
+                        Elo = user.Elo
+                    });
+                }
+
+                ViewBag.Top10Players = users;
+                ViewBag.Top3HighestElo = playersWithHighestElo.Take(4).ToList();
                 //ViewBag.Tournaments = tournaments.Take(5).ToList();
             }
-
-
 
             //Active state css ViewBag
             ViewBag.HomeSelected = "activeNav";
@@ -108,9 +120,9 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "1",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
-                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
                     Bio = "Muppetnicke, the best player ever!"
+                    ProfilePic = "https://yt3.ggpht.com/-4XetcFMa8UQ/AAAAAAAAAAI/AAAAAAAAAAA/PGQrxc2Y29E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -133,9 +145,9 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "2",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
-                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
                     Bio = "Certified noob"
+                    ProfilePic = "https://yt3.ggpht.com/-_p3dlkuqWII/AAAAAAAAAAI/AAAAAAAAAAA/cFOW_AqqnlQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
                 };
@@ -158,7 +170,7 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "3",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "https://scontent.xx.fbcdn.net/v/t31.0-8/901876_3921995267860_69458124_o.jpg?oh=2c7f7e218b0637a27e05885fed9f8157&oe=595B81FE",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -182,7 +194,7 @@ namespace ArenaStars.Controllers
                     Level = 4,
                     IsTerminated = false,
                     SteamId = "4",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "https://upload.wikimedia.org/wikipedia/commons/e/e1/Stefan_L%C3%B6fven_efter_slutdebatten_i_SVT_2014_(cropped).jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -206,7 +218,7 @@ namespace ArenaStars.Controllers
                     Level = 7,
                     IsTerminated = false,
                     SteamId = "5",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "/Images/Profile/Olofmeister.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -230,7 +242,7 @@ namespace ArenaStars.Controllers
                     Level = 2,
                     IsTerminated = false,
                     SteamId = "6",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "http://i48.tinypic.com/jkby0y.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -243,7 +255,7 @@ namespace ArenaStars.Controllers
                     Username = "KennyS",
                     Firstname = "Kenny",
                     Lastname = "Schrub",
-                    Country = "Sweden",
+                    Country = "France",
                     Email = "Kenny.Schrub@gmail.com",
                     Password = "hejsan",
                     SignUpDate = DateTime.Now.AddDays(-15),
@@ -254,7 +266,7 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "7",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "/Images/Profile/KennyS.jpeg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -278,7 +290,7 @@ namespace ArenaStars.Controllers
                     Level = 1,
                     IsTerminated = false,
                     SteamId = "8",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "https://scontent.xx.fbcdn.net/v/t1.0-9/17155817_1261089323927065_6180082253516590998_n.jpg?oh=9244719820e0cd51c53fc6b1f209ebf8&oe=5957A3F5",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -302,7 +314,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "9",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "/Images/Profile/GeT_RiGhT.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -326,7 +338,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "10",
-                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    ProfilePic = "/Images/Profile/PashaBiceps.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -1221,6 +1233,7 @@ namespace ArenaStars.Controllers
 
                 /***************TOURNAMENTS*****************/
 
+                #region Tournament
 
                 Tournament Tournament1 = new Tournament()
                 {
@@ -1240,8 +1253,93 @@ namespace ArenaStars.Controllers
                     Games = Tournament1GameList
                 };
 
+                Tournament Tournament2 = new Tournament()
+                {
+                    Name = "Midranks Only",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = true,
+                    MinRank = Models.User.RankEnum.Gold,
+                    MaxRank = Models.User.RankEnum.Challenger,
+                    PlayerLimit = 8,
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
+                };
+
+                Tournament Tournament3 = new Tournament()
+                {
+                    Name = "Noob Leauge",
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Gold,
+                    PlayerLimit = 12,
+                    TrophyPic = "/Images/Trophy/Trophy2.png",
+                };
+
+                Tournament Tournament4 = new Tournament()
+                {
+                    Name = "Prove urself",
+                    Type = Tournament.TournamentTypeEnum.Unproven,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Unranked,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 12,
+                    TrophyPic = "/Images/Trophy/Trophy3.png",
+                };
+
+                Tournament Tournament5 = new Tournament()
+                {
+                    Name = "Come and play",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = true,
+                    MinRank = Models.User.RankEnum.Unranked,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 12,
+                    TrophyPic = "/Images/Trophy/Trophy4.png",
+                };
+
+                Tournament Tournament6 = new Tournament()
+                {
+                    Name = "Legends Only",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = true,
+                    MinRank = Models.User.RankEnum.Legend,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 8,
+                    TrophyPic = "/Images/Trophy/Trophy2.png",
+                };
+
+                #endregion
+
                 //Adding tournaments to database
                 context.Tournaments.Add(Tournament1);
+                context.Tournaments.Add(Tournament2);
+                context.Tournaments.Add(Tournament3);
+                context.Tournaments.Add(Tournament4);
+                context.Tournaments.Add(Tournament5);
+                context.Tournaments.Add(Tournament6);
 
                 /********************REPORTS*********************/
 
