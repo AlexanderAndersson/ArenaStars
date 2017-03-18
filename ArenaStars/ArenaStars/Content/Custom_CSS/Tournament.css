@@ -2,12 +2,30 @@
 
 }
 
+#tLive {
+    color: #24b324;
+    margin-top: 13px;
+}
+
+#tHasEnded {
+    color: #dc3a39;
+    margin-top: 13px;
+}
+
+.white h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
 .tournamentList {
     background-color: #323737;
     border: 1px solid #4b4e4e;
     height: 65px;
     width: 792px;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
+    display: table;
+    margin: auto;
 }
 
 .tournamentList div {

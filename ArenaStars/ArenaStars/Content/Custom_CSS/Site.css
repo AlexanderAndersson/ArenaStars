@@ -134,12 +134,6 @@ li > .logInBtn, .logOutBtn {
     color: white !important;
 }
 
-.homePageContent div {
-    /*padding: 10px;*/
-    float: left;
-    width: 180px;
-}
-
 .homeReports {
     width: 400px !important;
 }
