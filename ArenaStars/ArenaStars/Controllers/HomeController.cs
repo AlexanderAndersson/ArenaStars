@@ -14,6 +14,7 @@ namespace ArenaStars.Controllers
         {
             //ArenaStarsContext context = new ArenaStarsContext();
             List<ViewTournament> tournaments = new List<ViewTournament>();
+            List<ViewUser> users = new List<ViewUser>();
 
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
@@ -21,13 +22,16 @@ namespace ArenaStars.Controllers
 
                 var getTournaments = from t in context.Tournaments
                                   where t.HasEnded == false
-                                  orderby t.StartDate descending
+                                  orderby t.IsLive descending
                                   select t;
 
                 var playersWithHighestElo = from p in context.Users
                                             orderby p.Elo descending
                                             select p;
 
+                var top10players = from p in context.Users
+                                   orderby p.Elo descending
+                                   select p;
 
                 var reports = from r in context.Reports
                               select r;
@@ -52,11 +56,20 @@ namespace ArenaStars.Controllers
                         });
                 }
 
-                ViewBag.Top3HighestElo = playersWithHighestElo.Take(3).ToList();
+                foreach (User user in top10players.Take(7))
+                {
+                    users.Add(new ViewUser()
+                    {
+                        Username = user.Username,
+                        Rank = user.Rank,
+                        Elo = user.Elo
+                    });
+                }
+
+                ViewBag.Top10Players = users;
+                ViewBag.Top3HighestElo = playersWithHighestElo.Take(4).ToList();
                 //ViewBag.Tournaments = tournaments.Take(5).ToList();
             }
-
-
 
             //Active state css ViewBag
             ViewBag.HomeSelected = "activeNav";
@@ -189,7 +202,7 @@ namespace ArenaStars.Controllers
                     Level = 7,
                     IsTerminated = false,
                     SteamId = "5",
-                    ProfilePic = "http://wiki.teamliquid.net/commons/images/1/1e/Olofmeister_2016.jpg",
+                    ProfilePic = "/Images/Profile/Olofmeister.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -237,7 +250,7 @@ namespace ArenaStars.Controllers
                     Level = 5,
                     IsTerminated = false,
                     SteamId = "7",
-                    ProfilePic = "http://wiki.teamliquid.net/commons/images/thumb/7/7c/KennyS.jpeg/451px-KennyS.jpeg",
+                    ProfilePic = "/Images/Profile/KennyS.jpeg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -285,7 +298,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "9",
-                    ProfilePic = "https://i.ytimg.com/vi/jr264yZ5_5g/hqdefault.jpg",
+                    ProfilePic = "/Images/Profile/GeT_RiGhT.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -309,7 +322,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "10",
-                    ProfilePic = "http://csgobuff.pro/img/upload/player/13.jpg",
+                    ProfilePic = "/Images/Profile/PashaBiceps.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion

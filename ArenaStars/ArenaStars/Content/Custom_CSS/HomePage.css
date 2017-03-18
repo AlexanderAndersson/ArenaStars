@@ -14,6 +14,42 @@
     margin-top: 40px;
 }
 
+.logInBtn {
+    background-color: #f50 !important;
+    border-color: #f50; 
+}
+
+#exitQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+#enterQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+#alreadyInQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+
 /******************RANKS*********************/
 
 #ranks {
@@ -143,6 +179,7 @@
 
 #leaderboard hr {
     border-color: #4b4e4e;
+    margin-bottom: 0px;
 }
 
 #leaderboardTable th:first-child {
@@ -150,7 +187,20 @@
 }
 
 #leaderboardTable th:nth-child(2) {
-    width: 120px;
+    width: 150px;
+}
+
+#leaderboard td {
+    border-top: 1px solid #4b4e4e;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #505050;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(255, 130, 46, 1) !important;
+    cursor: pointer;
 }
 
 /***********************TOP PLAYERS**************************/
@@ -199,7 +249,7 @@
 .newTopPlayer {
     background-color: #323737;
     /*border: 2px solid #4b4e4e;*/
-    width: 300px;
+    width: 208px;
     float: left;
     margin-left: 60px;
     margin-top: 15px;
