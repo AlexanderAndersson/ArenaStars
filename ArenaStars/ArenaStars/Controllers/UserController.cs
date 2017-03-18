@@ -173,7 +173,8 @@ namespace ArenaStars.Controllers
                 Elo = user.Elo,
                 IsTerminated = user.IsTerminated,
                 BanReason = user.BanReason,
-                BanDuration = user.BanDuration,
+                BanFrom = user.BanFrom,
+                BanTo = user.BanTo,
                 ProfilePic = user.ProfilePic,
                 BackgroundPic = user.BackgroundPic,
                 

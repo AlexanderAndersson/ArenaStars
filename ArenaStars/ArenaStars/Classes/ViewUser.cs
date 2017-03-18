@@ -42,7 +42,9 @@ namespace ArenaStars.Classes
 
         public string BanReason { get; set; }
 
-        public DateTime? BanDuration { get; set; }
+        public DateTime? BanFrom { get; set; }
+
+        public DateTime? BanTo { get; set; }
 
         public string ProfilePic { get; set; }
 

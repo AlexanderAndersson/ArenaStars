@@ -1,8 +1,9 @@
 ﻿@using ArenaStars.Models;
+@model List<ArenaStars.Classes.ViewTournament>
 @{
     //int reportNum = 1;
     ViewBag.Title = "ArenaStars";
-    <link href="~/Content/Custom_CSS/HomePage.css" rel = "stylesheet" />
+    <link href="~/Content/Custom_CSS/HomePage.css" rel="stylesheet" type="text/css" />
 }
 
 <div class="white homePageContent">
@@ -66,7 +67,7 @@
     </div>
     <div id="wrapper1">
         <div id="newTournaments">
-            @foreach (Tournament t in ViewBag.Tournaments)
+            @foreach (var t in Model)
             {
                 <div id="@t.Id" class="tournamentList">
                     @if (t.IsLive)
@@ -96,7 +97,7 @@
                     </div>
                     <div id="participants">
                         <span class="glyphicon glyphicon-user"></span><br />
-                        <span>@t.Participants.Count / @t.PlayerLimit</span>
+                        <span>@t.PlayersInTournament / @t.PlayerLimit</span>
                     </div>
                 </div>
             }
