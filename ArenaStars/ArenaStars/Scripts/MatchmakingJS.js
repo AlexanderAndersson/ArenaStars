@@ -42,7 +42,6 @@ $(document).ready(function () {
 });
 
 
-
 function CheckIfFoundGame() {
 
     $.ajax({
@@ -126,6 +125,8 @@ function StartMatchmakingSearch() {
 
             if (errorList.length == 0)
             {
+                $("#exitQueuePopUp").css("display", "none");
+
                 outputStartBow.append(
                 'Searching for game'
                 ).fadeIn();
@@ -191,6 +192,7 @@ function CancelMatchSearch() {
                 sessionStorage.isSearchingForGame = false;
                 sessionStorage.timeSearched = 0;
 
+                $("#enterQueuePopUp").css("display", "none");
                 goodPopup.html("");
                 goodPopup.append(
                     'You have exited the queue!'
