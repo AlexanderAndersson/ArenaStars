@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using QueryMaster;
 using QueryMaster.GameServer;
-using ArenaStars.GameLogsService1Reference;
+using ArenaStars.GameLogsServiceReference1;
 using ArenaStars.Models;
 
 namespace ArenaStars.Controllers
@@ -26,7 +26,7 @@ namespace ArenaStars.Controllers
             Models.Game ga = getGame.FirstOrDefault();
             Models.User playerA = ga.Participants.FirstOrDefault();
             Models.User playerB = ga.Participants.LastOrDefault();
-            GameLogsService1Reference.Game logGame = new GameLogsService1Reference.Game();
+            GameLogsServiceReference1.Game logGame = new GameLogsServiceReference1.Game();
             logGame.Id = ga.Id;
 
             try

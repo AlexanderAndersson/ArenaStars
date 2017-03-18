@@ -18,7 +18,7 @@ namespace GameLogsServiceLibrary
     {
         string errorsPath = @"ftp://224021_master@ftp.arenastars.net/public_html/Errors.txt";
         
-        string logsPath = @"ftp://224021_master@ftp.arenastars.net/public_html/Logs.txt";
+        string logsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt";
         
         public void ReadServerLogs()
         {
