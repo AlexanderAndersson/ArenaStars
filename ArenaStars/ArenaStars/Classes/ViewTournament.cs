@@ -25,6 +25,8 @@ namespace ArenaStars.Classes
 
         public List<ViewUser> Participants { get; set; }
 
+        public int PlayersInTournament { get; set; }
+
         public string TrophyPic { get; set; }
 
         public List<ViewGame> Games { get; set; }
@@ -33,12 +35,11 @@ namespace ArenaStars.Classes
 
         public ArenaStars.Models.User.RankEnum MinRank { get; set; }
 
-        public TournamentTypeEnum Type { get; set; }
+        public ArenaStars.Models.Tournament.TournamentTypeEnum Type { get; set; }
 
         public List<ViewUser> InvitedPlayers { get; set; }
 
         public virtual ViewUser Winner { get; set; }
 
-        public enum TournamentTypeEnum { Veteran, AllStars, Open, Invite, Unproven }
     }
 }

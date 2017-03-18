@@ -1,7 +1,59 @@
-﻿
+﻿@model ArenaStars.Classes.ViewGame
+
 @{
     ViewBag.Title = "GameRoom";
+    ArenaStars.Classes.ViewUser user1 = Model.Participants.FirstOrDefault();
+    ArenaStars.Classes.ViewUser user2 = Model.Participants.LastOrDefault();
+    string user1CountryPic = "/Images/Country/" + user1.Country + ".png";
+    string user1RankPic = "/Images/Rank/" + user1.Rank + ".png";
+    string user2CountryPic = "/Images/Country/" + user2.Country + ".png";
+    string user2RankPic = "/Images/Rank/" + user2.Rank + ".png";
+    string mapPicture = "/Images/Map/" + Model.Map + "_mall.png";
 }
 
-<h2>GameRoom</h2>
+<link rel="stylesheet" type="text/css" href="~/Content/Custom_CSS/GameRoom.css" />
 
+
+<div class="container white col-lg-12">
+    <div class="gameInfoWrapper">
+        <div class="playerInfoBoxLeft text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div><img src="@user1.ProfilePic" alt="ppic" class="profilePic" /></div>
+            <div>@user1.Username <img src="@user1CountryPic" alt="cpic" class="countryPic" /></div>
+            <div>@user1.Rank <img src="@user1RankPic" alt="rpic" class="rankPic" /> <span class="smallElo">(@user1.Elo)</span></div>
+        </div>
+
+        <div class="mapInfoBoxMiddle text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="bigText">VS</div>
+            @if (Model.Type == ArenaStars.Models.Game.GameTypeEnum.Tournament)
+            {
+                <div>@Model.TournamentGameType.ToString()</div>
+            }
+            else
+            {
+                <div>@Model.Type.ToString().Replace('_', ' ')</div>
+            }
+            <div><img src="@mapPicture" alt="mpic" class="mapPic" /></div>
+            <div>@Model.Map</div>
+            <div>@Model.Server.Name</div>
+            @if (Session["username"].ToString().ToLower() == user1.Username.ToLower() || Session["username"].ToString().ToLower() == user2.Username.ToLower())
+            {
+                <div><input type="text" value="@Model.Server.IPaddress" id="ipBox" class="serverIpBox" readonly /> <span id="copyToClipboardButton" class="glyphicon glyphicon-link" onclick="copyToClipboard('#ipBox')"></span></div>
+                <script type="text/javascript">
+                    function copyToClipboard(element) {
+                        var $temp = $("<input>");
+                        $("body").append($temp);
+                        $temp.val($(element).val()).select();
+                        document.execCommand("copy");
+                        $temp.remove();
+                    }
+                </script>
+            }
+        </div>
+
+        <div class="playerInfoBoxRight text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div><img src="@user2.ProfilePic" alt="ppic" class="profilePic" /></div>
+            <div>@user2.Username <img src="@user2CountryPic" alt="cpic" class="countryPic" /></div>
+            <div>@user2.Rank <img src="@user2RankPic" alt="rpic" class="rankPic" /> <span class="smallElo">(@user2.Elo)</span></div>
+        </div>
+    </div>
+</div>

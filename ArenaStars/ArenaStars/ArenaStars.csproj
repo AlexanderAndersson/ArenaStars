@@ -336,7 +336,6 @@
     <Compile Include="Models\ArenaStarsContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameStats.cs" />
-    <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Models\MatchmakingSearch.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Server.cs" />

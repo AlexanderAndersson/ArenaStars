@@ -8,7 +8,7 @@ namespace ArenaStars.Models
 {
     public class ArenaStarsContext : DbContext
     {
-        public ArenaStarsContext() : base ("ASdb")
+        public ArenaStarsContext() : base ("WebDb")
         {
             //this.Configuration.LazyLoadingEnabled = false;
         }

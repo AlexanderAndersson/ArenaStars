@@ -12,33 +12,56 @@ namespace ArenaStars.Controllers
     {
         public ActionResult Index()
         {
-            ArenaStarsContext context = new ArenaStarsContext();
+            //ArenaStarsContext context = new ArenaStarsContext();
+            List<ViewTournament> tournaments = new List<ViewTournament>();
 
-            context.Database.Initialize(true);
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                context.Database.Initialize(true);
 
-            var tournaments = from t in context.Tournaments
-                              where t.HasEnded == false
-                              orderby t.IsLive descending
-                              select t;
+                var getTournaments = from t in context.Tournaments
+                                  where t.HasEnded == false
+                                  orderby t.StartDate descending
+                                  select t;
 
-            var playersWithHighestElo = from p in context.Users
-                                        orderby p.Elo descending
-                                        select p;
-                                      
+                var playersWithHighestElo = from p in context.Users
+                                            orderby p.Elo descending
+                                            select p;
 
-            var reports = from r in context.Reports
-                          select r;
 
-            var userlist = from u in context.Users
-                           select u;
+                var reports = from r in context.Reports
+                              select r;
 
-            ViewBag.Top3HighestElo = playersWithHighestElo.Take(3);
-            ViewBag.Tournaments = tournaments.Take(5);
+                var userlist = from u in context.Users
+                               select u;
+
+                foreach (Tournament tournament in getTournaments.Take(5))
+                {
+                    tournaments.Add(
+                        new ViewTournament()
+                        {
+                            Id = tournament.Id,
+                            IsLive = tournament.IsLive,
+                            StartDate = tournament.StartDate,
+                            Name = tournament.Name,
+                            Type = tournament.Type,
+                            MinRank = tournament.MinRank,
+                            MaxRank = tournament.MaxRank,
+                            PlayersInTournament = tournament.Participants.Count,
+                            PlayerLimit = tournament.PlayerLimit
+                        });
+                }
+
+                ViewBag.Top3HighestElo = playersWithHighestElo.Take(3).ToList();
+                //ViewBag.Tournaments = tournaments.Take(5).ToList();
+            }
+
+
 
             //Active state css ViewBag
             ViewBag.HomeSelected = "activeNav";
 
-            return View();
+            return View(tournaments);
         }
 
         public ActionResult DummyData()
@@ -316,6 +339,114 @@ namespace ArenaStars.Controllers
                     #endregion
                 };
 
+                User TerminatedUser1 = new Models.User()
+                {
+                    #region info
+
+                    Username = "Jared",
+                    Firstname = "Jared",
+                    Lastname = "Fogle",
+                    Country = "Sweden",
+                    Email = "Jared.Fogle@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 300,
+                    Rank = Models.User.RankEnum.Bronze,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddYears(2),
+                    BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User TerminatedUser2 = new Models.User()
+                {
+                    #region info
+
+                    Username = "ImBanned2",
+                    Firstname = "Jared",
+                    Lastname = "Fogle",
+                    Country = "Sweden",
+                    Email = "Jared.Fogle@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 300,
+                    Rank = Models.User.RankEnum.Bronze,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddMonths(2),
+                    BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User TerminatedUser3 = new Models.User()
+                {
+                    #region info
+
+                    Username = "ImBanned3",
+                    Firstname = "Jared",
+                    Lastname = "Fogle",
+                    Country = "Sweden",
+                    Email = "Jared.Fogle@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 300,
+                    Rank = Models.User.RankEnum.Bronze,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddYears(2),
+                    BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User TerminatedUser4 = new Models.User()
+                {
+                    #region info
+
+                    Username = "ImBanned4",
+                    Firstname = "Jared",
+                    Lastname = "Fogle",
+                    Country = "Sweden",
+                    Email = "Jared.Fogle@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 300,
+                    Rank = Models.User.RankEnum.Bronze,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddDays(9),
+                    BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
                 #endregion
 
                 //Adding Users to database
@@ -330,6 +461,10 @@ namespace ArenaStars.Controllers
                 context.Users.Add(u9);
                 context.Users.Add(u10);
                 context.Users.Add(admin);
+                context.Users.Add(TerminatedUser1);
+                context.Users.Add(TerminatedUser2);
+                context.Users.Add(TerminatedUser3);
+                context.Users.Add(TerminatedUser4);
 
                 //Adding Users in Userlist for tournament 1
                 Tournament1UserList.Add(u1);
@@ -340,6 +475,24 @@ namespace ArenaStars.Controllers
                 Tournament1UserList.Add(u6);
                 Tournament1UserList.Add(u7);
                 Tournament1UserList.Add(u8);
+
+
+                /*******************SERVERS**********************/
+
+                #region Servers
+
+                Server serverOne = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #1",
+                    isInUse = false
+                };
+
+                #endregion
+
+                //Adding servers to database
+                context.Servers.Add(serverOne);
+
 
                 /****************GAMES*****************/
 
@@ -515,6 +668,19 @@ namespace ArenaStars.Controllers
                     HasEnded = true
                 };
 
+                Game NotFinishedRankedGame1 = new Game()
+                {
+                    Participants = new List<User>() { u1, u2 },
+                    Winner = u1,
+                    Map = "aim_map",
+                    Type = Game.GameTypeEnum.Ranked,
+                    PlayedDate = DateTime.Now.AddHours(2),
+                    HasEnded = false,
+                    TournamentGameType = Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
+                };
+                serverOne.isInUse = true;
+
                 #endregion
 
                 //Adding Ranked Games to database
@@ -527,6 +693,7 @@ namespace ArenaStars.Controllers
                 context.Games.Add(RankedGame7);
                 context.Games.Add(RankedGame8);
                 context.Games.Add(RankedGame9);
+                context.Games.Add(NotFinishedRankedGame1);
 
                 //Adding Tournament 1 Games to database
                 context.Games.Add(Tournament1Game1);
@@ -1182,21 +1349,6 @@ namespace ArenaStars.Controllers
                 context.Reports.Add(report2);
                 context.Reports.Add(report3);
 
-                /*******************SERVERS**********************/
-
-                #region Servers
-
-                Server serverOne = new Models.Server()
-                {
-                    IPaddress = "217.78.24.8:28892",
-                    Name = "ArenaStars Server #1",
-                    isInUse = false
-                };
-
-                #endregion
-
-                //Adding servers to database
-                context.Servers.Add(serverOne);
 
                 //Saving changes to database
                 context.SaveChanges();
@@ -1559,9 +1711,113 @@ namespace ArenaStars.Controllers
 
         public ActionResult GameRoom(long gameId)
         {
+            Game game;
+            ViewGame viewGame;
+            using (ArenaStarsContext context = new ArenaStarsContext())
+            {
+                var getGame = from g in context.Games
+                              where g.Id == gameId
+                              select g;
 
+                game = getGame.FirstOrDefault();
+                if (game.HasEnded == true)
+                {
+                    viewGame = new ViewGame()
+                    {
+                        Id = game.Id,
+                        Server = game.Server,
+                        Map = game.Map,
+                        HasEnded = game.HasEnded,
+                        Type = game.Type,
+                        TournamentGameType = game.TournamentGameType,
+                        PlayedDate = game.PlayedDate,
+                        Participants = new List<ViewUser>()
+                        {
+                            new ViewUser()
+                            {
+                                Username = game.Participants.FirstOrDefault().Username,
+                                ProfilePic = game.Participants.FirstOrDefault().ProfilePic,
+                                Rank = game.Participants.FirstOrDefault().Rank,
+                                Country = game.Participants.FirstOrDefault().Country,
+                                Elo = game.Participants.FirstOrDefault().Elo,
+                                SteamId = game.Participants.FirstOrDefault().SteamId
+                            },
+                            new ViewUser()
+                            {
+                                Username = game.Participants.LastOrDefault().Username,
+                                ProfilePic = game.Participants.LastOrDefault().ProfilePic,
+                                Rank = game.Participants.LastOrDefault().Rank,
+                                Country = game.Participants.LastOrDefault().Country,
+                                Elo = game.Participants.LastOrDefault().Elo,
+                                SteamId = game.Participants.LastOrDefault().SteamId
+                            }
+                        },
+                        Winner = new ViewUser
+                        {
+                            Username = game.Winner.Username,
+                            ProfilePic = game.Winner.ProfilePic,
+                            Rank = game.Winner.Rank,
+                            Country = game.Winner.Country,
+                            Elo = game.Winner.Elo,
+                            SteamId = game.Winner.SteamId
+                        },
+                        GameStats = new List<ViewGamestat>()
+                        {
+                            new ViewGamestat()
+                            {
+                                SteamId = game.Participants.FirstOrDefault().SteamId,
+                                Kills = game.GameStats.FirstOrDefault().Kills,
+                                Deaths = game.GameStats.FirstOrDefault().Deaths,
+                                HsRatio = game.GameStats.FirstOrDefault().HsRatio
+                            },
+                            new ViewGamestat()
+                            {
+                                SteamId = game.Participants.LastOrDefault().SteamId,
+                                Kills = game.GameStats.LastOrDefault().Kills,
+                                Deaths = game.GameStats.LastOrDefault().Deaths,
+                                HsRatio = game.GameStats.LastOrDefault().HsRatio
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    viewGame = new ViewGame()
+                    {
+                        Id = game.Id,
+                        Server = game.Server,
+                        Map = game.Map,
+                        HasEnded = game.HasEnded,
+                        Type = game.Type,
+                        TournamentGameType = game.TournamentGameType,
+                        Participants = new List<ViewUser>()
+                        {
+                            new ViewUser()
+                            {
+                                Username = game.Participants.FirstOrDefault().Username,
+                                ProfilePic = game.Participants.FirstOrDefault().ProfilePic,
+                                Rank = game.Participants.FirstOrDefault().Rank,
+                                Country = game.Participants.FirstOrDefault().Country,
+                                Elo = game.Participants.FirstOrDefault().Elo,
+                                SteamId = game.Participants.FirstOrDefault().SteamId
+                            },
+                            new ViewUser()
+                            {
+                                Username = game.Participants.LastOrDefault().Username,
+                                ProfilePic = game.Participants.LastOrDefault().ProfilePic,
+                                Rank = game.Participants.LastOrDefault().Rank,
+                                Country = game.Participants.LastOrDefault().Country,
+                                Elo = game.Participants.LastOrDefault().Elo,
+                                SteamId = game.Participants.LastOrDefault().SteamId
+                            }
+                        }
+                    };
+                    
+                }
+                
+            }
 
-            return View();
+                return View(viewGame);
         }
 		
 		
