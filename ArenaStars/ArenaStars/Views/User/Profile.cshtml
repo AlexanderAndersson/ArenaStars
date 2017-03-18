@@ -25,7 +25,23 @@
             <div id="profilePictureContainer" class="profilePicture col-lg-3 col-md-3 col-sm-5 col-xs-8">
                 <img src="@Model.ProfilePic" alt="profile pic" class="img-responsive" />
             </div>
-            @*<span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-2">OVERVIEW</span>*@
+            @if (Model.IsTerminated == true)
+            {
+                <div class="littleUserInfoBox isBanned">
+                    <span class="cheatingReason">Banned for @Model.BanReason</span><br />
+                    <span class="text-danger bold">@Model.BanFrom.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture) - @Model.BanTo.Value.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</span><br />
+                    <span style="font-weight:bolder;">@Model.Username</span> <img src="@countryPic" class="img-responsive" style="display:inline" /><br />
+                    <span style="font-weight:bold;">Member since @Model.SignUpDate.Value.ToString("dd-MM-yyyy")</span>
+                </div>
+            }
+            else
+            {
+                <div class="littleUserInfoBox">
+                    <span style="font-weight:bolder;">@Model.Username</span> <img src="@countryPic" class="img-responsive" style="display:inline" /><br />
+                    <span style="font-weight:bold;">Member since @Model.SignUpDate.Value.ToString("dd-MM-yyyy")</span>
+                </div>
+            }
+
             <span class="fakeNavBarItem col-lg-1 col-md-2 col-sm-2 col-xs-2">OVERVIEW</span>
             <span class="fakeNavBarItem col-lg-1 col-md-1 col-sm-1 col-xs-2">STATS</span>
         </div>
@@ -60,15 +76,14 @@
 
             <div class="row">
                 <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <img src="@levelPic" class="img-responsive" style="display:inline" />
-                    <span class="statsBoxItemText statsBoxMatchesText">
+                    <span class="statsBoxMainItem makeMeMiddlePlz">
                         <b>@Model.GamesCount</b> <br />
                         Matches
                     </span>
                 </div>
 
                 <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <span class="statsBoxMainItem">
+                    <span class="statsBoxMainItem makeMeMiddlePlz">
                         <b>@Model.winPercentage.ToString("0")%</b> <br />
                         Win Rate
                     </span>
@@ -92,21 +107,48 @@
                         League
                     </span>
                 </div>
+
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img src="/Images/Profile/ProfilePicture_Default.jpg" class="img-responsive" />
+                    <span class="statsBoxItemText">
+                        <b>Dominating</b> <br />
+                        username
+                    </span>
+                </div>
+
+                <div class="statsBoxItem col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <img src="/Images/Profile/ProfilePicture_Default.jpg" class="img-responsive" />
+                    <span class="statsBoxItemText">
+                        <b>Dominating you</b> <br />
+                        username
+                    </span>
+                </div>
+
             </div>
         </div>
-    </div>
-    
 
-    <div id="userInfo" class="profileTease">
-        <p>Username: @Model.Username</p>
-        <p>Email: @Model.Email</p>
+        <div id="userBio" class="userBioBox col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+            <div class="bioHeader"><span>ABOUT</span>
+            @if (Session["username"].ToString().ToLower() == Model.Username.ToLower())
+            {
+                <span id="editBio" class="floatRight glyphicon glyphicon-pencil"></span>
+            }
+            </div>
+            <hr />
+            <div id="aboutContent">
+                @Model.Bio
+            </div>
+        </div>
+
     </div>
+
+    
 
     <h3>Tournament History</h3>
     <div class="newTournaments">
 
     </div>
-    <br />
+    <br /><br /><br /><br />
     <button id="showMoreTournamentsButton">SHOW MORE</button>
     
     <div class="gameHeader row col-lg-12">

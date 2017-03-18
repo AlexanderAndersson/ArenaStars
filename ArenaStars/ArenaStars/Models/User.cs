@@ -22,6 +22,8 @@ namespace ArenaStars.Models
 
         public string Lastname { get; set; }
 
+        public string Bio { get; set; }
+
         public string Country { get; set; }
 
         public DateTime? SignUpDate { get; set; }

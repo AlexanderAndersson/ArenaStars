@@ -22,6 +22,28 @@ hr {
     margin-top:-190px;
 }
 
+.littleUserInfoBox {
+    width:200px;
+    height:65px;
+    margin-top:-125px;
+    margin-left:250px;
+    background-color:rgba(0, 0, 0, 0.8);
+    padding:10px;
+    border:1px solid red;
+}
+
+.cheatingReason {
+    background-color:red;
+    color:white;
+    padding: 0px 5px;
+    border-radius:3px;
+    font-weight:bold;
+}
+
+.isBanned {
+    height:100px;
+}
+
 .fakeNavBar {
     background-color:#141616;
     height:40px;
@@ -47,7 +69,7 @@ hr {
 
 .generalStatsBox {
     border: 1px solid #4b4e4e;
-    height: 250px;
+    height: 200px;
 }
 
 .container > h5 {
@@ -57,7 +79,7 @@ hr {
 }
 
 .statsBoxItem {
-    border:1px solid red;
+    /*border:1px solid red;*/
     position:relative;
     height:50px;
     display:inline;
@@ -89,6 +111,10 @@ hr {
     right:30%;
 }
 
+.makeMeMiddlePlz {
+     left:65px;
+}
+
 /*@media (max-width: 768px) {
     .statsBoxItemText {
         right:70%;
@@ -103,10 +129,6 @@ hr {
 
     .statsBoxItem .statsBoxCenter {
         left:15px;
-    }
-
-    .statsBoxMatchesText {
-        left:65px;
     }
 
     .statsBoxMainItem {
@@ -140,10 +162,6 @@ hr {
         left:15px;
     }
 
-    .statsBoxMatchesText {
-        left:65px;
-    }
-
     .statsBoxMainItem {
         left:15px;
     }
@@ -166,6 +184,11 @@ hr {
 
     .mapMargin {
         margin-left:30px !important;
+    }
+
+    .userBioBox {
+        border:1px solid black;
+        margin-top:10px;
     }
 }
 
@@ -262,3 +285,46 @@ hr {
 .mapMargin {
 
 }
+
+.newTournaments {
+    float:left;
+    display:block;
+}
+
+.generalStatsBox .row:nth-child(1) .statsBoxItem:nth-child(-n+2) {
+    border-right:1px solid grey;
+}
+
+.generalStatsBox .row:nth-child(3) .statsBoxItem:nth-child(-n+2) {
+    border-right:1px solid grey;
+}
+
+.generalStatsBox .row:nth-child(5) .statsBoxItem:nth-child(-n+2) {
+    border-right:1px solid grey;
+}
+
+button {
+    color:#333;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.userBioBox {
+    border:1px solid black;
+    height:200px;
+    overflow-y:scroll;
+}
+
+.bioHeader {
+    margin-top:10px;
+}
+
+#aboutContent {
+    font-family:Arial, Helvetica, sans-serif;
+    margin-bottom:10px;
+    word-wrap:break-word;
+}
+
+#editBio:hover {
+    cursor:pointer;
+}
+

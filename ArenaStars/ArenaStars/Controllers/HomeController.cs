@@ -28,12 +28,27 @@ namespace ArenaStars.Controllers
                                             orderby p.Elo descending
                                             select p;
 
+                
 
-                var reports = from r in context.Reports
-                              select r;
+                if ((bool)Session["isLoggedIn"] == true)
+                {
+                    string uname = Session["username"].ToString();
+                    var getYou = from u in context.Users
+                                 where u.Username.ToLower() == uname.ToLower()
+                                 select u;
+                    User you = getYou.FirstOrDefault();
+                    var activeGame = from g in you.Games
+                                     where g.HasEnded == false
+                                     select g;
 
-                var userlist = from u in context.Users
-                               select u;
+                    if (activeGame.Count() == 1)
+                    {
+                        Game g = activeGame.FirstOrDefault();
+                        ViewBag.activeGame = true;
+                        ViewBag.activeGameId = g.Id;
+                    }
+                    
+                }
 
                 foreach (Tournament tournament in getTournaments.Take(5))
                 {
@@ -94,7 +109,8 @@ namespace ArenaStars.Controllers
                     IsTerminated = false,
                     SteamId = "1",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
-                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+                    Bio = "Muppetnicke, the best player ever!"
 
                     #endregion
                 };
@@ -118,7 +134,8 @@ namespace ArenaStars.Controllers
                     IsTerminated = false,
                     SteamId = "2",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
-                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+                    Bio = "Certified noob"
 
                     #endregion
                 };
@@ -361,7 +378,8 @@ namespace ArenaStars.Controllers
                     BanReason = "Cheating",
                     SteamId = "terminated",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
-                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+                    Bio = "The ban is because my dad was using my account! This is his dad, yes I was cheating on his account please unban him you idiots!!!!"
 
                     #endregion
                 };

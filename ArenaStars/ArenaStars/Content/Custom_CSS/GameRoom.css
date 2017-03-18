@@ -1,6 +1,14 @@
 ﻿body {
 }
 
+a {
+    color:white;
+}
+
+a:hover {
+    text-decoration:none;
+}
+
 .gameInfoWrapper {
     margin-top:5%;
     font-size:large;
