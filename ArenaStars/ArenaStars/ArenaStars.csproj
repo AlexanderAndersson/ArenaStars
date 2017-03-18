@@ -196,6 +196,7 @@
     <Content Include="Images\Level\Level8.png" />
     <Content Include="Images\Level\Level9.png" />
     <Content Include="Images\Map\aim_map.png" />
+    <Content Include="Images\Map\aim_map_mall.png" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
     <Content Include="Images\Profile\ProfilePicture_Default.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
@@ -335,6 +336,7 @@
     <Compile Include="Models\ArenaStarsContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameStats.cs" />
+    <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Models\MatchmakingSearch.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Server.cs" />
@@ -359,6 +361,7 @@
     <Content Include="Views\Admin\Reports.cshtml" />
     <Content Include="Views\Tournament\TournamentInfo.cshtml" />
     <Content Include="Views\Home\UserShowAll.cshtml" />
+    <Content Include="Views\Home\GameRoom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

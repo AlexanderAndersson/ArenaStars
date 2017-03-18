@@ -39,7 +39,7 @@
 .tournamentList:hover {
     text-decoration: none !important;
     cursor: pointer;
-    background-color: #3d4444;
+    background-color: rgba(255, 130, 46, 0.7);
 }
 
 #participants {
@@ -69,4 +69,16 @@
 #tForm input {
     font-size: large;
     /*height: 35px;*/
+}
+
+#tType {
+    width: 90px !important;
+}
+
+#tName {
+    width: 248px;
+}
+
+#tRanks {
+     width: 200px;
 }

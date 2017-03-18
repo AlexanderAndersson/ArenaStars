@@ -17,7 +17,7 @@
             }
             else
             {
-                <div class="btn btn-danger">Login to play</div>
+                <div class="btn btn-danger logInBtn">Login to play</div>
             }
         </div>
     </div>
@@ -82,7 +82,7 @@
                             <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
                         </div>
                     }
-                    <div>
+                    <div id="name">
                         <span class="bold">NAME</span><br />
                         <span>@t.Name</span>
                     </div>
@@ -90,7 +90,7 @@
                         <span class="bold">TYPE</span><br />
                         <span>@t.Type</span>
                     </div>
-                    <div>
+                    <div id="tRanks">
                         <span class="bold">RANKS</span><br />
                         <span>@t.MinRank - @t.MaxRank</span>
                     </div>
@@ -104,23 +104,41 @@
         <div id="leaderboard">
             <h4>LEADERBOARD</h4>
             <hr />
-        </div>
-        <div id="wrapper2">
-            <h4>TOP PLAYERS</h4>
-            <hr />
-            <div id="twat">
-                @foreach (User user in ViewBag.Top3HighestElo)
-                {
-                    <a>
-                        <div id="@user.Id" style="background-image: url(@user.ProfilePic)" class="topPlayers"></div>
-                        <div id="topPlayersInfo">
-                            <h4>@user.Username</h4>
-                        </div>
-                    </a>
-                }
-            </div>
+            <table id="leaderboardTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Kills</th>
+                        <th>HS Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    <div id="wrapper2">
+        <h4>TOP PLAYERS</h4>
+        <hr />
+        <div id="topPlayers">
+            @foreach (User user in ViewBag.Top3HighestElo)
+            {
+                string rankPic = "/Images/Rank/" + user.Rank + ".png";
+                <div id="@user.Id" class="newTopPlayer">
+                    <div id="@user.Id" style="background-image: url(@user.ProfilePic)" class="topPlayerPic"></div>
+                    <div id="topPlayersInfo">
+                        <h4>@user.Username <span><img src="@rankPic"/></span></h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 
 
 
