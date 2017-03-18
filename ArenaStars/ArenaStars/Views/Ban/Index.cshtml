@@ -1,9 +1,36 @@
-﻿@{
+﻿@model List<ArenaStars.Models.User>
+
+@{
     ViewBag.Title = "Banlist";
 }
+<link href="~/Content/Custom_CSS/BanPage.css" rel="stylesheet" />
+
 
 <div class="white">
     <h2>Hall of Shame</h2>
 </div>
 
 
+<div class="container white">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>PLAYER</th>
+                <th>BAN REASON</th>
+                <th>FROM</th>
+                <th>TO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ArenaStars.Models.User user in Model)
+            {
+                <tr class="IndividualBan">
+                    <td>@user.Username</td>
+                    <td>@user.BanReason</td>
+                    <td>@user.BanFrom</td>
+                    <td>@user.BanTo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
