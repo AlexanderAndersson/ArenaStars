@@ -120,7 +120,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "1",
-                    Bio = "Muppetnicke, the best player ever!"
+                    Bio = "Muppetnicke, the best player ever!",
                     ProfilePic = "https://yt3.ggpht.com/-4XetcFMa8UQ/AAAAAAAAAAI/AAAAAAAAAAA/PGQrxc2Y29E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
@@ -145,7 +145,7 @@ namespace ArenaStars.Controllers
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "2",
-                    Bio = "Certified noob"
+                    Bio = "Certified noob",
                     ProfilePic = "https://yt3.ggpht.com/-_p3dlkuqWII/AAAAAAAAAAI/AAAAAAAAAAA/cFOW_AqqnlQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
