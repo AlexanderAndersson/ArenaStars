@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using QueryMaster;
 using QueryMaster.GameServer;
-using ArenaStars.GameLogServiceReference;
+using ArenaStars.GameLogsService1Reference;
 using ArenaStars.Models;
 
 namespace ArenaStars.Controllers
@@ -35,9 +35,9 @@ namespace ArenaStars.Controllers
             Models.User PB = playerB.FirstOrDefault();
 
 
-            GameLogServiceReference.User logUserB = new GameLogServiceReference.User();
-            GameLogServiceReference.Game logGame = new GameLogServiceReference.Game();
-            GameLogServiceReference.User logUserA = new GameLogServiceReference.User();
+            GameLogsService1Reference.User logUserB = new GameLogsService1Reference.User();
+            GameLogsService1Reference.Game logGame = new GameLogsService1Reference.Game();
+            GameLogsService1Reference.User logUserA = new GameLogsService1Reference.User();
             logGame.Type = 0;
 
             logUserA.Username = PA.Username;
