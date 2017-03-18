@@ -13,48 +13,31 @@ namespace ArenaStars.Controllers
 {
     public class ServerController : Controller
     {
-        string ServerControllerPath = @"put your path here or make it automatic";
-        ArenaStarsContext db = new Models.ArenaStarsContext();
+        string ServerControllerPath = @"ftp://224021_master@ftp.arenastars.net/public_html/Errors.txt";
+        ArenaStarsContext db = new ArenaStarsContext();
 
         // GET: Server
         public void ServerStart()
         {
-            //Simulates 2 players matched from matchmaking function
-            string LINUS = "LINUS";
-            string Nicke = "LVL 8 MAGE";
-
-            var playerA = from x in db.Users
-                          where x.Username == LINUS
-                          select x;
-
-            var playerB = from x in db.Users
-                          where x.Username == Nicke
-                          select x;
-
-            Models.User PA = playerA.FirstOrDefault();
-            Models.User PB = playerB.FirstOrDefault();
-
-
-            GameLogsService1Reference.User logUserB = new GameLogsService1Reference.User();
+            long gameId = (long)TempData["transferGameId"];
+            var getGame = from g in db.Games
+                          where g.Id == gameId
+                          select g;
+            Models.Game ga = getGame.FirstOrDefault();
+            Models.User playerA = ga.Participants.FirstOrDefault();
+            Models.User playerB = ga.Participants.LastOrDefault();
             GameLogsService1Reference.Game logGame = new GameLogsService1Reference.Game();
-            GameLogsService1Reference.User logUserA = new GameLogsService1Reference.User();
-            logGame.Type = 0;
-
-            logUserA.Username = PA.Username;
-            logUserA.SteamId = PA.SteamId;
-
-            logUserB.Username = PB.Username;
-            logUserB.SteamId = PB.SteamId;
+            logGame.Id = ga.Id;
 
             try
             {
                 GameServiceClient client = new GameServiceClient();
-                client.WhitelistPlayers(logUserA, logUserB);
+                client.WhitelistPlayers(logGame);
                 client.WaitForPlayers();
                 client.DeleteLog();
                 client.StartGame();
                 client.ReadServerLogs();
-                client.SaveStatsAndGame(logUserA, logUserB, logGame);
+                client.SaveStatsAndGame(logGame);
                 client.Close();
             }
             catch (Exception ex)
@@ -65,8 +48,8 @@ namespace ArenaStars.Controllers
                        "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
                     writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
                 }
-                string playerAID = "\"" + logUserA.SteamId + "\"";
-                string playerBID = "\"" + logUserB.SteamId + "\"";
+                string playerAID = "\"" + playerA.SteamId + "\"";
+                string playerBID = "\"" + playerB.SteamId + "\"";
                 QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
 
                 if (server.GetControl("lol"))

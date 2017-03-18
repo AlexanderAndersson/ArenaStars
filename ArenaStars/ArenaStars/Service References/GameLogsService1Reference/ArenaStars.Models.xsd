@@ -1,39 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ArenaStars.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="User">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BackgroundPic" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BanDuration" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="BanReason" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Elo" type="xs:int" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Games" nillable="true" type="tns:ArrayOfGame" />
-      <xs:element minOccurs="0" name="Id" type="xs:long" />
-      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsTerminated" type="xs:boolean" />
-      <xs:element minOccurs="0" name="LastLoggedIn" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Level" type="xs:int" />
-      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProfilePic" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rank" type="tns:User.RankEnum" />
-      <xs:element minOccurs="0" name="ReportList" nillable="true" type="tns:ArrayOfReport" />
-      <xs:element minOccurs="0" name="SignUpDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="SteamId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Tournaments" nillable="true" type="tns:ArrayOfTournament" />
-      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="ArrayOfGame">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfGame" nillable="true" type="tns:ArrayOfGame" />
   <xs:complexType name="Game">
     <xs:sequence>
       <xs:element minOccurs="0" name="GameStats" nillable="true" type="tns:ArrayOfGameStats" />
@@ -73,37 +40,39 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
-  <xs:complexType name="Server">
+  <xs:complexType name="User">
     <xs:sequence>
-      <xs:element minOccurs="0" name="IPaddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BackgroundPic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BanDuration" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BanReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Elo" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Games" nillable="true" type="tns:ArrayOfGame" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="isInUse" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTerminated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastLoggedIn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Level" type="xs:int" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilePic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rank" type="tns:User.RankEnum" />
+      <xs:element minOccurs="0" name="ReportList" nillable="true" type="tns:ArrayOfReport" />
+      <xs:element minOccurs="0" name="SignUpDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SteamId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tournaments" nillable="true" type="tns:ArrayOfTournament" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Server" nillable="true" type="tns:Server" />
-  <xs:simpleType name="Game.TournamentGameTypeEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Not_In_Tournament" />
-      <xs:enumeration value="Round_of_128" />
-      <xs:enumeration value="Round_of_64" />
-      <xs:enumeration value="Round_of_32" />
-      <xs:enumeration value="Round_of_16" />
-      <xs:enumeration value="Quarter_Final" />
-      <xs:enumeration value="Semi_Final" />
-      <xs:enumeration value="Final" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Game.TournamentGameTypeEnum" nillable="true" type="tns:Game.TournamentGameTypeEnum" />
-  <xs:simpleType name="Game.GameTypeEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Ranked" />
-      <xs:enumeration value="Unranked" />
-      <xs:enumeration value="Tournament" />
-      <xs:enumeration value="Challange" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Game.GameTypeEnum" nillable="true" type="tns:Game.GameTypeEnum" />
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfGame">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGame" nillable="true" type="tns:ArrayOfGame" />
   <xs:simpleType name="User.RankEnum">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Unranked">
@@ -274,4 +243,35 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Tournament.TournamentTypeEnum" nillable="true" type="tns:Tournament.TournamentTypeEnum" />
+  <xs:complexType name="Server">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IPaddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isInUse" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Server" nillable="true" type="tns:Server" />
+  <xs:simpleType name="Game.TournamentGameTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Not_In_Tournament" />
+      <xs:enumeration value="Round_of_128" />
+      <xs:enumeration value="Round_of_64" />
+      <xs:enumeration value="Round_of_32" />
+      <xs:enumeration value="Round_of_16" />
+      <xs:enumeration value="Quarter_Final" />
+      <xs:enumeration value="Semi_Final" />
+      <xs:enumeration value="Final" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Game.TournamentGameTypeEnum" nillable="true" type="tns:Game.TournamentGameTypeEnum" />
+  <xs:simpleType name="Game.GameTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ranked" />
+      <xs:enumeration value="Unranked" />
+      <xs:enumeration value="Tournament" />
+      <xs:enumeration value="Challange" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Game.GameTypeEnum" nillable="true" type="tns:Game.GameTypeEnum" />
 </xs:schema>

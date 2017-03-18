@@ -16,11 +16,9 @@ namespace GameLogsServiceLibrary
     
     public class GameService : IGameService
     {
-        string saveStatsAndGamePath = @"put your path here or make it automatic";
-        string readServerLogsPath = @"put your path here or make it automatic";
-        string whitelistPlayersPath = @"put your path here or make it automatic";
-        string waitForPLayersPath = @"put your path here or make it automatics";
-        string logsPath = @"put your path here or make it automatic";
+        string errorsPath = @"ftp://224021_master@ftp.arenastars.net/public_html/Errors.txt";
+        
+        string logsPath = @"ftp://224021_master@ftp.arenastars.net/public_html/Logs.txt";
         
         public void ReadServerLogs()
         {
@@ -49,16 +47,25 @@ namespace GameLogsServiceLibrary
 
         }
 
-        public void WhitelistPlayers(User _playerA, User _playerB)
+        public void WhitelistPlayers(ArenaStars.Models.Game _game)
         {
+           
             try
             {
+                ArenaStarsContext db = new ArenaStarsContext();
+                var findGame = from x in db.Games
+                               where x.Id == _game.Id
+                               select x;
+                ArenaStars.Models.Game g = findGame.FirstOrDefault();
+
+                User playerA = g.Participants.FirstOrDefault();
+                User playerB = g.Participants.LastOrDefault();
                 //Add players to the whitelist
-                string playerAID = "\"" + _playerA.SteamId + "\"";
-                string playerBID = "\"" + _playerB.SteamId + "\"";
+                string playerAID = "\"" + playerA.SteamId + "\"";
+                string playerBID = "\"" + playerB.SteamId + "\"";
 
                 QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
-                
+
                 if (server.GetControl("lol"))
                 {
                     server.Rcon.SendCommand("sm_whitelist_add " + playerAID);
@@ -68,14 +75,14 @@ namespace GameLogsServiceLibrary
             catch (Exception ex)
             {
 
-                using (StreamWriter writer = new StreamWriter(whitelistPlayersPath, true))
+                using (StreamWriter writer = new StreamWriter(errorsPath, true))
                 {
                     writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
                        "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
                     writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
                 }
             }
-          
+
 
         }
 
@@ -91,94 +98,85 @@ namespace GameLogsServiceLibrary
         public void DeleteLog()
         {
             //Temporary fix for file not overwriting. Cant have multiple games going if using this.
-            if (File.Exists(@"put your path here or make it automatic"))
+            if (File.Exists(logsPath))
             {
-                File.Delete(@"put your path here or make it automatic");
+                File.Delete(logsPath);
             }
         }
 
-        public void SaveStatsAndGame(User _playerA, User _playerB, ArenaStars.Models.Game _gameType)
+        public void SaveStatsAndGame(ArenaStars.Models.Game _game)
         {
-           
             try
             {
+
                 using (ArenaStarsContext db = new ArenaStarsContext())
                 {
-                    var findUserA = from x in db.Users
-                                    where x.Username == _playerA.Username
-                                    select x;
-                    var findUserB = from x in db.Users
-                                    where x.Username == _playerB.Username
-                                    select x;
-
-                    User playerA = findUserA.FirstOrDefault();
-                    User playerB = findUserB.FirstOrDefault();
+                    
+                    var findGame = from x in db.Games
+                                   where x.Id == _game.Id
+                                   select x;
+                    ArenaStars.Models.Game g = findGame.FirstOrDefault();
+                    User playerA = g.Participants.FirstOrDefault();
+                    User playerB = g.Participants.LastOrDefault();
 
                     QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
                     ServerInfo info = server.GetInfo();
 
-               
-                string playerAName = "\"" + playerA.Username;
-                string playerASteamID = playerA.SteamId;
-                int playerAKills = 0;
-                int playerADeaths = 0;
-                int playerAHSCount = 0;
 
-                string playerBName = "\"" + playerB.Username;
-                string playerBSteamID = playerB.SteamId;
-                int playerBKills = 0;
-                int playerBDeaths = 0;
-                int playerBHSCount = 0;
+                    string playerAName = "\"" + playerA.Username;
+                    string playerASteamID = playerA.SteamId;
+                    int playerAKills = 0;
+                    int playerADeaths = 0;
+                    int playerAHSCount = 0;
 
-                //Spagetthi for getting kills,deaths etc..
-                //Reads every line in Logs.txt and calculates
-                foreach (var line in File.ReadAllLines(@"put your path here or make it automatic"))
-                {
-                    if (line.StartsWith(playerAName) && line.Contains("killed"))
+                    string playerBName = "\"" + playerB.Username;
+                    string playerBSteamID = playerB.SteamId;
+                    int playerBKills = 0;
+                    int playerBDeaths = 0;
+                    int playerBHSCount = 0;
+
+                    //Spagetthi for getting kills,deaths etc..
+                    //Reads every line in Logs.txt and calculates
+                    foreach (var line in File.ReadAllLines(logsPath))
                     {
-                        playerAKills++;
-                        if (line.Contains("headshot"))
+                        if (line.StartsWith(playerAName) && line.Contains("killed"))
                         {
-                            playerAHSCount++;
+                            playerAKills++;
+                            if (line.Contains("headshot"))
+                            {
+                                playerAHSCount++;
+                            }
+                        }
+                        if (line.StartsWith(playerBName) && line.Contains("killed"))
+                        {
+                            playerBKills++;
+                            if (line.Contains("headshot"))
+                            {
+                                playerBHSCount++;
+                            }
                         }
                     }
-                    if (line.StartsWith(playerBName) && line.Contains("killed"))
-                    {
-                        playerBKills++;
-                        if (line.Contains("headshot"))
-                        {
-                            playerBHSCount++;
-                        }
-                    }
-                }
-                playerADeaths = playerBKills;
-                playerBDeaths = playerAKills;
+                    playerADeaths = playerBKills;
+                    playerBDeaths = playerAKills;
 
 
-                    ArenaStars.Models.Game game = new ArenaStars.Models.Game();
-                    game.Map = info.Map;
-                    game.Type = _gameType.Type;
-
-                    playerA.Games.Add(game);
-                    playerB.Games.Add(game);
-                 
                     GameStats gameStatsA = new GameStats();
                     gameStatsA.SteamId = playerASteamID;
                     gameStatsA.Kills = playerAKills;
                     gameStatsA.Deaths = playerADeaths;
                     gameStatsA.HsRatio = headShotRatioConverter(playerAHSCount, playerAKills);
-                    gameStatsA.Game = game;
-                  
+                    gameStatsA.Game = g;
+
 
                     GameStats gameStatsB = new GameStats();
                     gameStatsB.SteamId = playerBSteamID;
                     gameStatsB.Kills = playerBKills;
                     gameStatsB.Deaths = playerBDeaths;
                     gameStatsB.HsRatio = 0.33f;//headShotRatioConverter(playerBHSCount, playerBKills); //ISSUES
-                    gameStatsB.Game = game;
+                    gameStatsB.Game = g;
 
-                    game.Winner = getWinner(gameStatsA, gameStatsB, playerA, playerB, game);
-                    db.Games.Add(game);
+                    g.Winner = getWinner(gameStatsA, gameStatsB, playerA, playerB, g);
+
 
                     db.GameStats.Add(gameStatsA);
                     db.GameStats.Add(gameStatsB);
@@ -187,8 +185,8 @@ namespace GameLogsServiceLibrary
                     db.SaveChanges();
 
                     //Match has finished so we remove players from the whitelist and restart map.
-                    string playerAID = "\"" + _playerA.SteamId + "\"";
-                    string playerBID = "\"" + _playerA.SteamId + "\"";
+                    string playerAID = "\"" + playerA.SteamId + "\"";
+                    string playerBID = "\"" + playerB.SteamId + "\"";
 
 
                     if (server.GetControl("lol"))
@@ -204,13 +202,14 @@ namespace GameLogsServiceLibrary
             }
             catch (Exception ex)
             {
-                using (StreamWriter writer = new StreamWriter(saveStatsAndGamePath, true))
+                using (StreamWriter writer = new StreamWriter(errorsPath, true))
                 {
                     writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
                        "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
                     writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
                 }
             }
+
         }
       
         
@@ -279,7 +278,7 @@ namespace GameLogsServiceLibrary
             }
             catch (Exception ex)
             {
-                using (StreamWriter writer = new StreamWriter(waitForPLayersPath, true))
+                using (StreamWriter writer = new StreamWriter(errorsPath, true))
                 {
                     writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
                        "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());

@@ -19,9 +19,9 @@ namespace GameLogsServiceLibrary
         [OperationContract]
         void DeleteLog();
         [OperationContract]
-        void SaveStatsAndGame(User playerA, User playerB,Game gameType);
+        void SaveStatsAndGame(Game game);
         [OperationContract]
-        void WhitelistPlayers(User _playerA, User _playerB);
+        void WhitelistPlayers(Game game);
         [OperationContract]
         void WaitForPlayers();
 

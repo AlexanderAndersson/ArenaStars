@@ -15,6 +15,334 @@ namespace ArenaStars.GameLogsService1Reference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
+    [System.SerializableAttribute()]
+    public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.GameStats[] GameStatsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HasEndedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MapField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.User[] ParticipantsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> PlayedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.Server ServerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.Game.TournamentGameTypeEnum TournamentGameTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.Game.GameTypeEnum TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ArenaStars.GameLogsService1Reference.User WinnerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.GameStats[] GameStats {
+            get {
+                return this.GameStatsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GameStatsField, value) != true)) {
+                    this.GameStatsField = value;
+                    this.RaisePropertyChanged("GameStats");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HasEnded {
+            get {
+                return this.HasEndedField;
+            }
+            set {
+                if ((this.HasEndedField.Equals(value) != true)) {
+                    this.HasEndedField = value;
+                    this.RaisePropertyChanged("HasEnded");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Map {
+            get {
+                return this.MapField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MapField, value) != true)) {
+                    this.MapField = value;
+                    this.RaisePropertyChanged("Map");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.User[] Participants {
+            get {
+                return this.ParticipantsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParticipantsField, value) != true)) {
+                    this.ParticipantsField = value;
+                    this.RaisePropertyChanged("Participants");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> PlayedDate {
+            get {
+                return this.PlayedDateField;
+            }
+            set {
+                if ((this.PlayedDateField.Equals(value) != true)) {
+                    this.PlayedDateField = value;
+                    this.RaisePropertyChanged("PlayedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.Server Server {
+            get {
+                return this.ServerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServerField, value) != true)) {
+                    this.ServerField = value;
+                    this.RaisePropertyChanged("Server");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.Game.TournamentGameTypeEnum TournamentGameType {
+            get {
+                return this.TournamentGameTypeField;
+            }
+            set {
+                if ((this.TournamentGameTypeField.Equals(value) != true)) {
+                    this.TournamentGameTypeField = value;
+                    this.RaisePropertyChanged("TournamentGameType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.Game.GameTypeEnum Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ArenaStars.GameLogsService1Reference.User Winner {
+            get {
+                return this.WinnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WinnerField, value) != true)) {
+                    this.WinnerField = value;
+                    this.RaisePropertyChanged("Winner");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Game.TournamentGameTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
+        public enum TournamentGameTypeEnum : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Not_In_Tournament = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Round_of_128 = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Round_of_64 = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Round_of_32 = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Round_of_16 = 4,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Quarter_Final = 5,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Semi_Final = 6,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Final = 7,
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Game.GameTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
+        public enum GameTypeEnum : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Ranked = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Unranked = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Tournament = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Challange = 3,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Server", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
+    [System.SerializableAttribute()]
+    public partial class Server : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IPaddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isInUseField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IPaddress {
+            get {
+                return this.IPaddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IPaddressField, value) != true)) {
+                    this.IPaddressField = value;
+                    this.RaisePropertyChanged("IPaddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isInUse {
+            get {
+                return this.isInUseField;
+            }
+            set {
+                if ((this.isInUseField.Equals(value) != true)) {
+                    this.isInUseField = value;
+                    this.RaisePropertyChanged("isInUse");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -431,42 +759,33 @@ namespace ArenaStars.GameLogsService1Reference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameStats", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
     [System.SerializableAttribute()]
-    public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GameStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.GameStats[] GameStatsField;
+        private int DeathsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HasEndedField;
+        private ArenaStars.GameLogsService1Reference.Game GameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double HsRatioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MapField;
+        private int KillsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.User[] ParticipantsField;
+        private int ScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> PlayedDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.Server ServerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.Game.TournamentGameTypeEnum TournamentGameTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.Game.GameTypeEnum TypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.User WinnerField;
+        private string SteamIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -479,27 +798,40 @@ namespace ArenaStars.GameLogsService1Reference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.GameStats[] GameStats {
+        public int Deaths {
             get {
-                return this.GameStatsField;
+                return this.DeathsField;
             }
             set {
-                if ((object.ReferenceEquals(this.GameStatsField, value) != true)) {
-                    this.GameStatsField = value;
-                    this.RaisePropertyChanged("GameStats");
+                if ((this.DeathsField.Equals(value) != true)) {
+                    this.DeathsField = value;
+                    this.RaisePropertyChanged("Deaths");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool HasEnded {
+        public ArenaStars.GameLogsService1Reference.Game Game {
             get {
-                return this.HasEndedField;
+                return this.GameField;
             }
             set {
-                if ((this.HasEndedField.Equals(value) != true)) {
-                    this.HasEndedField = value;
-                    this.RaisePropertyChanged("HasEnded");
+                if ((object.ReferenceEquals(this.GameField, value) != true)) {
+                    this.GameField = value;
+                    this.RaisePropertyChanged("Game");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double HsRatio {
+            get {
+                return this.HsRatioField;
+            }
+            set {
+                if ((this.HsRatioField.Equals(value) != true)) {
+                    this.HsRatioField = value;
+                    this.RaisePropertyChanged("HsRatio");
                 }
             }
         }
@@ -518,92 +850,40 @@ namespace ArenaStars.GameLogsService1Reference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Map {
+        public int Kills {
             get {
-                return this.MapField;
+                return this.KillsField;
             }
             set {
-                if ((object.ReferenceEquals(this.MapField, value) != true)) {
-                    this.MapField = value;
-                    this.RaisePropertyChanged("Map");
+                if ((this.KillsField.Equals(value) != true)) {
+                    this.KillsField = value;
+                    this.RaisePropertyChanged("Kills");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.User[] Participants {
+        public int Score {
             get {
-                return this.ParticipantsField;
+                return this.ScoreField;
             }
             set {
-                if ((object.ReferenceEquals(this.ParticipantsField, value) != true)) {
-                    this.ParticipantsField = value;
-                    this.RaisePropertyChanged("Participants");
+                if ((this.ScoreField.Equals(value) != true)) {
+                    this.ScoreField = value;
+                    this.RaisePropertyChanged("Score");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> PlayedDate {
+        public string SteamId {
             get {
-                return this.PlayedDateField;
+                return this.SteamIdField;
             }
             set {
-                if ((this.PlayedDateField.Equals(value) != true)) {
-                    this.PlayedDateField = value;
-                    this.RaisePropertyChanged("PlayedDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.Server Server {
-            get {
-                return this.ServerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ServerField, value) != true)) {
-                    this.ServerField = value;
-                    this.RaisePropertyChanged("Server");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.Game.TournamentGameTypeEnum TournamentGameType {
-            get {
-                return this.TournamentGameTypeField;
-            }
-            set {
-                if ((this.TournamentGameTypeField.Equals(value) != true)) {
-                    this.TournamentGameTypeField = value;
-                    this.RaisePropertyChanged("TournamentGameType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.Game.GameTypeEnum Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((this.TypeField.Equals(value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.User Winner {
-            get {
-                return this.WinnerField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WinnerField, value) != true)) {
-                    this.WinnerField = value;
-                    this.RaisePropertyChanged("Winner");
+                if ((object.ReferenceEquals(this.SteamIdField, value) != true)) {
+                    this.SteamIdField = value;
+                    this.RaisePropertyChanged("SteamId");
                 }
             }
         }
@@ -615,52 +895,6 @@ namespace ArenaStars.GameLogsService1Reference {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Game.TournamentGameTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
-        public enum TournamentGameTypeEnum : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Not_In_Tournament = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Round_of_128 = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Round_of_64 = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Round_of_32 = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Round_of_16 = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Quarter_Final = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Semi_Final = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Final = 7,
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Game.GameTypeEnum", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
-        public enum GameTypeEnum : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Ranked = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Unranked = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Tournament = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Challange = 3,
         }
     }
     
@@ -1117,240 +1351,6 @@ namespace ArenaStars.GameLogsService1Reference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Server", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
-    [System.SerializableAttribute()]
-    public partial class Server : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IPaddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool isInUseField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IPaddress {
-            get {
-                return this.IPaddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IPaddressField, value) != true)) {
-                    this.IPaddressField = value;
-                    this.RaisePropertyChanged("IPaddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool isInUse {
-            get {
-                return this.isInUseField;
-            }
-            set {
-                if ((this.isInUseField.Equals(value) != true)) {
-                    this.isInUseField = value;
-                    this.RaisePropertyChanged("isInUse");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameStats", Namespace="http://schemas.datacontract.org/2004/07/ArenaStars.Models")]
-    [System.SerializableAttribute()]
-    public partial class GameStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DeathsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ArenaStars.GameLogsService1Reference.Game GameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double HsRatioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int KillsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ScoreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SteamIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Deaths {
-            get {
-                return this.DeathsField;
-            }
-            set {
-                if ((this.DeathsField.Equals(value) != true)) {
-                    this.DeathsField = value;
-                    this.RaisePropertyChanged("Deaths");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ArenaStars.GameLogsService1Reference.Game Game {
-            get {
-                return this.GameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GameField, value) != true)) {
-                    this.GameField = value;
-                    this.RaisePropertyChanged("Game");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double HsRatio {
-            get {
-                return this.HsRatioField;
-            }
-            set {
-                if ((this.HsRatioField.Equals(value) != true)) {
-                    this.HsRatioField = value;
-                    this.RaisePropertyChanged("HsRatio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Kills {
-            get {
-                return this.KillsField;
-            }
-            set {
-                if ((this.KillsField.Equals(value) != true)) {
-                    this.KillsField = value;
-                    this.RaisePropertyChanged("Kills");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Score {
-            get {
-                return this.ScoreField;
-            }
-            set {
-                if ((this.ScoreField.Equals(value) != true)) {
-                    this.ScoreField = value;
-                    this.RaisePropertyChanged("Score");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SteamId {
-            get {
-                return this.SteamIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SteamIdField, value) != true)) {
-                    this.SteamIdField = value;
-                    this.RaisePropertyChanged("SteamId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="GameLogsService1Reference.IGameService")]
     public interface IGameService {
@@ -1374,16 +1374,16 @@ namespace ArenaStars.GameLogsService1Reference {
         System.Threading.Tasks.Task DeleteLogAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/SaveStatsAndGame", ReplyAction="http://tempuri.org/IGameService/SaveStatsAndGameResponse")]
-        void SaveStatsAndGame(ArenaStars.GameLogsService1Reference.User playerA, ArenaStars.GameLogsService1Reference.User playerB, ArenaStars.GameLogsService1Reference.Game gameType);
+        void SaveStatsAndGame(ArenaStars.GameLogsService1Reference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/SaveStatsAndGame", ReplyAction="http://tempuri.org/IGameService/SaveStatsAndGameResponse")]
-        System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsService1Reference.User playerA, ArenaStars.GameLogsService1Reference.User playerB, ArenaStars.GameLogsService1Reference.Game gameType);
+        System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsService1Reference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WhitelistPlayers", ReplyAction="http://tempuri.org/IGameService/WhitelistPlayersResponse")]
-        void WhitelistPlayers(ArenaStars.GameLogsService1Reference.User _playerA, ArenaStars.GameLogsService1Reference.User _playerB);
+        void WhitelistPlayers(ArenaStars.GameLogsService1Reference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WhitelistPlayers", ReplyAction="http://tempuri.org/IGameService/WhitelistPlayersResponse")]
-        System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsService1Reference.User _playerA, ArenaStars.GameLogsService1Reference.User _playerB);
+        System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsService1Reference.Game game);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/WaitForPlayers", ReplyAction="http://tempuri.org/IGameService/WaitForPlayersResponse")]
         void WaitForPlayers();
@@ -1443,20 +1443,20 @@ namespace ArenaStars.GameLogsService1Reference {
             return base.Channel.DeleteLogAsync();
         }
         
-        public void SaveStatsAndGame(ArenaStars.GameLogsService1Reference.User playerA, ArenaStars.GameLogsService1Reference.User playerB, ArenaStars.GameLogsService1Reference.Game gameType) {
-            base.Channel.SaveStatsAndGame(playerA, playerB, gameType);
+        public void SaveStatsAndGame(ArenaStars.GameLogsService1Reference.Game game) {
+            base.Channel.SaveStatsAndGame(game);
         }
         
-        public System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsService1Reference.User playerA, ArenaStars.GameLogsService1Reference.User playerB, ArenaStars.GameLogsService1Reference.Game gameType) {
-            return base.Channel.SaveStatsAndGameAsync(playerA, playerB, gameType);
+        public System.Threading.Tasks.Task SaveStatsAndGameAsync(ArenaStars.GameLogsService1Reference.Game game) {
+            return base.Channel.SaveStatsAndGameAsync(game);
         }
         
-        public void WhitelistPlayers(ArenaStars.GameLogsService1Reference.User _playerA, ArenaStars.GameLogsService1Reference.User _playerB) {
-            base.Channel.WhitelistPlayers(_playerA, _playerB);
+        public void WhitelistPlayers(ArenaStars.GameLogsService1Reference.Game game) {
+            base.Channel.WhitelistPlayers(game);
         }
         
-        public System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsService1Reference.User _playerA, ArenaStars.GameLogsService1Reference.User _playerB) {
-            return base.Channel.WhitelistPlayersAsync(_playerA, _playerB);
+        public System.Threading.Tasks.Task WhitelistPlayersAsync(ArenaStars.GameLogsService1Reference.Game game) {
+            return base.Channel.WhitelistPlayersAsync(game);
         }
         
         public void WaitForPlayers() {

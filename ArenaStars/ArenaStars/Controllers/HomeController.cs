@@ -1436,6 +1436,7 @@ namespace ArenaStars.Controllers
                                 select g.Id;
 
                 gameId = getGameId.FirstOrDefault();
+                TempData["transferGameId"] = gameId;
             }
 
             myObject = new
