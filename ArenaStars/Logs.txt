@@ -1,25 +1,20 @@
 Starting Freeze period
-World triggered "Match_Start" on "aim_map"
 eBot triggered "Round_Spawn"
 World triggered "Round_Start"
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [446 294 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "8") (damage_armor "1") (health "92") (armor "98") (hitgroup "chest")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [423 259 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "9") (damage_armor "2") (health "83") (armor "95") (hitgroup "stomach")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [324 110 7] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "22") (damage_armor "4") (health "61") (armor "90") (hitgroup "chest")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [317 71 5] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "28") (damage_armor "6") (health "33") (armor "83") (hitgroup "stomach")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [299 38 3] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "22") (damage_armor "4") (health "11") (armor "78") (hitgroup "chest")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [267 -34 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "28") (damage_armor "6") (health "0") (armor "71") (hitgroup "stomach")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [267 -34 0] killed "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 65] with "m4a1"
-Team "TERRORIST" triggered "SFUI_Notice_Terrorists_Win" (CT "0") (T "1")
-Team "CT" scored "0" with "1" players
-Team "TERRORIST" scored "1" with "1" players
-World triggered "Round_End"
-Starting Freeze period
-eBot triggered "Round_Spawn"
-World triggered "Round_Start"
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [192 -139 48] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 10] with "m4a1" (damage "91") (damage_armor "19") (health "9") (armor "80") (hitgroup "head")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [190 -142 48] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 10] with "m4a1" (damage "91") (damage_armor "19") (health "0") (armor "60") (hitgroup "head")
-"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [190 -142 48] killed "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 74] with "m4a1" (headshot)
-Team "TERRORIST" triggered "SFUI_Notice_Terrorists_Win" (CT "0") (T "2")
-Team "CT" scored "0" with "1" players
-Team "TERRORIST" scored "2" with "1" players
+"Hank<50><BOT><>" connected, address ""
+"Hank<50><BOT>" switched from team <Unassigned> to <TERRORIST>
+"Hank<50><BOT><>" entered the game
+rcon from "90.144.206.56:62628": command "bot_add"
+"Hank<50><BOT><TERRORIST>" disconnected (reason "Kicked by Console")
+"Hank<50><BOT>" switched from team <TERRORIST> to <Unassigned>
+"Vladimir<51><BOT><>" connected, address ""
+"Vladimir<51><BOT>" switched from team <Unassigned> to <TERRORIST>
+"Vladimir<51><BOT><>" entered the game
+rcon from "90.144.206.56:62628": command "bot_add"
+"Vladimir<51><BOT><TERRORIST>" [310 773 0] attacked "LINUS<47><STEAM_1:1:12547851><CT>" [170 560 6] with "glock" (damage "12") (damage_armor "7") (health "88") (armor "92") (hitgroup "left arm")
+"LINUS<47><STEAM_1:1:12547851><CT>" [174 561 6] attacked "Vladimir<51><BOT><TERRORIST>" [321 768 0] with "ak47" (damage "110") (damage_armor "16") (health "0") (armor "83") (hitgroup "head")
+"LINUS<47><STEAM_1:1:12547851><CT>" [174 561 6] killed "Vladimir<51><BOT><TERRORIST>" [321 768 64] with "ak47" (headshot)
+Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
+Team "CT" scored "2" with "1" players
+Team "TERRORIST" scored "0" with "1" players
 World triggered "Round_End"

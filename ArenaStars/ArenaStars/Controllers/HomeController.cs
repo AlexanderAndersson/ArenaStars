@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using ArenaStars.Models;
 using ArenaStars.Classes;
 using System.IO;
-using ArenaStars.GameLogsServiceReference1;
 using QueryMaster.GameServer;
 using QueryMaster;
+using ArenaStars.Content;
 
 namespace ArenaStars.Controllers
 {
@@ -18,7 +18,7 @@ namespace ArenaStars.Controllers
         {
             //ArenaStarsContext context = new ArenaStarsContext();
             List<ViewTournament> tournaments = new List<ViewTournament>();
-
+          
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 context.Database.Initialize(true);
@@ -1580,26 +1580,23 @@ namespace ArenaStars.Controllers
                                 select g.Id;
 
                 gameId = getGameId.FirstOrDefault();
-                
-                #region starServerShit
 
-                GameLogsServiceReference1.Game logGame = new GameLogsServiceReference1.Game();
-                logGame.Id = gameId;
-                string ServerControllerPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\newError.txt";
+                #region starServerShit
+                Models.Game ggg = new Models.Game();
+                ggg.Id = gameId;
+                //GameLogsServiceReference1.Game logGame = new GameLogsServiceReference1.Game();
+                //logGame.Id = gameId;
+                string errorsPath = @"~/arenastars.net/Errors.txt";
                 try
                 {
-                    GameServiceClient client = new GameServiceClient();
-                    client.WhitelistPlayers(logGame);
-                    client.WaitForPlayers();
-                    client.DeleteLog();
-                    client.StartGame();
-                    client.ReadServerLogs();
-                    client.SaveStatsAndGame(logGame);
-                    //client.Close();
+                    Tools tool = new Tools();
+
+                    tool.DoStuff(ggg);
+
                 }
                 catch (Exception ex)
                 {
-                    using (StreamWriter writer = new StreamWriter(ServerControllerPath, true))
+                    using (StreamWriter writer = new StreamWriter(errorsPath, true))
                     {
                         writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
                            "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
@@ -1787,6 +1784,6 @@ namespace ArenaStars.Controllers
                 return View(viewGame);
         }
 		
-		
+	
     }
 }

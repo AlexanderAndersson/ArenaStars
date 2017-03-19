@@ -1,66 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using ArenaStars.Models;
-using System.IO;
+﻿using ArenaStars.Models;
 using QueryMaster;
 using QueryMaster.GameServer;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.ServiceModel.Description;
+using System.Web;
 
-namespace GameLogsServiceLibrary
+namespace ArenaStars.Content
 {
-    
-    public class GameService : IGameService
+    public class Tools
     {
-       
 
-        string errorsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\newErrors.txt";
-        
-        string logsPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\Logs.txt";
-        
+        string errorsPath = @"~/arenastars.net/Errors.txt";
+
+        string logsPath = @"~/arenastars.net/Logs.txt";
+
+        public async Task DoStuff(Models.Game _game)
+        {
+            await Task.Run(() =>
+            {
+                LongRunningOperation(_game);
+            });
+        }
+
+        private async Task LongRunningOperation(Models.Game _game)
+        {
+            WhitelistPlayers(_game);
+            WaitForPlayers();
+            DeleteLog();
+            StartGame();
+            ReadServerLogs();
+            SaveStatsAndGame(_game);
+            
+        }
+
+
 
         public void ReadServerLogs()
         {
 
             // Create textfile locally to save all logs comming from server
-            using (StreamWriter writer = new StreamWriter(logsPath, true)) { 
+            using (StreamWriter writer = new StreamWriter(logsPath, true))
+            {
 
                 //Connect to gameserver
-               QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
-            //Get logs from server. To get these,
-            //Type in server console: logaddress_add YOURIP:9871
-            //Port 9871 is default for logs
-            Logs logs = server.GetLogs(9871);
+                QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                //Get logs from server. To get these,
+                //Type in server console: logaddress_add YOURIP:9871
+                //Port 9871 is default for logs
+                Logs logs = server.GetLogs(9871);
 
-            //Start listen to logs
-            var event1 = logs.GetEventsInstance();
-            //Copy logs to your txt file
-            event1.LogReceived += (o, e) => writer.Write(e.Message + Environment.NewLine);
-            logs.Start();
+                //Start listen to logs
+                var event1 = logs.GetEventsInstance();
+                //Copy logs to your txt file
+                event1.LogReceived += (o, e) => writer.Write(e.Message + Environment.NewLine);
+                logs.Start();
                 StopGame(event1, logs);
-            logs.Stop();
+                logs.Stop();
 
-            
+
             }
-            
+
 
         }
 
         public void WhitelistPlayers(ArenaStars.Models.Game _game)
         {
-           
+
             try
             {
                 ArenaStarsContext db = new ArenaStarsContext();
                 var findGame = from x in db.Games
                                where x.Id == _game.Id
                                select x;
-                ArenaStars.Models.Game g = findGame.FirstOrDefault();
+                Models.Game g = findGame.FirstOrDefault();
 
                 User playerA = g.Participants.FirstOrDefault();
                 User playerB = g.Participants.LastOrDefault();
@@ -94,9 +110,9 @@ namespace GameLogsServiceLibrary
         public void StartGame()
         {
             QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
-           if(server.GetControl("lol"))  
-            server.Rcon.SendCommand("1on1");
-            
+            if (server.GetControl("lol"))
+                server.Rcon.SendCommand("1on1");
+
         }
 
         public void DeleteLog()
@@ -115,7 +131,7 @@ namespace GameLogsServiceLibrary
 
                 using (ArenaStarsContext db = new ArenaStarsContext())
                 {
-                    
+
                     var findGame = from x in db.Games
                                    where x.Id == _game.Id
                                    select x;
@@ -183,7 +199,7 @@ namespace GameLogsServiceLibrary
 
                     g.Winner = getWinner(gameStatsA, gameStatsB, playerA, playerB, g);
                     g.HasEnded = true;
-                    
+
 
                     db.GameStats.Add(gameStatsA);
                     db.GameStats.Add(gameStatsB);
@@ -218,8 +234,8 @@ namespace GameLogsServiceLibrary
             }
 
         }
-      
-        
+
+
 
         public double headShotRatioConverter(double numOfHS, double totalKills)
         {
@@ -297,10 +313,8 @@ namespace GameLogsServiceLibrary
                 }
 
             }
-            
+
 
         }
-
-
     }
 }
