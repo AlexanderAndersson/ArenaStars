@@ -97,8 +97,8 @@ namespace ArenaStars.Controllers
 
                 user = findUser.FirstOrDefault();
 
-                gamesCount = user.Games.Count;
-                List<Game> lastFiveGames = user.Games.Take(5).ToList();
+                gamesCount = user.Games.Where(g => g.HasEnded == true).Count();
+                List<Game> lastFiveGames = user.Games.Take(5).Where(g => g.HasEnded == true).ToList();
 
                 foreach (Game game in lastFiveGames)
                 {
@@ -256,35 +256,26 @@ namespace ArenaStars.Controllers
                                select u;
 
                 User user = findUser.FirstOrDefault();
-                int i = 0;
-                foreach (Game game in user.Games)
+
+                var finishedGames = user.Games.Where(g => g.HasEnded == true).ToList();
+
+                for (int i = shown; i < shown + numberToDisplay && i < finishedGames.Count(); i++)
                 {
-                    if (i >= shown)
+
+                    var newGame = new
                     {
-                        if (i < shown + numberToDisplay)
-                        {
-                            if (game.HasEnded == true)
-                            {
-                                var newGame = new
-                                {
-                                    Id = game.Id,
-                                    Map = game.Map,
-                                    ParticipantOne = game.Participants.FirstOrDefault().Username,
-                                    ParticipantTwo = game.Participants.LastOrDefault().Username,
-                                    Type = game.Type.ToString(),
-                                    Winner = game.Winner.Username,
-                                    PlayedDate = game.PlayedDate.ToString(),
-                                    Kills = game.GameStats.FirstOrDefault().Kills,
-                                    Deaths = game.GameStats.FirstOrDefault().Deaths,
-                                    hasEnded = game.HasEnded
-                                };
-                                games.Add(newGame);
-                            } 
-                        }
-                        else { break; }
-                    }
-                    else { break; }
-                    i++;
+                        Id = finishedGames[i].Id,
+                        Map = finishedGames[i].Map,
+                        ParticipantOne = finishedGames[i].Participants.FirstOrDefault().Username,
+                        ParticipantTwo = finishedGames[i].Participants.LastOrDefault().Username,
+                        Type = finishedGames[i].Type.ToString(),
+                        Winner = finishedGames[i].Winner.Username,
+                        PlayedDate = finishedGames[i].PlayedDate.ToString(),
+                        Kills = finishedGames[i].GameStats.FirstOrDefault().Kills,
+                        Deaths = finishedGames[i].GameStats.FirstOrDefault().Deaths,
+                        hasEnded = finishedGames[i].HasEnded
+                    };
+                    games.Add(newGame);
                 }
 
             }
