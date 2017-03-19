@@ -10,9 +10,6 @@
     string user2RankPic = "/Images/Rank/" + user2.Rank + ".png";
     string mapPicture = "/Images/Map/" + Model.Map + "_mall.png";
 
-    ArenaStars.Classes.ViewGamestat user1Gamestat = Model.GameStats.LastOrDefault();
-    ArenaStars.Classes.ViewGamestat user2Gamestat = Model.GameStats.FirstOrDefault();
-
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Custom_CSS/GameRoom.css" />
@@ -63,6 +60,9 @@
     @if (Model.HasEnded == true)
     {
 
+
+        ArenaStars.Classes.ViewGamestat user1Gamestat = Model.GameStats.LastOrDefault();
+        ArenaStars.Classes.ViewGamestat user2Gamestat = Model.GameStats.FirstOrDefault();
 
         <div class="col-lg-2"></div>
         <div class="gameStatsWrapper col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
