@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using ArenaStars.Models;
 using ArenaStars.Classes;
+using ArenaStars.Content;
+using System.IO;
+using QueryMaster;
+using QueryMaster.GameServer;
 
 namespace ArenaStars.Controllers
 {
@@ -46,7 +50,7 @@ namespace ArenaStars.Controllers
 
                     if (activeGame.Count() == 1)
                     {
-                        Game g = activeGame.FirstOrDefault();
+                        Models.Game g = activeGame.FirstOrDefault();
                         ViewBag.activeGame = true;
                         ViewBag.activeGameId = g.Id;
                     }
@@ -96,7 +100,7 @@ namespace ArenaStars.Controllers
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
                 List<User> Tournament1UserList = new List<User>(); //Userlist for tournament 1
-                List<Game> Tournament1GameList = new List<Game>(); //Gamelist for tournament 1
+                List<Models.Game> Tournament1GameList = new List<Models.Game>(); //Gamelist for tournament 1
 
                 /***************USER***************/
 
@@ -511,21 +515,21 @@ namespace ArenaStars.Controllers
 
                 #region Servers
 
-                Server serverOne = new Models.Server()
+                Models.Server serverOne = new Models.Server()
                 {
                     IPaddress = "217.78.24.8:28892",
                     Name = "ArenaStars Server #1",
                     isInUse = false
                 };
 
-                Server serverTwo = new Models.Server()
+                Models.Server serverTwo = new Models.Server()
                 {
                     IPaddress = "217.78.24.8:28892",
                     Name = "ArenaStars Server #2",
                     isInUse = false
                 };
 
-                Server serverThree = new Models.Server()
+                Models.Server serverThree = new Models.Server()
                 {
                     IPaddress = "217.78.24.8:28892",
                     Name = "ArenaStars Server #3",
@@ -544,185 +548,185 @@ namespace ArenaStars.Controllers
 
                 #region Games
 
-                Game RankedGame1 = new Game()
+                Models.Game RankedGame1 = new Models.Game()
                 {
                     Participants = new List<User>() { u1, u2 },
                     Winner = u1,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-5),
                     HasEnded = true
                 };
 
-                Game RankedGame2 = new Game()
+                Models.Game RankedGame2 = new Models.Game()
                 {
                     Participants = new List<User>() { u2, u3 },
                     Winner = u2,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddMinutes(-30),
                     HasEnded = true
                 };
 
-                Game RankedGame3 = new Game()
+                Models.Game RankedGame3 = new Models.Game()
                 {
                     Participants = new List<User>() { u3, u4 },
                     Winner = u4,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game RankedGame4 = new Game()
+                Models.Game RankedGame4 = new Models.Game()
                 {
                     Participants = new List<User>() { u4, u5 },
                     Winner = u4,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-1),
                     HasEnded = true
                 };
 
-                Game RankedGame5 = new Game()
+                Models.Game RankedGame5 = new Models.Game()
                 {
                     Participants = new List<User>() { u5, u6 },
                     Winner = u6,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game RankedGame6 = new Game()
+                Models.Game RankedGame6 = new Models.Game()
                 {
                     Participants = new List<User>() { u6, u7 },
                     Winner = u6,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game RankedGame7 = new Game()
+                Models.Game RankedGame7 = new Models.Game()
                 {
                     Participants = new List<User>() { u7, u8 },
                     Winner = u7,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game RankedGame8 = new Game()
+                Models.Game RankedGame8 = new Models.Game()
                 {
                     Participants = new List<User>() { u8, u9 },
                     Winner = u9,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game RankedGame9 = new Game()
+                Models.Game RankedGame9 = new Models.Game()
                 {
                     Participants = new List<User>() { u9, u10 },
                     Winner = u10,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game1 = new Game()
+                Models.Game Tournament1Game1 = new Models.Game()
                 {
                     Participants = new List<User>() { u1, u2 },
                     Winner = u1,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game2 = new Game()
+                Models.Game Tournament1Game2 = new Models.Game()
                 {
                     Participants = new List<User>() { u3, u4 },
                     Winner = u3,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game3 = new Game()
+                Models.Game Tournament1Game3 = new Models.Game()
                 {
                     Participants = new List<User>() { u5, u6 },
                     Winner = u6,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game4 = new Game()
+                Models.Game Tournament1Game4 = new Models.Game()
                 {
                     Participants = new List<User>() { u7, u8 },
                     Winner = u7,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now,
                     HasEnded = true
                 };
 
-                Game Tournament1Game5 = new Game()
+                Models.Game Tournament1Game5 = new Models.Game()
                 {
                     Participants = new List<User>() { u9, u10 },
                     Winner = u10,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game6 = new Game()
+                Models.Game Tournament1Game6 = new Models.Game()
                 {
                     Participants = new List<User>() { u1, u3 },
                     Winner = u1,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game7 = new Game()
+                Models.Game Tournament1Game7 = new Models.Game()
                 {
                     Participants = new List<User>() { u6, u7 },
                     Winner = u6,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game Tournament1Game8 = new Game()
+                Models.Game Tournament1Game8 = new Models.Game()
                 {
                     Participants = new List<User>() { u1, u6 },
                     Winner = u1,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Tournament,
+                    Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
                     HasEnded = true
                 };
 
-                Game NotFinishedRankedGame1 = new Game()
+                Models.Game NotFinishedRankedGame1 = new Models.Game()
                 {
                     Participants = new List<User>() { u1, u2 },
                     Winner = u1,
                     Map = "aim_map",
-                    Type = Game.GameTypeEnum.Ranked,
+                    Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(2),
                     HasEnded = false,
-                    TournamentGameType = Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
                     Server = serverOne
                 };
                 serverOne.isInUse = true;
@@ -1571,7 +1575,7 @@ namespace ArenaStars.Controllers
             User opponent = new Models.User();
             MatchmakingSearch fakeYou;
             MatchmakingSearch fakeOpp;
-            Server chosenServer = new Models.Server()
+            Models.Server chosenServer = new Models.Server()
             {
                 Name = "NoServerFound",
                 IPaddress = "0",
@@ -1666,7 +1670,7 @@ namespace ArenaStars.Controllers
 
                             chosenServer.isInUse = true;
 
-                            Game newGame = new Game()
+                            Models.Game newGame = new Models.Game()
                             {
                                 Participants = new List<User>()
                                 {
@@ -1674,9 +1678,9 @@ namespace ArenaStars.Controllers
                                     opponent
                                 },
                                 PlayedDate = DateTime.Now,
-                                Type = Game.GameTypeEnum.Ranked,
+                                Type = Models.Game.GameTypeEnum.Ranked,
                                 Map = "aim_map",
-                                TournamentGameType = Game.TournamentGameTypeEnum.Not_In_Tournament,
+                                TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
                                 HasEnded = false,
                                 Server = chosenServer
                             };
@@ -1703,6 +1707,56 @@ namespace ArenaStars.Controllers
                                 select g.Id;
 
                 gameId = getGameId.FirstOrDefault();
+
+                #region starServerShit
+
+
+                Models.Game ggg = new Models.Game();
+                ggg.Id = gameId;
+                //GameLogsServiceReference1.Game logGame = new GameLogsServiceReference1.Game();
+                //logGame.Id = gameId;
+                string errorsPath = @"~/arenastars.net/Errors.txt";
+                try
+                {
+                    Tools tool = new Tools();
+
+                    tool.DoStuff(ggg);
+
+                }
+                catch (Exception ex)
+                {
+                    using (StreamWriter writer = new StreamWriter(errorsPath, true))
+                    {
+                        writer.WriteLine("Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace + Environment.NewLine + "Innerexception :" + ex.InnerException +
+                           "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                        writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                    }
+                    using (ArenaStarsContext context = new ArenaStarsContext())
+                    {
+                        var getGame = from g in context.Games
+                                      where g.Id == gameId
+                                      select g;
+                        Models.Game ga = getGame.FirstOrDefault();
+                        Models.User playerA = ga.Participants.FirstOrDefault();
+                        Models.User playerB = ga.Participants.LastOrDefault();
+                        string playerAID = "\"" + playerA.SteamId + "\"";
+                        string playerBID = "\"" + playerB.SteamId + "\"";
+                        QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+
+                        if (server.GetControl("lol"))
+                        {
+                            server.Rcon.SendCommand("sm_whitelist_remove " + playerAID);
+                            server.Rcon.SendCommand("sm_whitelist_remove " + playerBID);
+                            server.Rcon.SendCommand("sm_kick @all");
+                            server.Rcon.SendCommand("changelevel aim_map");
+                            server.Rcon.SendCommand("warmup");
+                        }
+                    }
+                }
+
+
+                #endregion
+
             }
 
             myObject = new
@@ -1737,10 +1791,11 @@ namespace ArenaStars.Controllers
 
                     if (getActiveGames.Count() > 0)
                     {
-                        Game activeGame = getActiveGames.FirstOrDefault();
+                        Models.Game activeGame = getActiveGames.FirstOrDefault();
 
                         gameId = activeGame.Id;
                         foundGame = true;
+
                     }
 
                 }
@@ -1757,7 +1812,7 @@ namespace ArenaStars.Controllers
 
         public ActionResult GameRoom(long gameId)
         {
-            Game game;
+            Models.Game game;
             ViewGame viewGame;
             using (ArenaStarsContext context = new ArenaStarsContext())
             {
