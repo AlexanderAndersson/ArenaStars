@@ -11,7 +11,7 @@ hr {
     border: 0px solid white;
     /*background-image: url("~/Images/Profile/ProfileBackground_Default.jpg");*/
     background-color: #141616;
-    background-size:contain;
+    background-size:100% 100%;
     height:300px;
     margin-top:10px;
 }
@@ -20,6 +20,7 @@ hr {
     width:200px;
     height:200px;
     margin-top:-190px;
+    border:1px solid grey;
 }
 
 .littleUserInfoBox {
@@ -232,6 +233,18 @@ hr {
     .mapMargin {
         margin-left:10px !important;
     }
+
+    .generalStatsBox .row:nth-child(1) .statsBoxItem:nth-child(-n+2) {
+        border-right:0px !important;
+    }
+
+    .generalStatsBox .row:nth-child(3) .statsBoxItem:nth-child(-n+2) {
+        border-right:0px !important;
+    }
+
+    .generalStatsBox .row:nth-child(5) .statsBoxItem:nth-child(-n+2) {
+        border-right:0px !important;
+    }
 }
 
 @media (max-width: 500px) {
@@ -287,8 +300,20 @@ hr {
 }
 
 .newTournaments {
-    float:left;
     display:block;
+    margin-bottom:25px;
+}
+
+.tournamentList {
+    margin-left:0px !important;
+}
+
+.gameHeader {
+    margin-top:25px;
+}
+
+#gameList {
+    margin-bottom:25px;
 }
 
 .generalStatsBox .row:nth-child(1) .statsBoxItem:nth-child(-n+2) {
@@ -327,4 +352,3 @@ button {
 #editBio:hover {
     cursor:pointer;
 }
-

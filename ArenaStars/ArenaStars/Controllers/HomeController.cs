@@ -518,10 +518,26 @@ namespace ArenaStars.Controllers
                     isInUse = false
                 };
 
+                Server serverTwo = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #2",
+                    isInUse = false
+                };
+
+                Server serverThree = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #3",
+                    isInUse = false
+                };
+
                 #endregion
 
                 //Adding servers to database
                 context.Servers.Add(serverOne);
+                context.Servers.Add(serverTwo);
+                context.Servers.Add(serverThree);
 
 
                 /****************GAMES*****************/

@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div id="userBio" class="userBioBox col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+        <div id="userBio" class="userBioBox col-lg-4 col-md-5 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
             <div class="bioHeader"><span>ABOUT</span>
             @if (Session["username"].ToString().ToLower() == Model.Username.ToLower())
             {
@@ -148,7 +148,6 @@
     <div class="newTournaments">
 
     </div>
-    <br /><br /><br /><br />
     <button id="showMoreTournamentsButton">SHOW MORE</button>
     
     <div class="gameHeader row col-lg-12">
@@ -161,8 +160,7 @@
     
     <div id="gameList" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    </div>
-    <br />
+    </div><br />
     <button id="showMoreGamesButton">SHOW MORE</button>
 
 </div>

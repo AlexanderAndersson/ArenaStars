@@ -10,13 +10,16 @@
 }
 
 .IndividualBanEven:hover {
-    background-color:#3d4444 !important;
+    background-color:#3d4444;
 }
 
 .IndividualBanOdd:hover {
-    background-color:#3d4444 !important;
+    background-color:#3d4444;
 }
 
 .banItem:hover {
     cursor:pointer;
+    background-color: rgba(255, 130, 46, 0.7) !important;
 }
+
+    
