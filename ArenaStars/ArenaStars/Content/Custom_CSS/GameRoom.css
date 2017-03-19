@@ -74,12 +74,23 @@ a:hover {
 }
 
 .gameStatsWrapper {
-    border:1px solid red;
     margin-top:25px;
 }
 
+.gameStatsHeader {
+    font-weight:bolder;
+}
+
 .gameStatsContent {
-    border:1px solid green;
+    border:1px solid grey;
+}
+
+table {
+    margin-bottom:0px !important;
+}
+
+thead tr {
+    background-color:#484545;
 }
 
 @media (max-width: 991px) {

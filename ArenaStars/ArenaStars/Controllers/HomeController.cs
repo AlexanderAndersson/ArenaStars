@@ -1814,14 +1814,14 @@ namespace ArenaStars.Controllers
                                 SteamId = game.Participants.FirstOrDefault().SteamId,
                                 Kills = game.GameStats.FirstOrDefault().Kills,
                                 Deaths = game.GameStats.FirstOrDefault().Deaths,
-                                HsRatio = game.GameStats.FirstOrDefault().HsRatio
+                                HsRatio = game.GameStats.FirstOrDefault().HsRatio * 100
                             },
                             new ViewGamestat()
                             {
                                 SteamId = game.Participants.LastOrDefault().SteamId,
                                 Kills = game.GameStats.LastOrDefault().Kills,
                                 Deaths = game.GameStats.LastOrDefault().Deaths,
-                                HsRatio = game.GameStats.LastOrDefault().HsRatio
+                                HsRatio = game.GameStats.LastOrDefault().HsRatio * 100
                             }
                         }
                     };
