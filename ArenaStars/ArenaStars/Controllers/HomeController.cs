@@ -7,6 +7,8 @@ using ArenaStars.Models;
 using ArenaStars.Classes;
 using System.IO;
 using ArenaStars.GameLogsServiceReference1;
+using QueryMaster.GameServer;
+using QueryMaster;
 
 namespace ArenaStars.Controllers
 {
@@ -1578,12 +1580,9 @@ namespace ArenaStars.Controllers
                                 select g.Id;
 
                 gameId = getGameId.FirstOrDefault();
-
+                
                 #region starServerShit
-               
-           
-                //Models.User playerA = ga.Participants.FirstOrDefault();
-                //Models.User playerB = ga.Participants.LastOrDefault();
+
                 GameLogsServiceReference1.Game logGame = new GameLogsServiceReference1.Game();
                 logGame.Id = gameId;
                 string ServerControllerPath = @"F:\Dokument\Visual Studio 2015\Projects\ArenaStars\ArenaStars\newError.txt";
@@ -1596,7 +1595,7 @@ namespace ArenaStars.Controllers
                     client.StartGame();
                     client.ReadServerLogs();
                     client.SaveStatsAndGame(logGame);
-                    client.Close();
+                    //client.Close();
                 }
                 catch (Exception ex)
                 {
@@ -1606,18 +1605,27 @@ namespace ArenaStars.Controllers
                            "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
                         writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
                     }
-                    //string playerAID = "\"" + playerA.SteamId + "\"";
-                    //string playerBID = "\"" + playerB.SteamId + "\"";
-                    //QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
+                    using (ArenaStarsContext context = new ArenaStarsContext())
+                    {
+                        var getGame = from g in context.Games
+                                      where g.Id == gameId
+                                      select g;
+                        Models.Game ga = getGame.FirstOrDefault();
+                        Models.User playerA = ga.Participants.FirstOrDefault();
+                        Models.User playerB = ga.Participants.LastOrDefault();
+                        string playerAID = "\"" + playerA.SteamId + "\"";
+                        string playerBID = "\"" + playerB.SteamId + "\"";
+                        QueryMaster.GameServer.Server server = ServerQuery.GetServerInstance(EngineType.Source, "217.78.24.8", 28892);
 
-                    //if (server.GetControl("lol"))
-                    //{
-                    //    server.Rcon.SendCommand("sm_whitelist_remove " + playerAID);
-                    //    server.Rcon.SendCommand("sm_whitelist_remove " + playerBID);
-                    //    server.Rcon.SendCommand("sm_kick @all");
-                    //    server.Rcon.SendCommand("changelevel aim_map");
-                    //    server.Rcon.SendCommand("warmup");
-                    //}
+                        if (server.GetControl("lol"))
+                        {
+                            server.Rcon.SendCommand("sm_whitelist_remove " + playerAID);
+                            server.Rcon.SendCommand("sm_whitelist_remove " + playerBID);
+                            server.Rcon.SendCommand("sm_kick @all");
+                            server.Rcon.SendCommand("changelevel aim_map");
+                            server.Rcon.SendCommand("warmup");
+                        }
+                    }
                 }
                 #endregion
             }

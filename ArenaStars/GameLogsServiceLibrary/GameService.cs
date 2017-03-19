@@ -165,6 +165,7 @@ namespace GameLogsServiceLibrary
                     gameStatsA.Kills = playerAKills;
                     gameStatsA.Deaths = playerADeaths;
                     gameStatsA.HsRatio = headShotRatioConverter(playerAHSCount, playerAKills);
+                    gameStatsA.Score = 0;
                     gameStatsA.Game = g;
 
 
@@ -172,11 +173,13 @@ namespace GameLogsServiceLibrary
                     gameStatsB.SteamId = playerBSteamID;
                     gameStatsB.Kills = playerBKills;
                     gameStatsB.Deaths = playerBDeaths;
-                    gameStatsB.HsRatio = 0.33f;//headShotRatioConverter(playerBHSCount, playerBKills); //ISSUES
+                    gameStatsB.HsRatio = headShotRatioConverter(playerBHSCount, playerBKills); //ISSUES
+                    gameStatsB.Score = 0;
                     gameStatsB.Game = g;
 
                     g.Winner = getWinner(gameStatsA, gameStatsB, playerA, playerB, g);
-
+                    g.HasEnded = true;
+                    
 
                     db.GameStats.Add(gameStatsA);
                     db.GameStats.Add(gameStatsB);
@@ -216,6 +219,10 @@ namespace GameLogsServiceLibrary
 
         public double headShotRatioConverter(double numOfHS, double totalKills)
         {
+            if (numOfHS == 0)
+            {
+                return 0;
+            }
             //Does not work for playerB at the moment. Database says it isnt returning float value.
             return Math.Round((numOfHS / totalKills) * 100);
         }

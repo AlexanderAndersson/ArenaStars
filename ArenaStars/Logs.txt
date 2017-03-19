@@ -1,34 +1,25 @@
-"LVL8MAGE<3><STEAM_1:1:161225385><Unassigned>" triggered "clantag" (value "")
-World triggered "Round_Start"
-"LVL8MAGE<3><STEAM_1:1:161225385>" switched from team <Unassigned> to <TERRORIST>
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" triggered "Got_The_Bomb"
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" triggered "clantag" (value "")
-"LINUS<4><STEAM_1:1:12547851><CT>" left buyzone with [ weapon_bayonet weapon_usp_silencer ]
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 114] with "hkp2000" (damage "12") (damage_armor "6") (health "88") (armor "93") (hitgroup "chest")
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 114] with "hkp2000" (damage "12") (damage_armor "6") (health "76") (armor "86") (hitgroup "chest")
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 114] with "hkp2000" (damage "12") (damage_armor "6") (health "64") (armor "79") (hitgroup "chest")
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 114] with "hkp2000" (damage "49") (damage_armor "24") (health "15") (armor "54") (hitgroup "head")
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 114] with "hkp2000" (damage "49") (damage_armor "24") (health "0") (armor "29") (hitgroup "head")
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" triggered "Dropped_The_Bomb"
-"LINUS<4><STEAM_1:1:12547851><CT>" [-430 1101 -76] killed "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-428 -843 178] with "usp_silencer" (headshot)
-Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "1") (T "0")
-Team "CT" scored "1" with "1" players
-Team "TERRORIST" scored "0" with "1" players
-World triggered "Round_End"
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" left buyzone with [ ]
 Starting Freeze period
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" triggered "Got_The_Bomb"
+World triggered "Match_Start" on "aim_map"
 eBot triggered "Round_Spawn"
 World triggered "Round_Start"
-"LINUS<4><STEAM_1:1:12547851><CT>" left buyzone with [ weapon_bayonet weapon_usp_silencer kevlar(100) helmet ]
-rcon from "151.80.20.79:50392": command "stats"
-"LINUS<4><STEAM_1:1:12547851><CT>" [170 -581 2] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-822 -796 130] with "hkp2000" (damage "58") (damage_armor "28") (health "42") (armor "71") (hitgroup "head")
-"LINUS<4><STEAM_1:1:12547851><CT>" [169 -581 2] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-822 -796 130] with "hkp2000" (damage "14") (damage_armor "7") (health "28") (armor "63") (hitgroup "chest")
-"LINUS<4><STEAM_1:1:12547851><CT>" [169 -581 2] attacked "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-822 -796 130] with "hkp2000" (damage "58") (damage_armor "28") (health "0") (armor "34") (hitgroup "head")
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" triggered "Dropped_The_Bomb"
-"LINUS<4><STEAM_1:1:12547851><CT>" [169 -581 2] killed "LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" [-822 -796 194] with "usp_silencer" (headshot)
-Team "CT" triggered "SFUI_Notice_CTs_Win" (CT "2") (T "0")
-Team "CT" scored "2" with "1" players
-Team "TERRORIST" scored "0" with "1" players
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [446 294 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "8") (damage_armor "1") (health "92") (armor "98") (hitgroup "chest")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [423 259 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "9") (damage_armor "2") (health "83") (armor "95") (hitgroup "stomach")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [324 110 7] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "22") (damage_armor "4") (health "61") (armor "90") (hitgroup "chest")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [317 71 5] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "28") (damage_armor "6") (health "33") (armor "83") (hitgroup "stomach")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [299 38 3] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "22") (damage_armor "4") (health "11") (armor "78") (hitgroup "chest")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [267 -34 0] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 1] with "m4a1" (damage "28") (damage_armor "6") (health "0") (armor "71") (hitgroup "stomach")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [267 -34 0] killed "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [88 -217 65] with "m4a1"
+Team "TERRORIST" triggered "SFUI_Notice_Terrorists_Win" (CT "0") (T "1")
+Team "CT" scored "0" with "1" players
+Team "TERRORIST" scored "1" with "1" players
 World triggered "Round_End"
-"LVL8MAGE<3><STEAM_1:1:161225385><TERRORIST>" left buyzone with [ ]
+Starting Freeze period
+eBot triggered "Round_Spawn"
+World triggered "Round_Start"
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [192 -139 48] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 10] with "m4a1" (damage "91") (damage_armor "19") (health "9") (armor "80") (hitgroup "head")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [190 -142 48] attacked "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 10] with "m4a1" (damage "91") (damage_armor "19") (health "0") (armor "60") (hitgroup "head")
+"LINUS<26><STEAM_1:1:12547851><TERRORIST>" [190 -142 48] killed "LVL8MAGE<25><STEAM_1:1:161225385><CT>" [171 -376 74] with "m4a1" (headshot)
+Team "TERRORIST" triggered "SFUI_Notice_Terrorists_Win" (CT "0") (T "2")
+Team "CT" scored "0" with "1" players
+Team "TERRORIST" scored "2" with "1" players
+World triggered "Round_End"
