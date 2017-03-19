@@ -2,6 +2,11 @@
 
     SetWinsLossesColor();
 
+
+    $("#editBio").on("click", function () {
+        alert("Feature not implemented yet!");
+    });
+
 });
 
 

@@ -165,6 +165,7 @@ namespace ArenaStars.Controllers
                 Firstname = user.Firstname,
                 Lastname = user.Lastname,
                 Country = user.Country,
+                Bio = user.Bio,
                 SignUpDate = user.SignUpDate,
                 LastLoggedIn = user.LastLoggedIn,
                 IsAdmin = user.IsAdmin,
@@ -262,19 +263,23 @@ namespace ArenaStars.Controllers
                     {
                         if (i < shown + numberToDisplay)
                         {
-                            var newGame = new
+                            if (game.HasEnded == true)
                             {
-                                Id = game.Id,
-                                Map = game.Map,
-                                ParticipantOne = game.Participants.FirstOrDefault().Username,
-                                ParticipantTwo = game.Participants.LastOrDefault().Username,
-                                Type = game.Type.ToString(),
-                                Winner = game.Winner.Username,
-                                PlayedDate = game.PlayedDate.ToString(),
-                                Kills = game.GameStats.FirstOrDefault().Kills,
-                                Deaths = game.GameStats.FirstOrDefault().Deaths
-                            };
-                            games.Add(newGame);
+                                var newGame = new
+                                {
+                                    Id = game.Id,
+                                    Map = game.Map,
+                                    ParticipantOne = game.Participants.FirstOrDefault().Username,
+                                    ParticipantTwo = game.Participants.LastOrDefault().Username,
+                                    Type = game.Type.ToString(),
+                                    Winner = game.Winner.Username,
+                                    PlayedDate = game.PlayedDate.ToString(),
+                                    Kills = game.GameStats.FirstOrDefault().Kills,
+                                    Deaths = game.GameStats.FirstOrDefault().Deaths,
+                                    hasEnded = game.HasEnded
+                                };
+                                games.Add(newGame);
+                            } 
                         }
                         else { break; }
                     }

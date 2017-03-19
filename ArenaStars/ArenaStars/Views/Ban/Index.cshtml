@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Banlist";
+    int i = 1;
 }
 <link href="~/Content/Custom_CSS/BanPage.css" rel="stylesheet" />
 
@@ -24,13 +25,38 @@
         <tbody>
             @foreach (ArenaStars.Models.User user in Model)
             {
-                <tr class="IndividualBan">
-                    <td>@user.Username</td>
-                    <td>@user.BanReason</td>
-                    <td>@user.BanFrom</td>
-                    <td>@user.BanTo</td>
-                </tr>
+                if (i == 1)
+                {
+                    <tr class="banItem IndividualBanOdd" id="@user.Username">
+                        <td>@user.Username</td>
+                        <td>@user.BanReason</td>
+                        <td>@user.BanFrom.Value.ToString("yyyy-MM-dd")</td>
+                        <td>@user.BanTo.Value.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    i = 2;
+                }
+                else if (i == 2)
+                {
+                    <tr class="banItem IndividualBanEven" id="@user.Username">
+                        <td>@user.Username</td>
+                        <td>@user.BanReason</td>
+                        <td>@user.BanFrom.Value.ToString("yyyy-MM-dd")</td>
+                        <td>@user.BanTo.Value.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                    i = 1;
+                }
             }
         </tbody>
     </table>
+
+
+    <script type="text/javascript">
+        $(".banItem").on("click", function () {
+            window.location.href = "/User/Profile?username=" + $(this).attr("id");
+        });
+    </script>
+
+
 </div>
+
+

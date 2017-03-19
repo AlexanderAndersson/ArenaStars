@@ -20,6 +20,8 @@ namespace ArenaStars.Classes
 
         public string Lastname { get; set; }
 
+        public string Bio { get; set; }
+
         public string Country { get; set; }
 
         public DateTime? SignUpDate { get; set; }
@@ -63,6 +65,10 @@ namespace ArenaStars.Classes
         public double winPercentage { get; set; }
 
         public string RankString { get; set; }
+
+        public ViewUser YouOwn { get; set; }
+
+        public ViewUser OwningYou { get; set; }
 
     }
 }

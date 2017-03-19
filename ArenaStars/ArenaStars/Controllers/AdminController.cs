@@ -15,7 +15,7 @@ namespace ArenaStars.Controllers
         {
             var tournaments = from t in context.Tournaments
                               where t.HasEnded == false
-                              orderby t.StartDate
+                              orderby t.IsLive descending
                               select t;
 
             ViewBag.Tournaments = tournaments;

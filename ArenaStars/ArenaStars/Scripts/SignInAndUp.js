@@ -1,13 +1,13 @@
 ﻿$(document).ready(function () {
 
     $(".logInBtn").on("click", function () {
-        $("#login-modal").modal("show")
-        $("#register-modal").modal("hide")
+        $("#login-modal").modal("show");
+        $("#register-modal").modal("hide");
     });
 
     $(".registerBtn").on("click", function () {
-        $("#register-modal").modal("show")
-        $("#login-modal").modal("hide")
+        $("#register-modal").modal("show");
+        $("#login-modal").modal("hide");
     });
 
     $("#registerSubmitButton").on("click", function () {

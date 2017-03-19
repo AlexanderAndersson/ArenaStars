@@ -75,7 +75,7 @@ textarea {
 }
 
 .logInBtn {
-    margin-right: 10px !important;
+    margin-right: 10px;
     color: white !important;
 }
 
@@ -195,9 +195,9 @@ li > .logInBtn, .logOutBtn {
     cursor:pointer;
 }
 
-.searchUserItem:active {
+/*.searchUserItem:active {
     border:1px solid orange;
-}
+}*/
 
 #searchResultBox div {
     display:inline-block;
@@ -241,4 +241,12 @@ li > .logInBtn, .logOutBtn {
 
 #noUser {
     margin-left: 30px;
+}
+
+.floatLeft {
+    float:left !important;
+}
+
+.floatRight {
+    float:right !important;
 }

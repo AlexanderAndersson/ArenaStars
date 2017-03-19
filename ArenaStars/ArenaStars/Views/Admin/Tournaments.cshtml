@@ -51,18 +51,12 @@
     <h2>Tournaments</h2>
     <div id="newTournaments">
         @foreach (Tournament t in ViewBag.Tournaments)
-        {
+            {
             <div id="@t.Id" class="tournamentList">
                 @if (t.IsLive)
                 {
-                    <div>
+                    <div class="starts">
                         <span class="bold" id="tLive">LIVE</span>
-                    </div>
-                }
-                else if (t.HasEnded)
-                {
-                    <div>
-                        <span class="bold" id="tHasEnded">ENDED</span>
                     </div>
                 }
                 else
@@ -72,15 +66,15 @@
                         <span>@t.StartDate.Value.Day @t.StartDate.Value.ToString("MMM") - @t.StartDate.Value.ToShortTimeString()</span>
                     </div>
                 }
-                <div>
+                <div id="tName">
                     <span class="bold">NAME</span><br />
                     <span>@t.Name</span>
                 </div>
-                <div>
+                <div id="tType">
                     <span class="bold">TYPE</span><br />
                     <span>@t.Type</span>
                 </div>
-                <div>
+                <div id="tRanks">
                     <span class="bold">RANKS</span><br />
                     <span>@t.MinRank - @t.MaxRank</span>
                 </div>

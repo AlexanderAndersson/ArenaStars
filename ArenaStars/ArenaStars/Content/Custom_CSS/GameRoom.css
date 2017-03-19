@@ -1,6 +1,14 @@
 ﻿body {
 }
 
+a {
+    color:white;
+}
+
+a:hover {
+    text-decoration:none;
+}
+
 .gameInfoWrapper {
     margin-top:5%;
     font-size:large;
@@ -63,4 +71,20 @@
 
 #copyToClipboardButton {
   cursor:pointer;
+}
+
+.gameStatsWrapper {
+    border:1px solid red;
+    margin-top:25px;
+}
+
+.gameStatsContent {
+    border:1px solid green;
+}
+
+@media (max-width: 991px) {
+    .mapInfoBoxMiddle {
+        margin-top:10px;
+        margin-bottom:10px;
+    }
 }

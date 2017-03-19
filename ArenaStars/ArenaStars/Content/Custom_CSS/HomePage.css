@@ -14,6 +14,42 @@
     margin-top: 40px;
 }
 
+.logInBtn {
+    background-color: #f50 !important;
+    border-color: #f50; 
+}
+
+#exitQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6.5%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+#enterQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6.5%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+#alreadyInQueuePopUp {
+    position:absolute;
+    z-index:1400;
+    top:6.5%;
+    right:1%;
+    margin:0px auto;
+	text-align:center;
+    display:none;
+}
+
+
 /******************RANKS*********************/
 
 #ranks {
@@ -52,8 +88,9 @@
 #wrapper2 {
     width: 100%;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #323737;
+    border: 1px solid #4b4e4e;
 }
 
 
@@ -92,20 +129,29 @@
 .tournamentList:hover {
     text-decoration: none !important;
     cursor: pointer;
-    background-color: #3d4444;
+    /*background-color: #3d4444;*/
+    background-color: rgba(255, 130, 46, 0.7);
 }
 
 .starts {
-    width: 140px !important;
+    width: 115px !important;
 }
 
 #type {
-    width: 100px !important;
+    width: 90px !important;
+}
+
+#name {
+    width: 248px;
+}
+
+#tRanks {
+     width: 160px;
 }
 
 #participants {
     text-align: center;
-    width: 70px !important;
+    width: 60px !important;
 }
 
 #participants > span {
@@ -133,6 +179,28 @@
 
 #leaderboard hr {
     border-color: #4b4e4e;
+    margin-bottom: 0px;
+}
+
+#leaderboardTable th:first-child {
+    width: 200px;
+}
+
+#leaderboardTable th:nth-child(2) {
+    width: 150px;
+}
+
+#leaderboard td {
+    border-top: 1px solid #4b4e4e;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #505050;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(255, 130, 46, 1) !important;
+    cursor: pointer;
 }
 
 /***********************TOP PLAYERS**************************/
@@ -146,36 +214,49 @@
     border-color: #4b4e4e;
 }
 
-.topPlayers {
-    /*border: solid 1px #4b4e4e;*/
-    width: 30%;
-    height: 225px;
-    /*overflow: hidden;*/
-    background-color: #323737;
-    /*float: left;*/
-    margin-left: 30px;
-    cursor: pointer;
+.topPlayerPic {
+    height: 185px;  
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #topPlayersInfo {
-    width: 30%;
-    margin-left: 30px;
-    cursor: pointer;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border: 1px solid #4b4e4e;
     background-color: #4b4e4e;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-#twat {
-    padding: 50px;
-    border: 1px solid red;
+#topPlayersInfo h4 {
+    text-align: left;
+    padding: 0px;
+    margin-left: 10px;
 }
 
-#twat div {
-    background-color: red;
+#topPlayersInfo img {
+    width: 25px;
+}
+
+#topPlayers {
     float: left;
+    height: 280px;
+}
 
+.newTopPlayer {
+    background-color: #323737;
+    /*border: 2px solid #4b4e4e;*/
+    width: 208px;
+    float: left;
+    margin-left: 60px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.newTopPlayer:hover > #topPlayersInfo  {
+    background-color: rgba(255, 130, 46, 0.7);
+    border-color: rgba(255, 130, 46, 0.7);
+    cursor: pointer;
 }
