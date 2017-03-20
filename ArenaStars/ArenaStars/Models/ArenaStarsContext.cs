@@ -8,7 +8,7 @@ namespace ArenaStars.Models
 {
     public class ArenaStarsContext : DbContext
     {
-        public ArenaStarsContext() : base ("name=LocalDb")
+        public ArenaStarsContext() : base ("name=WebDb")
         {
             //this.Configuration.LazyLoadingEnabled = false;
         }
