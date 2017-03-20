@@ -192,6 +192,8 @@ function CancelMatchSearch() {
                 sessionStorage.isSearchingForGame = false;
                 sessionStorage.timeSearched = 0;
 
+                console.log("Exited the queue");
+
                 $("#enterQueuePopUp").css("display", "none");
                 goodPopup.html("");
                 goodPopup.append(

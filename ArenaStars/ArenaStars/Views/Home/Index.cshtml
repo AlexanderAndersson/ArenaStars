@@ -1,7 +1,6 @@
 ﻿@using ArenaStars.Models;
 @model List<ArenaStars.Classes.ViewTournament>
 @{
-    //int reportNum = 1;
     ViewBag.Title = "ArenaStars";
     <link href="~/Content/Custom_CSS/HomePage.css" rel="stylesheet" type="text/css" />
 }
@@ -13,8 +12,7 @@
     <div id="matchmakingButtonContainer">
         <div>
             @if ((bool)Session["isLoggedIn"] == true)
-            {
-                
+            {            
                 if (ViewBag.activeGame == true)
                 {
                     <div id="matchRoomButton" class="btn btn-info btn-lg">MATCH ROOM<span id="hiddenActiveGameId" style="display:none">@ViewBag.activeGameId</span></div>
@@ -24,7 +22,6 @@
                     <div id="matchmakingButton" class="btn btn-warning btn-lg" style="display:none;">Search for game</div>
                     <div id="stopMatchmakingButton" class="btn btn-danger btn-lg" style="display:none;">Cancel Search</div>
                 }
-
             }
             else
             {
@@ -81,7 +78,7 @@
             {
                 <div id="@t.Id" class="tournamentList">
                     @if (t.IsLive)
-                {
+                    {
                         <div class="starts">
                             <span class="bold" id="tLive">LIVE</span>
                         </div>
@@ -152,90 +149,6 @@
             }
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @*<br /><br /><br />
-    <h4>Här har du lite stats</h4><br />
-    <div class="inline-block">
-        <h4><u>All Users</u></h4>
-        @foreach (User user in ViewBag.Users)
-        {
-            string rankPic = "/Images/Rank/" + user.Rank + ".png";
-            <h5>@user.Username <img style="width: 25px" src="@rankPic"/></h5>
-        }
-    </div>
-    <div class="inline-block">
-        <h4><u>Ranked Game Winners</u></h4>
-        @foreach (Game game in ViewBag.RGames)
-        {
-            if (game.Winner != null)
-            {
-                <h5>@game.Winner.Username</h5>
-            }
-
-        }
-    </div>
-    <div class="inline-block">
-        <h4><u>Tournament Game Winners</u></h4>
-        @foreach (Game game in ViewBag.TGames)
-        {
-            if (game.Winner != null)
-            {
-                <h5>@game.Winner.Username</h5>
-            }
-        }
-    </div>
-    <div class="inline-block">
-        <h4><u>Tournament Winners</u></h4>
-        @foreach (User user in ViewBag.TWinners)
-        {
-            <h5>@user.Username</h5>
-        }
-    </div>
-    <div class="inline-block homeReports">
-        <h4><u>Reports</u></h4>
-        @foreach (Report report in ViewBag.Reports)
-        {
-            <h5>Report @reportNum</h5>
-            <p>Reported player: <b>@report.ReportedUser.Username</b></p>
-            <p>Reported by: <b>@report.Reportee.Username</b></p>
-            <p>Reason: <b>@report.Reason</b></p>
-            <p>Message: <b>@report.Message</b></p>
-            <p>Submitted: <b>@report.SubmittedDate.Value.ToLongDateString()</b></p>
-            <br />
-            reportNum++;
-        }
-    </div>*@
 </div>
 
 <script src="~/Scripts/HomeJS.js"></script>

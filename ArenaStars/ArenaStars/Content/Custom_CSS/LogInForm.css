@@ -105,6 +105,10 @@
   color: white;
 }
 
+.login-help > .logInBtn {
+    background-color: transparent !important;
+}
+
 .modal-open {
     padding-right: 0px !important;
 }

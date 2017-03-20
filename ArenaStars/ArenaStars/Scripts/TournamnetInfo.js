@@ -4,6 +4,12 @@
         window.location.href = '/Tournament/TournamentInfo?id=' + id;
     });
 
+    //On click, go to users profile
+    $(".tUsername").on("click", function () {
+        var username = $(this).attr("id");
+        window.location.href = '/User/Profile?username=' + username;
+    });
+
     $(".joinBtn").on("click", function () {
         var id = $(this).attr("id");
         $.ajax({

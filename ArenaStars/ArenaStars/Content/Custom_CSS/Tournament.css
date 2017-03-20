@@ -143,3 +143,7 @@ hr {
 #tRanks {
      width: 200px;
 }
+
+.tUsername {
+    cursor: pointer;
+}
