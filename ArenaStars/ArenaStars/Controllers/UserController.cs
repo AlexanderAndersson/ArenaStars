@@ -194,6 +194,60 @@ namespace ArenaStars.Controllers
             return View();
         }
 
+        public ActionResult Settings()
+        {
+            string firstname = "";
+            string lastname = "";
+            string Country = "";
+            string steamId = "";
+            string bio = "";
+            string profilePic = "";
+            string backgroundPic = "";
+
+
+            if ((bool)Session["isLoggedIn"] == true)
+            {
+                string uname = Session["username"].ToString();
+                using (ArenaStarsContext context = new ArenaStarsContext())
+                {
+                    string inputFirstname = Request["inputFirstname"];
+                    string inputLastname = Request["inputLastname"];
+                    string inputCountry = Request["inputCountry"];
+                    string inputSteamId = Request["inputSteamId"];
+                    string inputBio = Request["inputBio"];
+                    string inputProfilePic = Request["inputProfilePic"];
+                    string inputBackgroundPic = Request["inputBackgroundPic"];
+                }
+
+                using (ArenaStarsContext context = new ArenaStarsContext())
+                {
+                    //Set viewbag values
+
+                    var getUser = from u in context.Users
+                                  where u.Username.ToLower() == uname.ToLower()
+                                  select u;
+
+                    User you = getUser.FirstOrDefault();
+
+                    ViewBag.Firstname = you.Firstname;
+                    ViewBag.Lastname = you.Lastname;
+                    ViewBag.Country = you.Country;
+                    ViewBag.SteamId = you.SteamId;
+                    ViewBag.Bio = you.Bio;
+                    ViewBag.ProfilePic = you.ProfilePic;
+                    ViewBag.BackgroundPic = you.BackgroundPic;
+
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("/Index", "Home");
+            }
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult GetTournaments(int shown, string username)
         {
@@ -207,35 +261,26 @@ namespace ArenaStars.Controllers
                                select u;
 
                 User user = findUser.FirstOrDefault();
-                int i = 0;
-                foreach (var tournament in user.Tournaments)
+
+                for (int i = shown; i < shown + numberToDisplay && i < user.Tournaments.Count; i++)
                 {
-                    if (i >= shown)
+                    var newTournament = new
                     {
-                        if (i < shown + numberToDisplay)
-                        {
-                            var newTournament = new
-                            {
-                                CheckInDate = tournament.CheckInDate.ToString(),
-                                CreatedDate = tournament.CreatedDate.ToString(),
-                                StartDate = tournament.StartDate.ToString(),
-                                HasEnded = tournament.HasEnded,
-                                Id = tournament.Id,
-                                IsLive = tournament.IsLive,
-                                MaxRank = tournament.MaxRank.ToString(),
-                                MinRank = tournament.MinRank.ToString(),
-                                Name = tournament.Name,
-                                PlayerLimit = tournament.PlayerLimit,
-                                TrophyPic = tournament.TrophyPic,
-                                Type = tournament.Type.ToString(),
-                                ParticipantsCount = tournament.Participants.Count
-                            };
-                            tournaments.Add(newTournament);
-                        }
-                        else { break; }
-                    }
-                    else { break; }
-                    i++;
+                        CheckInDate = user.Tournaments[i].CheckInDate.ToString(),
+                        CreatedDate = user.Tournaments[i].CreatedDate.ToString(),
+                        StartDate = user.Tournaments[i].StartDate.ToString(),
+                        HasEnded = user.Tournaments[i].HasEnded,
+                        Id = user.Tournaments[i].Id,
+                        IsLive = user.Tournaments[i].IsLive,
+                        MaxRank = user.Tournaments[i].MaxRank.ToString(),
+                        MinRank = user.Tournaments[i].MinRank.ToString(),
+                        Name = user.Tournaments[i].Name,
+                        PlayerLimit = user.Tournaments[i].PlayerLimit,
+                        TrophyPic = user.Tournaments[i].TrophyPic,
+                        Type = user.Tournaments[i].Type.ToString(),
+                        ParticipantsCount = user.Tournaments[i].Participants.Count
+                    };
+                    tournaments.Add(newTournament);
                 }
 
             }
