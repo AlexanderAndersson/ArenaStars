@@ -327,6 +327,7 @@
     <Content Include="Scripts\SearchJS.js" />
     <Content Include="Scripts\SignInAndUp.js" />
     <Content Include="Scripts\TournamnetInfo.js" />
+    <Content Include="Scripts\UserSettingsJS.js" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

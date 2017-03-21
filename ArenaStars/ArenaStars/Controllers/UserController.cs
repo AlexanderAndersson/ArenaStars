@@ -194,14 +194,6 @@ namespace ArenaStars.Controllers
 
         public ActionResult Settings()
         {
-            string firstname = "";
-            string lastname = "";
-            string Country = "";
-            string steamId = "";
-            string bio = "";
-            string profilePic = "";
-            string backgroundPic = "";
-
 
             if ((bool)Session["isLoggedIn"] == true)
             {
@@ -215,6 +207,54 @@ namespace ArenaStars.Controllers
                     string inputBio = Request["inputBio"];
                     string inputProfilePic = Request["inputProfilePic"];
                     string inputBackgroundPic = Request["inputBackgroundPic"];
+
+                    var getUser = from u in context.Users
+                                  where u.Username.ToLower() == uname.ToLower()
+                                  select u;
+
+                    User you = getUser.FirstOrDefault();
+
+                    #region Input checks
+
+                    if (string.IsNullOrEmpty(inputFirstname) == false)
+                    {
+                        you.Firstname = inputFirstname;
+                    }
+
+                    if (string.IsNullOrEmpty(inputLastname) == false)
+                    {
+                        you.Lastname = inputLastname;
+                    }
+
+                    if (string.IsNullOrEmpty(inputCountry) == false)
+                    {
+                        you.Country = inputCountry;
+                    }
+
+                    if (string.IsNullOrEmpty(inputSteamId) == false)
+                    {
+                        you.SteamId = inputSteamId;
+                    }
+
+                    if (string.IsNullOrEmpty(inputBio) == false)
+                    {
+                        you.Bio = inputBio;
+                    }
+
+                    if (string.IsNullOrEmpty(inputProfilePic) == false)
+                    {
+                        you.ProfilePic = inputProfilePic;
+                    }
+
+                    if (string.IsNullOrEmpty(inputBackgroundPic) == false)
+                    {
+                        you.BackgroundPic = inputBackgroundPic;
+                    }
+
+                    #endregion
+
+
+                    context.SaveChanges();
                 }
 
                 using (ArenaStarsContext context = new ArenaStarsContext())
@@ -234,9 +274,7 @@ namespace ArenaStars.Controllers
                     ViewBag.Bio = you.Bio;
                     ViewBag.ProfilePic = you.ProfilePic;
                     ViewBag.BackgroundPic = you.BackgroundPic;
-
                 }
-
             }
             else
             {
