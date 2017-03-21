@@ -1,4 +1,4 @@
-﻿var updater = null;
+﻿var updater;
 
 $(document).ready(function () {
 
@@ -6,11 +6,8 @@ $(document).ready(function () {
 
     $("#inputProfilePic").on("keyup", function () {
 
-        if (updater != 'null') {
-            clearTimeout(updater);
-        }
-
-        var updater = setTimeout(function () {
+        clearTimeout(updater);
+        updater = setTimeout(function () {
 
             UpdateProfilePictures();
 
@@ -20,11 +17,8 @@ $(document).ready(function () {
 
     $("#inputBackgroundPic").on("keyup", function () {
 
-        if (updater != 'null') {
-            clearTimeout(updater);
-        }
-
-        var updater = setTimeout(function () {
+        clearTimeout(updater);
+        updater = setTimeout(function () {
 
             UpdateProfilePictures();
 
@@ -38,9 +32,7 @@ $(document).ready(function () {
 
 function UpdateProfilePictures() {
 
-    if (updater != 'null') {
-        clearTimeout(updater);
-    }
+    clearTimeout(updater);
     
     let profilePictureInput = $("#inputProfilePic").val();
     let profileBackgroundInput = $("#inputBackgroundPic").val();
