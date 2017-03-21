@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.BZip2">
-      <HintPath>..\packages\Ionic.BZip2.dll</HintPath>
+      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\Ionic.BZip2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="QueryMaster">
-      <HintPath>..\packages\QueryMaster.dll</HintPath>
+      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\QueryMaster.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -370,6 +370,7 @@
     <Content Include="Views\Tournament\TournamentInfo.cshtml" />
     <Content Include="Views\Home\UserShowAll.cshtml" />
     <Content Include="Views\Home\GameRoom.cshtml" />
+    <Content Include="Views\User\Settings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
