@@ -1,25 +1,52 @@
 ﻿body {
+
 }
 
-.IndividualBanOdd {
-    background-color:#1e2222;
+#banList {
+    border: solid 1px #4b4e4e;
+    overflow: hidden;
+    margin-top: 70px;
+    background-color: #323737;
 }
 
-.IndividualBanEven {
-    background-color:#444;
+#banList h4 {
+    text-align: center;
+    padding-top: 8px;
 }
 
-.IndividualBanEven:hover {
-    background-color:#3d4444;
+#banList hr {
+    border-color: #4b4e4e;
+    margin-bottom: 0px;
 }
 
-.IndividualBanOdd:hover {
-    background-color:#3d4444;
+#banList td {
+    border-top: 1px solid #4b4e4e;
 }
 
-.banItem:hover {
-    cursor:pointer;
-    background-color: rgba(255, 130, 46, 0.7) !important;
+#banList table {
+    margin-bottom: 0px;
 }
 
-    
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #505050;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(255, 130, 46, 1) !important;
+    cursor: pointer;
+}
+
+#profilPic {
+    width: 23px;
+    height: 23px;
+}
+
+#countyPic {
+    width: 32px;
+    height: 20px;
+}
+
+#rankPic {
+    width: 25px;
+    height: 23px;
+}

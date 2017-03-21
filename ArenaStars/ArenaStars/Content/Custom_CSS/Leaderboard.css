@@ -19,16 +19,12 @@
     margin-bottom: 0px;
 }
 
-/*#leaderboardTable th:first-child {
-    width: 200px;
-}
-
-#leaderboardTable th:nth-child(2) {
-    width: 150px;
-}*/
-
 #leaderboard td {
     border-top: 1px solid #4b4e4e;
+}
+
+#leaderboard table {
+    margin-bottom: 0px;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td {
@@ -38,4 +34,19 @@
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: rgba(255, 130, 46, 1) !important;
     cursor: pointer;
+}
+
+#profilPic {
+    width: 23px;
+    height: 23px;
+}
+
+#countyPic {
+    width: 32px;
+    height: 20px;
+}
+
+#rankPic {
+    width: 25px;
+    height: 23px;
 }

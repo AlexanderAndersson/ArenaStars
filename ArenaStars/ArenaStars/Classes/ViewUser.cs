@@ -53,6 +53,8 @@ namespace ArenaStars.Classes
         public string BackgroundPic { get; set; }
 
 
+        public double BanExpires { get; set; }
+        public double DaysAsMember { get; set; }
 
         public int GamesCount { get; set; }
 

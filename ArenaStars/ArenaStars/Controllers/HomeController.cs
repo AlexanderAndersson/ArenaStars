@@ -160,7 +160,7 @@ namespace ArenaStars.Controllers
                 {
                     #region info
 
-                    Username = "LinusTechTips",
+                    Username = "Linus",
                     Firstname = "Linus",
                     Lastname = "Eriksson",
                     Country = "Sweden",
@@ -396,6 +396,30 @@ namespace ArenaStars.Controllers
                     #endregion
                 };
 
+                User u13 = new User()
+                {
+                    #region info
+
+                    Username = "LinusTechTips",
+                    Firstname = "Linus",
+                    Lastname = "Tech",
+                    Country = "North_America",
+                    Email = "Linus.Tech@gmail.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 304,
+                    Rank = Models.User.RankEnum.Gold,
+                    Level = 3,
+                    IsTerminated = false,
+                    SteamId = "13",
+                    ProfilePic = "/Images/Profile/linustechtips.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+
+                    #endregion
+                };
+
                 User admin = new User()
                 {
                     #region info
@@ -520,7 +544,7 @@ namespace ArenaStars.Controllers
                     Level = 0,
                     IsTerminated = true,
                     BanFrom = DateTime.Now,
-                    BanTo = DateTime.Now.AddDays(9),
+                    BanTo = DateTime.Now.AddYears(2),
                     BanReason = "Cheating",
                     SteamId = "terminated",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
@@ -547,7 +571,7 @@ namespace ArenaStars.Controllers
                     Level = 0,
                     IsTerminated = true,
                     BanFrom = DateTime.Now,
-                    BanTo = DateTime.Now.AddDays(9),
+                    BanTo = DateTime.Now.AddYears(2),
                     BanReason = "Cheating",
                     SteamId = "terminated",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
@@ -574,7 +598,7 @@ namespace ArenaStars.Controllers
                     Level = 0,
                     IsTerminated = true,
                     BanFrom = DateTime.Now,
-                    BanTo = DateTime.Now.AddDays(9),
+                    BanTo = DateTime.Now.AddDays(150),
                     BanReason = "Toxic",
                     SteamId = "terminated",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
@@ -598,6 +622,7 @@ namespace ArenaStars.Controllers
                 context.Users.Add(u10);
                 context.Users.Add(u11);
                 context.Users.Add(u12);
+                context.Users.Add(u13);
                 context.Users.Add(admin);
                 context.Users.Add(TerminatedUser1);
                 context.Users.Add(TerminatedUser2);

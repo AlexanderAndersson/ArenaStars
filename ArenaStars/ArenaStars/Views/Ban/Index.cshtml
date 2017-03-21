@@ -1,62 +1,49 @@
 ﻿@model List<ArenaStars.Models.User>
-
 @{
     ViewBag.Title = "Banlist";
-    int i = 1;
+    <link href="~/Content/Custom_CSS/BanPage.css" rel="stylesheet" />
 }
-<link href="~/Content/Custom_CSS/BanPage.css" rel="stylesheet" />
-
 
 <div class="white">
-    <h2>Hall of Shame</h2>
-</div>
-
-
-<div class="container white">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>PLAYER</th>
-                <th>BAN REASON</th>
-                <th>FROM</th>
-                <th>TO</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (ArenaStars.Models.User user in Model)
-            {
-                if (i == 1)
+    <div id="banList">
+        <h4>HALL OF SHAME</h4>
+        <hr />
+        <table id="leaderboardTable" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>PLAYER</th>
+                    <th>RANK</th>
+                    <th>BAN REASON</th>
+                    <th>FROM</th>
+                    <th>TO</th>
+                    <th>EXPIRES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in ViewBag.BannedUsers)
                 {
+                    string rankPic = "/Images/Rank/" + user.Rank + ".png";
+
                     <tr class="banItem IndividualBanOdd" id="@user.Username">
-                        <td>@user.Username</td>
+                        <td><img id="profilPic" src=@user.ProfilePic /> @user.Username</td>
+                        <td><img id="rankPic" src=@rankPic /> @user.Rank</td>
                         <td>@user.BanReason</td>
-                        <td>@user.BanFrom.Value.ToString("yyyy-MM-dd")</td>
-                        <td>@user.BanTo.Value.ToString("yyyy-MM-dd")</td>
+                        <td>@user.BanFrom.ToString("yyyy-MM-dd")</td>
+                        <td>@user.BanTo.ToString("yyyy-MM-dd")</td>
+                        <td>@user.BanExpires days</td>
                     </tr>
-                    i = 2;
                 }
-                else if (i == 2)
-                {
-                    <tr class="banItem IndividualBanEven" id="@user.Username">
-                        <td>@user.Username</td>
-                        <td>@user.BanReason</td>
-                        <td>@user.BanFrom.Value.ToString("yyyy-MM-dd")</td>
-                        <td>@user.BanTo.Value.ToString("yyyy-MM-dd")</td>
-                    </tr>
-                    i = 1;
-                }
-            }
-        </tbody>
-    </table>
-
-
-    <script type="text/javascript">
+            </tbody>
+        </table>
+        <script type="text/javascript">
         $(".banItem").on("click", function () {
             window.location.href = "/User/Profile?username=" + $(this).attr("id");
         });
-    </script>
-
-
+        </script>
+    </div>
 </div>
+
+
+
 
 

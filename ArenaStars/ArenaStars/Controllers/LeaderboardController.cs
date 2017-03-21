@@ -22,13 +22,20 @@ namespace ArenaStars.Controllers
 
                 foreach (User user in topPlayers)
                 {
+                    DateTime startDate = user.SignUpDate.Value;
+                    DateTime today = DateTime.Now;
+
+                    TimeSpan difference = today - startDate;
+                    var days = difference.TotalDays;
+
                     users.Add(new ViewUser()
                     {
                         Username = user.Username,
                         Rank = user.Rank,
                         Elo = user.Elo,
                         ProfilePic = user.ProfilePic,
-                        Country = user.Country
+                        Country = user.Country,
+                        DaysAsMember = days
                     });
                 }
 

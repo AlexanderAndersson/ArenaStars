@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.BZip2">
-      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\Ionic.BZip2.dll</HintPath>
+      <HintPath>..\packages\Ionic.BZip2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="QueryMaster">
-      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\QueryMaster.dll</HintPath>
+      <HintPath>..\packages\QueryMaster.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -205,6 +205,7 @@
     <Content Include="Images\Map\aim_map_mall.png" />
     <Content Include="Images\Profile\GeT_RiGhT.jpg" />
     <Content Include="Images\Profile\KennyS.jpeg" />
+    <Content Include="Images\Profile\linustechtips.jpg" />
     <Content Include="Images\Profile\nickebild.jpg" />
     <Content Include="Images\Profile\Olofmeister.jpg" />
     <Content Include="Images\Profile\PashaBiceps.jpg" />
