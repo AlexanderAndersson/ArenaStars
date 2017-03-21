@@ -202,6 +202,7 @@
     <Content Include="Images\Map\aim_map_mall.png" />
     <Content Include="Images\Profile\GeT_RiGhT.jpg" />
     <Content Include="Images\Profile\KennyS.jpeg" />
+    <Content Include="Images\Profile\nickebild.jpg" />
     <Content Include="Images\Profile\Olofmeister.jpg" />
     <Content Include="Images\Profile\PashaBiceps.jpg" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
@@ -285,6 +286,7 @@
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Properties\PublishProfiles\binero arenastars.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Profile\rednaxBild.jpg" />
     <Content Include="Images\Rank\Challenger.png" />
     <Content Include="Images\Rank\GrandMaster.png" />
     <Content Include="Images\Rank\Legend.png" />

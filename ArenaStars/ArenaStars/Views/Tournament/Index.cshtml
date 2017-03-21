@@ -8,10 +8,10 @@
 <div class="white">
     <h2>Tournaments</h2>
    @foreach (Tournament t in ViewBag.Tournaments)
-            {
+    {
     <div id="@t.Id" class="tournamentList">
         @if (t.IsLive)
-                {
+        {
             <div class="starts">
                 <span class="bold" id="tLive">LIVE</span>
             </div>

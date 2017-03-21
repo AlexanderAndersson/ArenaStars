@@ -46,7 +46,56 @@ function GetTournaments() {
 
             for (let i = 0; i < tournamentList.length; i++)
             {
-                outputTournaments.append(
+                if (tournamentList[i].IsLive == true) {
+                    outputTournaments.append(
+                    '<div id="' + tournamentList[i].Id + '"class="tournamentList">'
+                       + '<div class="starts">'
+                          + '<span class="bold" id="tLive">LIVE</span>'
+                       + '</div>'
+                       + '<div>'
+                        + '<span class="bold">NAME</span><br />'
+                        + '<span>' + tournamentList[i].Name + '</span>'
+                    + '</div>'
+                    + '<div>'
+                        + '<span class="bold">TYPE</span><br />'
+                        + '<span>' + tournamentList[i].Type + '</span>'
+                    + '</div>'
+                    + '<div>'
+                        + '<span class="bold">MIN RANK</span><br />'
+                        + '<span>' + tournamentList[i].MinRank + '</span>'
+                    + '</div>'
+                    + '<div id="participants">'
+                        + '<span class="glyphicon glyphicon-user"></span><br />'
+                        + '<span>' + tournamentList[i].ParticipantsCount + ' / ' + tournamentList[i].PlayerLimit + '</span>'
+                    + '</div>'
+                    );
+                }
+                else if (tournamentList[i].HasEnded == true) {
+                    outputTournaments.append(
+                    '<div id="' + tournamentList[i].Id + '"class="tournamentList">'
+                       + '<div class="starts">'
+                          + '<span style="color: red" class="bold" id="tLive">ENDED</span>'
+                       + '</div>'
+                       + '<div>'
+                        + '<span class="bold">NAME</span><br />'
+                        + '<span>' + tournamentList[i].Name + '</span>'
+                    + '</div>'
+                    + '<div>'
+                        + '<span class="bold">TYPE</span><br />'
+                        + '<span>' + tournamentList[i].Type + '</span>'
+                    + '</div>'
+                    + '<div>'
+                        + '<span class="bold">MIN RANK</span><br />'
+                        + '<span>' + tournamentList[i].MinRank + '</span>'
+                    + '</div>'
+                    + '<div id="participants">'
+                        + '<span class="glyphicon glyphicon-user"></span><br />'
+                        + '<span>' + tournamentList[i].ParticipantsCount + ' / ' + tournamentList[i].PlayerLimit + '</span>'
+                    + '</div>'
+                    );
+                }
+                else {
+                    outputTournaments.append(
                     '<div id="' + tournamentList[i].Id + '"class="tournamentList">'
                     + '<div>'
                         + '<span class="bold">STARTS</span><br />'
@@ -68,11 +117,10 @@ function GetTournaments() {
                         + '<span class="glyphicon glyphicon-user"></span><br />'
                         + '<span>' + tournamentList[i].ParticipantsCount + ' / ' + tournamentList[i].PlayerLimit + '</span>'
                     + '</div>'
-
                     );
+                }  
                 shownTournaments++;
             }
-
         },
         error: function (jqXHR, statusText, errorThrown) {
             console.log('Ett fel inträffade: ' + statusText);

@@ -26,7 +26,7 @@
                 var html =
                 '<div>'
                     + '<span class="bold">Player ' + info.Count + '</span>'
-                    + '<span>' + info.Username + " " + '<img src=' + rankPic + '></span>'
+                    + '<span id="' + info.Username + '" class="tUsername">' + info.Username + " " + '<img src=' + rankPic + '></span>'
                 + '</div>'
                 + '<hr />'
 
@@ -50,7 +50,15 @@
                     $('.btn.btn-success.joinBtn').css("display", "none");
                     $('.btn.btn-danger.leaveBtn').css("display", "initial");
                     $(html).hide().prependTo("#newParticipant").fadeIn(300);
-                }             
+                }
+
+                setTimeout(function () {
+                    //On click, go to users profile
+                    $(".tUsername").on("click", function () {
+                        var username = $(this).attr("id");
+                        window.location.href = '/User/Profile?username=' + username;
+                    });
+                }, 150);
             },
             error: function (jqXHR, statusText, errorThrown) {
                 console.log('Ett fel inträffade: ' + statusText);

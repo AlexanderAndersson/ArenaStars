@@ -31,8 +31,8 @@ namespace ArenaStars.Controllers
                         IsAdmin = false,
                         IsTerminated = false,
                         LastLoggedIn = DateTime.Now,
-                        ProfilePic = "~ProfilePicture_Default.jpg",
-                        BackgroundPic = "ProfileBackground_Default.jpg",
+                        ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                        BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
                         Rank = Models.User.RankEnum.Unranked
                     };
 
@@ -306,7 +306,7 @@ namespace ArenaStars.Controllers
             {
                 errorMsgList.Add("Username must be between 3 and 30 characters.");
             }
-            if (username.Length < 6 || username.Length > 30)
+            if (password.Length < 6 || password.Length > 30)
             {
                 errorMsgList.Add("Password must be between 6 and 30 characters.");
             }

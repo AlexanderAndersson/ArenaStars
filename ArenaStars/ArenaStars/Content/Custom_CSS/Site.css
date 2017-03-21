@@ -9,7 +9,8 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    font-family: "Arial Unicode MS" !important;
+    /*font-family: "Arial Unicode MS" !important;*/
+
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -56,7 +57,7 @@ textarea {
     background: #1e2222 !important;
     color: white !important;
     border-color: #1e2222 !important;
-    font-family: "Arial Unicode MS";
+    /*font-family: "Arial Unicode MS";*/
     width:250px;
 }
 
@@ -67,7 +68,7 @@ textarea {
 .navbar-inverse .navbar-nav>li>a {
     color: #ff822e !important;
     font-weight: bold;
-    font-family: "Arial Unicode MS"
+    /*font-family: "Arial Unicode MS"*/
 }
 
 #profilDropDown>li>a:focus, #profilDropDown>li>a:hover {
