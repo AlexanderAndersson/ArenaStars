@@ -2,28 +2,28 @@
 
 }
 
-#banList {
+#leaderboard {
     border: solid 1px #4b4e4e;
     overflow: hidden;
     margin-top: 70px;
     background-color: #323737;
 }
 
-#banList h4 {
+#leaderboard h4 {
     text-align: center;
     padding-top: 8px;
 }
 
-#banList hr {
+#leaderboard hr {
     border-color: #4b4e4e;
     margin-bottom: 0px;
 }
 
-#banList td {
+#leaderboard td {
     border-top: 1px solid #4b4e4e;
 }
 
-#banList table {
+#leaderboard table {
     margin-bottom: 0px;
 }
 

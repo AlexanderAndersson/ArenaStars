@@ -119,13 +119,13 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-20),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 1953,
-                    Rank = Models.User.RankEnum.Master,
-                    Level = 9,
+                    Elo = 853,
+                    Rank = Models.User.RankEnum.Grandmaster,
+                    Level = 8,
                     IsTerminated = false,
                     SteamId = "1",
                     Bio = "Muppetnicke, the best player ever!",
-                    ProfilePic = "https://yt3.ggpht.com/-4XetcFMa8UQ/AAAAAAAAAAI/AAAAAAAAAAA/PGQrxc2Y29E/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+                    ProfilePic = "/Images/Profile/nickebild.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -144,13 +144,13 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-10),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = true,
-                    Elo = 900,
+                    Elo = 924,
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "2",
                     Bio = "Certified noob",
-                    ProfilePic = "https://yt3.ggpht.com/-_p3dlkuqWII/AAAAAAAAAAI/AAAAAAAAAAA/cFOW_AqqnlQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg",
+                    ProfilePic = "/Images/Profile/rednaxBild.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
                     #endregion
@@ -160,7 +160,7 @@ namespace ArenaStars.Controllers
                 {
                     #region info
 
-                    Username = "LinusTechTips",
+                    Username = "Linus",
                     Firstname = "Linus",
                     Lastname = "Eriksson",
                     Country = "Sweden",
@@ -169,7 +169,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-10),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 500,
+                    Elo = 550,
                     Rank = Models.User.RankEnum.Gold,
                     Level = 5,
                     IsTerminated = false,
@@ -193,7 +193,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-10),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 400,
+                    Elo = 471,
                     Rank = Models.User.RankEnum.Silver,
                     Level = 4,
                     IsTerminated = false,
@@ -217,7 +217,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-20),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 700,
+                    Elo = 768,
                     Rank = Models.User.RankEnum.Master,
                     Level = 7,
                     IsTerminated = false,
@@ -241,7 +241,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-30),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 200,
+                    Elo = 232,
                     Rank = Models.User.RankEnum.Challenger,
                     Level = 2,
                     IsTerminated = false,
@@ -265,7 +265,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-15),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 500,
+                    Elo = 505,
                     Rank = Models.User.RankEnum.Grandmaster,
                     Level = 5,
                     IsTerminated = false,
@@ -289,7 +289,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-50),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 100,
+                    Elo = 160,
                     Rank = Models.User.RankEnum.Bronze,
                     Level = 1,
                     IsTerminated = false,
@@ -313,7 +313,7 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-50),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 900,
+                    Elo = 912,
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
@@ -337,13 +337,85 @@ namespace ArenaStars.Controllers
                     SignUpDate = DateTime.Now.AddDays(-60),
                     LastLoggedIn = DateTime.Now,
                     IsAdmin = false,
-                    Elo = 900,
+                    Elo = 960,
                     Rank = Models.User.RankEnum.Legend,
                     Level = 9,
                     IsTerminated = false,
                     SteamId = "10",
                     ProfilePic = "/Images/Profile/PashaBiceps.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User u11 = new User()
+                {
+                    #region info
+
+                    Username = "Teddan",
+                    Firstname = "Ted",
+                    Lastname = "Malmborg",
+                    Country = "Sweden",
+                    Email = "Ted.Malmborg@gmail.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-60),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 450,
+                    Rank = Models.User.RankEnum.Platinum,
+                    Level = 4,
+                    IsTerminated = false,
+                    SteamId = "11",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+
+                    #endregion
+                };
+
+                User u12 = new User()
+                {
+                    #region info
+
+                    Username = "Lavemange",
+                    Firstname = "Margnus",
+                    Lastname = "Ekblad",
+                    Country = "Sweden",
+                    Email = "Margnus.Ekblad@gmail.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-45),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 744,
+                    Rank = Models.User.RankEnum.Master,
+                    Level = 7,
+                    IsTerminated = false,
+                    SteamId = "12",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+
+                    #endregion
+                };
+
+                User u13 = new User()
+                {
+                    #region info
+
+                    Username = "LinusTechTips",
+                    Firstname = "Linus",
+                    Lastname = "Tech",
+                    Country = "North_America",
+                    Email = "Linus.Tech@gmail.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 304,
+                    Rank = Models.User.RankEnum.Gold,
+                    Level = 3,
+                    IsTerminated = false,
+                    SteamId = "13",
+                    ProfilePic = "/Images/Profile/linustechtips.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
 
                     #endregion
                 };
@@ -472,8 +544,62 @@ namespace ArenaStars.Controllers
                     Level = 0,
                     IsTerminated = true,
                     BanFrom = DateTime.Now,
-                    BanTo = DateTime.Now.AddDays(9),
+                    BanTo = DateTime.Now.AddYears(2),
                     BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User TerminatedUser5 = new Models.User()
+                {
+                    #region info
+
+                    Username = "xXSniperMasterXx",
+                    Firstname = "Wesley",
+                    Lastname = "Sniper",
+                    Country = "Russia",
+                    Email = "Wesley.Sniper@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 230,
+                    Rank = Models.User.RankEnum.Silver,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddYears(2),
+                    BanReason = "Cheating",
+                    SteamId = "terminated",
+                    ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
+                    BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
+
+                    #endregion
+                };
+
+                User TerminatedUser6 = new Models.User()
+                {
+                    #region info
+
+                    Username = "ImBest",
+                    Firstname = "Vladimir",
+                    Lastname = "Putin",
+                    Country = "Russia",
+                    Email = "Vladimir.Putin@prison.com",
+                    Password = "hejsan",
+                    SignUpDate = DateTime.Now.AddDays(-10),
+                    LastLoggedIn = DateTime.Now,
+                    IsAdmin = false,
+                    Elo = 340,
+                    Rank = Models.User.RankEnum.Gold,
+                    Level = 0,
+                    IsTerminated = true,
+                    BanFrom = DateTime.Now,
+                    BanTo = DateTime.Now.AddDays(150),
+                    BanReason = "Toxic",
                     SteamId = "terminated",
                     ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
@@ -494,11 +620,16 @@ namespace ArenaStars.Controllers
                 context.Users.Add(u8);
                 context.Users.Add(u9);
                 context.Users.Add(u10);
+                context.Users.Add(u11);
+                context.Users.Add(u12);
+                context.Users.Add(u13);
                 context.Users.Add(admin);
                 context.Users.Add(TerminatedUser1);
                 context.Users.Add(TerminatedUser2);
                 context.Users.Add(TerminatedUser3);
                 context.Users.Add(TerminatedUser4);
+                context.Users.Add(TerminatedUser5);
+                context.Users.Add(TerminatedUser6);
 
                 //Adding Users in Userlist for tournament 1
                 Tournament1UserList.Add(u1);
@@ -1350,7 +1481,7 @@ namespace ArenaStars.Controllers
                     IsLive = false,
                     MinRank = Models.User.RankEnum.Bronze,
                     MaxRank = Models.User.RankEnum.Gold,
-                    PlayerLimit = 12,
+                    PlayerLimit = 8,
                     TrophyPic = "/Images/Trophy/Trophy2.png",
                 };
 
@@ -1365,7 +1496,7 @@ namespace ArenaStars.Controllers
                     IsLive = false,
                     MinRank = Models.User.RankEnum.Unranked,
                     MaxRank = Models.User.RankEnum.Legend,
-                    PlayerLimit = 12,
+                    PlayerLimit = 16,
                     TrophyPic = "/Images/Trophy/Trophy3.png",
                 };
 
@@ -1381,7 +1512,7 @@ namespace ArenaStars.Controllers
                     IsLive = true,
                     MinRank = Models.User.RankEnum.Unranked,
                     MaxRank = Models.User.RankEnum.Legend,
-                    PlayerLimit = 12,
+                    PlayerLimit = 16,
                     TrophyPic = "/Images/Trophy/Trophy4.png",
                 };
 
@@ -1401,6 +1532,103 @@ namespace ArenaStars.Controllers
                     TrophyPic = "/Images/Trophy/Trophy2.png",
                 };
 
+                Tournament Tournament7 = new Tournament()
+                {
+                    Name = "ArenaStars Open",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 8,
+                    TrophyPic = "/Images/Trophy/Trophy4.png",
+                };
+
+                Tournament Tournament8 = new Tournament()
+                {
+                    Name = "Prove urself #2",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Unproven,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 8,
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
+                };
+
+                Tournament Tournament9 = new Tournament()
+                {
+                    Name = "Veterans Come Here",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Veteran,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 8,
+                    TrophyPic = "/Images/Trophy/Trophy3.png",
+                };
+
+                Tournament Tournament10 = new Tournament()
+                {
+                    Name = "AllStars Only #2",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.AllStars,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 16,
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
+                };
+
+                Tournament Tournament11 = new Tournament()
+                {
+                    Name = "Worst tournamnet ever",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Bronze,
+                    MaxRank = Models.User.RankEnum.Legend,
+                    PlayerLimit = 16,
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
+                };
+
+                Tournament Tournament12 = new Tournament()
+                {
+                    Name = "Midranks Only #2",
+                    Participants = Tournament1UserList,
+                    Type = Tournament.TournamentTypeEnum.Open,
+                    CreatedDate = DateTime.Today.AddDays(9).Add(new TimeSpan(17, 00, 00)),
+                    StartDate = DateTime.Today.AddDays(10).Add(new TimeSpan(15, 00, 00)),
+                    CheckInDate = DateTime.Today.AddDays(10).Add(new TimeSpan(14, 30, 00)),
+                    HasEnded = false,
+                    IsLive = false,
+                    MinRank = Models.User.RankEnum.Gold,
+                    MaxRank = Models.User.RankEnum.Challenger,
+                    PlayerLimit = 16,
+                    TrophyPic = "/Images/Trophy/Trophy1.png",
+                };
+
+
                 #endregion
 
                 //Adding tournaments to database
@@ -1410,6 +1638,12 @@ namespace ArenaStars.Controllers
                 context.Tournaments.Add(Tournament4);
                 context.Tournaments.Add(Tournament5);
                 context.Tournaments.Add(Tournament6);
+                context.Tournaments.Add(Tournament7);
+                context.Tournaments.Add(Tournament8);
+                context.Tournaments.Add(Tournament9);
+                context.Tournaments.Add(Tournament10);
+                context.Tournaments.Add(Tournament11);
+                context.Tournaments.Add(Tournament12);
 
                 /********************REPORTS*********************/
 

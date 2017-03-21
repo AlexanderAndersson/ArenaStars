@@ -25,7 +25,6 @@
         var username = $(this).attr("id");
         window.location.href = '/User/Profile?username=' + username;
     });
-
 });
 
 

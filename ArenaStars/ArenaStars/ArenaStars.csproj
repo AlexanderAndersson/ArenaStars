@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.BZip2">
-      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\Ionic.BZip2.dll</HintPath>
+      <HintPath>..\packages\Ionic.BZip2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="QueryMaster">
-      <HintPath>..\..\..\..\alt\ArenaStars\ArenaStars\QueryMaster.dll</HintPath>
+      <HintPath>..\packages\QueryMaster.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -117,6 +117,7 @@
     <Content Include="Content\Custom_CSS\GameRoom.css" />
     <Content Include="Content\Custom_CSS\GameSheet.css" />
     <Content Include="Content\Custom_CSS\HomePage.css" />
+    <Content Include="Content\Custom_CSS\Leaderboard.css" />
     <Content Include="Content\Custom_CSS\LogInForm.css" />
     <Content Include="Content\Custom_CSS\Profile.css" />
     <Content Include="Content\Custom_CSS\ShowUsersSearch.css" />
@@ -148,7 +149,7 @@
     <Content Include="Images\Country\Cyprus.png" />
     <Content Include="Images\Country\Czech_Republic.png" />
     <Content Include="Images\Country\Denmark.png" />
-    <Content Include="Images\Country\Earth.png" />
+    <Content Include="Images\Country\World.png" />
     <Content Include="Images\Country\Estonia.png" />
     <Content Include="Images\Country\Europe.png" />
     <Content Include="Images\Country\Finland.png" />
@@ -172,6 +173,7 @@
     <Content Include="Images\Country\Monaco.png" />
     <Content Include="Images\Country\Montenegro.png" />
     <Content Include="Images\Country\Netherlands.png" />
+    <Content Include="Images\Country\NoCountry.png" />
     <Content Include="Images\Country\North_America.png" />
     <Content Include="Images\Country\Norway.png" />
     <Content Include="Images\Country\Poland.png" />
@@ -203,6 +205,8 @@
     <Content Include="Images\Map\aim_map_mall.png" />
     <Content Include="Images\Profile\GeT_RiGhT.jpg" />
     <Content Include="Images\Profile\KennyS.jpeg" />
+    <Content Include="Images\Profile\linustechtips.jpg" />
+    <Content Include="Images\Profile\nickebild.jpg" />
     <Content Include="Images\Profile\Olofmeister.jpg" />
     <Content Include="Images\Profile\PashaBiceps.jpg" />
     <Content Include="Images\Profile\ProfileBackground_Default.jpg" />
@@ -286,6 +290,7 @@
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Properties\PublishProfiles\binero arenastars.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Profile\rednaxBild.jpg" />
     <Content Include="Images\Rank\Challenger.png" />
     <Content Include="Images\Rank\GrandMaster.png" />
     <Content Include="Images\Rank\Legend.png" />

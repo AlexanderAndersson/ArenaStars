@@ -24,13 +24,13 @@ hr {
 }
 
 .littleUserInfoBox {
-    width:200px;
+    width:207px;
     height:65px;
     margin-top:-125px;
     margin-left:250px;
     background-color:rgba(0, 0, 0, 0.8);
     padding:10px;
-    border:1px solid red;
+    border:1px solid #4b4e4e;
 }
 
 .cheatingReason {
@@ -43,6 +43,7 @@ hr {
 
 .isBanned {
     height:100px;
+    border:1px solid red;
 }
 
 .fakeNavBar {
@@ -188,7 +189,7 @@ hr {
     }
 
     .userBioBox {
-        border:1px solid black;
+        border:1px solid #4b4e4e;
         margin-top:10px;
     }
 }
@@ -328,13 +329,8 @@ hr {
     border-right:1px solid grey;
 }
 
-button {
-    color:#333;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .userBioBox {
-    border:1px solid black;
+    border:1px solid #4b4e4e;
     height:200px;
     overflow-y:scroll;
 }
@@ -351,4 +347,11 @@ button {
 
 #editBio:hover {
     cursor:pointer;
+}
+
+.white button {
+    background-color: #ff822e !important;
+    border-color: #ff822e !important;
+    color:#fff !important;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

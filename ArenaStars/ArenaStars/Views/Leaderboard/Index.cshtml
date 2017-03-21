@@ -1,7 +1,52 @@
 ﻿@{
     ViewBag.Title = "Leaderboard";
+    <link href="~/Content/Custom_CSS/Leaderboard.css" rel="stylesheet" />
 }
 
 <div class="white">
-    <h2>Leaderboard sida</h2>
+    <div id="leaderboard">
+        <h4>LEADERBOARD</h4>
+        <hr />
+        <table id="leaderboardTable" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>PLAYER</th>
+                    <th>COUNTRY</th>
+                    <th>MEMBER</th>
+                    <th>RANK</th>
+                    <th>ELO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in ViewBag.TopPlayers)
+                {
+                    string countryPic = "/Images/Country/" + user.Country + ".png";
+                    string rankPic = "/Images/Rank/" + user.Rank + ".png";
+
+                    <tr id="@user.Username" class="playerStat">
+                        <td><img id="profilPic" src=@user.ProfilePic /> @user.Username</td>
+                        @if (user.Country.Contains("_"))
+                        {
+                            
+                            <td><img id="countyPic" src=@countryPic /> @user.Country.Replace("_", " ")</td>
+                        }
+                        else
+                        {
+                            <td><img id="countyPic" src=@countryPic /> @user.Country</td>
+                        }
+                        <td>@user.DaysAsMember.ToString("0") days</td>
+                        <td><img id="rankPic" src=@rankPic /> @user.Rank</td>
+                        <td>@user.Elo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script>
+            //On click, go to users profile
+            $(".playerStat").on("click", function () {
+                var username = $(this).attr("id");
+                window.location.href = '/User/Profile?username=' + username;
+            });
+        </script>
+    </div>
 </div>
