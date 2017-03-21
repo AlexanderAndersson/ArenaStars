@@ -1,7 +1,32 @@
 ﻿@{
     ViewBag.Title = "Leaderboard";
+    <link href="~/Content/Custom_CSS/Leaderboard.css" rel="stylesheet" />
 }
 
 <div class="white">
-    <h2>Leaderboard sida</h2>
+    <div id="leaderboard">
+        <h4>LEADERBOARD</h4>
+        <hr />
+        <table id="leaderboardTable" class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Country</th>
+                    <th>Rank</th>
+                    <th>Elo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in ViewBag.TopPlayers)
+                {
+                    <tr id="@user.Username" class="playerStat">
+                        <td>@user.Username</td>
+                        <td>@user.Country</td>
+                        <td>@user.Rank</td>
+                        <td>@user.Elo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

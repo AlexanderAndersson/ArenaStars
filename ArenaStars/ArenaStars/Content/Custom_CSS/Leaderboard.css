@@ -1,0 +1,41 @@
+﻿body {
+
+}
+
+#leaderboard {
+    border: solid 1px #4b4e4e;
+    overflow: hidden;
+    margin-top: 70px;
+    background-color: #323737;
+}
+
+#leaderboard h4 {
+    text-align: center;
+    padding-top: 8px;
+}
+
+#leaderboard hr {
+    border-color: #4b4e4e;
+    margin-bottom: 0px;
+}
+
+/*#leaderboardTable th:first-child {
+    width: 200px;
+}
+
+#leaderboardTable th:nth-child(2) {
+    width: 150px;
+}*/
+
+#leaderboard td {
+    border-top: 1px solid #4b4e4e;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #505050;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(255, 130, 46, 1) !important;
+    cursor: pointer;
+}

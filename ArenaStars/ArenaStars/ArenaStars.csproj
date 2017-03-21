@@ -117,6 +117,7 @@
     <Content Include="Content\Custom_CSS\GameRoom.css" />
     <Content Include="Content\Custom_CSS\GameSheet.css" />
     <Content Include="Content\Custom_CSS\HomePage.css" />
+    <Content Include="Content\Custom_CSS\Leaderboard.css" />
     <Content Include="Content\Custom_CSS\LogInForm.css" />
     <Content Include="Content\Custom_CSS\Profile.css" />
     <Content Include="Content\Custom_CSS\ShowUsersSearch.css" />
@@ -147,7 +148,7 @@
     <Content Include="Images\Country\Cyprus.png" />
     <Content Include="Images\Country\Czech_Republic.png" />
     <Content Include="Images\Country\Denmark.png" />
-    <Content Include="Images\Country\Earth.png" />
+    <Content Include="Images\Country\World.png" />
     <Content Include="Images\Country\Estonia.png" />
     <Content Include="Images\Country\Europe.png" />
     <Content Include="Images\Country\Finland.png" />
@@ -171,6 +172,7 @@
     <Content Include="Images\Country\Monaco.png" />
     <Content Include="Images\Country\Montenegro.png" />
     <Content Include="Images\Country\Netherlands.png" />
+    <Content Include="Images\Country\NoCountry.png" />
     <Content Include="Images\Country\North_America.png" />
     <Content Include="Images\Country\Norway.png" />
     <Content Include="Images\Country\Poland.png" />

@@ -33,9 +33,9 @@ namespace ArenaStars.Controllers
                         LastLoggedIn = DateTime.Now,
                         ProfilePic = "/Images/Profile/ProfilePicture_Default.jpg",
                         BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg",
+                        Country = "World",
                         Rank = Models.User.RankEnum.Unranked
                     };
-
 
                     Session["isLoggedIn"] = true;
                     Session["username"] = username;
@@ -44,7 +44,6 @@ namespace ArenaStars.Controllers
                     context.SaveChanges();
                 }
             }
-
 
             return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
         }
@@ -58,7 +57,6 @@ namespace ArenaStars.Controllers
             {
                 Session["isLoggedIn"] = true;
                 //Session["username"] = "";  //Gör tilldelningen i CheckLoginInputFaults, var tyvärr tvungen att göra det ifall username ska vara "statiskt"
-
             }
 
             return Json(new { errorList = ErrorMsgList }, JsonRequestBehavior.DenyGet);
@@ -436,7 +434,6 @@ namespace ArenaStars.Controllers
                     }
                 }
             }
-
 
             return errorMsgList;
         }
