@@ -47,7 +47,7 @@ function GetGames() {
                 console.log("month number: " + GetMonth(gameList[i].PlayedDate));
 
                 htmlString += '<hr />'
-                    + '<div class="singleGame row">'
+                    + '<div id="' + gameList[i].Id + '" class="singleGame row">'
                     + '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">'
                         + '<span>' + GetDay(gameList[i].PlayedDate) + ' ' + monthsShort[GetMonth(gameList[i].PlayedDate) - 1].toLowerCase() + ' - ' + GetHourAndMinute(gameList[i].PlayedDate) + '</span>'
                     + '</div>'

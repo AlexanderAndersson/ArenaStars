@@ -13,7 +13,7 @@
                     let clickedUsername = $(this).find('.searchUserUsernameSpan').html();
                     ClickUser(clickedUsername);
                 });
-            }, 75);           
+            }, 150);           
         }
         else {
             $("#searchResultBox").hide();
