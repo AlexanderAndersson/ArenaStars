@@ -4,17 +4,57 @@
     ViewBag.Title = "Settings";
 }
 
-
+<link href="~/Content/Custom_CSS/UserSettings.css" rel="stylesheet" />
 
 
 <div class="container white text-center">
 
     <h2>User Settings</h2>
 
-    <div id="profileBackground" class="row">
+    <div id="profileBackground" style="background-image: url(@ViewBag.BackgroundPic);" class="row col-lg-12">
+
         <img src="@ViewBag.ProfilePic" id="profilePic" class="profilePic" />
     </div>
 
-    <form></form>
+    <form class="settingsForm row col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div class="input-group">
+            <h4>Profile picture url</h4>
+            <input type="text" value="@ViewBag.ProfilePic" name="inputProfilePic" class="input-sm" />
+        </div>
+        
+        <div class="input-group">
+            <h4>Background picture url</h4>
+            <input type="text" value="@ViewBag.BackgroundPic" name="inputBackgroundPic" class="input-sm" />
+        </div>
+
+        <div class="input-group">
+            <h4>Country</h4>
+            <select name="inputCountry" style="color:black;">
+                <option value="" selected></option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Great_Britain">Great Britain</option>
+                <option value="Poland">Poland</option>
+                <option value="Russia">Russia</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <h4>Steam Id</h4>
+            <input type="text" value="@ViewBag.SteamId" name="inputSteamId" />
+        </div>
+
+        <div class="input-group">
+            <h4>About</h4>
+            <textarea placeholder="Write something about yourself!" style="color:black;"></textarea>
+        </div>
+
+        <div class="input-group">
+            <input type="submit" value="Save changes" class="btn btn-lg btn-success white" />
+        </div>
+        
+    </form>
 
 </div>

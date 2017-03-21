@@ -197,7 +197,7 @@ namespace ArenaStars.Controllers
                     Rank = Models.User.RankEnum.Silver,
                     Level = 4,
                     IsTerminated = false,
-                    SteamId = "4",
+                    SteamId = "STEAM_1:1:83143523",
                     ProfilePic = "https://upload.wikimedia.org/wikipedia/commons/e/e1/Stefan_L%C3%B6fven_efter_slutdebatten_i_SVT_2014_(cropped).jpg",
                     BackgroundPic = "/Images/Profile/ProfileBackground_Default.jpg"
 
@@ -642,12 +642,28 @@ namespace ArenaStars.Controllers
                     isInUse = false
                 };
 
+                Models.Server serverFour = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #4",
+                    isInUse = false
+                };
+
+                Models.Server serverFive = new Models.Server()
+                {
+                    IPaddress = "217.78.24.8:28892",
+                    Name = "ArenaStars Server #5",
+                    isInUse = false
+                };
+
                 #endregion
 
                 //Adding servers to database
                 context.Servers.Add(serverOne);
                 context.Servers.Add(serverTwo);
                 context.Servers.Add(serverThree);
+                context.Servers.Add(serverFour);
+                context.Servers.Add(serverFive);
 
 
                 /****************GAMES*****************/
@@ -661,7 +677,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-5),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame2 = new Models.Game()
@@ -671,7 +689,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddMinutes(-30),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame3 = new Models.Game()
@@ -681,7 +701,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame4 = new Models.Game()
@@ -691,7 +713,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-1),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame5 = new Models.Game()
@@ -701,7 +725,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame6 = new Models.Game()
@@ -711,7 +737,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame7 = new Models.Game()
@@ -721,7 +749,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame8 = new Models.Game()
@@ -731,7 +761,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game RankedGame9 = new Models.Game()
@@ -741,7 +773,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Ranked,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Not_In_Tournament,
+                    Server = serverOne
                 };
 
                 Models.Game Tournament1Game1 = new Models.Game()
@@ -751,7 +785,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Quarter_Final
                 };
 
                 Models.Game Tournament1Game2 = new Models.Game()
@@ -761,7 +797,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Quarter_Final
                 };
 
                 Models.Game Tournament1Game3 = new Models.Game()
@@ -771,7 +809,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Quarter_Final
                 };
 
                 Models.Game Tournament1Game4 = new Models.Game()
@@ -781,7 +821,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now,
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Quarter_Final
                 };
 
                 Models.Game Tournament1Game5 = new Models.Game()
@@ -791,7 +833,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Quarter_Final
                 };
 
                 Models.Game Tournament1Game6 = new Models.Game()
@@ -801,7 +845,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Semi_Final
                 };
 
                 Models.Game Tournament1Game7 = new Models.Game()
@@ -811,7 +857,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Semi_Final
                 };
 
                 Models.Game Tournament1Game8 = new Models.Game()
@@ -821,7 +869,9 @@ namespace ArenaStars.Controllers
                     Map = "aim_map",
                     Type = Models.Game.GameTypeEnum.Tournament,
                     PlayedDate = DateTime.Now.AddHours(-2),
-                    HasEnded = true
+                    HasEnded = true,
+                    Server = serverOne,
+                    TournamentGameType = Models.Game.TournamentGameTypeEnum.Final
                 };
 
                 Models.Game NotFinishedRankedGame1 = new Models.Game()
