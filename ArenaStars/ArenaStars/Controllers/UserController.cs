@@ -306,7 +306,6 @@ namespace ArenaStars.Controllers
 
                 for (int i = shown; i < shown + numberToDisplay && i < finishedGames.Count(); i++)
                 {
-
                     var newGame = new
                     {
                         Id = finishedGames[i].Id,

@@ -1,0 +1,32 @@
+﻿body {
+}
+
+.settingsForm {
+    border:1px solid green;
+}
+
+.settingsForm input {
+    display:block;
+    color:black;
+}
+
+.settingsForm textarea {
+    resize:none;
+    width:400px;
+    height:100px;
+}
+
+#profileBackground {
+    border:1px solid red;
+    height:300px;
+    background-size:100% 100%;
+}
+
+.profilePic {
+    width:200px;
+    height:200px;
+    margin-top:75px;
+    margin-right:400px;
+    border:1px solid grey;
+    /*float:left !important;*/
+}
