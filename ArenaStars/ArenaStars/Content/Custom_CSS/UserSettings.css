@@ -2,9 +2,9 @@
 }
 
 .settingsForm {
-    border:1px outset #796464;
-    border-right:0px;
-    border-bottom:0px;
+    border:1px solid #4b4e4e;
+    background-color: #292f2f;
+    margin-top: 10px;
 }
 
 .settingsForm input {
@@ -42,19 +42,24 @@
     width:200px;
     height:200px;
     margin-top:75px;
-    margin-right:400px;
+    margin-right:870px;
     border:1px solid grey;
     /*float:left !important;*/
 }
 
 .previewBoxText {
     position:absolute;
-    right:50px;
-    top:20%;
+    right:20px;
+    top:5%;
     font-family:Arial, Helvetica, sans-serif;
     font-size:16px;
     font-weight:bold;
     color:#d4d1d1;
+    width: 380px;
+    height: 40px;
+    background-color: #323737; 
+    border: 1px solid #4b4e4e;
+    padding: 10px;
 }
 
 
