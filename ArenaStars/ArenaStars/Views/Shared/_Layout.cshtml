@@ -4,37 +4,83 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="~/Images/Rank/Legend.png" />
+    <link href="~/Content/Custom_CSS/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/SignInAndUp.js"></script>
+    <script src="~/Scripts/SearchJS.js"></script>
+    <script src="~/Scripts/MatchmakingJS.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    @Html.Partial("Modals")
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Arena Stars", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index", "Home")"><img id="logo" src="~/Images/ArenaStars Logo.png" /></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="nav-item @ViewBag.HomeSelected">@Html.ActionLink("HOME", "Index", "Home")</li>
+                    <li class="nav-item @ViewBag.TournamentSelected">@Html.ActionLink("TOURNAMENTS", "Index", "Tournament")</li>
+                    <li class="nav-item @ViewBag.LeaderboardSelected">@Html.ActionLink("LEADERBOARD", "Index", "Leaderboard")</li>
+                    <li class="nav-item @ViewBag.BanlistSelected">@Html.ActionLink("BANLIST", "Index", "Ban")</li>
+                    @if ((bool)Session["isAdmin"] == true)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle @ViewBag.AdminSelected" data-toggle="dropdown">ADMIN<span class="caret"></span></a>
+                            <ul id="profilDropDown" class="dropdown-menu">
+                                <li><a class="@ViewBag.AdminUSelected" href="@Url.Action("Users", "Admin")">Users</a></li>
+                                <li><a class="@ViewBag.AdminTSelected" href="@Url.Action("Tournaments", "Admin")">Create Tournament</a></li>
+                                <li><a class="@ViewBag.AdminRSelected" href="@Url.Action("Reports", "Admin")">Reports</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form id="searchBarNav" class="navbar-form" role="search" action="/Home/UserShowAll" method="post">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search" name="searchString">
+                        </form>
+                        <div id="searchResultBox">
+                            Search result
+                        </div>
+                    </li>
+                    @if (!(bool)Session["isLoggedIn"])
+                    {
+                        <li><button class="btn btn-default navbar-btn logInBtn" type="button">LOG IN</button></li>
+                        <li><button class="btn btn-primary navbar-btn registerBtn" id="regBtnNav" type="button">SIGN UP</button></li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle profile-image @ViewBag.ProfileNavSelected" data-toggle="dropdown">
+                                <img src="@Session["profilePictureUrl"]" class="img-circle profile-img">@Session["username"]<span class="caret"></span>
+                            </a>
+                            <ul id="profilDropDown" class="dropdown-menu">
+                                <li><a class="@ViewBag.ProfileSelected" href="@Url.Action("Profile", "User", new { username = Session["username"] } )">Profile</a></li>
+                                <li><a class="" href="@Url.Action("Settings", "User")">Settings</a></li>
+                                <li><a href="@Url.Action("Logout", "User")">Log out</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
-    </div>
-
+    </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        @*<hr />*@
         <footer>
-            <p>&copy; @DateTime.Now.Year - Arena Stars</p>
+            @*<p>&copy; @DateTime.Now.Year - ArenaStars</p>*@
         </footer>
     </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

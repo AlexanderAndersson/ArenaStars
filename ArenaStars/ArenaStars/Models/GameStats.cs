@@ -17,6 +17,8 @@ namespace ArenaStars.Models
 
         public string SteamId { get; set; }
 
-        public Game Game { get; set; }
+        public int Score { get; set; }
+
+        public virtual Game Game { get; set; }
     }
 }

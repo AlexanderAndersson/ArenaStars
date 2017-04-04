@@ -8,7 +8,7 @@ namespace ArenaStars.Models
 {
     public class ArenaStarsContext : DbContext
     {
-        public ArenaStarsContext() : base ("ASdb")
+        public ArenaStarsContext() : base ("name=LocalDb")
         {
             //this.Configuration.LazyLoadingEnabled = false;
         }
@@ -17,6 +17,8 @@ namespace ArenaStars.Models
         public DbSet<GameStats> GameStats { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<MatchmakingSearch> MatchmakingSearches { get; set; }
+        public DbSet<Server> Servers { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

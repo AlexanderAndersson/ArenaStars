@@ -1,5 +1,27 @@
 # ArenaStars README
 
+## **Funktioner att göra**
+###### **Admin tools** ######
+- [ ] Edit/Remove user info
+- [ ] Suspend user
+- [x] Create tournament
+
+###### **Signup/In** ######
+- [x] LogIn
+- [x] Register
+- [x] Log Out
+
+###### **Other** ######
+- [ ] Matchmaking
+- [ ] User edit
+- [ ] Profil pic
+- [ ] Rivals
+- [x] Search
+- [ ] Hash pawssord
+- [x] Get tournament info
+- [x] Join tournament
+- [x] Leave tournament
+
 ## **Tournament types**
 - **Veteran:** Spelare som har vunnit x antal turneringar tidigare
 - **AllStars:** Top högsta rankade spelarna 
@@ -33,4 +55,6 @@
 - Toxic
 - Griefing
 - Harassment
+- Offensive Content
 - Other
+

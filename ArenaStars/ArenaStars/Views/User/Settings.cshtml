@@ -1,0 +1,75 @@
+﻿
+@{
+
+    ViewBag.Title = "Settings";
+}
+
+<link href="~/Content/Custom_CSS/UserSettings.css" rel="stylesheet" />
+
+
+<div class="container white text-center">
+
+    <h2>User Settings</h2>
+
+    <div id="profileBackground" style="background-image: url(@ViewBag.BackgroundPic);" class="row col-lg-12">
+        <span class="previewBoxText">Profile picture & Background picture preview</span>
+        <img src="@ViewBag.ProfilePic" id="profilePic" class="profilePic" />
+    </div>
+
+    <form method="post" action="@Url.Action("/Settings", "User")" class="settingsForm row col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+        <div class="input-group">
+            <h4>Profile picture url</h4>
+            <input type="text" value="@ViewBag.ProfilePic" name="inputProfilePic" id="inputProfilePic" class="input-sm" />
+        </div>
+        
+        <div class="input-group">
+            <h4>Background picture url</h4>
+            <input type="text" value="@ViewBag.BackgroundPic" name="inputBackgroundPic" id="inputBackgroundPic" class="input-sm" />
+        </div>
+
+        <div class="input-group">
+            <h4>Firstname</h4>
+            <input type="text" value="@ViewBag.Firstname" name="inputFirstname" class="input-sm" />
+        </div>
+
+        <div>
+            <h4>Lastname</h4>
+            <input type="text" value="@ViewBag.Lastname" name="inputLastname" class="input-sm" />
+        </div>
+
+        <div class="input-group">
+            <h4>Country</h4>
+            <select id="countrySelectList" name="inputCountry" style="color:black;">
+                <option value="" selected></option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Great_Britain">Great Britain</option>
+                <option value="Poland">Poland</option>
+                <option value="Russia">Russia</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+            </select>
+        </div>
+
+        <span id="hiddenCountryValue" style="display:none;">@ViewBag.Country</span>
+
+        <div class="input-group">
+            <h4>Steam Id</h4>
+            <input type="text" value="@ViewBag.SteamId" name="inputSteamId" />
+        </div>
+
+        <div class="input-group">
+            <h4>About</h4>
+            <textarea name="inputBio" placeholder="Write something about yourself!" style="color:black;">@ViewBag.Bio</textarea>
+        </div>
+
+        <div class="input-group">
+            <input type="submit" value="Save changes" class="btn btn-lg btn-success white" />
+        </div>
+        
+    </form>
+
+</div>
+
+
+<script src="~/Scripts/UserSettingsJS.js" type="text/javascript"></script>

@@ -1,0 +1,131 @@
+﻿@model ArenaStars.Classes.ViewGame
+
+@{
+
+
+    ArenaStars.Classes.ViewUser user1 = Model.Participants.FirstOrDefault();
+    ArenaStars.Classes.ViewUser user2 = Model.Participants.LastOrDefault();
+    string user1CountryPic = "/Images/Country/" + user1.Country + ".png";
+    string user1RankPic = "/Images/Rank/" + user1.Rank + ".png";
+    string user2CountryPic = "/Images/Country/" + user2.Country + ".png";
+    string user2RankPic = "/Images/Rank/" + user2.Rank + ".png";
+    string mapPicture = "/Images/Map/" + Model.Map + "_mall.png";
+
+    ViewBag.Title = "GameRoom - " + user1.Username + " vs " + user2.Username;
+
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Custom_CSS/GameRoom.css" />
+
+
+<div class="container white col-lg-12">
+    <div class="gameInfoWrapper">
+        <div class="playerInfoBoxLeft text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div><a href="/User/Profile?username=@user1.Username" target="_blank"><img src="@user1.ProfilePic" alt="ppic" class="profilePic" /></a></div>
+            <div><a href="/User/Profile?username=@user1.Username" target="_blank">@user1.Username</a> <img src="@user1CountryPic" alt="cpic" class="countryPic" /></div>
+            <div>@user1.Rank <img src="@user1RankPic" alt="rpic" class="rankPic" /> <span class="smallElo">(@user1.Elo)</span></div>
+        </div>
+
+        <div class="mapInfoBoxMiddle text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="bigText">VS</div>
+            @if (Model.Type == ArenaStars.Models.Game.GameTypeEnum.Tournament)
+            {
+                <div>@Model.TournamentGameType.ToString().Replace('_', ' ')</div>
+            }
+            else
+            {
+                <div>@Model.Type.ToString().Replace('_', ' ')</div>
+            }
+            <div><img src="@mapPicture" alt="mpic" class="mapPic" /></div>
+            <div>@Model.Map</div>
+            <div>@Model.Server.Name</div>
+            @if (Session["username"].ToString().ToLower() == user1.Username.ToLower() || Session["username"].ToString().ToLower() == user2.Username.ToLower() && Model.HasEnded == false)
+            {
+                <div><input type="text" value="@Model.Server.IPaddress" id="ipBox" class="serverIpBox" readonly /> <span id="copyToClipboardButton" class="glyphicon glyphicon-link" onclick="copyToClipboard('#ipBox')"></span></div>
+                <script type="text/javascript">
+                    function copyToClipboard(element) {
+                        var $temp = $("<input>");
+                        $("body").append($temp);
+                        $temp.val($(element).val()).select();
+                        document.execCommand("copy");
+                        $temp.remove();
+                    }
+                </script>
+            }
+        </div>
+
+        <div class="playerInfoBoxRight text-center col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div><a href="/User/Profile?username=@user2.Username" target="_blank"><img src="@user2.ProfilePic" alt="ppic" class="profilePic" /></a></div>
+            <div><a href="/User/Profile?username=@user2.Username" target="_blank">@user2.Username</a> <img src="@user2CountryPic" alt="cpic" class="countryPic" /></div>
+            <div>@user2.Rank <img src="@user2RankPic" alt="rpic" class="rankPic" /> <span class="smallElo">(@user2.Elo)</span></div>
+        </div>
+    </div>
+    @if (Model.HasEnded == true)
+    {
+
+
+        ArenaStars.Classes.ViewGamestat user1Gamestat = Model.GameStats.FirstOrDefault();
+        ArenaStars.Classes.ViewGamestat user2Gamestat = Model.GameStats.LastOrDefault();
+
+        <div class="col-lg-2"></div>
+        <div class="gameStatsWrapper col-lg-8 col-md-8 col-sm-8 col-xs-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+            <div class="gameStatsHeader">GAME STATS</div>
+            <div class="gameStatsContent">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Kills</th>
+                            <th>Deaths</th>
+                            <th>Headshot %</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="user1Gamestats">
+                            <td>@user1.Username</td>
+                            <td>@user1Gamestat.Kills</td>
+                            <td>@user1Gamestat.Deaths</td>
+                            <td>@user1Gamestat.HsRatio %</td>
+                            <td id="user1WinStatus"></td>
+                        </tr>
+                        <tr id="user2Gamestats">
+                            <td>@user2.Username</td>
+                            <td>@user2Gamestat.Kills</td>
+                            <td>@user2Gamestat.Deaths</td>
+                            <td>@user2Gamestat.HsRatio %</td>
+                            <td id="user2WinStatus"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        if (Model.Winner.Username == user1.Username)
+        {
+            <script type="text/javascript">
+                //$("#user1Gamestats").addClass(" success");
+                //$("#user2Gamestats").addClass(" danger");
+
+                $("#user1WinStatus").html("WINNER");
+                $("#user1WinStatus").addClass("text-success");
+                $("#user2WinStatus").html("LOSER");
+                $("#user2WinStatus").addClass("text-danger");
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                //$("#user1Gamestats").addClass(" danger");
+                //$("#user2Gamestats").addClass(" success");
+
+                $("#user1WinStatus").html("LOSER");
+                $("#user1WinStatus").addClass("text-danger");
+                $("#user2WinStatus").html("WINNER");
+                $("#user2WinStatus").addClass("text-success");
+            </script>
+        }
+        
+    }
+    
+</div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,8 @@ namespace ArenaStars.Models
 
         public string Lastname { get; set; }
 
+        public string Bio { get; set; }
+
         public string Country { get; set; }
 
         public DateTime? SignUpDate { get; set; }
@@ -41,10 +44,30 @@ namespace ArenaStars.Models
 
         public bool IsTerminated { get; set; }
 
+        public string BanReason { get; set; }
+
+        public DateTime? BanFrom { get; set; }
+
+        public DateTime? BanTo { get; set; }
+
         public string ProfilePic { get; set; }
 
-        public IList<Report> ReportList { get; set; }
+        public string BackgroundPic { get; set; }
 
-        public enum RankEnum { Unranked, Bronze, Silver, Gold, Platinum, Diamond, Challanger, Master, Grandmaster, Legend }
+        public virtual IList<Report> ReportList { get; set; }
+
+        public enum RankEnum
+        {
+            Unranked = 1,
+            Bronze = 2,
+            Silver = 3,
+            Gold = 4,
+            Platinum = 5,
+            Diamond = 6,
+            Challenger = 7,
+            Master = 8,
+            Grandmaster = 9,
+            Legend = 10
+        }
     }
 }

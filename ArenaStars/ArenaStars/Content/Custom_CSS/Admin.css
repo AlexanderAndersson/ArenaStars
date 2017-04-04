@@ -1,0 +1,84 @@
+﻿body {
+}
+
+#tLive {
+    color: #24b324;
+    margin-top: 13px;
+}
+
+#tHasEnded {
+    color: #dc3a39;
+    margin-top: 13px;
+}
+
+.white h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tournamentList {
+    background-color: #323737;
+    border: 1px solid #4b4e4e;
+    height: 65px;
+    width: 792px;
+    margin-bottom: 10px !important;
+    display: table;
+    margin: auto;
+}
+
+.tournamentList div {
+    padding: 10px;
+    float: left;
+    width: 180px;
+}
+
+.tournamentList div span {
+    float: left;
+}
+
+.tournamentList:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: rgba(255, 130, 46, 0.7);
+}
+
+#participants {
+    text-align: center;
+    width: 70px !important;
+}
+
+#participants > span {
+    float: none !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#tForm h4 {
+    color: white;
+}
+
+#tForm div {
+    padding: 10px;
+    float: left;
+    /*width: 300px;*/
+}
+
+#tForm select,
+#tForm input {
+    font-size: large;
+    /*height: 35px;*/
+}
+
+#tType {
+    width: 90px !important;
+}
+
+#tName {
+    width: 248px;
+}
+
+#tRanks {
+     width: 200px;
+}
