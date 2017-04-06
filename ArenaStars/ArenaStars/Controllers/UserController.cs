@@ -274,6 +274,7 @@ namespace ArenaStars.Controllers
                     ViewBag.Bio = you.Bio;
                     ViewBag.ProfilePic = you.ProfilePic;
                     ViewBag.BackgroundPic = you.BackgroundPic;
+                    Session["profilePictureUrl"] = you.ProfilePic;
                 }
             }
             else
