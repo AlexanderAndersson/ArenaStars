@@ -12,9 +12,9 @@
 - [x] Log Out
 
 ###### **Other** ######
-- [ ] Matchmaking
-- [ ] User edit
-- [ ] Profil pic
+- [x] Matchmaking
+- [x] User edit
+- [x] Change profil pic
 - [ ] Rivals
 - [x] Search
 - [ ] Hash pawssord
